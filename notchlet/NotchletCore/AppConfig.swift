@@ -35,21 +35,4 @@ struct AppConfig {
         static let notchBreathingRoom: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "notch_breathing_room", default: 8.0))
         static let maxExpandedWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "max_expanded_width", default: 700.0))
     }
-    
-    struct Calendar {
-        static let minimizedThreshold: Int = AppConfig.shared.value(for: "calendar", key: "minimized_threshold", default: 60)
-        static let ongoingThreshold: Int = AppConfig.shared.value(for: "calendar", key: "ongoing_transition_threshold", default: 10)
-        static let upcomingCount: Int = AppConfig.shared.value(for: "calendar", key: "upcoming_events_count", default: 3)
-        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "calendar", key: "expanded_min_width", default: 560.0))
-    }
-    
-    struct Timer {
-        static let defaultDuration: Int = AppConfig.shared.value(for: "timer", key: "default_duration", default: 25)
-        static let chimeDelay: Double = AppConfig.shared.value(for: "timer", key: "alarm_chime_delay", default: 0.4)
-        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "timer", key: "expanded_min_width", default: 260.0))
-    }
-    
-    struct Music {
-        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "music", key: "expanded_min_width", default: 320.0))
-    }
 }

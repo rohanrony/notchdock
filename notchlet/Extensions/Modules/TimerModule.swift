@@ -177,7 +177,7 @@ struct TimerModule: NotchletExtension {
     var hasRequiredPermissions: Bool = true
     
     /// Time display + controls rendered side by side
-    var expandedMinWidth: CGFloat { AppConfig.Timer.expandedMinWidth }
+    var expandedMinWidth: CGFloat { TimerViewModel.Constants.expandedMinWidth }
     
     var compactView: AnyView {
         AnyView(TimerCompactView())
@@ -257,12 +257,13 @@ class TimerViewModel: ObservableObject {
     static let shared = TimerViewModel()
     
     struct Constants {
-        static let defaultMinutes: Int = 25
+        static let defaultMinutes: Int = AppConfig.shared.value(for: "timer", key: "default_duration", default: 25)
         static let tickInterval: TimeInterval = 1.0
-        static let alarmSecondChimeDelay: TimeInterval = 0.4
+        static let alarmSecondChimeDelay: TimeInterval = AppConfig.shared.value(for: "timer", key: "alarm_chime_delay", default: 0.4)
         static let alarmSoundName: String = "Glass"
         static let monospacedFontSize: CGFloat = 13
         static let expandedTimeFontSize: CGFloat = 36
+        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "timer", key: "expanded_min_width", default: 260.0))
     }
     
     @AppStorage("timer_default_minutes") var defaultMinutes: Int = Constants.defaultMinutes {

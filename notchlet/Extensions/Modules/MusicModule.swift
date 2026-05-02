@@ -683,8 +683,20 @@ struct MusicPermissionRow: View {
 }
 
 struct MusicModule: NotchletExtension {
+    struct Constants {
+        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "music", key: "expanded_min_width", default: 320.0))
+    }
+    
     var id: String = "com.notchlet.music"
-    var displayName: String = "Music"; var iconName: String = "music.note"; var isPremium: Bool = false; var productID: String? = nil; var hasRequiredPermissions: Bool { true }; var expandedMinWidth: CGFloat { AppConfig.Music.expandedMinWidth }; var compactView: AnyView { AnyView(MusicCompactView()) }; var expandedView: AnyView { AnyView(MusicExpandedView()) }; var settingsView: AnyView { AnyView(MusicSettingsView()) }
+    var displayName: String = "Music"
+    var iconName: String = "music.note"
+    var isPremium: Bool = false
+    var productID: String? = nil
+    var hasRequiredPermissions: Bool { true }
+    var expandedMinWidth: CGFloat { Constants.expandedMinWidth }
+    var compactView: AnyView { AnyView(MusicCompactView()) }
+    var expandedView: AnyView { AnyView(MusicExpandedView()) }
+    var settingsView: AnyView { AnyView(MusicSettingsView()) }
 }
 
 extension NSImage {

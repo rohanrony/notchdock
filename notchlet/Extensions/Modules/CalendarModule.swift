@@ -503,7 +503,7 @@ struct CalendarModule: NotchletExtension {
     }
 
     /// 3-column layout: 200pt calendar grid + 2×dividers + 2×flexible event columns
-    var expandedMinWidth: CGFloat { AppConfig.Calendar.expandedMinWidth }
+    var expandedMinWidth: CGFloat { CalendarViewModel.Constants.expandedMinWidth }
 
     var compactView: AnyView {
         AnyView(CalendarCompactView())
@@ -524,9 +524,10 @@ class CalendarViewModel: ObservableObject {
     static let shared = CalendarViewModel()
     
     struct Constants {
-        static let defaultMinimizedThreshold: Int = 60
-        static let defaultOngoingThreshold: Int = 10
-        static let upcomingEventsCount: Int = 3
+        static let defaultMinimizedThreshold: Int = AppConfig.shared.value(for: "calendar", key: "minimized_threshold", default: 60)
+        static let defaultOngoingThreshold: Int = AppConfig.shared.value(for: "calendar", key: "ongoing_transition_threshold", default: 10)
+        static let upcomingEventsCount: Int = AppConfig.shared.value(for: "calendar", key: "upcoming_events_count", default: 3)
+        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "calendar", key: "expanded_min_width", default: 560.0))
         static let maxCompactTitleLength: Int = 25
         static let refreshInterval: TimeInterval = 60
         static let daysInFutureToFetch: Int = 7
