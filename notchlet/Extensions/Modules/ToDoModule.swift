@@ -376,6 +376,7 @@ struct ToDoExpandedView: View {
                 VStack(alignment: .leading, spacing: 1) {
                     ForEach(viewModel.items) { item in
                         ToDoRow(item: item)
+                            .opacity(draggingItem?.id == item.id ? 0 : 1)
                             .onDrag {
                                 self.draggingItem = item
                                 return NSItemProvider(object: item.id.uuidString as NSString)
