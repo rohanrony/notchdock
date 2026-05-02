@@ -33,9 +33,10 @@ class QuickAccessViewModel: ObservableObject {
         } else {
             // Default initial items
             self.items = [
+                QuickAccessItem(heading: "Prompt", content: "Please review the following text for clarity, tone, and grammatical accuracy. Ensure that the message is professional yet engaging, and appropriate for the intended audience. Highlight any areas that could be improved for better readability or impact. Additionally, check for consistency in terminology and formatting throughout the document. If there are any ambiguous phrases, please suggest alternatives that provide clearer meaning. Finally, provide a brief summary of the key changes made and why they enhance the overall quality of the communication. Thank you for your assistance in making this content as polished as possible."),
+                QuickAccessItem(heading: "ID#", content: "#00000000"),
                 QuickAccessItem(heading: "Email", content: "hello@notchlet.app"),
-                QuickAccessItem(heading: "Meeting", content: "https://zoom.us/j/123456"),
-                QuickAccessItem(heading: "Prompt", content: "Rewrite this in a professional tone:")
+                QuickAccessItem(heading: "SSH", content: "ssh root@192.168.1.1")
             ]
         }
     }
@@ -97,7 +98,7 @@ struct QuickAccessRow: View {
     
     var body: some View {
         GeometryReader { rowGeo in
-            HStack(spacing: 0) {
+            HStack(alignment: .center, spacing: 0) {
                 // Heading (1/3 width) - Styled as a Label
                 ZStack(alignment: .leading) {
                     if editingHeading.isEmpty && focusedField != .heading {
@@ -117,11 +118,10 @@ struct QuickAccessRow: View {
                     .autocorrectionDisabled(true)
                     .textContentType(.none)
                 }
-                .frame(width: rowGeo.size.width / 3.2, alignment: .leading)
                 .padding(.horizontal, 8)
-                .padding(.vertical, 4)
+                .frame(minWidth: rowGeo.size.width / 3.2, maxWidth: rowGeo.size.width / 3.2, maxHeight: .infinity, alignment: .leading)
                 .background(ThemeTokens.accentColor.opacity(0.1))
-                .cornerRadius(4)
+                .cornerRadius(3)
                 
                 Spacer(minLength: 12)
                 
@@ -139,11 +139,12 @@ struct QuickAccessRow: View {
                     })
                     .textFieldStyle(.plain)
                     .font(.system(size: 13))
-                    .foregroundColor(ThemeTokens.primaryText)
+                    .foregroundColor(ThemeTokens.secondaryText)
                     .focused($focusedField, equals: .content)
                     .autocorrectionDisabled(true)
                     .textContentType(.none)
                 }
+                .frame(maxHeight: .infinity)
                 
                 Spacer()
                 
@@ -171,14 +172,19 @@ struct QuickAccessRow: View {
                 }
             }
         }
-        .frame(height: 32)
-        .padding(.vertical, 4)
+        .frame(height: 26)
         .padding(.horizontal, 4)
         .background(Color.white.opacity(isHovered ? 0.03 : 0))
         .cornerRadius(6)
         .onHover { h in withAnimation(.easeInOut(duration: 0.1)) { isHovered = h } }
         .onChange(of: editingHeading) { oldValue, newValue in viewModel.updateItem(item, heading: newValue) }
         .onChange(of: editingContent) { oldValue, newValue in viewModel.updateItem(item, content: newValue) }
+        .onChange(of: focusedField) { oldValue, newValue in
+            // If we lost focus and both fields are empty, remove the row
+            if newValue == nil && editingHeading.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && editingContent.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                viewModel.deleteItem(item)
+            }
+        }
     }
 }
 
@@ -190,12 +196,12 @@ struct AddQuickAccessRow: View {
             HStack {
                 Image(systemName: "plus.circle.fill")
                     .font(.system(size: 14))
-                Text("Add Quick Item to Clipboard")
+                Text("Add Item to Quick Access Clipboard")
                     .font(.system(size: 13, weight: .medium))
                 Spacer()
             }
             .foregroundColor(ThemeTokens.secondaryText.opacity(0.5))
-            .padding(.vertical, 8)
+            .padding(.vertical, 4)
             .padding(.horizontal, 8)
             .contentShape(Rectangle())
         }
@@ -219,8 +225,8 @@ struct QuickAccessExpandedView: View {
                     AddQuickAccessRow()
                         .padding(.top, 4)
                 }
-                .padding(.vertical, 12)
-                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 10)
             }
             .frame(minWidth: 320, maxHeight: 400)
         }
