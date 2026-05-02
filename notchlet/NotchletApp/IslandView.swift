@@ -234,6 +234,8 @@ struct IslandView: View {
                     }
                     .buttonStyle(.plain)
                     .help("Settings")
+
+
                 }
                 .frame(width: symmetricBarWidth, alignment: .trailing)
                 .padding(.trailing, 16)

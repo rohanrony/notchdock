@@ -100,8 +100,12 @@ struct SettingsView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .frame(width: 720, height: 520)
+        .onAppear {
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
 }
+
 
 // MARK: - Sidebar Item
 struct SidebarItem: View {
