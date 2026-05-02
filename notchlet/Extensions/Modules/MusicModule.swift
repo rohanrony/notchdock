@@ -291,11 +291,14 @@ class MusicViewModel: ObservableObject {
     @Published var hasPermission: Bool = true
     @Published var anyAuthConfirmed: Bool = false
     @Published var artworkImage: NSImage? = nil
+    @Published var appIconImage: NSImage? = nil
     @Published var showCompact: Bool = true { didSet { UserDefaults.standard.set(showCompact, forKey: "music_show_compact") } }
 
     var duration: TimeInterval = 1
     /// The last confirmed active player — used by controls to avoid re-querying.
-    private(set) var activePlayer: MusicManager.PlayerApp = .none
+    private(set) var activePlayer: MusicManager.PlayerApp = .none {
+        didSet { if activePlayer != oldValue { updateAppIcon() } }
+    }
     private var timer: Timer?
     private var isRefreshing = false
     /// Prevents the poll from overwriting progress while the user is dragging.
@@ -438,6 +441,21 @@ class MusicViewModel: ObservableObject {
             NSWorkspace.shared.open(url)
         }
     }
+    
+    private func updateAppIcon() {
+        let bundleID = activePlayer.bundleID
+        if bundleID.isEmpty || activePlayer == .none {
+            self.appIconImage = nil
+            return
+        }
+        
+        // Using static symbols instead of fetching the app icon from disk 
+        // avoids the NSWorkspace calls that trigger Sequoia's entitlement warnings.
+        let symbolName = activePlayer == .spotify ? "play.circle.fill" : "apple.logo"
+        let config = NSImage.SymbolConfiguration(pointSize: 18, weight: .medium)
+        self.appIconImage = NSImage(systemSymbolName: symbolName, accessibilityDescription: nil)?
+            .withSymbolConfiguration(config)
+    }
 
     func togglePlay() {
         // Optimistic toggle is removed because it causes desync with incorrect active player detection.
@@ -459,6 +477,20 @@ class MusicViewModel: ObservableObject {
         let seconds = pct * duration
         progress = pct
         MusicManager.shared.seek(to: seconds, player: activePlayer)
+    }
+
+    func openActivePlayer() {
+        let bundleID = activePlayer.bundleID
+        guard !bundleID.isEmpty && activePlayer != .none else { return }
+        
+        // Reverting to file-based open as it's the most reliable across all systems
+        if let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    var activePlayerIcon: NSImage? {
+        return appIconImage
     }
 
     var currentTimeString: String {
@@ -541,6 +573,15 @@ struct MusicCompactView: View {
     }
 }
 
+struct MusicAppButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.92 : 1.0)
+            .opacity(configuration.isPressed ? 0.8 : 1.0)
+            .animation(.spring(response: 0.2, dampingFraction: 0.5), value: configuration.isPressed)
+    }
+}
+
 struct MusicExpandedView: View {
     @ObservedObject var viewModel = MusicViewModel.shared
     var body: some View {
@@ -561,6 +602,25 @@ struct MusicExpandedView: View {
                     Text(viewModel.artistName).font(ThemeTokens.font(size: 13, weight: .medium)).foregroundColor(ThemeTokens.secondaryText).lineLimit(1)
                 }
                 Spacer()
+                
+                if viewModel.activePlayer != .none {
+                    Button(action: { viewModel.openActivePlayer() }) {
+                        if let appIcon = viewModel.appIconImage {
+                            Image(nsImage: appIcon)
+                                .renderingMode(.template)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 13, height: 13)
+                                .foregroundColor(ThemeTokens.secondaryText)
+                                .frame(width: 24, height: 24)
+                                .background(Color.white.opacity(0.1))
+                                .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                                .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
+                        }
+                    }
+                    .buttonStyle(MusicAppButtonStyle())
+                    .help("Open in \(viewModel.activePlayer.rawValue)")
+                }
             }
             VStack(spacing: 6) {
                 MusicPremiumSlider(
