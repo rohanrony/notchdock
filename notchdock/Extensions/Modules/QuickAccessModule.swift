@@ -30,14 +30,39 @@ class QuickAccessViewModel: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: storageKey),
            let decoded = try? JSONDecoder().decode([QuickAccessItem].self, from: data) {
             self.items = decoded
+            
+            // One-time injection for existing users to show the guide
+            let guideKey = "com.notchdock.quickaccess.guideShown.v1"
+            if !UserDefaults.standard.bool(forKey: guideKey) {
+                self.items.append(QuickAccessItem(heading: "Edit this", content: "Copy this → (Hover to see icons)"))
+                UserDefaults.standard.set(true, forKey: guideKey)
+                saveItems()
+            }
+            
+            // Migration: Rename items if they have old default names
+            var changed = false
+            for i in 0..<self.items.count {
+                if self.items[i].heading == "Prompt" {
+                    self.items[i].heading = "My Prompt"
+                    changed = true
+                }
+                if self.items[i].heading == "Email" {
+                    self.items[i].heading = "Rohan's email"
+                    changed = true
+                }
+            }
+            if changed { saveItems() }
         } else {
             // Default initial items
             self.items = [
-                QuickAccessItem(heading: "Prompt", content: "Please review the following text for clarity, tone, and grammatical accuracy. Ensure that the message is professional yet engaging, and appropriate for the intended audience. Highlight any areas that could be improved for better readability or impact. Additionally, check for consistency in terminology and formatting throughout the document. If there are any ambiguous phrases, please suggest alternatives that provide clearer meaning. Finally, provide a brief summary of the key changes made and why they enhance the overall quality of the communication. Thank you for your assistance in making this content as polished as possible."),
+                QuickAccessItem(heading: "My Prompt", content: "Please review the following text for clarity, tone, and grammatical accuracy. Ensure that the message is professional yet engaging, and appropriate for the intended audience. Highlight any areas that could be improved for better readability or impact. Additionally, check for consistency in terminology and formatting throughout the document. If there are any ambiguous phrases, please suggest alternatives that provide clearer meaning. Finally, provide a brief summary of the key changes made and why they enhance the overall quality of the communication. Thank you for your assistance in making this content as polished as possible."),
                 QuickAccessItem(heading: "ID#", content: "#00000000"),
-                QuickAccessItem(heading: "Email", content: "hello@notchdock.app"),
-                QuickAccessItem(heading: "SSH", content: "ssh root@192.168.1.1")
+                QuickAccessItem(heading: "Rohan's email", content: "hello@notchdock.app"),
+                QuickAccessItem(heading: "SSH", content: "ssh root@192.168.1.1"),
+                QuickAccessItem(heading: "Edit this", content: "Copy this → (Hover to see icons)")
             ]
+            // Mark guide as shown for new users too
+            UserDefaults.standard.set(true, forKey: "com.notchdock.quickaccess.guideShown.v1")
         }
     }
     

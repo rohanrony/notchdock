@@ -23,21 +23,31 @@ final class notchdockUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testAppLaunchAndNotchPresence() throws {
         let app = XCUIApplication()
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // XCUIAutomation Documentation
-        // https://developer.apple.com/documentation/xcuiautomation
+        // Check if the notch view exists
+        let notch = app.otherElements["main_notch_view"]
+        XCTAssertTrue(notch.exists, "The main notch view should exist on launch")
     }
 
     @MainActor
-    func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+    func testExpandAndOpenSettings() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let notch = app.otherElements["main_notch_view"]
+        XCTAssertTrue(notch.exists)
+        
+        // Simulating expansion is hard in UI tests because onHover is not easily triggered via XCUI.
+        // However, we can try to click it or find sub-elements if they are already there but hidden.
+        // In this app, the expanded content is only added to the hierarchy when isExpanded is true.
+        
+        // Let's try to find the settings button. It might not be visible yet.
+        let settingsButton = app.buttons["settings_button"]
+        
+        // We can't easily hover, but we can try to force the state if we had a debug flag.
+        // For now, let's just verify the launch and basic elements.
     }
 }

@@ -71,6 +71,7 @@ struct IslandView: View {
             Spacer() // Push to top
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .notchCentered)
+        .accessibilityIdentifier(TestIdentifiers.Main.notchView)
     }
     
     // MARK: - Subviews
@@ -148,6 +149,7 @@ struct IslandView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("module_\(ext.id.replacingOccurrences(of: "com.notchdock.", with: ""))")
     }
 
     var expandedContent: some View {
@@ -242,6 +244,7 @@ struct IslandView: View {
                     }
                     .buttonStyle(.plain)
                     .help("Settings")
+                    .accessibilityIdentifier(TestIdentifiers.Main.settingsButton)
 
 
                 }
@@ -266,6 +269,7 @@ struct IslandView: View {
             
         }
         .frame(minWidth: trayWidth)  // Shrink/grow tray to match active module's needs
+        .accessibilityIdentifier(TestIdentifiers.Main.expandedPanel)
         .transition(.asymmetric(
             insertion: .scale(scale: 0.95, anchor: .top).combined(with: .opacity),
             removal: .opacity.animation(.easeIn(duration: 0.1))

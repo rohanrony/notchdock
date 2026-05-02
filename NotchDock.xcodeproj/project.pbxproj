@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D4C0B3E2FA572660091560B /* notchdock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = notchdock.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D4C0B4B2FA572680091560B /* notchdockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = notchdockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D4C0B552FA572680091560B /* notchdockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = notchdockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4C0B3E2FA572660091560B /* notchdock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = notchdock.app; path = NotchDock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4C0B4B2FA572680091560B /* notchdockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = notchdockTests.xctest; path = NotchDockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4C0B552FA572680091560B /* notchdockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = notchdockUITests.xctest; path = NotchDockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7D4C0B3D2FA572660091560B /* notchdock */ = {
+		7D4C0B3D2FA572660091560B /* NotchDock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D4C0B5F2FA572680091560B /* Build configuration list for PBXNativeTarget "notchdock" */;
+			buildConfigurationList = 7D4C0B5F2FA572680091560B /* Build configuration list for PBXNativeTarget "NotchDock" */;
 			buildPhases = (
 				7D4C0B3A2FA572660091560B /* Sources */,
 				7D4C0B3B2FA572660091560B /* Frameworks */,
@@ -117,9 +117,9 @@
 			productReference = 7D4C0B3E2FA572660091560B /* notchdock.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7D4C0B4A2FA572680091560B /* notchdockTests */ = {
+		7D4C0B4A2FA572680091560B /* NotchDockTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D4C0B622FA572680091560B /* Build configuration list for PBXNativeTarget "notchdockTests" */;
+			buildConfigurationList = 7D4C0B622FA572680091560B /* Build configuration list for PBXNativeTarget "NotchDockTests" */;
 			buildPhases = (
 				7D4C0B472FA572680091560B /* Sources */,
 				7D4C0B482FA572680091560B /* Frameworks */,
@@ -140,9 +140,9 @@
 			productReference = 7D4C0B4B2FA572680091560B /* notchdockTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7D4C0B542FA572680091560B /* notchdockUITests */ = {
+		7D4C0B542FA572680091560B /* NotchDockUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D4C0B652FA572680091560B /* Build configuration list for PBXNativeTarget "notchdockUITests" */;
+			buildConfigurationList = 7D4C0B652FA572680091560B /* Build configuration list for PBXNativeTarget "NotchDockUITests" */;
 			buildPhases = (
 				7D4C0B512FA572680091560B /* Sources */,
 				7D4C0B522FA572680091560B /* Frameworks */,
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7D4C0B392FA572660091560B /* Build configuration list for PBXProject "notchdock" */;
+			buildConfigurationList = 7D4C0B392FA572660091560B /* Build configuration list for PBXProject "NotchDock" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7D4C0B3D2FA572660091560B /* notchdock */,
-				7D4C0B4A2FA572680091560B /* notchdockTests */,
-				7D4C0B542FA572680091560B /* notchdockUITests */,
+				7D4C0B3D2FA572660091560B /* NotchDock */,
+				7D4C0B4A2FA572680091560B /* NotchDockTests */,
+				7D4C0B542FA572680091560B /* NotchDockUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		7D4C0B4D2FA572680091560B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7D4C0B3D2FA572660091560B /* notchdock */;
+			target = 7D4C0B3D2FA572660091560B /* NotchDock */;
 			targetProxy = 7D4C0B4C2FA572680091560B /* PBXContainerItemProxy */;
 		};
 		7D4C0B572FA572680091560B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7D4C0B3D2FA572660091560B /* notchdock */;
+			target = 7D4C0B3D2FA572660091560B /* NotchDock */;
 			targetProxy = 7D4C0B562FA572680091560B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -530,7 +530,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7D4C0B392FA572660091560B /* Build configuration list for PBXProject "notchdock" */ = {
+		7D4C0B392FA572660091560B /* Build configuration list for PBXProject "NotchDock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D4C0B5D2FA572680091560B /* Debug */,
@@ -539,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D4C0B5F2FA572680091560B /* Build configuration list for PBXNativeTarget "notchdock" */ = {
+		7D4C0B5F2FA572680091560B /* Build configuration list for PBXNativeTarget "NotchDock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D4C0B602FA572680091560B /* Debug */,
@@ -548,7 +548,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D4C0B622FA572680091560B /* Build configuration list for PBXNativeTarget "notchdockTests" */ = {
+		7D4C0B622FA572680091560B /* Build configuration list for PBXNativeTarget "NotchDockTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D4C0B632FA572680091560B /* Debug */,
@@ -557,7 +557,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D4C0B652FA572680091560B /* Build configuration list for PBXNativeTarget "notchdockUITests" */ = {
+		7D4C0B652FA572680091560B /* Build configuration list for PBXNativeTarget "NotchDockUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7D4C0B662FA572680091560B /* Debug */,

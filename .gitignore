@@ -52,3 +52,11 @@ xcuserdata/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Packaging and Distribution
+packaging/
+test_dmg/
+*.dmg
+
+# AI Agents
+.agents/
