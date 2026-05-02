@@ -1,0 +1,48 @@
+{
+  "source": "/Users/rohanroy/Coding/notchlet/notchlet/Extensions/Modules/CalendarModule.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "15m",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 16
+        }
+      },
+      {
+        "comment": "",
+        "key": "Product Sync",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next Meeting",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "In 15m",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "Join Zoom",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 40
+        }
+      }
+    ]
+  },
+  "version": 1
+}
