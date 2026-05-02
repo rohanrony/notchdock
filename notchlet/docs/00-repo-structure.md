@@ -1,50 +1,45 @@
 # Notchlet Repo Structure
 
 ```text
-Notchlet/
-├── Notchlet.xcodeproj
+notchlet/
+├── notchlet.xcodeproj
 ├── NotchletApp/
-│   ├── AppEntry.swift
-│   ├── RootView.swift
-│   ├── IslandWindowController.swift
-│   ├── SettingsPopover.swift
+│   ├── NotchletApp.swift
+│   ├── IslandView.swift
+│   ├── SettingsView.swift
 │   └── AppState.swift
 ├── NotchletCore/
-│   ├── ExtensionProtocol.swift
+│   ├── NotchletExtension.swift
 │   ├── ExtensionRegistry.swift
-│   ├── PurchaseManager.swift
-│   ├── KeychainManager.swift
+│   ├── AppConfig.swift (JSON/Swift)
 │   ├── ThemeTokens.swift
-│   ├── Models/
-│   ├── Services/
 │   └── SharedUI/
+│       ├── SectionCard.swift
+│       └── SettingsRow.swift
 ├── Extensions/
-│   ├── CalendarExtension/
-│   ├── ClipboardExtension/
-│   ├── TimerExtension/
-│   ├── MusicExtension/
-│   ├── ClaudeExtension/
-│   └── PaidExtensions/
-├── Resources/
-│   ├── Assets.xcassets
-│   └── Fonts/
+│   └── Modules/
+│       ├── CalendarModule.swift
+│       ├── MusicModule.swift
+│       ├── ToDoModule.swift
+│       ├── TimerModule.swift
+│       ├── ClaudeModule.swift
+│       └── ClipboardModule.swift
 ├── Docs/
+│   ├── 00-repo-structure.md
 │   ├── 01-product-overview.md
 │   ├── 02-design-system.md
-│   ├── 03-core-modules.md
 │   ├── 04-extensions-arch.md
 │   ├── 05-settings-payments.md
 │   ├── 06-technical-decisions.md
 │   ├── 07-animations-motion.md
 │   ├── 08-monetization-roadmap.md
-│   ├── 09-validation-prompts.md
-│   ├── 10-build-planning-prompt.md
-│   ├── 11-modular-build-prompts.md
-│   └── 12-validation-and-modularity.md
-└── Prompts/
-    ├── 01-validate-specs.md
-    ├── 02-plan-build.md
-    ├── 03-build-phase-prompts.md
-    ├── 04-validate-architecture.md
-    └── 05-module-validation.md
+│   └── 09-settings-spec.md
+│   └── extensions/
+│       ├── 02-module-addition-guide.md
+│       ├── 03-core-modules.md
+│       ├── calendar-module.md
+│       ├── music-module-spec.md
+│       ├── timer-module.md
+│       └── todo-module-spec.md
+└── Resources/ (Assets.xcassets, etc.)
 ```

@@ -22,7 +22,7 @@ The Music module provides a premium, integrated media controller for macOS. It s
 - **Metadata**: 
     - **Title**: 15pt medium text (`ThemeTokens.primaryText`).
     - **Artist**: 13pt medium text (`ThemeTokens.secondaryText`).
-- **Quick Action**: 24x24 rounded rectangle button (6pt radius) containing the player's SF Symbol (`apple.logo` or `play.circle.fill`). Opens the app via file-based URL activation to minimize system log noise.
+- **Quick Action**: 24x24 rounded rectangle button (6pt radius) containing the player's SF Symbol (`apple.logo` or `play.circle.fill`). Opens the app via file-based URL activation.
 - **Premium Slider**: Custom interactive progress bar. Supports dragging for seeking and updates in real-time.
 - **Playback Controls**: 
     - Backward/Forward: 18pt SF Symbols.
@@ -31,14 +31,14 @@ The Music module provides a premium, integrated media controller for macOS. It s
 ## Technical Implementation
 
 ### 1. Music Manager (`MusicManager`)
-- **AppleScript Engine**: Executes control commands via `/usr/bin/osascript` subprocess to avoid system framework overhead and console pollution.
-- **State Fetching**: Polls active players for title, artist, position, duration, and artwork URL/data.
-- **Permission Handling**: Uses `AEDeterminePermissionToAutomateTarget` to silently check for automation authorization.
+- **AppleScript Engine**: Executes control commands via `/usr/bin/osascript` subprocess (`Process`) to avoid system framework overhead and console pollution.
+- **State Fetching**: Polls active players for title, artist, position, duration, and artwork. Uses a 2nd-stage check for actively playing status to ensure the correct player is targeted.
+- **Permission Handling**: Uses `AEDeterminePermissionToAutomateTarget` to check for automation authorization silently.
 
 ### 2. ViewModel (`MusicViewModel`)
 - **Polling**: 2-second refresh interval for metadata and playback state.
 - **Color Extraction**: Uses `CIContext` and `CIAreaAverage` filter on artwork to determine the UI accent color. Results are cached and animated via `.easeInOut` for smooth transitions.
-- **Icon Caching**: Optimized to fetch/generate app icons only when the active player changes, reducing `NSWorkspace` overhead.
+- **Icon Management**: Uses static SF Symbols instead of fetching app icons from disk to avoid Sequoia's entitlement warnings.
 
 ### 3. Persistence
 - **Compact State**: Remembers the `showCompact` preference via `UserDefaults` (key: `music_show_compact`).

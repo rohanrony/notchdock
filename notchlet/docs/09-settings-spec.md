@@ -3,61 +3,56 @@
 This document defines the structure, design, and functionality of the Notchlet settings window.
 
 ## 1. Overview
-The Settings window is the primary interface for users to configure the application, manage extensions, and customize the notch behavior. It follows a standard macOS sidebar-based navigation pattern.
+The Settings window is the primary interface for users to configure the application, manage active modules, and handle permissions. It follows a professional macOS sidebar-based navigation pattern using `NavigationSplitView`.
 
 ## 2. Visual Design
 - **Window Type**: Standard macOS Utility Window.
-- **Dimensions**: 700px x 500px (resizable).
-- **Navigation**: Sidebar on the left, Detail view on the right (`NavigationSplitView`).
-- **Theme**: Supports System Dark/Light modes, with a slight translucency (Glassmorphism) in the sidebar.
+- **Dimensions**: 720px x 520px.
+- **Navigation**: Sidebar on the left, Detail view on the right.
+- **Theme**: Supports System Dark/Light modes. Sidebar uses `ThemeTokens.sidebarBackground` with a premium selection style.
+- **Typography**: Uses system rounded fonts for headers and standard system fonts for body text to feel native to macOS.
 
-## 3. Sidebar Sections
+## 3. Sidebar Structure
 
 ### 3.1 General Settings
-- **App Settings**: 
-    - **Launch at Login**: Toggle to start Notchlet automatically.
-    - **Module Order**: A list where users can drag-and-drop to change the order of modules in the notch switcher.
-    - **Home View Customization**: A multi-select list or set of toggles to choose which modules/widgets appear on the "Home View".
-- **API Keys**: Configuration for Claude API and other external services (Stored in Keychain).
+The entry point for global app configuration.
+- **Modules**: List of all available modules with toggles to enable/disable them.
+- **Module Order**: Interactive list allowing users to drag-and-drop to reorder modules in the notch switcher.
+- **System**:
+    - **Launch at Login**: Managed via `SMAppService.mainApp`.
 
-### 3.2 Modules
-A dynamic list of all **enabled** modules. Selecting a module opens its specific settings page.
+### 3.2 Extensions
+A "Coming Soon" page showcasing the future roadmap for Notchlet.
+- **Roadmap**: Displays planned modules (Slack, Messages, WhatsApp, Mail, Airdrop, Live Camera).
+- **Status**: Visual indicators for "Planned" or "Experimental" features.
 
-#### 3.2.1 Calendar Module
-- **Visible Calendars**: Multi-select list of all system calendars (Work, Home, etc.) with toggles.
-- **Notch Display Thresholds**:
-    - **Show Next Event in minimized Notch**: Slider to set how many minutes before an event starts it should appear in the notch (5-120m).
-    - **Ongoing Event Logic**: Automatically transition to show the next upcoming event 10 minutes before it starts, even if a meeting is currently ongoing.
+### 3.3 Modules (Dynamic Section)
+A dynamic list of all **enabled** modules. Selecting a module opens its specific configuration page (provided by the module's `settingsView`).
 
-### 3.3 Extensions (Store)
-- **Marketplace**: List of all available modules (Free and Premium).
-- **Management**: Enable/Disable toggles for each module.
-- **Payments**: 
-    - Unlock premium modules ($1.00 each).
-    - Restore Purchases button.
-    - Tip Jar ($5, $10, $20).
+#### Common Module Settings Patterns:
+- **Permission Cards**: Status cards for Calendar, Music, etc., with "Allow Access" or "Fix in Settings" buttons.
+- **Display Toggles**: Controls like "Show in Compact Mode".
+- **Feature Specifics**: Sliders for thresholds (Calendar) or feature toggles (ToDo).
 
-### 3.4 Support & Feedback
-- Feature Request, Bug Report, and Contact Support buttons.
-
-### 3.5 About
-- **App Name**: Notchlet
-- **Project Lead**: Rohan Roy
-- **Contact**: viberDev@gmail.com
-- **Version**: Dynamic version string (e.g., v1.0.0 Build 42).
-- **Legal**: Links to Privacy Policy and Terms of Service.
+### 3.3 Help Section
+- **Support**: Links to Request a Feature, Report a Bug, and Contact Support. Includes a link to the User Guide.
+- **About**: Displays version info, credits ("Handcrafted by Rohan Roy"), and links to Privacy Policy and Website.
 
 ## 4. Technical Implementation
 
 ### 4.1 State Management (`AppState`)
 - `extensionOrder: [String]`: Array of module IDs in user-defined order.
-- `homeViewModuleIDs: Set<String>`: IDs of modules selected for the Home View.
 - `enabledExtensionIDs: Set<String>`: IDs of active modules.
+- `activeExtensionID: String?`: The currently selected module in the notch.
 
 ### 4.2 Module Protocol (`NotchletExtension`)
 ```swift
 protocol NotchletExtension: Identifiable {
-    // ... existing properties
+    var id: String { get }
+    var displayName: String { get }
+    var iconName: String { get }
+    var isPremium: Bool { get }
+    
     @ViewBuilder var settingsView: AnyView { get }
 }
 ```
@@ -65,17 +60,25 @@ protocol NotchletExtension: Identifiable {
 ### 4.3 Navigation Layout
 ```swift
 NavigationSplitView {
-    List(selection: $selectedSection) {
-        Section("General") { ... }
-        Section("Modules") { ... }
-        Section("Store") { ... }
-        Section("Support") { ... }
+    VStack {
+        SidebarItem(title: "General", section: .general)
+        Section("Modules") {
+            ForEach(enabledModules) { ext in
+                SidebarItem(title: ext.displayName, section: .module(ext.id))
+            }
+        }
+        Section("Help") {
+            SidebarItem(title: "Support", section: .support)
+            SidebarItem(title: "About", section: .about)
+        }
     }
 } detail: {
-    // Switch based on selection
+    // Current section view
 }
 ```
 
 ## 5. Interaction Design
-- **Opening Settings**: Triggered via a gear icon in the expanded Notch view or a menu bar icon.
-- **Instant Feedback**: Changes to module order or visibility should reflect immediately in the Notch UI without requiring an app restart.
+- **Opening Settings**: Triggered via the gear icon in the expanded Notch view.
+- **Dynamic Updates**: Changes to module visibility or order reflect instantly in the `IslandView`.
+- **Permission Flow**: Permissions are handled within each module's settings page to provide context-aware authorization.
+

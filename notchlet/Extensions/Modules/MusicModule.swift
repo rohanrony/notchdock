@@ -653,32 +653,29 @@ struct MusicSettingsView: View {
     @ObservedObject var viewModel = MusicViewModel.shared
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                Text("Music Settings").font(.title2).bold()
+            VStack(alignment: .leading, spacing: 28) {
+                Text("Music Settings")
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(ThemeTokens.primaryText)
                 
-                VStack(alignment: .leading, spacing: 16) {
-                    Toggle(isOn: $viewModel.showCompact) { 
-                        VStack(alignment: .leading, spacing: 4) { 
-                            Text("Show in Compact Mode").font(ThemeTokens.font(size: 15, weight: .semibold))
-                            Text("Show thumbnail and visualizer when minimized.").font(ThemeTokens.font(size: 13)).foregroundColor(ThemeTokens.secondaryText) 
-                        } 
-                    }.toggleStyle(.switch)
+                SectionCard(title: "Display", subtitle: "Configure how music info appears in the notch.") {
+                    SettingsRow("Show in Compact Mode", icon: "square.stack.3d.up.fill") {
+                        Toggle("", isOn: $viewModel.showCompact)
+                            .toggleStyle(.switch)
+                            .scaleEffect(0.8)
+                    }
                 }
-                .padding()
-                .background(ThemeTokens.secondaryText.opacity(0.05))
-                .cornerRadius(12)
                 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Permissions & Sources").font(ThemeTokens.font(size: 14, weight: .bold)).foregroundColor(ThemeTokens.secondaryText)
+                SectionCard(title: "Permissions & Sources", subtitle: "Authorize Notchlet to control your music players.") {
                     VStack(spacing: 0) {
                         if viewModel.musicInstalled {
                             MusicPermissionRow(
                                 name: "Apple Music",
-                                icon: "music.note",
+                                icon: "apple.logo",
                                 status: viewModel.musicAuth,
                                 action: { viewModel.requestPermission(for: .music) }
                             )
-                            if viewModel.spotifyInstalled { Divider().padding(.vertical, 8) }
+                            if viewModel.spotifyInstalled { Divider().padding(.leading, 48) }
                         }
                         
                         if viewModel.spotifyInstalled {
@@ -691,23 +688,25 @@ struct MusicSettingsView: View {
                         }
                         
                         if !viewModel.musicInstalled && !viewModel.spotifyInstalled {
-                            Text("No supported music apps detected.")
-                                .font(ThemeTokens.font(size: 13))
-                                .foregroundColor(ThemeTokens.secondaryText)
-                                .padding(.vertical, 8)
+                            HStack {
+                                Text("No supported music apps detected.")
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.secondary)
+                                Spacer()
+                            }
+                            .padding(16)
                         }
                     }
                 }
-                .padding()
-                .background(ThemeTokens.secondaryText.opacity(0.05))
-                .cornerRadius(12)
                 
                 Text("Note: Automation permissions are required to control playback and fetch track info.")
-                    .font(.caption)
+                    .font(.system(size: 11))
                     .foregroundColor(.secondary)
                     .padding(.horizontal, 4)
             }
-            .padding(24)
+            .padding(.horizontal, 32)
+            .padding(.top, 8)
+            .padding(.bottom, 32)
         }
     }
 }
@@ -722,13 +721,13 @@ struct MusicPermissionRow: View {
         HStack {
             Image(systemName: icon)
                 .font(.system(size: 14))
-                .foregroundColor(ThemeTokens.secondaryText)
+                .foregroundColor(ThemeTokens.accentColor)
                 .frame(width: 20)
             
             VStack(alignment: .leading, spacing: 2) {
-                Text(name).font(ThemeTokens.font(size: 14, weight: .medium))
+                Text(name).font(.system(size: 14, weight: .medium))
                 Text(statusText)
-                    .font(ThemeTokens.font(size: 11))
+                    .font(.system(size: 11))
                     .foregroundColor(statusColor)
             }
             
@@ -737,7 +736,7 @@ struct MusicPermissionRow: View {
             if status != .authorized {
                 Button(action: action) {
                     Text(status == .denied ? "Fix in Settings" : "Allow Access")
-                        .font(ThemeTokens.font(size: 11, weight: .bold))
+                        .font(.system(size: 11, weight: .bold))
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
                         .background(ThemeTokens.accentColor)
@@ -750,7 +749,8 @@ struct MusicPermissionRow: View {
                     .foregroundColor(.green)
             }
         }
-        .padding(.vertical, 4)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
     }
     
     var statusText: String {

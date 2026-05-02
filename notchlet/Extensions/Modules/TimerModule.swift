@@ -197,56 +197,59 @@ struct TimerSettingsView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 28) {
                 Text("Timer Settings")
-                    .font(.title2)
-                    .bold()
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(ThemeTokens.primaryText)
                 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Default Duration")
-                        .font(.headline)
-                    
-                    HStack {
-                        Slider(value: Binding(
-                            get: { Double(viewModel.defaultMinutes) },
-                            set: { viewModel.defaultMinutes = Int($0) }
-                        ), in: 1...60, step: 1)
-                        
-                        Text("\(viewModel.defaultMinutes) min")
-                            .font(.system(.body, design: .monospaced))
-                            .frame(width: 60)
+                SectionCard(title: "Duration", subtitle: "Set the default duration for new timers.") {
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack(spacing: 16) {
+                            Slider(value: Binding(
+                                get: { Double(viewModel.defaultMinutes) },
+                                set: { viewModel.defaultMinutes = Int($0) }
+                            ), in: 1...60, step: 1)
+                            .tint(ThemeTokens.accentColor)
+                            
+                            Text("\(viewModel.defaultMinutes)m")
+                                .font(.system(size: 14, weight: .bold, design: .monospaced))
+                                .foregroundColor(ThemeTokens.primaryText)
+                                .frame(width: 40)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 8)
+                                .background(ThemeTokens.accentColor.opacity(0.1))
+                                .cornerRadius(6)
+                        }
                     }
-                    
-                    Text("This duration will be used when you reset the timer.")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    .padding(16)
                 }
-                .padding()
-                .background(Color.secondary.opacity(0.05))
-                .cornerRadius(12)
                 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Controls")
-                        .font(.headline)
-                    
-                    HStack(spacing: 16) {
+                SectionCard(title: "Quick Controls") {
+                    HStack(spacing: 12) {
                         Button(action: { viewModel.toggle() }) {
                             Label(viewModel.isRunning ? "Pause" : "Start", systemImage: viewModel.isRunning ? "pause.fill" : "play.fill")
-                                .foregroundColor(ThemeTokens.accentColor)
+                                .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.bordered)
+                        .tint(viewModel.isRunning ? .orange : ThemeTokens.accentColor)
                         
                         Button(action: { viewModel.reset() }) {
                             Label("Reset", systemImage: "arrow.clockwise")
+                                .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.bordered)
                     }
+                    .padding(16)
                 }
-                .padding()
-                .background(Color.secondary.opacity(0.05))
-                .cornerRadius(12)
+                
+                Text("The default duration is applied when you reset or create a new timer.")
+                    .font(.system(size: 11))
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 4)
             }
-            .padding(24)
+            .padding(.horizontal, 32)
+            .padding(.top, 8)
+            .padding(.bottom, 32)
         }
     }
 }
@@ -362,5 +365,3 @@ class TimerViewModel: ObservableObject {
         }
     }
 }
-
-

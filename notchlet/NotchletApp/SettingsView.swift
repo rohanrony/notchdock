@@ -17,92 +17,129 @@ struct SettingsView: View {
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             VStack(spacing: 0) {
-                // Custom Sidebar Header with Toggle
+                // Custom Sidebar Header
                 HStack {
+                    Text("notchlet")
+                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .foregroundColor(ThemeTokens.primaryText)
                     Spacer()
-                    Button(action: {
-                        withAnimation {
-                            columnVisibility = columnVisibility == .all ? .detailOnly : .all
-                        }
-                    }) {
-                        Image(systemName: "sidebar.left")
-                            .foregroundColor(.secondary)
-                            .font(.system(size: 14))
-                    }
-                    .buttonStyle(.plain)
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 8)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 14)
                 
-                List(selection: $selectedSection) {
-                    NavigationLink(value: SettingsSection.general) {
-                        Label("General", systemImage: "gear")
-                    }
+                VStack(spacing: 4) {
+                    SidebarItem(title: "General", icon: "gearshape.fill", section: .general, selectedSection: $selectedSection)
+                    SidebarItem(title: "Extensions", icon: "puzzlepiece.extension.fill", section: .extensions, selectedSection: $selectedSection)
                     
-                    Section("Modules") {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Modules")
+                            .font(.system(size: 10, weight: .bold))
+                            .foregroundColor(.secondary.opacity(0.6))
+                            .padding(.leading, 12)
+                            .padding(.top, 12)
+                        
                         ForEach(appState.registry.availableExtensions.filter { appState.enabledExtensionIDs.contains($0.id) }, id: \.id) { ext in
-                            NavigationLink(value: SettingsSection.module(ext.id)) {
-                                Label(ext.displayName, systemImage: ext.iconName)
-                            }
+                            SidebarItem(title: ext.displayName, icon: ext.iconName, section: .module(ext.id), selectedSection: $selectedSection)
                         }
                     }
                     
-                    
-                    Section("Marketplace") {
-                        NavigationLink(value: SettingsSection.extensions) {
-                            Label("Extensions", systemImage: "puzzlepiece.extension")
-                        }
-                    }
-                    
-                    Section("Help") {
-                        NavigationLink(value: SettingsSection.support) {
-                            Label("Support", systemImage: "questionmark.circle")
-                        }
-                        NavigationLink(value: SettingsSection.about) {
-                            Label("About", systemImage: "info.circle")
-                        }
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Help")
+                            .font(.system(size: 10, weight: .bold))
+                            .foregroundColor(.secondary.opacity(0.6))
+                            .padding(.leading, 12)
+                            .padding(.top, 12)
+                        
+                        SidebarItem(title: "Support", icon: "questionmark.circle.fill", section: .support, selectedSection: $selectedSection)
+                        SidebarItem(title: "About", icon: "info.circle.fill", section: .about, selectedSection: $selectedSection)
                     }
                 }
-                .listStyle(.sidebar)
+                .padding(.horizontal, 8)
+                
+                Spacer()
             }
-            .navigationSplitViewColumnWidth(min: 160, ideal: 180, max: 200)
+            .navigationSplitViewColumnWidth(min: 180, ideal: 200, max: 240)
+            .background(ThemeTokens.sidebarBackground)
         } detail: {
-            NavigationStack {
-                Group {
-                    if let section = selectedSection {
-                        switch section {
-                        case .general:
-                            GeneralSettingsView()
-                        case .module(let id):
-                            if let ext = appState.registry.availableExtensions.first(where: { $0.id == id }) {
-                                ext.settingsView
+            ZStack {
+                ThemeTokens.backgroundColor.ignoresSafeArea()
+                
+                NavigationStack {
+                    Group {
+                        if let section = selectedSection {
+                            switch section {
+                            case .general:
+                                GeneralSettingsView()
+                            case .module(let id):
+                                if let ext = appState.registry.availableExtensions.first(where: { $0.id == id }) {
+                                    ext.settingsView
+                                }
+                            case .extensions:
+                                ExtensionsSettingsView()
+                            case .support:
+                                SupportSettingsView()
+                            case .about:
+                                AboutSettingsView()
                             }
-                        case .extensions:
-                            ExtensionsSettingsView()
-                        case .support:
-                            SupportSettingsView()
-                        case .about:
-                            AboutSettingsView()
-                        }
-                    } else {
-                        VStack(spacing: 16) {
-                            Image(systemName: "gearshape.2")
-                                .font(.system(size: 48))
-                                .foregroundColor(.secondary.opacity(0.3))
-                            Text("Select a category to get started")
-                                .foregroundColor(.secondary)
+                        } else {
+                            VStack(spacing: 16) {
+                                Image(systemName: "sparkles")
+                                    .font(.system(size: 48))
+                                    .foregroundColor(ThemeTokens.accentColor.opacity(0.3))
+                                Text("Select a category to get started")
+                                    .font(.system(size: 14, weight: .medium))
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(ThemeTokens.backgroundColor)
+                    .toolbar(.hidden)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(NSColor.windowBackgroundColor))
             }
         }
         .navigationSplitViewStyle(.balanced)
-        .frame(width: 650, height: 480) // Slightly larger for better split-view layout
+        .frame(width: 720, height: 520)
     }
 }
 
+// MARK: - Sidebar Item
+struct SidebarItem: View {
+    let title: String
+    let icon: String
+    let section: SettingsView.SettingsSection
+    @Binding var selectedSection: SettingsView.SettingsSection?
+    
+    var isSelected: Bool {
+        selectedSection == section
+    }
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: icon)
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(isSelected ? .white : ThemeTokens.accentColor)
+                .font(.system(size: 14))
+                .frame(width: 20)
+            
+            Text(title)
+                .font(.system(size: 13, weight: isSelected ? .semibold : .medium))
+                .foregroundColor(isSelected ? .white : ThemeTokens.primaryText)
+            
+            Spacer()
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(isSelected ? ThemeTokens.selectedSidebarItem : Color.clear)
+        .cornerRadius(8)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                selectedSection = section
+            }
+        }
+    }
+}
 
 // MARK: - General Settings
 struct GeneralSettingsView: View {
@@ -111,83 +148,71 @@ struct GeneralSettingsView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 28) {
                 Text("General")
-                    .font(.title2)
-                    .bold()
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(ThemeTokens.primaryText)
                 
-                // 1. Module Toggles (Enable/Disable)
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Modules")
-                        .font(.headline)
-                    Text("Enable or disable modules in the notch.")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    
-                    VStack(spacing: 8) {
-                        ForEach(appState.registry.availableExtensions.filter { !$0.isPremium }, id: \.id) { ext in
-                            Toggle(isOn: Binding(
-                                get: { appState.enabledExtensionIDs.contains(ext.id) },
-                                set: { val in
-                                    if val {
-                                        appState.enabledExtensionIDs.insert(ext.id)
-                                        if !appState.extensionOrder.contains(ext.id) {
-                                            appState.extensionOrder.append(ext.id)
-                                        }
-                                    } else {
-                                        appState.enabledExtensionIDs.remove(ext.id)
-                                        appState.homeViewModuleIDs.remove(ext.id) // Also remove from home view
-                                        if appState.activeExtensionID == ext.id {
-                                            appState.activeExtensionID = appState.enabledExtensionIDs.first
+                // 1. Modules Toggle
+                SectionCard(title: "Modules", subtitle: "Enable or disable modules in the notch.") {
+                    VStack(spacing: 0) {
+                        let nonPremiumExtensions = appState.registry.availableExtensions.filter { !$0.isPremium }
+                        ForEach(Array(nonPremiumExtensions.enumerated()), id: \.element.id) { index, ext in
+                            SettingsRow(ext.displayName, icon: ext.iconName) {
+                                Toggle("", isOn: Binding(
+                                    get: { appState.enabledExtensionIDs.contains(ext.id) },
+                                    set: { val in
+                                        if val {
+                                            appState.enabledExtensionIDs.insert(ext.id)
+                                            if !appState.extensionOrder.contains(ext.id) {
+                                                appState.extensionOrder.append(ext.id)
+                                            }
+                                        } else {
+                                            appState.enabledExtensionIDs.remove(ext.id)
+                                            appState.homeViewModuleIDs.remove(ext.id)
+                                            if appState.activeExtensionID == ext.id {
+                                                appState.activeExtensionID = appState.enabledExtensionIDs.first
+                                            }
                                         }
                                     }
-                                }
-                            )) {
-                                Label(ext.displayName, systemImage: ext.iconName)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                ))
+                                .toggleStyle(.switch)
+                                .scaleEffect(0.8)
                             }
-                            .toggleStyle(.checkbox)
+                            
+                            if index < nonPremiumExtensions.count - 1 {
+                                Divider().padding(.leading, 48)
+                            }
                         }
                     }
-                    .padding(10)
-                    .background(Color.secondary.opacity(0.05))
-                    .cornerRadius(8)
                 }
                 
-                Divider()
-
-                // 2. Module Ordering (Only show enabled ones)
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Module Order")
-                        .font(.headline)
-                    Text("Drag to reorder how they appear in the switcher.")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    
+                // 2. Module Ordering
+                SectionCard(title: "Module Order", subtitle: "Drag to reorder how they appear in the switcher.") {
                     List {
                         ForEach(appState.extensionOrder.filter { appState.enabledExtensionIDs.contains($0) }, id: \.self) { id in
                             if let ext = appState.registry.availableExtensions.first(where: { $0.id == id }) {
                                 HStack {
                                     Image(systemName: ext.iconName)
                                         .foregroundColor(ThemeTokens.accentColor)
-                                        .frame(width: 20)
+                                        .frame(width: 24)
                                     Text(ext.displayName)
+                                        .font(.system(size: 13))
                                     Spacer()
                                     Image(systemName: "line.3.horizontal")
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.secondary.opacity(0.5))
                                 }
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                                .padding(.vertical, 4)
                             }
                         }
                         .onMove { indices, newOffset in
-                            // Need to map the filtered indices back to the original extensionOrder indices
                             var currentOrder = appState.extensionOrder
                             let enabledIDs = currentOrder.filter { appState.enabledExtensionIDs.contains($0) }
                             let movedIDs = indices.map { enabledIDs[$0] }
-                            
-                            // Remove moved items from original order
                             currentOrder.removeAll(where: { movedIDs.contains($0) })
                             
-                            // Find insertion point in original order based on newOffset in filtered list
                             var insertIndex = 0
                             if newOffset < enabledIDs.count {
                                 let targetID = enabledIDs[newOffset]
@@ -200,74 +225,40 @@ struct GeneralSettingsView: View {
                             appState.extensionOrder = currentOrder
                         }
                     }
-                    .frame(height: 140)
-                    .cornerRadius(8)
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary.opacity(0.2)))
+                    .listStyle(.plain)
+                    .frame(height: 180)
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
                 }
                 
-                Divider()
-
-                // 3. Home View
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Home View")
-                        .font(.headline)
-                    Text("Select widgets for the Home View.")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(appState.registry.availableExtensions.filter { appState.enabledExtensionIDs.contains($0.id) }, id: \.id) { ext in
-                            Toggle(ext.displayName, isOn: Binding(
-                                get: { appState.homeViewModuleIDs.contains(ext.id) },
-                                set: { val in
-                                    if val {
-                                        if appState.homeViewModuleIDs.count < AppConfig.App.homeViewLimit {
-                                            appState.homeViewModuleIDs.insert(ext.id)
+                // 3. System
+                SectionCard(title: "System") {
+                    SettingsRow("Launch at login", icon: "arrow.up.right.square") {
+                        Toggle("", isOn: $launchAtLogin)
+                            .toggleStyle(.switch)
+                            .scaleEffect(0.8)
+                            .onChange(of: launchAtLogin) { _, enabled in
+                                Task {
+                                    do {
+                                        if enabled {
+                                            try SMAppService.mainApp.register()
+                                        } else {
+                                            try await SMAppService.mainApp.unregister()
                                         }
-                                    } else {
-                                        appState.homeViewModuleIDs.remove(ext.id)
-                                    }
-                                }
-                            ))
-                            .toggleStyle(.checkbox)
-                            .disabled(!appState.homeViewModuleIDs.contains(ext.id) && appState.homeViewModuleIDs.count >= AppConfig.App.homeViewLimit)
-                        }
-                        
-                        if appState.homeViewModuleIDs.count >= AppConfig.App.homeViewLimit {
-                            Text("Limit of \(AppConfig.App.homeViewLimit) widgets reached.")
-                                .font(.caption)
-                                .foregroundColor(.orange)
-                        }
-                    }
-                }
-                
-                Divider()
-
-                // 4. Startup
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("System")
-                        .font(.headline)
-                    Toggle("Launch at login", isOn: $launchAtLogin)
-                        .toggleStyle(.checkbox)
-                        .onChange(of: launchAtLogin) { _, enabled in
-                            Task {
-                                do {
-                                    if enabled {
-                                        try SMAppService.mainApp.register()
-                                    } else {
-                                        try await SMAppService.mainApp.unregister()
-                                    }
-                                } catch {
-                                    try? await Task.sleep(nanoseconds: 100_000_000)
-                                    await MainActor.run {
-                                        launchAtLogin = SMAppService.mainApp.status == .enabled
+                                    } catch {
+                                        try? await Task.sleep(nanoseconds: 100_000_000)
+                                        await MainActor.run {
+                                            launchAtLogin = SMAppService.mainApp.status == .enabled
+                                        }
                                     }
                                 }
                             }
-                        }
+                    }
                 }
             }
-            .padding(24)
+            .padding(.horizontal, 32)
+            .padding(.top, 8)
+            .padding(.bottom, 32)
         }
     }
 }
@@ -276,168 +267,166 @@ struct GeneralSettingsView: View {
 struct AboutSettingsView: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
-                Text("About")
-                    .font(.title2)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                VStack(spacing: 8) {
-                    Image(systemName: "sparkles")
-                        .font(.system(size: 64))
-                        .foregroundColor(ThemeTokens.accentColor)
-                        .padding(.bottom, 8)
-                    
-                    Text("Notchlet")
-                        .font(.largeTitle)
-                        .bold()
-                    
-                    Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0") (\(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"))")
-                        .foregroundColor(.secondary)
-                }
-                
-                VStack(spacing: 12) {
-                    Text("Created by")
-                        .font(.headline)
+            VStack(spacing: 40) {
+                VStack(spacing: 16) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 24)
+                            .fill(ThemeTokens.accentColor.gradient)
+                            .frame(width: 100, height: 100)
+                            .shadow(color: ThemeTokens.accentColor.opacity(0.3), radius: 20, x: 0, y: 10)
+                        
+                        Image(systemName: "sparkles")
+                            .font(.system(size: 50))
+                            .foregroundColor(.white)
+                    }
+                    .padding(.top, 40)
                     
                     VStack(spacing: 4) {
-                        Text("Rohan Roy")
-                            .font(.title3)
+                        Text("Notchlet")
+                            .font(.system(size: 32, weight: .bold, design: .rounded))
+                            .foregroundColor(ThemeTokens.primaryText)
+                        
+                        Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.secondary)
                     }
-                    
-                    Button(action: {
-                        if let url = URL(string: "mailto:rr.viberdev@gmail.com") {
-                            NSWorkspace.shared.open(url)
+                }
+                
+                SectionCard {
+                    VStack(spacing: 0) {
+                        SettingsRow("Check for Updates", icon: "arrow.clockwise") {
+                            Image(systemName: "chevron.right").font(.caption).foregroundColor(.secondary)
                         }
-                    }) {
-                        Label("rr.viberdev@gmail.com", systemImage: "envelope")
+                        Divider().padding(.leading, 48)
+                        SettingsRow("Website", icon: "globe") {
+                            Image(systemName: "chevron.right").font(.caption).foregroundColor(.secondary)
+                        }
+                        Divider().padding(.leading, 48)
+                        SettingsRow("Privacy Policy", icon: "shield.lefthalf.filled") {
+                            Image(systemName: "chevron.right").font(.caption).foregroundColor(.secondary)
+                        }
                     }
-                    .buttonStyle(.link)
                 }
-                
-                Divider()
-                    .frame(width: 200)
-                
-                HStack(spacing: 20) {
-                    Button("Check for Updates") {}
-                        .buttonStyle(.bordered)
-                    
-                    Button("Website") {}
-                        .buttonStyle(.bordered)
-                }
+                .padding(.horizontal, 40)
                 
                 VStack(spacing: 8) {
-                    HStack {
-                        Button("Privacy Policy") {}
-                        Text("•")
-                        Button("Terms of Service") {}
-                    }
-                    .font(.caption)
-                    .buttonStyle(.link)
+                    Text("Handcrafted by Rohan Roy")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundColor(ThemeTokens.secondaryText)
                     
                     Text("© 2026 Notchlet Team. All rights reserved.")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
+                        .font(.system(size: 11))
+                        .foregroundColor(.secondary.opacity(0.6))
                 }
+                .padding(.bottom, 40)
             }
-            .padding(.top, 24)
-            .padding(.horizontal)
-            .padding(.bottom, 24)
         }
     }
 }
 
-// MARK: - Support Settings (Reuse existing)
+// MARK: - Support Settings
 struct SupportSettingsView: View {
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 28) {
                 Text("Support")
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom, 8)
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(ThemeTokens.primaryText)
                 
-                Form {
-                    Section(header: Text("Feedback")) {
-                        Button("Request a Feature") { }
-                        Button("Report a Bug") { }
-                        Button("Contact Support") { }
+                SectionCard(title: "Feedback & Issues") {
+                    VStack(spacing: 0) {
+                        SettingsRow("Request a Feature", icon: "lightbulb.fill") {
+                            Image(systemName: "arrow.up.right").font(.caption).foregroundColor(.secondary)
+                        }
+                        Divider().padding(.leading, 48)
+                        SettingsRow("Report a Bug", icon: "ant.fill") {
+                            Image(systemName: "arrow.up.right").font(.caption).foregroundColor(.secondary)
+                        }
+                        Divider().padding(.leading, 48)
+                        SettingsRow("Contact Support", icon: "envelope.fill") {
+                            Image(systemName: "arrow.up.right").font(.caption).foregroundColor(.secondary)
+                        }
+                    }
+                }
+                
+                SectionCard(title: "Documentation") {
+                    SettingsRow("User Guide", icon: "book.fill") {
+                        Image(systemName: "arrow.up.right").font(.caption).foregroundColor(.secondary)
                     }
                 }
             }
-            .padding(.top, 24)
-            .padding(.horizontal)
-            .padding(.bottom, 24)
+            .padding(.horizontal, 32)
+            .padding(.top, 8)
+            .padding(.bottom, 32)
         }
     }
 }
-
-// MARK: - Extensions Marketplace
+// MARK: - Extensions Page
 struct ExtensionsSettingsView: View {
-    let websiteURL = "https://notchlet.app/extensions"
-    
-    struct PremiumExtension {
-        let name: String
-        let icon: String
-        let description: String
-        let price: String
-    }
-    
-    let premiumExtensions: [PremiumExtension] = [
-        PremiumExtension(name: "Claude AI", icon: "sparkles", description: "Ask Claude anything, directly from your notch.", price: "$1.99"),
-        PremiumExtension(name: "Focus Mode", icon: "timer.circle", description: "Block distractions and enter deep work sessions.", price: "$0.99"),
-        PremiumExtension(name: "System Monitor", icon: "cpu", description: "Live CPU, RAM, and network stats in your notch.", price: "$0.99"),
+    let roadmap = [
+        ("Slack", "bubble.left.and.exclamationmark.bubble.right.fill"),
+        ("Messages", "message.fill"),
+        ("WhatsApp", "phone.circle.fill"),
+        ("Mail", "envelope.fill"),
+        ("Airdrop / Files Tray", "square.and.arrow.up.fill"),
+        ("Live Camera", "video.fill")
     ]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 32) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text("Extensions")
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom, 8)
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(ThemeTokens.primaryText)
                     
-                    VStack(alignment: .center, spacing: 20) {
-                        Image(systemName: "puzzlepiece.extension")
-                            .font(.system(size: 48))
-                            .foregroundColor(ThemeTokens.accentColor)
-                            .padding(.top, 40)
-                        
-                        Text("Premium Extensions")
-                            .font(.headline)
-                        
-                        Text("(Coming soon...)")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        Text("New modules like Focus Mode, System Monitor, and AI enhancements are currently in development.")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 40)
-                    }
-                    .frame(maxWidth: .infinity)
+                    Text("Expanding the Island — New capabilities are currently being handcrafted in the kitchen. Stay tuned for fresh updates arriving soon.")
+                        .font(.system(size: 14))
+                        .foregroundColor(ThemeTokens.secondaryText)
+                        .lineSpacing(4)
                 }
-                .padding(.top, 24)
-                .padding(.horizontal)
-            }
-            
-            Divider()
-            
-            HStack {
-                Text("Browse and purchase extensions on our website.")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                Spacer()
-                Button("Visit Website") {
-                    if let url = URL(string: websiteURL) {
-                        NSWorkspace.shared.open(url)
+                
+                SectionCard(title: "Roadmap", subtitle: "What we're working on next.") {
+                    VStack(spacing: 0) {
+                        ForEach(Array(roadmap.enumerated()), id: \.offset) { index, item in
+                            HStack(spacing: 16) {
+                                ZStack {
+                                    Circle()
+                                        .fill(ThemeTokens.accentColor.opacity(0.1))
+                                        .frame(width: 32, height: 32)
+                                    
+                                    Image(systemName: item.1)
+                                        .font(.system(size: 14))
+                                        .foregroundColor(ThemeTokens.accentColor)
+                                }
+                                
+                                Text(item.0)
+                                    .font(.system(size: 14, weight: .medium))
+                                    .foregroundColor(ThemeTokens.primaryText)
+                                
+                                Spacer()
+                                
+                                Text("Planned")
+                                    .font(.system(size: 10, weight: .bold))
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(Color.secondary.opacity(0.1))
+                                    .cornerRadius(6)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
+                            
+                            if index < roadmap.count - 1 {
+                                Divider().padding(.leading, 64)
+                            }
+                        }
                     }
                 }
-                .buttonStyle(.borderedProminent)
             }
-            .padding()
+            .padding(.horizontal, 32)
+            .padding(.top, 8)
+            .padding(.bottom, 32)
         }
     }
 }

@@ -24,8 +24,8 @@ The module requires `NSCalendarUsageDescription` in `Info.plist` and uses `EKEve
 Shown only when the next event is within the user-configured **threshold (5-120 minutes)** or is currently ongoing:
 - **Left of Notch**: Calendar icon + truncated event title.
 - **Right of Notch**: Time string (e.g., "In 8m", "2:30 PM") or "Ongoing" if the event is in progress.
-- Nothing is shown if no event is within the configured threshold.
 - While an event is ongoing, the display switches to show the **next** upcoming event exactly **10 minutes** before its start time.
+
 
 ### 2.2 Expanded State (Panel)
 A 3-column horizontal layout:

@@ -25,7 +25,6 @@ class AppState: ObservableObject {
         registry.register(ClipboardModule())
         registry.register(TimerModule())
         registry.register(MusicModule())
-        registry.register(ClaudeModule())
         registry.register(ToDoModule())
         
         self.registry = registry
@@ -36,7 +35,6 @@ class AppState: ObservableObject {
             "com.notchlet.timer",
             "com.notchlet.music",
             "com.notchlet.clipboard",
-            "com.notchlet.claude",
             "com.notchlet.todo"
         ]
         
@@ -52,6 +50,7 @@ class AppState: ObservableObject {
         self.enabledExtensionIDs = Set(initialEnabled)
         self.activeExtensionID = "com.notchlet.calendar"
         self.homeViewModuleIDs = Set(initialEnabled.prefix(3))
+
     }
     
     static func calculateNotchWidth() -> CGFloat {

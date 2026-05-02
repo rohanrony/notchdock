@@ -12,26 +12,29 @@ Features a complex 3-column horizontal layout separated by 80%-height secondary 
     - If the event is online and within 10 minutes, a Join button is shown (opens in default browser, secondary color background).
     - Time parsing: shows "In xx minutes" if `< 60` minutes away, or the exact start time otherwise. This time string is displayed **below** the join button if it exists.
 3. **Upcoming Window**: Displays the subsequent event using the exact same dynamic time and location logic.
-4. **Compact State (Menu Bar)**: When the notch is collapsed and an event is within schedule, the meeting name (truncated to 50 characters) is shown in the right side of the menu bar next to the time.
+4. **Compact State (Menu Bar)**: When the notch is collapsed and an event is within the threshold (default 60m), the event title is shown to the left of the notch, and the countdown/time to the right. While an event is ongoing, the display transitions to the next event 10 minutes before it starts.
 
-### Clipboard
-Show top 10 clipboard items and let the user restore one quickly.
+### Clipboard (Quick Access)
+Show recent clipboard items or frequent snippets and let the user restore them quickly.
 
 ### Timer
 Offer quick countdown presets such as 15, 25, and 50 minutes.
 
 ### Music
-Provide now playing display and transport controls for Apple Music or Spotify. This module is free.
+Provide a premium now playing display and transport controls for Apple Music or Spotify. Features dynamic color extraction from artwork and a responsive music visualizer.
 
+
+## Planned / Experimental Modules
 ### Claude
-Allow lightweight Claude chat using a user-entered API key. No clipboard AI actions. Features a perfectly round (20pt radius) pill-shaped input field. Status warnings (e.g., "API Key not configured") are shown in dark red and hidden entirely when configured.
+- **Status**: Deregistered for initial release.
+- **Function**: Allow lightweight Claude chat using a user-entered API key. No clipboard AI actions. Features a perfectly round (20pt radius) pill-shaped input field. Status warnings (e.g., "API Key not configured") are shown in dark red and hidden entirely when configured.
 
 ## Module behavior
 Each module must have:
 - Compact island state.
 - Expanded panel state utilizing a highly compact vertical layout.
 - Horizontal alignment (HStack) is preferred for internal content (like Music and Timer) to minimize vertical height.
-- **No Module Headlines**: Redundant titles like "Ask Claude" or "Focus" must be omitted to save space.
+- **Minimalist Headlines**: Redundant titles like "Ask Claude" or "Focus" should be omitted. However, modules like "Quick Access" may use a small, 1/3-width editable heading for context.
 - Settings state if needed.
 - Clear empty states.
 - Clear permission or auth states.

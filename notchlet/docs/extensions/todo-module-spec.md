@@ -23,11 +23,11 @@ The ToDo module provides a lightweight, premium task manager directly from the m
 - **Checkbox (Left)**: Circle outline → filled circle + `checkmark` on completion. Scale pulse on tap.
 - **Task Text (Center)**: 14pt regular, multi-line. Faded + strikethrough when complete.
 - **Hover Actions (Right)**: `xmark.circle.fill` delete button + `line.3.horizontal` reorder handle.
-- **Row Padding**: 3pt vertical, 6pt leading, 8pt trailing.
+- **Row Padding**: 3pt vertical, 6pt leading (ultra-flush left), 8pt trailing.
 
 #### Add Task Row (`AddToDoRow`)
 - `plus.circle` icon + plain `TextField`. Arrow submit button appears when text is non-empty.
-- **Row Padding**: 5pt vertical, 6pt leading.
+- **Row Padding**: 5pt vertical, 6pt leading (ultra-flush left).
 
 #### Reorder Behavior
 - Live reorder via `ToDoDropDelegate.dropEntered`.
@@ -45,4 +45,4 @@ The ToDo module provides a lightweight, premium task manager directly from the m
 - **Protocol**: `NotchletExtension`
 - **ViewModel**: `ToDoViewModel.shared` (singleton, `ObservableObject`)
 - **Styling**: `ThemeTokens` throughout
-- **Animations**: `ThemeTokens.Spring.standard` for list mutations
+- **Animations**: `ThemeTokens.Spring.standard` for list mutations; `SparkleEffect` on task completion; `AnimatedStrikethrough` for text-centric feedback.

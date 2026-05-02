@@ -6,11 +6,13 @@ Notchlet uses a host shell plus extensions. The core app owns the island UI, set
 ## Folder structure
 - NotchletApp
 - NotchletCore
-- Extensions/CalendarExtension
-- Extensions/ClipboardExtension
-- Extensions/TimerExtension
-- Extensions/MusicExtension
-- Extensions/ClaudeExtension
+- Extensions/Modules/
+    - CalendarModule.swift
+    - MusicModule.swift
+    - ToDoModule.swift
+    - TimerModule.swift
+    - ClaudeModule.swift
+    - ClipboardModule.swift
 
 ## Extension protocol
 Each extension should expose:
@@ -25,9 +27,9 @@ Each extension should expose:
 
 ## State Management
 Extensions must be decoupled from the core UI thread. 
-- **ViewModels**: Each module's `expandedView` must be backed by a dedicated `@StateObject` ViewModel (e.g., `TimerViewModel`).
-- **Background Execution**: Modules must handle their own background polling or event listening (e.g., `NSPasteboard` observers, `Timer` loops) within their ViewModel.
-- **Data Persistence**: Use `@AppStorage` for simple toggles/API keys, or local JSON for historical data (e.g., Clipboard snippets).
+- **ViewModels**: Each module's views are backed by a dedicated `@ObservedObject` or `@StateObject` ViewModel (e.g., `MusicViewModel.shared`).
+- **Background Execution**: Modules handle background polling or event listening (e.g., `MusicManager` subprocesses, `EKEventStore` observers) within their services/ViewModels.
+- **Data Persistence**: Use `UserDefaults` with JSON encoding for complex data (e.g., ToDo items) or `AppConfig` for centralized constants.
 
 ## Rules
 - Extensions should be loosely coupled.

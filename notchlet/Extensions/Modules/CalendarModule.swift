@@ -300,28 +300,24 @@ struct CalendarSettingsView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 28) {
                 Text("Calendar Settings")
-                    .font(.title2)
-                    .bold()
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(ThemeTokens.primaryText)
 
                 // Permission Card
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Apple Calendar Access")
-                        .font(.headline)
-
-                    HStack(spacing: 12) {
+                SectionCard(title: "Authorization") {
+                    HStack(spacing: 16) {
                         Image(systemName: permissionIcon)
-                            .font(.system(size: 28))
+                            .font(.system(size: 24))
                             .foregroundColor(permissionColor)
-                            .frame(width: 36)
+                            .frame(width: 32)
 
-                        VStack(alignment: .leading, spacing: 4) {
+                        VStack(alignment: .leading, spacing: 2) {
                             Text(permissionTitle)
-                                .font(.subheadline)
-                                .bold()
+                                .font(.system(size: 14, weight: .bold))
                             Text(permissionDescription)
-                                .font(.caption)
+                                .font(.system(size: 12))
                                 .foregroundColor(.secondary)
                         }
 
@@ -329,138 +325,133 @@ struct CalendarSettingsView: View {
 
                         permissionButton
                     }
-                    .padding()
-                    .background(Color.secondary.opacity(0.05))
-                    .cornerRadius(10)
+                    .padding(16)
                 }
 
                 if viewModel.isAuthorized {
-                    Divider()
-
                     // Calendar selection
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack {
-                            Text("Visible Calendars")
-                                .font(.headline)
-                            Spacer()
-                            HStack(spacing: 12) {
+                    SectionCard(title: "Visible Calendars", subtitle: "Select which calendars to show in the notch.") {
+                        VStack(spacing: 0) {
+                            HStack {
+                                Spacer()
                                 Button("Select All") { viewModel.selectAllCalendars() }
                                     .buttonStyle(.link)
-                                    .font(.caption)
+                                    .font(.system(size: 11))
+                                Text("•")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
                                 Button("Deselect All") { viewModel.deselectAllCalendars() }
                                     .buttonStyle(.link)
-                                    .font(.caption)
+                                    .font(.system(size: 11))
                             }
-                        }
-                        
-                        VStack(spacing: 8) {
-                            ForEach(viewModel.availableCalendars, id: \.calendarIdentifier) { cal in
-                                Toggle(isOn: Binding(
-                                    get: { viewModel.enabledCalendarIDs.contains(cal.calendarIdentifier) },
-                                    set: { _ in viewModel.toggleCalendar(cal.calendarIdentifier) }
-                                )) {
-                                    HStack {
-                                        Circle()
-                                            .fill(Color(nsColor: cal.color))
-                                            .frame(width: 8, height: 8)
-                                        Text(cal.title)
-                                            .font(.subheadline)
+                            .padding(.horizontal, 16)
+                            .padding(.top, 12)
+                            .padding(.bottom, 4)
+                            
+                            VStack(spacing: 0) {
+                                ForEach(Array(viewModel.availableCalendars.enumerated()), id: \.element.calendarIdentifier) { index, cal in
+                                    SettingsRow(cal.title) {
+                                        HStack(spacing: 12) {
+                                            Circle()
+                                                .fill(Color(nsColor: cal.color))
+                                                .frame(width: 8, height: 8)
+                                            
+                                            Toggle("", isOn: Binding(
+                                                get: { viewModel.enabledCalendarIDs.contains(cal.calendarIdentifier) },
+                                                set: { _ in viewModel.toggleCalendar(cal.calendarIdentifier) }
+                                            ))
+                                            .toggleStyle(.checkbox)
+                                        }
+                                    }
+                                    
+                                    if index < viewModel.availableCalendars.count - 1 {
+                                        Divider().padding(.leading, 16)
                                     }
                                 }
-                                .toggleStyle(.checkbox)
-                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
-                        .padding(12)
-                        .background(Color.secondary.opacity(0.05))
-                        .cornerRadius(10)
                     }
 
-                    Divider()
-
                     // Thresholds
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Notch Display Thresholds")
-                            .font(.headline)
-
-                        VStack(alignment: .leading, spacing: 12) {
-                            VStack(alignment: .leading, spacing: 4) {
+                    SectionCard(title: "Thresholds", subtitle: "Customize when event details appear.") {
+                        VStack(alignment: .leading, spacing: 16) {
+                            VStack(alignment: .leading, spacing: 8) {
                                 HStack {
-                                    Text("Show Next Event in minimized Notch")
-                                        .font(.subheadline)
-                                        .bold()
+                                    Text("Show in minimized Notch")
+                                        .font(.system(size: 13, weight: .medium))
                                     Spacer()
                                     Text("\(viewModel.minimizedThreshold)m before")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
+                                        .font(.system(size: 12, weight: .bold, design: .monospaced))
+                                        .foregroundColor(ThemeTokens.accentColor)
                                 }
+                                
                                 Slider(value: Binding(
                                     get: { Double(viewModel.minimizedThreshold) },
                                     set: { viewModel.minimizedThreshold = Int($0) }
                                 ), in: 5...120, step: 5)
+                                .tint(ThemeTokens.accentColor)
                             }
                             
                             Divider()
-                                .padding(.vertical, 4)
                             
-                            HStack(alignment: .top, spacing: 8) {
-                                Image(systemName: "info.circle")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.secondary)
-                                Text("When a meeting is ongoing, Notchlet will automatically switch to showing the next event 10 minutes before it starts.")
-                                    .font(.caption)
+                            HStack(alignment: .top, spacing: 10) {
+                                Image(systemName: "info.circle.fill")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(ThemeTokens.accentColor.opacity(0.8))
+                                Text("Notchlet automatically switches to the next event 10 minutes before a meeting starts if the current one is still ongoing.")
+                                    .font(.system(size: 11))
                                     .foregroundColor(.secondary)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                         }
-                        .padding(12)
-                        .background(Color.secondary.opacity(0.05))
-                        .cornerRadius(10)
+                        .padding(16)
                     }
                 }
             }
-            .padding(24)
+            .padding(.horizontal, 32)
+            .padding(.top, 8)
+            .padding(.bottom, 32)
         }
     }
 
     // MARK: - Permission UI Helpers
 
     var permissionIcon: String {
-        if viewModel.isAuthorized { return "checkmark.seal.fill" }
+        if viewModel.isAuthorized { return "checkmark.circle.fill" }
         switch viewModel.authorizationStatus {
-        case .denied, .restricted: return "xmark.seal.fill"
+        case .denied, .restricted: return "exclamationmark.octagon.fill"
         default: return "calendar.badge.plus"
         }
     }
 
     var permissionColor: Color {
-        if viewModel.isAuthorized { return ThemeTokens.accentColor }
+        if viewModel.isAuthorized { return .green }
         switch viewModel.authorizationStatus {
         case .denied, .restricted: return .red
-        default: return .secondary
+        default: return ThemeTokens.accentColor
         }
     }
 
     var permissionTitle: String {
-        if viewModel.isAuthorized { return "Connected" }
+        if viewModel.isAuthorized { return "Calendar Connected" }
         switch viewModel.authorizationStatus {
         case .denied: return "Access Denied"
-        case .restricted: return "Restricted"
-        default: return "Not Connected"
+        case .restricted: return "Access Restricted"
+        default: return "Needs Permission"
         }
     }
 
     var permissionDescription: String {
         if viewModel.isAuthorized {
-            return "Notchlet can read your calendar events."
+            return "Notchlet has access to your calendar events."
         }
         switch viewModel.authorizationStatus {
         case .denied:
-            return "Open System Settings to allow Notchlet to access your calendar."
+            return "Please allow access in System Settings."
         case .restricted:
-            return "Calendar access is restricted by a device policy."
+            return "Calendar access is restricted by policy."
         default:
-            return "Allow Notchlet to show your upcoming events in the notch."
+            return "Required to show your upcoming events."
         }
     }
 
@@ -469,21 +460,19 @@ struct CalendarSettingsView: View {
         let isAuthorized = viewModel.isAuthorized
         let status = viewModel.authorizationStatus
         
-        if isAuthorized {
-            EmptyView()
-        } else if status == .denied || status == .restricted {
-            Button("Open Settings") {
-                if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars") {
-                    NSWorkspace.shared.open(url)
+        if !isAuthorized {
+            Button(status == .denied || status == .restricted ? "Fix Settings" : "Allow Access") {
+                if status == .denied || status == .restricted {
+                    if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars") {
+                        NSWorkspace.shared.open(url)
+                    }
+                } else {
+                    viewModel.requestPermission()
                 }
             }
             .buttonStyle(.borderedProminent)
-        } else {
-            Button("Allow Access") {
-                viewModel.requestPermission()
-            }
-            .buttonStyle(.borderedProminent)
             .tint(ThemeTokens.accentColor)
+            .controlSize(.small)
         }
     }
 }
@@ -798,45 +787,44 @@ class CalendarViewModel: ObservableObject {
                 formatter.timeStyle = .short
                 return formatter.string(from: date)
             } else {
-                formatter.dateFormat = "EEE h:mm a"
+                formatter.dateFormat = "MMM d, h:mm a"
                 return formatter.string(from: date)
             }
         }
     }
 
-    func minutesUntil(event: EKEvent?) -> Int? {
-        guard let date = event?.startDate else { return nil }
-        let diff = date.timeIntervalSinceNow
-        return diff > 0 ? Int(diff / 60) : nil
+    var compactTimeText: String {
+        guard let event = nextEvent else { return "" }
+        let now = Date()
+        
+        if event.startDate <= now && (event.endDate ?? now) > now {
+            return "Ongoing"
+        }
+        
+        let diff = event.startDate.timeIntervalSince(now)
+        let minutes = Int(diff / 60)
+        
+        if minutes < 60 {
+            return "In \(minutes)m"
+        } else {
+            let hours = minutes / 60
+            return "In \(hours)h"
+        }
     }
 
     var shouldShowCompactDetails: Bool {
         guard let event = nextEvent else { return false }
         let now = Date()
-        let isOngoing = event.startDate <= now && (event.endDate ?? now.addingTimeInterval(3600)) > now
-        let startsSoon = event.startDate.timeIntervalSince(now) <= Double(minimizedThreshold * 60) && event.startDate > now
-        return isOngoing || startsSoon
-    }
-
-    var compactTimeText: String {
-        guard let event = nextEvent else { return "" }
-        let now = Date()
-        if event.startDate <= now && (event.endDate ?? now.addingTimeInterval(3600)) > now {
-            return "Ongoing"
-        }
-        return formatTimeString(for: event.startDate)
-    }
-
-    var nextEventLabel: String {
-        guard let event = nextEvent else { return "NEXT" }
-        let now = Date()
+        
+        // Always show if ongoing
         if event.startDate <= now && (event.endDate ?? now) > now {
-            return "CURRENT"
+            return true
         }
-        return "NEXT"
+        
+        // Show if within minimizedThreshold
+        let diff = event.startDate.timeIntervalSince(now)
+        return diff > 0 && diff <= Double(minimizedThreshold * 60)
     }
-
-    // MARK: - Calendar Grid
 
     var monthString: String {
         let formatter = DateFormatter()
@@ -844,56 +832,92 @@ class CalendarViewModel: ObservableObject {
         return formatter.string(from: currentMonth)
     }
 
-    var daysInMonth: [Date] {
-        guard let monthInterval = calendar.dateInterval(of: .month, for: currentMonth) else { return [] }
-        var dates: [Date] = []
-        var currentDate = monthInterval.start
-
-        let firstWeekday = calendar.component(.weekday, from: currentDate)
-        let offsetDays = firstWeekday - 1
-        if let startGridDate = calendar.date(byAdding: .day, value: -offsetDays, to: currentDate) {
-            currentDate = startGridDate
+    var nextEventLabel: String {
+        guard let event = nextEvent else { return "Next Event" }
+        let now = Date()
+        if event.startDate <= now && (event.endDate ?? now) > now {
+            return "Ongoing"
         }
-
-        for _ in 0..<42 {
-            dates.append(currentDate)
-            if let nextDate = calendar.date(byAdding: .day, value: 1, to: currentDate) {
-                currentDate = nextDate
-            }
-        }
-        return dates
+        return "Next Event"
     }
 
+    func minutesUntil(event: EKEvent) -> Int? {
+        let diff = event.startDate.timeIntervalSinceNow
+        return diff > 0 ? Int(diff / 60) : nil
+    }
+
+    // MARK: - Month Navigation
+
     func nextMonth() {
-        if let newMonth = calendar.date(byAdding: .month, value: 1, to: currentMonth) {
-            currentMonth = newMonth
-            loadDatesWithEvents(for: newMonth)
+        if let next = calendar.date(byAdding: .month, value: 1, to: currentMonth) {
+            currentMonth = next
+            loadDatesWithEvents(for: next)
         }
     }
 
     func previousMonth() {
-        if let newMonth = calendar.date(byAdding: .month, value: -1, to: currentMonth) {
-            currentMonth = newMonth
-            loadDatesWithEvents(for: newMonth)
+        if let prev = calendar.date(byAdding: .month, value: -1, to: currentMonth) {
+            currentMonth = prev
+            loadDatesWithEvents(for: prev)
         }
     }
 
-    func isSameMonth(_ date1: Date, _ date2: Date) -> Bool {
-        return calendar.isDate(date1, equalTo: date2, toGranularity: .month)
+    var daysInMonth: [Date] {
+        guard let monthRange = calendar.range(of: .day, in: .month, for: currentMonth),
+              let firstOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: currentMonth))
+        else { return [] }
+
+        let firstWeekday = calendar.component(.weekday, from: firstOfMonth)
+        let offset = (firstWeekday - calendar.firstWeekday + 7) % 7
+
+        var days: [Date] = []
+        
+        // Previous month days
+        if let prevMonth = calendar.date(byAdding: .month, value: -1, to: firstOfMonth),
+           let prevMonthRange = calendar.range(of: .day, in: .month, for: prevMonth) {
+            let prevMonthDays = prevMonthRange.count
+            for i in (0..<offset).reversed() {
+                if let date = calendar.date(bySetting: .day, value: prevMonthDays - i, of: prevMonth) {
+                    days.append(date)
+                }
+            }
+        }
+
+        // Current month days
+        for day in 1...monthRange.count {
+            if let date = calendar.date(bySetting: .day, value: day, of: firstOfMonth) {
+                days.append(date)
+            }
+        }
+
+        // Next month days to fill 6 weeks (42 days)
+        let remaining = 42 - days.count
+        if remaining > 0, let nextMonth = calendar.date(byAdding: .month, value: 1, to: firstOfMonth) {
+            for day in 1...remaining {
+                if let date = calendar.date(bySetting: .day, value: day, of: nextMonth) {
+                    days.append(date)
+                }
+            }
+        }
+
+        return days
     }
 
     func isToday(_ date: Date) -> Bool {
-        return calendar.isDateInToday(date)
+        calendar.isDateInToday(date)
+    }
+
+    func isSameMonth(_ date: Date, _ month: Date) -> Bool {
+        calendar.isDate(date, equalTo: month, toGranularity: .month)
+    }
+
+    var stableId: String {
+        return "\(calendar.component(.year, from: currentMonth))-\(calendar.component(.month, from: currentMonth))"
     }
 }
 
-// MARK: - EKEvent Extension
-
 extension EKEvent {
-    /// A stable identifier that accounts for recurring events sharing the same eventIdentifier
     var stableId: String {
-        let id = eventIdentifier ?? UUID().uuidString
-        let start = startDate?.timeIntervalSince1970 ?? 0
-        return "\(id)-\(start)"
+        return "\(eventIdentifier ?? "")-\(startDate.timeIntervalSince1970)"
     }
 }
