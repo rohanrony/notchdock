@@ -313,9 +313,21 @@ struct AboutSettingsView: View {
                             Image(systemName: "chevron.right").font(.caption).foregroundColor(.secondary)
                         }
                         Divider().padding(.leading, 48)
-                        SettingsRow("Privacy Policy", icon: "shield.lefthalf.filled") {
-                            Image(systemName: "chevron.right").font(.caption).foregroundColor(.secondary)
+                        Button(action: {
+                            if let url = Bundle.main.url(forResource: "10-security-checks", withExtension: "md", subdirectory: "docs") {
+                                NSWorkspace.shared.open(url)
+                            } else {
+                                // Fallback to GitHub or project site if local file not in bundle
+                                if let url = URL(string: "https://github.com/rohanrony/notchdock/blob/main/notchdock/docs/10-security-checks.md") {
+                                    NSWorkspace.shared.open(url)
+                                }
+                            }
+                        }) {
+                            SettingsRow("Privacy Policy", icon: "shield.lefthalf.filled") {
+                                Image(systemName: "chevron.right").font(.caption).foregroundColor(.secondary)
+                            }
                         }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding(.horizontal, 40)

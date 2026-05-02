@@ -60,3 +60,6 @@ test_dmg/
 
 # AI Agents
 .agents/
+
+# Secrets
+.env

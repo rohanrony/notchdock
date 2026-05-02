@@ -1,8 +1,15 @@
-import SwiftUI
 import Combine
 import CoreImage
+import os.log
 
 // MARK: - Music Manager
+
+extension String {
+    func sanitizedForAppleScript() -> String {
+        return self.replacingOccurrences(of: "\\", with: "\\\\")
+                   .replacingOccurrences(of: "\"", with: "\\\"")
+    }
+}
 
 class MusicManager {
     static let shared = MusicManager()
@@ -83,6 +90,8 @@ class MusicManager {
     /// This is intentionally NOT using NSAppleScript, which triggers FSFindFolder
     /// Carbon calls inside our process and pollutes the console with -43 errors.
     func runScript(_ source: String) -> String? {
+        NotchLog.sensitive("Executing AppleScript: \(source)", category: NotchLog.music)
+        
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
         task.arguments = ["-e", source]
@@ -96,12 +105,14 @@ class MusicManager {
             try task.run()
             task.waitUntilExit()
         } catch {
+            NotchLog.error("Failed to run AppleScript: \(error.localizedDescription)", category: NotchLog.music)
             return nil
         }
         
         // Check for permission denial in stderr (-1743)
         let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
         if let errStr = String(data: errData, encoding: .utf8), errStr.contains("-1743") {
+            NotchLog.error("AppleScript Permission Denied (-1743)", category: NotchLog.security)
             return "PERMISSION_DENIED"
         }
         
@@ -134,15 +145,10 @@ class MusicManager {
             let script = "tell application id \"\(PlayerApp.music.bundleID)\" to get (player state as text)"
             if let res = runScript(script), res.contains("playing") {
                 var info = FullState(player: .music, title: "Not Playing", artist: "Music", isPlaying: true, progress: 0, duration: 1)
-                let fullScript = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to duration of current track\nreturn \"title:\" & tName & \"|artist:\" & aName & \"|pos:\" & pPos & \"|dur:\" & pDur\non error\nreturn \"error\"\nend try\nend tell"
+                let fullScript = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to duration of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(fullScript), data != "error" {
                     parse(data, into: &info)
                     info.isPlaying = true
-                    
-                    // Fetch artwork data for Music.app (raw data)
-                    // We only fetch this if track changed in ViewModel to avoid lag. 
-                    // But for now let's try to get it if we can.
-                    // Actually, raw data is HUGE. Let's get it only if title changed.
                     return info
                 }
             }
@@ -152,7 +158,7 @@ class MusicManager {
             let script = "tell application id \"\(PlayerApp.spotify.bundleID)\" to get (player state as text)"
             if let res = runScript(script), res.contains("playing") {
                 var info = FullState(player: .spotify, title: "Not Playing", artist: "Spotify", isPlaying: true, progress: 0, duration: 1)
-                let fullScript = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to (duration of current track) / 1000\nset aURL to artwork url of current track\nreturn \"title:\" & tName & \"|artist:\" & aName & \"|pos:\" & pPos & \"|dur:\" & pDur & \"|art:\" & aURL\non error\nreturn \"error\"\nend try\nend tell"
+                let fullScript = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to (duration of current track) / 1000\nset aURL to artwork url of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur & \"«»art:\" & aURL\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(fullScript), data != "error" {
                     parse(data, into: &info)
                     info.isPlaying = true
@@ -189,11 +195,13 @@ class MusicManager {
     }
     
     private func parse(_ res: String, into info: inout FullState) {
-        let parts = res.components(separatedBy: "|")
+        let parts = res.components(separatedBy: "«»")
         for part in parts {
             let kv = part.components(separatedBy: ":")
             if kv.count < 2 { continue }
-            let k = kv[0], v = kv[1]
+            let k = kv[0]
+            let v = part.replacingOccurrences(of: "\(k):", with: "")
+            
             switch k {
             case "playing": info.isPlaying = (v == "true")
             case "title": info.title = v
@@ -205,7 +213,7 @@ class MusicManager {
                 info.duration = Double(v) ?? 1
                 // Re-calculate progress if we have duration now
                 if let posPart = parts.first(where: { $0.hasPrefix("pos:") }) {
-                    let posVal = Double(posPart.components(separatedBy: ":")[1]) ?? 0
+                    let posVal = Double(posPart.replacingOccurrences(of: "pos:", with: "")) ?? 0
                     info.progress = info.duration > 0 ? posVal / info.duration : 0
                 }
             case "art":
@@ -216,7 +224,9 @@ class MusicManager {
     }
     
     func fetchMusicArtwork() -> Data? {
-        let tempPath = "/tmp/notchdock_art.png"
+        let tempDir = FileManager.default.temporaryDirectory
+        let tempURL = tempDir.appendingPathComponent("notchdock_art.png")
+        let tempPath = tempURL.path
         // Use a more robust AppleScript for saving artwork
         let saveScript = """
         tell application id "\(PlayerApp.music.bundleID)"
@@ -238,9 +248,8 @@ class MusicManager {
         end tell
         """
         
-        let result = runScript(saveScript)
         if result == "ok" {
-            return try? Data(contentsOf: URL(fileURLWithPath: tempPath))
+            return try? Data(contentsOf: tempURL)
         }
         return nil
     }

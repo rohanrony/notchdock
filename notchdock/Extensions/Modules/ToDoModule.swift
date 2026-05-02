@@ -28,10 +28,20 @@ class ToDoViewModel: ObservableObject {
     }
     
     private func loadItems() {
-        if let data = UserDefaults.standard.data(forKey: storageKey),
+        // 1. Try Keychain first
+        if let data = KeychainHelper.shared.read(service: "com.notchdock.todo", account: "items"),
            let decoded = try? JSONDecoder().decode([ToDoItem].self, from: data) {
             self.items = decoded
-        } else {
+        }
+        // 2. Migration: Try UserDefaults if Keychain is empty
+        else if let data = UserDefaults.standard.data(forKey: storageKey),
+                let decoded = try? JSONDecoder().decode([ToDoItem].self, from: data) {
+            self.items = decoded
+            // Securely save to Keychain and remove from UserDefaults
+            saveItems()
+            UserDefaults.standard.removeObject(forKey: storageKey)
+        }
+        else {
             self.items = [
                 ToDoItem(text: "Welcome to NotchDock ToDo"),
                 ToDoItem(text: "Hold and drag to reorder"),
@@ -42,7 +52,7 @@ class ToDoViewModel: ObservableObject {
     
     private func saveItems() {
         if let encoded = try? JSONEncoder().encode(items) {
-            UserDefaults.standard.set(encoded, forKey: storageKey)
+            KeychainHelper.shared.save(encoded, service: "com.notchdock.todo", account: "items")
         }
     }
     
