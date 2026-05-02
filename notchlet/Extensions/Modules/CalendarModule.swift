@@ -81,7 +81,7 @@ struct CalendarExpandedView: View {
                                         viewModel.loadEvents(for: date)
                                     }
 
-                                if hasEvents {
+                                if hasEvents && isSameMonth {
                                     Circle()
                                         .fill(isToday ? Color.white : ThemeTokens.accentColor.opacity(0.7))
                                         .frame(width: CalendarViewModel.Constants.dotIndicatorSize, height: CalendarViewModel.Constants.dotIndicatorSize)
@@ -188,7 +188,7 @@ struct CalendarExpandedView: View {
                     if !viewModel.upcomingEvents.isEmpty {
                         ScrollView(.vertical, showsIndicators: false) {
                             VStack(alignment: .leading, spacing: 12) {
-                                ForEach(viewModel.upcomingEvents, id: \.eventIdentifier) { event in
+                                ForEach(viewModel.upcomingEvents, id: \.stableId) { event in
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text(event.title ?? "Untitled")
                                             .font(.system(size: 14, weight: .semibold))
@@ -219,7 +219,8 @@ struct CalendarExpandedView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.horizontal, 24)
-            .padding(.bottom, viewModel.isAuthorized ? 24 : 8)
+            .padding(.top, 12) // Symmetric top padding (8 spacing from IslandView + 12 here = 20)
+            .padding(.bottom, viewModel.isAuthorized ? 20 : 8)
             .fixedSize(horizontal: false, vertical: true)
 
             // Permission note at the bottom
@@ -882,5 +883,16 @@ class CalendarViewModel: ObservableObject {
 
     func isToday(_ date: Date) -> Bool {
         return calendar.isDateInToday(date)
+    }
+}
+
+// MARK: - EKEvent Extension
+
+extension EKEvent {
+    /// A stable identifier that accounts for recurring events sharing the same eventIdentifier
+    var stableId: String {
+        let id = eventIdentifier ?? UUID().uuidString
+        let start = startDate?.timeIntervalSince1970 ?? 0
+        return "\(id)-\(start)"
     }
 }
