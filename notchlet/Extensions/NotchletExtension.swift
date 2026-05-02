@@ -15,9 +15,25 @@ protocol NotchletExtension: Identifiable {
     // Views
     @ViewBuilder var compactView: AnyView { get }
     @ViewBuilder var expandedView: AnyView { get }
+    @ViewBuilder var settingsView: AnyView { get }
 }
 
 extension NotchletExtension {
+    var settingsView: AnyView {
+        AnyView(
+            VStack(spacing: 12) {
+                Image(systemName: iconName)
+                    .font(.system(size: 40))
+                    .foregroundColor(ThemeTokens.accentColor)
+                Text(displayName)
+                    .font(.headline)
+                Text("No specific settings for this module.")
+                    .foregroundColor(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        )
+    }
+    
     func safeExpandedView() -> AnyView {
         if !hasRequiredPermissions {
             return AnyView(

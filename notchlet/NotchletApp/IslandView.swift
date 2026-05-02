@@ -51,11 +51,11 @@ struct IslandView: View {
                 .padding(.horizontal, 16)
             }
             .frame(
-                minWidth: appState.isExpanded ? 0 : ThemeTokens.islandWidth,
+                minWidth: appState.isExpanded ? 0 : appState.detectedNotchWidth,
                 maxWidth: appState.isExpanded ? ThemeTokens.expandedIslandWidth : nil,
-                minHeight: ThemeTokens.islandHeight
+                minHeight: appState.detectedMenuBarHeight
             )
-            .fixedSize(horizontal: true, vertical: true) // Allow shrinking to content in both states
+            .fixedSize(horizontal: true, vertical: true)
             .environment(\.colorScheme, .dark)
             .onHover { isHovering in
                 withAnimation(isHovering ? expandAnimation : collapseAnimation) {
@@ -79,7 +79,7 @@ struct IslandView: View {
                 Spacer(minLength: 190)
             }
         }
-        .frame(height: ThemeTokens.islandHeight)
+        .frame(height: appState.detectedMenuBarHeight)
         .padding(.horizontal, 6)
         .transition(.asymmetric(
             insertion: .scale(scale: 0.9, anchor: .top).combined(with: .opacity),
@@ -93,7 +93,11 @@ struct IslandView: View {
             HStack(spacing: 0) {
                 // Left side: Module switcher
                 HStack(spacing: 8) {
-                    ForEach(appState.registry.availableExtensions.filter { appState.enabledExtensionIDs.contains($0.id) }, id: \.id) { ext in
+                    let orderedExtensions = appState.extensionOrder.compactMap { id in
+                        appState.registry.availableExtensions.first(where: { $0.id == id })
+                    }.filter { appState.enabledExtensionIDs.contains($0.id) }
+                    
+                    ForEach(orderedExtensions, id: \.id) { ext in
                         Button(action: {
                             withAnimation {
                                 appState.activeExtensionID = ext.id
@@ -116,9 +120,7 @@ struct IslandView: View {
                 
                 // Right side: Settings & actions
                 HStack(spacing: 8) {
-                    Button(action: {
-                        // Open settings
-                    }) {
+                    SettingsLink {
                         Image(systemName: "gearshape.fill")
                             .font(.system(size: 13, weight: .medium)) // Menu bar size
                             .foregroundColor(Color.gray)
@@ -130,7 +132,7 @@ struct IslandView: View {
                 }
                 .padding(.trailing, 16)
             }
-            .frame(height: ThemeTokens.islandHeight)
+            .frame(height: appState.detectedMenuBarHeight)
             
             // Middle Section: Active Module Title removed per user request
             

@@ -54,7 +54,7 @@ struct TimerExpandedView: View {
                             .multilineTextAlignment(.center)
                             .focused($focusedField, equals: .minutes)
                             .tint(ThemeTokens.secondaryText)
-                            .onChange(of: editMinutes) { newValue in
+                            .onChange(of: editMinutes) { _, newValue in
                                 let filtered = newValue.filter { $0.isNumber }
                                 if filtered.count > 2 {
                                     editMinutes = String(filtered.prefix(2))
@@ -76,7 +76,7 @@ struct TimerExpandedView: View {
                             .multilineTextAlignment(.center)
                             .focused($focusedField, equals: .seconds)
                             .tint(ThemeTokens.secondaryText)
-                            .onChange(of: editSeconds) { newValue in
+                            .onChange(of: editSeconds) { _, newValue in
                                 let filtered = newValue.filter { $0.isNumber }
                                 if filtered.count > 2 {
                                     editSeconds = String(filtered.prefix(2))
@@ -109,7 +109,7 @@ struct TimerExpandedView: View {
                 }) {
                     Image(systemName: viewModel.isRunning ? "pause.circle.fill" : "play.circle.fill")
                         .font(.system(size: 28))
-                        .foregroundColor(ThemeTokens.primaryText)
+                        .foregroundColor(ThemeTokens.accentColor)
                 }
                 .buttonStyle(.plain)
                 
@@ -155,6 +155,70 @@ struct TimerModule: NotchletExtension {
     
     var expandedView: AnyView {
         AnyView(TimerExpandedView())
+    }
+    
+    var settingsView: AnyView {
+        AnyView(TimerSettingsView())
+    }
+}
+
+struct TimerSettingsView: View {
+    @ObservedObject var viewModel = TimerViewModel.shared
+    @AppStorage("timer_default_minutes") private var defaultMinutes: Int = 25
+    
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Timer Settings")
+                    .font(.title2)
+                    .bold()
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Default Duration")
+                        .font(.headline)
+                    
+                    HStack {
+                        Slider(value: Binding(
+                            get: { Double(defaultMinutes) },
+                            set: { defaultMinutes = Int($0) }
+                        ), in: 1...60, step: 1)
+                        
+                        Text("\(defaultMinutes) min")
+                            .font(.system(.body, design: .monospaced))
+                            .frame(width: 60)
+                    }
+                    
+                    Text("This duration will be used when you reset the timer.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding()
+                .background(Color.secondary.opacity(0.05))
+                .cornerRadius(12)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Controls")
+                        .font(.headline)
+                    
+                    HStack(spacing: 16) {
+                        Button(action: { viewModel.toggle() }) {
+                            Label(viewModel.isRunning ? "Pause" : "Start", systemImage: viewModel.isRunning ? "pause.fill" : "play.fill")
+                                .foregroundColor(ThemeTokens.accentColor)
+                        }
+                        .buttonStyle(.bordered)
+                        
+                        Button(action: { viewModel.reset() }) {
+                            Label("Reset", systemImage: "arrow.clockwise")
+                        }
+                        .buttonStyle(.bordered)
+                    }
+                }
+                .padding()
+                .background(Color.secondary.opacity(0.05))
+                .cornerRadius(12)
+            }
+            .padding(24)
+        }
     }
 }
 
