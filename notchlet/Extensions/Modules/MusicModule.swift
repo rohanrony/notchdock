@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import CoreImage
 
 // MARK: - Music Manager
 
@@ -104,10 +105,9 @@ class MusicManager {
             return "PERMISSION_DENIED"
         }
         
-        guard task.terminationStatus == 0 else { return nil }
-        
         let data = outPipe.fileHandleForReading.readDataToEndOfFile()
-        return String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let result = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return result
     }
     
     struct FullState {
@@ -117,6 +117,8 @@ class MusicManager {
         var isPlaying: Bool
         var progress: Double
         var duration: TimeInterval
+        var artworkURL: String?
+        var artworkData: Data?
     }
     
     func fetchFullState(current: PlayerApp) -> FullState {
@@ -135,7 +137,12 @@ class MusicManager {
                 let fullScript = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to duration of current track\nreturn \"title:\" & tName & \"|artist:\" & aName & \"|pos:\" & pPos & \"|dur:\" & pDur\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(fullScript), data != "error" {
                     parse(data, into: &info)
-                    info.isPlaying = true // Ensure it stays true
+                    info.isPlaying = true
+                    
+                    // Fetch artwork data for Music.app (raw data)
+                    // We only fetch this if track changed in ViewModel to avoid lag. 
+                    // But for now let's try to get it if we can.
+                    // Actually, raw data is HUGE. Let's get it only if title changed.
                     return info
                 }
             }
@@ -145,7 +152,7 @@ class MusicManager {
             let script = "tell application id \"\(PlayerApp.spotify.bundleID)\" to get (player state as text)"
             if let res = runScript(script), res.contains("playing") {
                 var info = FullState(player: .spotify, title: "Not Playing", artist: "Spotify", isPlaying: true, progress: 0, duration: 1)
-                let fullScript = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to (duration of current track) / 1000\nreturn \"title:\" & tName & \"|artist:\" & aName & \"|pos:\" & pPos & \"|dur:\" & pDur\non error\nreturn \"error\"\nend try\nend tell"
+                let fullScript = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to (duration of current track) / 1000\nset aURL to artwork url of current track\nreturn \"title:\" & tName & \"|artist:\" & aName & \"|pos:\" & pPos & \"|dur:\" & pDur & \"|art:\" & aURL\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(fullScript), data != "error" {
                     parse(data, into: &info)
                     info.isPlaying = true
@@ -201,9 +208,41 @@ class MusicManager {
                     let posVal = Double(posPart.components(separatedBy: ":")[1]) ?? 0
                     info.progress = info.duration > 0 ? posVal / info.duration : 0
                 }
+            case "art":
+                info.artworkURL = v
             default: break
             }
         }
+    }
+    
+    func fetchMusicArtwork() -> Data? {
+        let tempPath = "/tmp/notchlet_art.png"
+        // Use a more robust AppleScript for saving artwork
+        let saveScript = """
+        tell application id "\(PlayerApp.music.bundleID)"
+            try
+                if not (exists (artwork 1 of current track)) then return "no_art"
+                set srcData to raw data of artwork 1 of current track
+                set theFile to POSIX file "\(tempPath)"
+                set f to open for access theFile with write permission
+                set eof of f to 0
+                write srcData to f
+                close access f
+                return "ok"
+            on error err
+                try
+                    close access POSIX file "\(tempPath)"
+                end try
+                return "error: " & err
+            end try
+        end tell
+        """
+        
+        let result = runScript(saveScript)
+        if result == "ok" {
+            return try? Data(contentsOf: URL(fileURLWithPath: tempPath))
+        }
+        return nil
     }
     
     /// Send play/pause to a known player. Caller supplies the player so we skip a redundant subprocess query.
@@ -251,6 +290,7 @@ class MusicViewModel: ObservableObject {
     @Published var spotifyInstalled: Bool = false
     @Published var hasPermission: Bool = true
     @Published var anyAuthConfirmed: Bool = false
+    @Published var artworkImage: NSImage? = nil
     @Published var showCompact: Bool = true { didSet { UserDefaults.standard.set(showCompact, forKey: "music_show_compact") } }
 
     var duration: TimeInterval = 1
@@ -260,6 +300,8 @@ class MusicViewModel: ObservableObject {
     private var isRefreshing = false
     /// Prevents the poll from overwriting progress while the user is dragging.
     var isDraggingSlider: Bool = false
+    /// Tracks which titles have already failed artwork fetching to avoid spamming.
+    private var failedArtworkTitles = Set<String>()
 
     init() {
         self.showCompact = UserDefaults.standard.object(forKey: "music_show_compact") as? Bool ?? true
@@ -299,17 +341,95 @@ class MusicViewModel: ObservableObject {
                 self.anyAuthConfirmed = [mAuth, sAuth].contains(.authorized)
                 
                 self.activePlayer = state.player
-                self.trackTitle = state.title
+                self.duration = state.duration
                 self.artistName = state.artist
                 self.isPlaying = state.isPlaying
                 if !self.isDraggingSlider {
                     self.progress = state.progress
                 }
-                self.duration = state.duration
                 
+                // Artwork Handling
+                if state.title != self.trackTitle {
+                    self.artworkImage = nil
+                    
+                    // Immediately apply fallback color so the UI changes even if art takes time
+                    withAnimation(.easeInOut(duration: 0.8)) {
+                        self.accentColor = self.colorForName(state.artist)
+                    }
+                    
+                    if state.player == .spotify, let urlStr = state.artworkURL, let url = URL(string: urlStr) {
+                        self.loadArtwork(from: url)
+                    } else if state.player == .music {
+                        self.loadMusicArtwork()
+                    } else if state.player == .none {
+                        self.accentColor = Color(red: 0.8, green: 0.2, blue: 0.5)
+                    }
+                } else if self.artworkImage == nil && state.player != .none && !self.failedArtworkTitles.contains(state.title) {
+                    // Retry once if we don't have art and haven't failed yet
+                    if state.player == .spotify, let urlStr = state.artworkURL, let url = URL(string: urlStr) {
+                        self.loadArtwork(from: url)
+                    } else if state.player == .music {
+                        self.loadMusicArtwork()
+                    }
+                }
+                
+                self.trackTitle = state.title
                 self.isRefreshing = false
             }
         }
+    }
+
+    private func loadArtwork(from url: URL) {
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            if let data = data, let img = NSImage(data: data) {
+                DispatchQueue.main.async {
+                    self.artworkImage = img
+                    self.extractColor(from: img)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.extractColor(from: nil)
+                }
+            }
+        }.resume()
+    }
+
+    private func loadMusicArtwork() {
+        let currentTitle = self.trackTitle
+        DispatchQueue.global(qos: .background).async {
+            if let data = MusicManager.shared.fetchMusicArtwork(), let img = NSImage(data: data) {
+                DispatchQueue.main.async {
+                    self.artworkImage = img
+                    self.extractColor(from: img)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.failedArtworkTitles.insert(currentTitle)
+                    self.extractColor(from: nil)
+                }
+            }
+        }
+    }
+
+    private func extractColor(from image: NSImage?) {
+        if let image = image, let color = image.dominantColor() {
+            withAnimation(.easeInOut(duration: 0.8)) {
+                self.accentColor = color
+            }
+        } else {
+            // Fallback to deterministic color if image is nil or extraction fails
+            // Use artist name if available, otherwise track title to ensure variety
+            let fallbackName = self.artistName.count > 2 ? self.artistName : self.trackTitle
+            withAnimation(.easeInOut(duration: 0.8)) {
+                self.accentColor = self.colorForName(fallbackName)
+            }
+        }
+    }
+    
+    private func colorForName(_ name: String) -> Color {
+        let hash = abs(name.hashValue)
+        let h = Double(hash % 360) / 360.0
+        return Color(hue: h, saturation: 0.7, brightness: 0.8)
     }
 
     func requestPermission(for app: MusicManager.PlayerApp) {
@@ -406,8 +526,13 @@ struct MusicCompactView: View {
         if viewModel.showCompact {
             HStack(spacing: 0) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 4, style: .continuous).fill(LinearGradient(colors: [viewModel.accentColor, viewModel.accentColor.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)).frame(width: 18, height: 18)
-                    Image(systemName: "music.note").font(.system(size: 10)).foregroundColor(.white.opacity(0.8))
+                    if let img = viewModel.artworkImage {
+                        Image(nsImage: img).resizable().aspectRatio(contentMode: .fill)
+                            .frame(width: 18, height: 18).cornerRadius(4)
+                    } else {
+                        RoundedRectangle(cornerRadius: 4, style: .continuous).fill(LinearGradient(colors: [viewModel.accentColor, viewModel.accentColor.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)).frame(width: 18, height: 18)
+                        Image(systemName: "music.note").font(.system(size: 10)).foregroundColor(.white.opacity(0.8))
+                    }
                 }.padding(.trailing, 8)
                 Spacer().frame(width: 190).alignmentGuide(.notchCenter) { d in d[HorizontalAlignment.center] }
                 MusicVisualizerView().padding(.leading, 8)
@@ -422,9 +547,15 @@ struct MusicExpandedView: View {
         VStack(spacing: 12) {
             HStack(spacing: 16) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 12, style: .continuous).fill(LinearGradient(colors: [viewModel.accentColor, viewModel.accentColor.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)).frame(width: 52, height: 52).overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
-                    Image(systemName: "music.note").font(.system(size: 22, weight: .light)).foregroundColor(.white.opacity(0.5))
-                }.shadow(color: .black.opacity(0.4), radius: 8, x: 0, y: 4)
+                    if let img = viewModel.artworkImage {
+                        Image(nsImage: img).resizable().aspectRatio(contentMode: .fill)
+                            .frame(width: 52, height: 52).cornerRadius(12)
+                            .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
+                    } else {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous).fill(LinearGradient(colors: [viewModel.accentColor, viewModel.accentColor.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)).frame(width: 52, height: 52).overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
+                        Image(systemName: "music.note").font(.system(size: 22, weight: .light)).foregroundColor(.white.opacity(0.5))
+                    }
+                }.shadow(color: viewModel.accentColor.opacity(0.3), radius: 12, x: 0, y: 6)
                 VStack(alignment: .leading, spacing: 1) {
                     Text(viewModel.trackTitle).font(ThemeTokens.font(size: 15, weight: .bold)).foregroundColor(ThemeTokens.primaryText).lineLimit(1)
                     Text(viewModel.artistName).font(ThemeTokens.font(size: 13, weight: .medium)).foregroundColor(ThemeTokens.secondaryText).lineLimit(1)
@@ -494,4 +625,38 @@ struct MusicPermissionRow: View {
 struct MusicModule: NotchletExtension {
     var id: String = "com.notchlet.music"
     var displayName: String = "Music"; var iconName: String = "music.note"; var isPremium: Bool = false; var productID: String? = nil; var hasRequiredPermissions: Bool { true }; var expandedMinWidth: CGFloat { AppConfig.Music.expandedMinWidth }; var compactView: AnyView { AnyView(MusicCompactView()) }; var expandedView: AnyView { AnyView(MusicExpandedView()) }; var settingsView: AnyView { AnyView(MusicSettingsView()) }
+}
+
+extension NSImage {
+    func dominantColor() -> Color? {
+        guard let tiffData = self.tiffRepresentation,
+              let bitmap = NSBitmapImageRep(data: tiffData),
+              let ciImage = CIImage(bitmapImageRep: bitmap) else { return nil }
+        
+        let filter = CIFilter(name: "CIAreaAverage", parameters: [
+            kCIInputImageKey: ciImage,
+            kCIInputExtentKey: CIVector(cgRect: ciImage.extent)
+        ])
+        
+        guard let outputImage = filter?.outputImage else { return nil }
+        
+        var bitmapOutput = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: NSColorSpace.deviceRGB.cgColorSpace as Any])
+        context.render(outputImage, toBitmap: &bitmapOutput, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+        
+        let r = CGFloat(bitmapOutput[0]) / 255.0
+        let g = CGFloat(bitmapOutput[1]) / 255.0
+        let b = CGFloat(bitmapOutput[2]) / 255.0
+        
+        // Ensure we don't get absolute black/white which looks bad as an accent
+        if (r + g + b) < 0.1 { return Color.gray }
+        if (r + g + b) > 2.9 { return Color.white }
+        
+        // Increase saturation and brightness for a more "vibrant" accent color
+        var h: CGFloat = 0, s: CGFloat = 0, br: CGFloat = 0, a: CGFloat = 0
+        NSColor(red: r, green: g, blue: b, alpha: 1.0).getHue(&h, saturation: &s, brightness: &br, alpha: &a)
+        
+        // We want highly saturated, bright colors for the accent
+        return Color(nsColor: NSColor(hue: h, saturation: max(s, 0.8), brightness: max(br, 0.8), alpha: 1.0))
+    }
 }
