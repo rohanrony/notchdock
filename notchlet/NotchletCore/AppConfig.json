@@ -21,11 +21,11 @@
       "description": "Maximum number of widgets allowed in the Home View."
     },
     "icon_slot_width": {
-      "value": 32.0,
+      "value": 28.0,
       "description": "Width of each icon slot including spacing."
     },
     "bar_padding": {
-      "value": 16.0,
+      "value": 12.0,
       "description": "Horizontal padding at the start and end of the icon bars."
     },
     "notch_breathing_room": {

@@ -35,6 +35,7 @@ struct TimerExpandedView: View {
     @ObservedObject var viewModel = TimerViewModel.shared
     @State private var editMinutes: String = ""
     @State private var editSeconds: String = ""
+    @State private var isEditing: Bool = false
     @FocusState private var focusedField: TimerField?
     
     enum TimerField {
@@ -45,7 +46,7 @@ struct TimerExpandedView: View {
         HStack(alignment: .center, spacing: 32) {
             // Left: Time Input/Display
             HStack(spacing: 0) {
-                if !viewModel.isRunning {
+                if isEditing && !viewModel.isRunning {
                     HStack(spacing: 0) {
                         TextField("00", text: $editMinutes)
                             .textFieldStyle(.plain)
@@ -65,6 +66,12 @@ struct TimerExpandedView: View {
                                     focusedField = .seconds
                                 }
                             }
+                            .onSubmit {
+                                applyChanges()
+                                isEditing = false
+                            }
+                            .autocorrectionDisabled()
+                            .textContentType(.none)
                         
                         Text(":")
                             .font(.system(size: 36, weight: .medium, design: .monospaced))
@@ -84,6 +91,12 @@ struct TimerExpandedView: View {
                                     editSeconds = filtered
                                 }
                             }
+                            .onSubmit {
+                                applyChanges()
+                                isEditing = false
+                            }
+                            .autocorrectionDisabled()
+                            .textContentType(.none)
                     }
                     .onAppear {
                         let parts = viewModel.timeString.split(separator: ":")
@@ -91,11 +104,25 @@ struct TimerExpandedView: View {
                             editMinutes = String(parts[0])
                             editSeconds = String(parts[1])
                         }
+                        focusedField = .minutes
+                    }
+                    .onDisappear {
+                        focusedField = nil
                     }
                 } else {
+                    // Static Time Display (Tap to Edit)
                     Text(viewModel.timeString)
                         .font(.system(size: 36, weight: .medium, design: .monospaced))
                         .foregroundColor(ThemeTokens.primaryText)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if !viewModel.isRunning {
+                                withAnimation {
+                                    isEditing = true
+                                }
+                            }
+                        }
+                        .help(!viewModel.isRunning ? "Click to set time" : "")
                 }
             }
             

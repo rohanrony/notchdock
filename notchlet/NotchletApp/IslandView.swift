@@ -135,7 +135,7 @@ struct IslandView: View {
             Image(systemName: ext.iconName)
                 .font(.system(size: 13, weight: .medium))
                 .foregroundColor(appState.activeExtensionID == ext.id ? ThemeTokens.primaryText : Color.gray)
-                .frame(width: 24, height: 24)
+                .frame(width: 22, height: 22)
                 .background(appState.activeExtensionID == ext.id ? Color.white.opacity(0.15) : Color.clear)
                 .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
         }
@@ -178,7 +178,7 @@ struct IslandView: View {
             // Top Section: Fits exactly in the menu bar height
             HStack(spacing: 0) {
                 // Left side: Module icons
-                HStack(spacing: 8) {
+                HStack(spacing: 6) {
                     ForEach(Array(leftIcons.enumerated()), id: \.element.id) { _, ext in
                         moduleIconButton(ext: ext)
                     }
@@ -192,7 +192,7 @@ struct IslandView: View {
                     .alignmentGuide(.notchCenter) { d in d[HorizontalAlignment.center] }
                 
                 // Right side: Module icons + pin + gear
-                HStack(spacing: 8) {
+                HStack(spacing: 6) {
                     Spacer(minLength: 0) // Push icons to the right
                     
                     // Module icons assigned to the right side
@@ -209,14 +209,14 @@ struct IslandView: View {
                             }
                         }
                     }) {
-                        Image(systemName: appState.isPinned ? "pin.circle.fill" : "pin")
-                            .font(.system(size: appState.isPinned ? 16 : 13, weight: .medium))
+                        Image(systemName: appState.isPinned ? "pin.fill" : "pin")
+                            .font(.system(size: 14, weight: .medium))
                             .foregroundColor(appState.isPinned
-                                ? Color(hue: 0.08, saturation: 0.75, brightness: 1.0)  // warm amber
-                                : Color.gray
+                                ? Color(hue: 0.08, saturation: 0.8, brightness: 1.0)  // warm amber
+                                : ThemeTokens.secondaryText
                             )
-                            .frame(width: 24, height: 24)
-                            .background(appState.isPinned ? Color(hue: 0.08, saturation: 0.75, brightness: 1.0).opacity(0.12) : Color.clear)
+                            .frame(width: 22, height: 22)
+                            .background(appState.isPinned ? Color(hue: 0.08, saturation: 0.8, brightness: 1.0).opacity(0.15) : Color.clear)
                             .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
                     }
                     .buttonStyle(.plain)
@@ -227,8 +227,8 @@ struct IslandView: View {
                     SettingsLink {
                         Image(systemName: "gearshape.fill")
                             .font(.system(size: 13, weight: .medium))
-                            .foregroundColor(Color.gray)
-                            .frame(width: 24, height: 24)
+                            .foregroundColor(ThemeTokens.secondaryText)
+                            .frame(width: 22, height: 22)
                             .background(Color.clear)
                             .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
                     }

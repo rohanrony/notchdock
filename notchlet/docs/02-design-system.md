@@ -35,8 +35,8 @@ Use solid, 3D-inspired surfaces with deep layered drop shadows. The island, expa
 
 ## Interaction & State
 - **Pinning**: A dedicated "Pin" action allows users to lock the notch in its expanded state, overriding the default hover-to-collapse behavior.
-  - **Inactive State**: Thin `pin` icon (SF Symbol), 50% opacity, 45-degree angle.
-  - **Active State**: Solid `pin.circle.fill` icon, upright, tinted with a warm amber accent (`hue: 0.08`), and a subtle 12% opacity background fill.
+  - **Inactive State**: Thin `pin` icon (SF Symbol), secondary text color, upright.
+  - **Active State**: Solid `pin.fill` icon, upright, tinted with a warm amber accent (`hue: 0.08`), and a 15% opacity amber background glow.
 - **Active Module**: Indicated by a soft white background fill (Color.white.opacity(0.15)) behind the top bar icon.
 - **Interactive State**: Use a subtle "Hover Glow" (white at 10% opacity) on glass surfaces.
 
