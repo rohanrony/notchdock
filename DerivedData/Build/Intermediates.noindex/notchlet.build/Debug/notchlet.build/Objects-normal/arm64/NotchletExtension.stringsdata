@@ -7,7 +7,7 @@
         "key": "No specific settings for this module.",
         "location": {
           "startingColumn": 22,
-          "startingLine": 30
+          "startingLine": 36
         }
       },
       {
@@ -15,7 +15,7 @@
         "key": "Access Required",
         "location": {
           "startingColumn": 26,
-          "startingLine": 44
+          "startingLine": 50
         }
       },
       {
@@ -23,7 +23,7 @@
         "key": "Please grant permissions in System Settings to use this module.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 46
+          "startingLine": 52
         }
       }
     ]

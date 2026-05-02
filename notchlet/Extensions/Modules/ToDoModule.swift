@@ -16,15 +16,34 @@ struct ToDoItem: Identifiable, Codable, Equatable {
 class SpeechManager: ObservableObject {
     @Published var isRecording = false
     @Published var transcribedText = ""
+    @Published var micStatus: String = "Checking..."
+    @Published var speechStatus: String = "Checking..."
     
     private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     
+    static let shared = SpeechManager()
+    private init() {
+        checkStatus()
+    }
+    
+    func checkStatus() {
+        let mic = AVCaptureDevice.authorizationStatus(for: .audio)
+        micStatus = mic == .authorized ? "Authorized" : (mic == .denied ? "Denied" : "Not Determined")
+        
+        let speech = SFSpeechRecognizer.authorizationStatus()
+        speechStatus = speech == .authorized ? "Authorized" : (speech == .denied ? "Denied" : "Not Determined")
+    }
+    
     func requestPermissions() {
-        SFSpeechRecognizer.requestAuthorization { status in
-            // Handle status if needed
+        SFSpeechRecognizer.requestAuthorization { [weak self] _ in
+            AVCaptureDevice.requestAccess(for: .audio) { _ in
+                DispatchQueue.main.async {
+                    self?.checkStatus()
+                }
+            }
         }
     }
     
@@ -489,7 +508,15 @@ struct ToDoModule: NotchletExtension {
     }
     
     var settingsView: AnyView {
-        AnyView(
+        AnyView(ToDoSettingsView())
+    }
+}
+
+struct ToDoSettingsView: View {
+    @ObservedObject var speechManager = SpeechManager.shared
+    
+    var body: some View {
+        ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 Text("ToDo List Settings")
                     .font(.title2)
@@ -499,11 +526,91 @@ struct ToDoModule: NotchletExtension {
                     FeatureRow(icon: "hand.draw.fill", title: "Smart Reordering", description: "Drag and drop tasks to organize your day.")
                     FeatureRow(icon: "sparkles", title: "Micro-animations", description: "Satisfying visual feedback for task completion.")
                 }
+                .padding()
+                .background(Color.secondary.opacity(0.05))
+                .cornerRadius(12)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Privacy & Permissions")
+                        .font(ThemeTokens.font(size: 14, weight: .bold))
+                        .foregroundColor(ThemeTokens.secondaryText)
+                    
+                    VStack(spacing: 8) {
+                        PermissionRow(
+                            icon: "mic.fill",
+                            title: "Microphone Access",
+                            description: "Required for voice-to-task dictation.",
+                            status: speechManager.micStatus,
+                            action: { speechManager.requestPermissions() }
+                        )
+                        
+                        PermissionRow(
+                            icon: "waveform",
+                            title: "Speech Recognition",
+                            description: "Required to convert your voice into text.",
+                            status: speechManager.speechStatus,
+                            action: { speechManager.requestPermissions() }
+                        )
+                    }
+                }
+                .padding()
+                .background(Color.secondary.opacity(0.05))
+                .cornerRadius(12)
+                
+                Text("Note: If permissions were previously denied, you must enable them in System Settings > Privacy & Security.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 4)
                 
                 Spacer()
             }
             .padding(32)
-        )
+            .onAppear {
+                speechManager.checkStatus()
+            }
+        }
+    }
+}
+
+struct PermissionRow: View {
+    let icon: String
+    let title: String
+    let description: String
+    let status: String
+    let action: () -> Void
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundColor(ThemeTokens.accentColor)
+                .frame(width: 24)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.system(size: 14, weight: .medium))
+                Text(description).font(.system(size: 11)).foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            if status == "Authorized" {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.green)
+            } else {
+                Button(status == "Denied" ? "Fix" : "Allow") {
+                    if status == "Denied" {
+                        if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Microphone") {
+                            NSWorkspace.shared.open(url)
+                        }
+                    } else {
+                        action()
+                    }
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+            }
+        }
+        .padding(.vertical, 4)
     }
 }
 

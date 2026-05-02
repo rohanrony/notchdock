@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/01-product-overview.md</key>
 		<data>
-		lthzpPGPSWT9x/tjOtvy/S5cbUg=
+		DwPA8KNS4E5iIWTkhdS4MPPSNCk=
 		</data>
 		<key>Resources/01-validation-prompts.md</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Resources/02-design-system.md</key>
 		<data>
-		Rbdh3FMZncw1D9jzRwrd/kKmLgI=
+		1q8hf8AC7E5SpA+U9jJfcO/8mn0=
 		</data>
 		<key>Resources/02-module-addition-guide.md</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Resources/AppConfig.json</key>
 		<data>
-		JCBsFhXmthQBvoctQXDgZFtphXY=
+		ydUH88//azyNocFqVl+CPjDS7hc=
 		</data>
 		<key>Resources/build-and-run.sh</key>
 		<data>
@@ -76,13 +76,17 @@
 		<data>
 		W9TKsdFBGZn2udlsqfbRx1Oa2m0=
 		</data>
+		<key>Resources/music-module-spec.md</key>
+		<data>
+		s2Z9lbVqKo22cdo7Q2v5rbquxwg=
+		</data>
 		<key>Resources/timer-module.md</key>
 		<data>
 		W+fQ9B4sg3wntcJ5iCopgO67RBk=
 		</data>
 		<key>Resources/todo-module-spec.md</key>
 		<data>
-		46bDDNk+JOS37z2xr2AMDOyQc3k=
+		eMkZrH3fOXdC9Tiv8lCGPqEAwMI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -100,10 +104,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			7s61CRgDfxY01t4mt9whJ6j6tUw=
+			MMaAooizoTQ435ru/IkN3GL1ZPo=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"eeceb50918037f1634d6de26b7dc2127a8fab54c"</string>
+			<string>cdhash H"30c680a288b3a13438df9aeefc890ddc62f564fa"</string>
 		</dict>
 		<key>Resources/00-repo-structure.md</key>
 		<dict>
@@ -116,7 +120,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ac4yXS1Q3JddOW1SDepc/b+QiB5w+UE+B9krPUXn2PE=
+			7xQ1bDTUWUYXKr4lHMMdX+7Sc54VL0sekXddwZH83vE=
 			</data>
 		</dict>
 		<key>Resources/01-validation-prompts.md</key>
@@ -137,7 +141,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z1FVRdNzgVhktuAcGUKdWa+sOcvpZiPKLLxnugTYc/M=
+			6K6se7migRhg8kTZ8e6jHePbKLLJXShCwYt07BJsevQ=
 			</data>
 		</dict>
 		<key>Resources/02-module-addition-guide.md</key>
@@ -214,7 +218,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/CIF80wA3sxXhWT12n93O+Q/mQv5ppmu5Th94/ZvCL0=
+			hyel3Xan3WeVasgxjWfpZ5ni2hswykmNJ5pIUqla1hA=
 			</data>
 		</dict>
 		<key>Resources/build-and-run.sh</key>
@@ -231,6 +235,13 @@
 			cdlZszTpr/hfInFcqY3sRu44WSN523wuUT3A+RiVHLU=
 			</data>
 		</dict>
+		<key>Resources/music-module-spec.md</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hWWMgFYOHThbIcszfwmNs9rizOpIZtNTskaDR2s/WOM=
+			</data>
+		</dict>
 		<key>Resources/timer-module.md</key>
 		<dict>
 			<key>hash2</key>
@@ -242,7 +253,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TpD1AIe+a1uJLwL/TFN+ngI7Dhj31bLHDA0pjsWJRS0=
+			yzNsSMIo2hxVWSplbBIzPdlyy3vIDYqyo81Qln7m7s4=
 			</data>
 		</dict>
 	</dict>

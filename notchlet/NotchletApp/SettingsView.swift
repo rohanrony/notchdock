@@ -1,6 +1,4 @@
 import SwiftUI
-import AVFoundation
-import Speech
 import ServiceManagement
 
 struct SettingsView: View {
@@ -12,7 +10,6 @@ struct SettingsView: View {
         case general
         case module(String)
         case extensions
-        case permissions
         case support
         case about
     }
@@ -50,11 +47,6 @@ struct SettingsView: View {
                         }
                     }
                     
-                    Section("Privacy") {
-                        NavigationLink(value: SettingsSection.permissions) {
-                            Label("Permissions", systemImage: "hand.raised.fill")
-                        }
-                    }
                     
                     Section("Marketplace") {
                         NavigationLink(value: SettingsSection.extensions) {
@@ -87,8 +79,6 @@ struct SettingsView: View {
                             }
                         case .extensions:
                             ExtensionsSettingsView()
-                        case .permissions:
-                            PermissionsSettingsView()
                         case .support:
                             SupportSettingsView()
                         case .about:
@@ -113,101 +103,6 @@ struct SettingsView: View {
     }
 }
 
-struct PermissionsSettingsView: View {
-    @State private var micStatus: String = "Checking..."
-    @State private var speechStatus: String = "Checking..."
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            Text("Privacy & Permissions")
-                .font(.title2).bold()
-            
-            VStack(alignment: .leading, spacing: 16) {
-                PermissionRow(
-                    icon: "mic.fill",
-                    title: "Microphone Access",
-                    description: "Required for voice-to-task dictation.",
-                    status: micStatus,
-                    action: requestMic
-                )
-                
-                PermissionRow(
-                    icon: "waveform",
-                    title: "Speech Recognition",
-                    description: "Required to convert your voice into text.",
-                    status: speechStatus,
-                    action: requestSpeech
-                )
-            }
-            
-            Text("Note: If permissions were previously denied, you must enable them in System Settings > Privacy & Security.")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.top, 8)
-            
-            Spacer()
-        }
-        .padding(32)
-        .onAppear(perform: checkAllStatus)
-    }
-    
-    func checkAllStatus() {
-        let mic = AVCaptureDevice.authorizationStatus(for: .audio)
-        micStatus = mic == .authorized ? "Authorized" : (mic == .denied ? "Denied" : "Not Determined")
-        
-        let speech = SFSpeechRecognizer.authorizationStatus()
-        speechStatus = speech == .authorized ? "Authorized" : (speech == .denied ? "Denied" : "Not Determined")
-    }
-    
-    func requestMic() {
-        AVCaptureDevice.requestAccess(for: .audio) { _ in
-            DispatchQueue.main.async { checkAllStatus() }
-        }
-    }
-    
-    func requestSpeech() {
-        SFSpeechRecognizer.requestAuthorization { _ in
-            DispatchQueue.main.async { checkAllStatus() }
-        }
-    }
-}
-
-struct PermissionRow: View {
-    let icon: String
-    let title: String
-    let description: String
-    let status: String
-    let action: () -> Void
-    
-    var body: some View {
-        HStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.title2)
-                .foregroundColor(ThemeTokens.accentColor)
-                .frame(width: 32)
-            
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(.headline)
-                Text(description).font(.subheadline).foregroundColor(.secondary)
-            }
-            
-            Spacer()
-            
-            if status == "Authorized" {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(.green)
-            } else {
-                Button("Request") {
-                    action()
-                }
-                .buttonStyle(.bordered)
-            }
-        }
-        .padding()
-        .background(Color.white.opacity(0.05))
-        .cornerRadius(12)
-    }
-}
 
 // MARK: - General Settings
 struct GeneralSettingsView: View {

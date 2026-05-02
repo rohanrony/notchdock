@@ -7,15 +7,7 @@
         "key": "Modules",
         "location": {
           "startingColumn": 29,
-          "startingLine": 45
-        }
-      },
-      {
-        "comment": "",
-        "key": "Privacy",
-        "location": {
-          "startingColumn": 29,
-          "startingLine": 53
+          "startingLine": 42
         }
       },
       {
@@ -23,7 +15,7 @@
         "key": "Marketplace",
         "location": {
           "startingColumn": 29,
-          "startingLine": 59
+          "startingLine": 51
         }
       },
       {
@@ -31,7 +23,7 @@
         "key": "Help",
         "location": {
           "startingColumn": 29,
-          "startingLine": 65
+          "startingLine": 57
         }
       },
       {
@@ -39,15 +31,7 @@
         "key": "General",
         "location": {
           "startingColumn": 31,
-          "startingLine": 42
-        }
-      },
-      {
-        "comment": "",
-        "key": "Permissions",
-        "location": {
-          "startingColumn": 35,
-          "startingLine": 55
+          "startingLine": 39
         }
       },
       {
@@ -55,7 +39,7 @@
         "key": "Extensions",
         "location": {
           "startingColumn": 35,
-          "startingLine": 61
+          "startingLine": 53
         }
       },
       {
@@ -63,7 +47,7 @@
         "key": "Support",
         "location": {
           "startingColumn": 35,
-          "startingLine": 67
+          "startingLine": 59
         }
       },
       {
@@ -71,7 +55,7 @@
         "key": "About",
         "location": {
           "startingColumn": 35,
-          "startingLine": 70
+          "startingLine": 62
         }
       },
       {
@@ -79,31 +63,7 @@
         "key": "Select a category to get started",
         "location": {
           "startingColumn": 34,
-          "startingLine": 102
-        }
-      },
-      {
-        "comment": "",
-        "key": "Privacy & Permissions",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 122
-        }
-      },
-      {
-        "comment": "",
-        "key": "Note: If permissions were previously denied, you must enable them in System Settings > Privacy & Security.",
-        "location": {
-          "startingColumn": 18,
-          "startingLine": 143
-        }
-      },
-      {
-        "comment": "",
-        "key": "Request",
-        "location": {
-          "startingColumn": 24,
-          "startingLine": 200
+          "startingLine": 92
         }
       },
       {
@@ -111,7 +71,7 @@
         "key": "General",
         "location": {
           "startingColumn": 22,
-          "startingLine": 220
+          "startingLine": 115
         }
       },
       {
@@ -119,7 +79,7 @@
         "key": "Modules",
         "location": {
           "startingColumn": 26,
-          "startingLine": 226
+          "startingLine": 121
         }
       },
       {
@@ -127,7 +87,7 @@
         "key": "Enable or disable modules in the notch.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 228
+          "startingLine": 123
         }
       },
       {
@@ -135,7 +95,7 @@
         "key": "Module Order",
         "location": {
           "startingColumn": 26,
-          "startingLine": 266
+          "startingLine": 161
         }
       },
       {
@@ -143,7 +103,7 @@
         "key": "Drag to reorder how they appear in the switcher.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 268
+          "startingLine": 163
         }
       },
       {
@@ -151,7 +111,7 @@
         "key": "Home View",
         "location": {
           "startingColumn": 26,
-          "startingLine": 317
+          "startingLine": 212
         }
       },
       {
@@ -159,7 +119,7 @@
         "key": "Select widgets for the Home View.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 319
+          "startingLine": 214
         }
       },
       {
@@ -167,7 +127,7 @@
         "key": "Limit of %lld widgets reached.",
         "location": {
           "startingColumn": 34,
-          "startingLine": 342
+          "startingLine": 237
         }
       },
       {
@@ -175,7 +135,7 @@
         "key": "System",
         "location": {
           "startingColumn": 26,
-          "startingLine": 353
+          "startingLine": 248
         }
       },
       {
@@ -183,7 +143,7 @@
         "key": "Launch at login",
         "location": {
           "startingColumn": 28,
-          "startingLine": 355
+          "startingLine": 250
         }
       },
       {
@@ -191,7 +151,7 @@
         "key": "About",
         "location": {
           "startingColumn": 22,
-          "startingLine": 385
+          "startingLine": 280
         }
       },
       {
@@ -199,7 +159,7 @@
         "key": "Notchlet",
         "location": {
           "startingColumn": 26,
-          "startingLine": 396
+          "startingLine": 291
         }
       },
       {
@@ -207,7 +167,7 @@
         "key": "Version %@ (%@)",
         "location": {
           "startingColumn": 26,
-          "startingLine": 400
+          "startingLine": 295
         }
       },
       {
@@ -215,7 +175,7 @@
         "key": "Created by",
         "location": {
           "startingColumn": 26,
-          "startingLine": 405
+          "startingLine": 300
         }
       },
       {
@@ -223,7 +183,7 @@
         "key": "Rohan Roy",
         "location": {
           "startingColumn": 30,
-          "startingLine": 409
+          "startingLine": 304
         }
       },
       {
@@ -231,7 +191,7 @@
         "key": "rr.viberdev@gmail.com",
         "location": {
           "startingColumn": 31,
-          "startingLine": 418
+          "startingLine": 313
         }
       },
       {
@@ -239,7 +199,7 @@
         "key": "Check for Updates",
         "location": {
           "startingColumn": 28,
-          "startingLine": 427
+          "startingLine": 322
         }
       },
       {
@@ -247,7 +207,7 @@
         "key": "Website",
         "location": {
           "startingColumn": 28,
-          "startingLine": 430
+          "startingLine": 325
         }
       },
       {
@@ -255,7 +215,7 @@
         "key": "© 2026 Notchlet Team. All rights reserved.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 443
+          "startingLine": 338
         }
       },
       {
@@ -263,7 +223,7 @@
         "key": "•",
         "location": {
           "startingColumn": 30,
-          "startingLine": 437
+          "startingLine": 332
         }
       },
       {
@@ -271,7 +231,7 @@
         "key": "Privacy Policy",
         "location": {
           "startingColumn": 32,
-          "startingLine": 436
+          "startingLine": 331
         }
       },
       {
@@ -279,7 +239,7 @@
         "key": "Terms of Service",
         "location": {
           "startingColumn": 32,
-          "startingLine": 438
+          "startingLine": 333
         }
       },
       {
@@ -287,7 +247,7 @@
         "key": "Support",
         "location": {
           "startingColumn": 22,
-          "startingLine": 460
+          "startingLine": 355
         }
       },
       {
@@ -295,7 +255,7 @@
         "key": "Feedback",
         "location": {
           "startingColumn": 42,
-          "startingLine": 466
+          "startingLine": 361
         }
       },
       {
@@ -303,7 +263,7 @@
         "key": "Request a Feature",
         "location": {
           "startingColumn": 32,
-          "startingLine": 467
+          "startingLine": 362
         }
       },
       {
@@ -311,7 +271,7 @@
         "key": "Report a Bug",
         "location": {
           "startingColumn": 32,
-          "startingLine": 468
+          "startingLine": 363
         }
       },
       {
@@ -319,7 +279,7 @@
         "key": "Contact Support",
         "location": {
           "startingColumn": 32,
-          "startingLine": 469
+          "startingLine": 364
         }
       },
       {
@@ -327,7 +287,7 @@
         "key": "Extensions",
         "location": {
           "startingColumn": 26,
-          "startingLine": 501
+          "startingLine": 396
         }
       },
       {
@@ -335,7 +295,7 @@
         "key": "Premium Extensions",
         "location": {
           "startingColumn": 30,
-          "startingLine": 512
+          "startingLine": 407
         }
       },
       {
@@ -343,7 +303,7 @@
         "key": "(Coming soon...)",
         "location": {
           "startingColumn": 30,
-          "startingLine": 515
+          "startingLine": 410
         }
       },
       {
@@ -351,7 +311,7 @@
         "key": "New modules like Focus Mode, System Monitor, and AI enhancements are currently in development.",
         "location": {
           "startingColumn": 30,
-          "startingLine": 519
+          "startingLine": 414
         }
       },
       {
@@ -359,7 +319,7 @@
         "key": "Browse and purchase extensions on our website.",
         "location": {
           "startingColumn": 22,
-          "startingLine": 534
+          "startingLine": 429
         }
       },
       {
@@ -367,7 +327,7 @@
         "key": "Visit Website",
         "location": {
           "startingColumn": 24,
-          "startingLine": 538
+          "startingLine": 433
         }
       }
     ]

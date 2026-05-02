@@ -4,10 +4,26 @@
     "Localizable": [
       {
         "comment": "",
+        "key": "Click to set time",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 76,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
         "key": ":",
         "location": {
           "startingColumn": 30,
-          "startingLine": 69
+          "startingLine": 76
         }
       },
       {
@@ -15,7 +31,7 @@
         "key": "00",
         "location": {
           "startingColumn": 35,
-          "startingLine": 50
+          "startingLine": 51
         }
       },
       {
@@ -23,7 +39,7 @@
         "key": "00",
         "location": {
           "startingColumn": 35,
-          "startingLine": 72
+          "startingLine": 79
         }
       },
       {
@@ -31,7 +47,7 @@
         "key": "Timer Settings",
         "location": {
           "startingColumn": 22,
-          "startingLine": 171
+          "startingLine": 201
         }
       },
       {
@@ -39,7 +55,7 @@
         "key": "Default Duration",
         "location": {
           "startingColumn": 26,
-          "startingLine": 176
+          "startingLine": 206
         }
       },
       {
@@ -47,7 +63,7 @@
         "key": "This duration will be used when you reset the timer.",
         "location": {
           "startingColumn": 26,
-          "startingLine": 190
+          "startingLine": 220
         }
       },
       {
@@ -55,7 +71,7 @@
         "key": "%lld min",
         "location": {
           "startingColumn": 30,
-          "startingLine": 185
+          "startingLine": 215
         }
       },
       {
@@ -63,7 +79,7 @@
         "key": "Controls",
         "location": {
           "startingColumn": 26,
-          "startingLine": 199
+          "startingLine": 229
         }
       },
       {
@@ -71,7 +87,7 @@
         "key": "Pause",
         "location": {
           "startingColumn": 57,
-          "startingLine": 204
+          "startingLine": 234
         }
       },
       {
@@ -79,7 +95,7 @@
         "key": "Start",
         "location": {
           "startingColumn": 67,
-          "startingLine": 204
+          "startingLine": 234
         }
       },
       {
@@ -87,7 +103,7 @@
         "key": "Reset",
         "location": {
           "startingColumn": 35,
-          "startingLine": 210
+          "startingLine": 240
         }
       }
     ]

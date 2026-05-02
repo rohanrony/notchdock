@@ -1,66 +1,48 @@
 # ToDo List Module Specification
 
 ## Overview
-The ToDo List module for Notchlet provides a lightweight, accessible way for users to manage tasks directly from the menu bar "island". It follows the core design language of Notchlet, utilizing the olive accent color and premium animations.
+The ToDo module provides a lightweight, premium task manager directly from the macOS menu bar island. It follows Notchlet's core design language — compact, content-driven sizing, smooth micro-animations, and `ThemeTokens` for visual consistency.
+
+> **Canonical spec**: See `/docs/todo-module-spec.md` for the full, authoritative specification.
 
 ## Core Features
-1. **Interactive Task List**: A list of tasks that can be checked/unchecked.
-2. **In-place Task Creation**: Quickly add new tasks without leaving the island.
-3. **Persistence**: Completed tasks remain visible until explicitly deleted.
-4. **Task Management**: Edit existing tasks and delete them via a hover-action.
+1. **Interactive Task List**: Tasks can be checked/unchecked with animated feedback.
+2. **In-place Task Creation**: Add tasks via the inline input row at the bottom of the list.
+3. **Persistence**: Tasks survive app restarts via `UserDefaults` JSON encoding.
+4. **Task Management**: Tap to edit inline; hover to reveal delete button; drag to reorder.
 
 ## UI Components & Design
 
 ### 1. Compact View
-- **Icon**: `checklist` (SF Symbol).
-- **Behavior**: Displays the current task count or a simplified indicator.
+- **Icon**: `checklist` (SF Symbol), 13pt semibold.
+- **Badge**: Animated capsule (`ThemeTokens.accentColor`) showing remaining task count.
 
 ### 2. Expanded View
-The expanded view displays the full list of ToDos.
 
-#### Task Item Row
-- **Checkbox (Left)**: 
-    - Unchecked: A circular outline.
-    - Checked: An olive-filled circle (`ThemeTokens.accentColor`) with a white tick (`checkmark`) inside.
-- **Task Note (Center)**: 
-    - Displays the text of the ToDo.
-    - Click to enter edit mode.
-- **Delete Action (Right)**:
-    - Visible only on hover.
-    - Icon: `trash` (SF Symbol).
-    - Color: System red or subtle gray.
+#### Task Item Row (`ToDoRow`)
+- **Checkbox (Left)**: Circle outline → filled circle + `checkmark` on completion. Scale pulse on tap.
+- **Task Text (Center)**: 14pt regular, multi-line. Faded + strikethrough when complete.
+- **Hover Actions (Right)**: `xmark.circle.fill` delete button + `line.3.horizontal` reorder handle.
+- **Row Padding**: 3pt vertical, 6pt leading, 8pt trailing.
 
-#### New Task Creation
-- **Trigger**: 
-    - Pressing "Enter" while focus is on the list.
-    - Clicking a `+` button which appears in place of the checkbox below the last existing task.
-- **Input**: Inline text field that appears within the list structure.
+#### Add Task Row (`AddToDoRow`)
+- `plus.circle` icon + plain `TextField`. Arrow submit button appears when text is non-empty.
+- **Row Padding**: 5pt vertical, 6pt leading.
 
-## Detailed Behavior
+#### Reorder Behavior
+- Live reorder via `ToDoDropDelegate.dropEntered`.
+- Dragged row is hidden (`opacity: 0`) to prevent ghost-duplicate artifact.
 
-### Checking/Unchecking
-- Clicking the circle toggles the task's completion state.
-- Completion state is visually represented by the olive circle and white tick.
-- Checked tasks are NOT automatically removed or hidden; they persist until deleted.
-
-### Adding a ToDo
-- A dedicated "Add New" row exists at the bottom of the list.
-- It features a `+` icon where the checkbox usually is.
-- Clicking the `+` or pressing Enter in an empty row focuses the text input.
-
-### Deleting a ToDo
-- On hover of a task row, a delete icon appears on the far right.
-- Clicking delete removes the task from the model immediately with a slide-out animation.
-
-### Editing a ToDo
-- Clicking on the text of an existing task switches it to an editable `TextField`.
-- Pressing "Enter" or clicking outside saves the changes.
+#### Layout
+- `VStack(spacing: 1)` inside `ScrollView`.
+- **Width**: Content-driven, `minWidth: 280` — no fixed width.
+- **Height**: `min(400, 30 + itemCount × 32 + 60)`, animated on count change.
 
 ## Data Persistence
-- Tasks are stored locally (likely via `UserDefaults` or a dedicated JSON file in the app support directory) to ensure they survive app restarts.
+- `UserDefaults`, key: `"com.notchlet.todo.items"`, JSON-encoded `[ToDoItem]`.
 
 ## Technical Requirements
-- **Protocol**: Implements `NotchletExtension`.
-- **View**: SwiftUI-based implementation.
-- **Styling**: Uses `ThemeTokens` for consistency.
-- **Animations**: Uses `ThemeTokens.Spring.standard` for list updates.
+- **Protocol**: `NotchletExtension`
+- **ViewModel**: `ToDoViewModel.shared` (singleton, `ObservableObject`)
+- **Styling**: `ThemeTokens` throughout
+- **Animations**: `ThemeTokens.Spring.standard` for list mutations

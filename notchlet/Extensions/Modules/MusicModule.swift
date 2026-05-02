@@ -655,30 +655,118 @@ struct MusicSettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 Text("Music Settings").font(.title2).bold()
+                
                 VStack(alignment: .leading, spacing: 16) {
-                    Toggle(isOn: $viewModel.showCompact) { VStack(alignment: .leading, spacing: 4) { Text("Show in Compact Mode").font(ThemeTokens.font(size: 15, weight: .semibold)); Text("Show thumbnail and visualizer when minimized.").font(ThemeTokens.font(size: 13)).foregroundColor(ThemeTokens.secondaryText) } }.toggleStyle(.switch)
-                }.padding().background(ThemeTokens.secondaryText.opacity(0.05)).cornerRadius(12)
+                    Toggle(isOn: $viewModel.showCompact) { 
+                        VStack(alignment: .leading, spacing: 4) { 
+                            Text("Show in Compact Mode").font(ThemeTokens.font(size: 15, weight: .semibold))
+                            Text("Show thumbnail and visualizer when minimized.").font(ThemeTokens.font(size: 13)).foregroundColor(ThemeTokens.secondaryText) 
+                        } 
+                    }.toggleStyle(.switch)
+                }
+                .padding()
+                .background(ThemeTokens.secondaryText.opacity(0.05))
+                .cornerRadius(12)
+                
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Permissions & Sources").font(ThemeTokens.font(size: 14, weight: .bold)).foregroundColor(ThemeTokens.secondaryText)
-                    VStack(spacing: 8) {
-                        if viewModel.musicInstalled && viewModel.musicAuth != .authorized { MusicPermissionRow(name: "Apple Music", icon: "music.note", action: { viewModel.requestPermission(for: .music) }) }
-                        if viewModel.spotifyInstalled && viewModel.spotifyAuth != .authorized { MusicPermissionRow(name: "Spotify", icon: "play.circle.fill", action: { viewModel.requestPermission(for: .spotify) }) }
-                        if viewModel.anyAuthConfirmed && viewModel.hasPermission { HStack { Image(systemName: "checkmark.circle.fill").foregroundColor(.green); Text("Sources authorized").font(ThemeTokens.font(size: 13)); Spacer() }.padding(.top, 4) }
+                    VStack(spacing: 0) {
+                        if viewModel.musicInstalled {
+                            MusicPermissionRow(
+                                name: "Apple Music",
+                                icon: "music.note",
+                                status: viewModel.musicAuth,
+                                action: { viewModel.requestPermission(for: .music) }
+                            )
+                            if viewModel.spotifyInstalled { Divider().padding(.vertical, 8) }
+                        }
+                        
+                        if viewModel.spotifyInstalled {
+                            MusicPermissionRow(
+                                name: "Spotify",
+                                icon: "play.circle.fill",
+                                status: viewModel.spotifyAuth,
+                                action: { viewModel.requestPermission(for: .spotify) }
+                            )
+                        }
+                        
+                        if !viewModel.musicInstalled && !viewModel.spotifyInstalled {
+                            Text("No supported music apps detected.")
+                                .font(ThemeTokens.font(size: 13))
+                                .foregroundColor(ThemeTokens.secondaryText)
+                                .padding(.vertical, 8)
+                        }
                     }
-                }.padding().background(ThemeTokens.secondaryText.opacity(0.05)).cornerRadius(12)
-            }.padding(24)
+                }
+                .padding()
+                .background(ThemeTokens.secondaryText.opacity(0.05))
+                .cornerRadius(12)
+                
+                Text("Note: Automation permissions are required to control playback and fetch track info.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 4)
+            }
+            .padding(24)
         }
     }
 }
 
 struct MusicPermissionRow: View {
-    let name: String; let icon: String; let action: () -> Void
+    let name: String
+    let icon: String
+    let status: MusicManager.AuthStatus
+    let action: () -> Void
+    
     var body: some View {
         HStack {
-            Image(systemName: icon).font(.system(size: 14)).foregroundColor(ThemeTokens.secondaryText).frame(width: 20)
-            Text(name).font(ThemeTokens.font(size: 14, weight: .medium)); Spacer()
-            Button(action: action) { Text("Allow Access").font(ThemeTokens.font(size: 11, weight: .bold)).padding(.horizontal, 10).padding(.vertical, 4).background(ThemeTokens.accentColor).foregroundColor(.white).cornerRadius(6) }.buttonStyle(.plain)
-        }.padding(.vertical, 4)
+            Image(systemName: icon)
+                .font(.system(size: 14))
+                .foregroundColor(ThemeTokens.secondaryText)
+                .frame(width: 20)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(name).font(ThemeTokens.font(size: 14, weight: .medium))
+                Text(statusText)
+                    .font(ThemeTokens.font(size: 11))
+                    .foregroundColor(statusColor)
+            }
+            
+            Spacer()
+            
+            if status != .authorized {
+                Button(action: action) {
+                    Text(status == .denied ? "Fix in Settings" : "Allow Access")
+                        .font(ThemeTokens.font(size: 11, weight: .bold))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(ThemeTokens.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(6)
+                }
+                .buttonStyle(.plain)
+            } else {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.green)
+            }
+        }
+        .padding(.vertical, 4)
+    }
+    
+    var statusText: String {
+        switch status {
+        case .authorized: return "Authorized"
+        case .denied: return "Access Denied"
+        case .unknown: return "Access Not Requested"
+        }
+    }
+    
+    var statusColor: Color {
+        switch status {
+        case .authorized: return .green.opacity(0.8)
+        case .denied: return .red.opacity(0.8)
+        case .unknown: return ThemeTokens.secondaryText.opacity(0.6)
+        }
     }
 }
 
