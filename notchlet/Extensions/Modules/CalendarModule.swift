@@ -327,6 +327,8 @@ struct CalendarSettingsView: View {
                     }
                     .padding(16)
                 }
+                
+                privacyNote
 
                 if viewModel.isAuthorized {
                     // Calendar selection
@@ -453,6 +455,25 @@ struct CalendarSettingsView: View {
         default:
             return "Required to show your upcoming events."
         }
+    }
+
+    private var privacyNote: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 6) {
+                Image(systemName: "lock.shield.fill")
+                    .font(.system(size: 10))
+                Text("Your data is secure and stays on your device.")
+                    .font(.system(size: 11, weight: .medium, design: .rounded))
+            }
+            .foregroundColor(ThemeTokens.accentColor)
+            
+            Text("Notchlet is fully local and never connects to any server. We request calendar access solely to display your schedule in the notch; your events are read directly from the system database and are never stored or transmitted.")
+                .font(.system(size: 11, weight: .regular, design: .rounded))
+                .foregroundColor(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineSpacing(2)
+        }
+        .padding(.horizontal, 4)
     }
 
     @ViewBuilder

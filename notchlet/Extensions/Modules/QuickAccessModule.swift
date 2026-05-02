@@ -285,11 +285,23 @@ struct QuickAccessModule: NotchletExtension {
                         }
                     }
                     
-                    Text("Tip: Click 'Add Quick Item' to store frequently used snippets.")
-                        .font(.system(size: 11))
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "lock.shield.fill")
+                            .font(.system(size: 10))
+                        Text("Strictly Local. Strictly Private.")
+                            .font(.system(size: 11, weight: .medium, design: .rounded))
+                    }
+                    .foregroundColor(ThemeTokens.accentColor)
+                    
+                    Text("Everything you save in Quick Access stays in your local Keychain and application sandbox. Notchlet never syncs or transmits your snippets to any external server.")
+                        .font(.system(size: 11, weight: .regular, design: .rounded))
                         .foregroundColor(.secondary)
-                        .padding(.horizontal, 4)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineSpacing(2)
                 }
+                .padding(.horizontal, 4)
+            }
                 .padding(.horizontal, 32)
                 .padding(.top, 8)
                 .padding(.bottom, 32)

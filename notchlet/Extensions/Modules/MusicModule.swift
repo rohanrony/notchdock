@@ -699,10 +699,22 @@ struct MusicSettingsView: View {
                     }
                 }
                 
-                Text("Note: Automation permissions are required to control playback and fetch track info.")
-                    .font(.system(size: 11))
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal, 4)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "lock.shield.fill")
+                            .font(.system(size: 10))
+                        Text("Notchlet is fully local. Your data never leaves your Mac.")
+                            .font(.system(size: 11, weight: .medium, design: .rounded))
+                    }
+                    .foregroundColor(ThemeTokens.accentColor)
+                    
+                    Text("We request automation access only to bridge your music players with the notch. This allows us to fetch track details and provide playback controls without any internet connection or server-side processing.")
+                        .font(.system(size: 11, weight: .regular, design: .rounded))
+                        .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineSpacing(2)
+                }
+                .padding(.horizontal, 4)
             }
             .padding(.horizontal, 32)
             .padding(.top, 8)

@@ -450,10 +450,22 @@ struct ToDoSettingsView: View {
                     }
                 }
                 
-                Text("Tip: Hold and drag a task to reorder it in your list.")
-                    .font(.system(size: 11))
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal, 4)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "lock.shield.fill")
+                            .font(.system(size: 10))
+                        Text("Secure, local-first storage.")
+                            .font(.system(size: 11, weight: .medium, design: .rounded))
+                    }
+                    .foregroundColor(ThemeTokens.accentColor)
+                    
+                    Text("Your tasks are stored exclusively on your Mac using encrypted local storage. Notchlet does not use any cloud servers, ensuring your data remains private and accessible only to you.")
+                        .font(.system(size: 11, weight: .regular, design: .rounded))
+                        .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineSpacing(2)
+                }
+                .padding(.horizontal, 4)
             }
             .padding(.horizontal, 32)
             .padding(.top, 8)

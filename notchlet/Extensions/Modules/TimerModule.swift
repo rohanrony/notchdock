@@ -242,10 +242,22 @@ struct TimerSettingsView: View {
                     .padding(16)
                 }
                 
-                Text("The default duration is applied when you reset or create a new timer.")
-                    .font(.system(size: 11))
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal, 4)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "lock.shield.fill")
+                            .font(.system(size: 10))
+                        Text("Privacy first.")
+                            .font(.system(size: 11, weight: .medium, design: .rounded))
+                    }
+                    .foregroundColor(ThemeTokens.accentColor)
+                    
+                    Text("Your timer settings and history are stored locally. Notchlet operates entirely on your Mac and does not transmit any activity data or usage patterns to external servers.")
+                        .font(.system(size: 11, weight: .regular, design: .rounded))
+                        .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineSpacing(2)
+                }
+                .padding(.horizontal, 4)
             }
             .padding(.horizontal, 32)
             .padding(.top, 8)
