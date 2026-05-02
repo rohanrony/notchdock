@@ -470,16 +470,9 @@ struct MusicSettingsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Permissions & Sources").font(ThemeTokens.font(size: 14, weight: .bold)).foregroundColor(ThemeTokens.secondaryText)
                     VStack(spacing: 8) {
-                        if viewModel.musicInstalled {
-                            MusicPermissionRow(name: "Apple Music", icon: "music.note", isAuthorized: viewModel.musicAuth == .authorized, action: { viewModel.requestPermission(for: .music) })
-                        }
-                        if viewModel.spotifyInstalled {
-                            MusicPermissionRow(name: "Spotify", icon: "play.circle.fill", isAuthorized: viewModel.spotifyAuth == .authorized, action: { viewModel.requestPermission(for: .spotify) })
-                        }
-                        
-                        if !viewModel.musicInstalled && !viewModel.spotifyInstalled {
-                            Text("No supported music players detected.").font(ThemeTokens.font(size: 13)).foregroundColor(ThemeTokens.secondaryText).padding(.vertical, 4)
-                        }
+                        if viewModel.musicInstalled && viewModel.musicAuth != .authorized { MusicPermissionRow(name: "Apple Music", icon: "music.note", action: { viewModel.requestPermission(for: .music) }) }
+                        if viewModel.spotifyInstalled && viewModel.spotifyAuth != .authorized { MusicPermissionRow(name: "Spotify", icon: "play.circle.fill", action: { viewModel.requestPermission(for: .spotify) }) }
+                        if viewModel.anyAuthConfirmed && viewModel.hasPermission { HStack { Image(systemName: "checkmark.circle.fill").foregroundColor(.green); Text("Sources authorized").font(ThemeTokens.font(size: 13)); Spacer() }.padding(.top, 4) }
                     }
                 }.padding().background(ThemeTokens.secondaryText.opacity(0.05)).cornerRadius(12)
             }.padding(24)
@@ -488,22 +481,12 @@ struct MusicSettingsView: View {
 }
 
 struct MusicPermissionRow: View {
-    let name: String; let icon: String; let isAuthorized: Bool; let action: () -> Void
+    let name: String; let icon: String; let action: () -> Void
     var body: some View {
         HStack {
             Image(systemName: icon).font(.system(size: 14)).foregroundColor(ThemeTokens.secondaryText).frame(width: 20)
             Text(name).font(ThemeTokens.font(size: 14, weight: .medium)); Spacer()
-            
-            if isAuthorized {
-                HStack(spacing: 4) {
-                    Image(systemName: "checkmark.circle.fill").foregroundColor(.green).font(.system(size: 12))
-                    Text("Authorized").font(ThemeTokens.font(size: 11, weight: .bold)).foregroundColor(.green)
-                }.padding(.horizontal, 10).padding(.vertical, 4)
-            } else {
-                Button(action: action) {
-                    Text("Allow Access").font(ThemeTokens.font(size: 11, weight: .bold)).padding(.horizontal, 10).padding(.vertical, 4).background(ThemeTokens.accentColor).foregroundColor(.white).cornerRadius(6)
-                }.buttonStyle(.plain)
-            }
+            Button(action: action) { Text("Allow Access").font(ThemeTokens.font(size: 11, weight: .bold)).padding(.horizontal, 10).padding(.vertical, 4).background(ThemeTokens.accentColor).foregroundColor(.white).cornerRadius(6) }.buttonStyle(.plain)
         }.padding(.vertical, 4)
     }
 }
