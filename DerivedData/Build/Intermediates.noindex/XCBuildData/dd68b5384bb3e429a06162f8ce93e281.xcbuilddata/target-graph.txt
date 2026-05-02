@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'NotchDock' in project 'NotchDock' (no dependencies)

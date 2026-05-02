@@ -1,0 +1,54 @@
+# Xcode
+#
+# gitignore contributors: scroll below to merge your proposed changes
+
+## Apple Developer Tooling
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# .build/
+
+# Package.resolved
+# gitignore contributors: 
+# https://developer.apple.com/documentation/xcode/managing_dependencies_with_swift_package_manager#3583710
+# Package.resolved
+
+# Xcode User Settings
+#
+# These should usually be ignored as they are machine-specific.
+# If you want to share workspace settings, check in SharedData instead.
+xcuserdata/
+
+# macOS
+#
+.DS_Store
+*.swp
+*~
+.AppleDouble
+.LSOverride
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
