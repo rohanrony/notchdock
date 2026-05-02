@@ -1,4 +1,144 @@
 import SwiftUI
+import Combine
+import AppKit
+
+struct TimerCompactView: View {
+    @ObservedObject var viewModel = TimerViewModel.shared
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            // LEFT SIDE: Timer Icon
+            Image(systemName: "timer")
+                .font(.system(size: 13, weight: .medium))
+                .foregroundColor(ThemeTokens.primaryText)
+                .padding(.trailing, 4) // Very close to notch
+            
+            // CENTER: Hardware Notch Spacer
+            Spacer()
+                .frame(width: 190)
+                .alignmentGuide(.notchCenter) { d in d[HorizontalAlignment.center] }
+            
+            // RIGHT SIDE: Timer Text (if running)
+            if viewModel.isRunning {
+                Text(viewModel.timeString)
+                    .font(.system(size: 13, weight: .medium, design: .monospaced))
+                    .foregroundColor(ThemeTokens.primaryText)
+                    .padding(.leading, 4) // Very close to notch
+            }
+        }
+        .padding(.horizontal, 10) // Minimal outer padding
+    }
+}
+
+
+struct TimerExpandedView: View {
+    @ObservedObject var viewModel = TimerViewModel.shared
+    @State private var editMinutes: String = ""
+    @State private var editSeconds: String = ""
+    @FocusState private var focusedField: TimerField?
+    
+    enum TimerField {
+        case minutes, seconds
+    }
+    
+    var body: some View {
+        HStack(alignment: .center, spacing: 48) {
+            // Left: Time Input/Display
+            HStack(spacing: 0) {
+                if !viewModel.isRunning {
+                    HStack(spacing: 0) {
+                        TextField("00", text: $editMinutes)
+                            .textFieldStyle(.plain)
+                            .font(.system(size: 36, weight: .medium, design: .monospaced))
+                            .frame(width: 45)
+                            .multilineTextAlignment(.center)
+                            .focused($focusedField, equals: .minutes)
+                            .tint(ThemeTokens.secondaryText)
+                            .onChange(of: editMinutes) { newValue in
+                                let filtered = newValue.filter { $0.isNumber }
+                                if filtered.count > 2 {
+                                    editMinutes = String(filtered.prefix(2))
+                                } else {
+                                    editMinutes = filtered
+                                }
+                                if editMinutes.count == 2 {
+                                    focusedField = .seconds
+                                }
+                            }
+                        
+                        Text(":")
+                            .font(.system(size: 36, weight: .medium, design: .monospaced))
+                        
+                        TextField("00", text: $editSeconds)
+                            .textFieldStyle(.plain)
+                            .font(.system(size: 36, weight: .medium, design: .monospaced))
+                            .frame(width: 45)
+                            .multilineTextAlignment(.center)
+                            .focused($focusedField, equals: .seconds)
+                            .tint(ThemeTokens.secondaryText)
+                            .onChange(of: editSeconds) { newValue in
+                                let filtered = newValue.filter { $0.isNumber }
+                                if filtered.count > 2 {
+                                    editSeconds = String(filtered.prefix(2))
+                                } else {
+                                    editSeconds = filtered
+                                }
+                            }
+                    }
+                    .onAppear {
+                        let parts = viewModel.timeString.split(separator: ":")
+                        if parts.count == 2 {
+                            editMinutes = String(parts[0])
+                            editSeconds = String(parts[1])
+                        }
+                    }
+                } else {
+                    Text(viewModel.timeString)
+                        .font(.system(size: 36, weight: .medium, design: .monospaced))
+                        .foregroundColor(ThemeTokens.primaryText)
+                }
+            }
+            
+            // Right: Controls
+            HStack(spacing: 16) {
+                Button(action: {
+                    if !viewModel.isRunning {
+                        applyChanges()
+                    }
+                    viewModel.toggle()
+                }) {
+                    Image(systemName: viewModel.isRunning ? "pause.circle.fill" : "play.circle.fill")
+                        .font(.system(size: 28))
+                        .foregroundColor(ThemeTokens.primaryText)
+                }
+                .buttonStyle(.plain)
+                
+                Button(action: {
+                    viewModel.reset()
+                    let parts = viewModel.timeString.split(separator: ":")
+                    if parts.count == 2 {
+                        editMinutes = String(parts[0])
+                        editSeconds = String(parts[1])
+                    }
+                }) {
+                    Image(systemName: "arrow.clockwise.circle.fill")
+                        .font(.system(size: 28))
+                        .foregroundColor(ThemeTokens.secondaryText)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 24)
+        .padding(.bottom, 20)
+        .frame(minWidth: 280) // Compact but enough for clarity
+    }
+    
+    private func applyChanges() {
+        let mins = editMinutes.isEmpty ? "00" : (editMinutes.count == 1 ? "0\(editMinutes)" : editMinutes)
+        let secs = editSeconds.isEmpty ? "00" : (editSeconds.count == 1 ? "0\(editSeconds)" : editSeconds)
+        viewModel.setTime(from: "\(mins):\(secs)")
+    }
+}
 
 struct TimerModule: NotchletExtension {
     var id: String = "com.notchlet.timer"
@@ -9,43 +149,106 @@ struct TimerModule: NotchletExtension {
     var productID: String? = nil
     var hasRequiredPermissions: Bool = true
     
-    // Using a structural wrapper to maintain the AnyView return type
-    // while keeping state in Phase 2
     var compactView: AnyView {
-        AnyView(
-            HStack(spacing: 6) {
-                Image(systemName: iconName)
-                Text("25:00").font(.system(.body, design: .monospaced))
-            }
-        )
+        AnyView(TimerCompactView())
     }
     
     var expandedView: AnyView {
-        AnyView(
-            HStack(alignment: .center) {
-                Text("25:00")
-                    .font(.system(size: 36, weight: .medium, design: .monospaced))
-                
-                Spacer()
-                
-                HStack(spacing: 16) {
-                    Button(action: {}) {
-                        Image(systemName: "play.circle.fill")
-                            .font(.system(size: 28))
-                            .foregroundColor(ThemeTokens.primaryText)
-                    }
-                    .buttonStyle(.plain)
-                    
-                    Button(action: {}) {
-                        Image(systemName: "arrow.clockwise.circle.fill")
-                            .font(.system(size: 28))
-                            .foregroundColor(ThemeTokens.secondaryText)
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
-        )
+        AnyView(TimerExpandedView())
     }
 }
+
+// MARK: - ViewModel
+
+class TimerViewModel: ObservableObject {
+    static let shared = TimerViewModel()
+    
+    @Published var timeRemaining: TimeInterval = 25 * 60 // 25 minutes
+    @Published var isRunning: Bool = false
+    
+    private var timer: Foundation.Timer?
+    private var defaultTime: TimeInterval = 25 * 60
+    
+    func setTime(from string: String) {
+        guard !isRunning else { return }
+        let components = string.split(separator: ":")
+        if components.count == 2,
+           let mins = TimeInterval(components[0]),
+           let secs = TimeInterval(components[1]) {
+            let newTime = mins * 60 + secs
+            if newTime > 0 {
+                defaultTime = newTime
+                timeRemaining = newTime
+            }
+        } else if components.count == 1,
+                  let mins = TimeInterval(components[0]) {
+            let newTime = mins * 60
+            if newTime > 0 {
+                defaultTime = newTime
+                timeRemaining = newTime
+            }
+        }
+    }
+    
+    var timeString: String {
+        let minutes = Int(timeRemaining) / 60
+        let seconds = Int(timeRemaining) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    var compactTimeString: String {
+        let minutes = Int(timeRemaining) / 60
+        return "\(minutes)m"
+    }
+    
+    private init() {} // Singleton
+    
+    func toggle() {
+        if isRunning {
+            pause()
+        } else {
+            start()
+        }
+    }
+    
+    func start() {
+        if timeRemaining <= 0 {
+            timeRemaining = defaultTime
+        }
+        isRunning = true
+        timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.tick()
+        }
+        RunLoop.main.add(timer!, forMode: .common) // Keep running during UI interactions
+    }
+    
+    func pause() {
+        isRunning = false
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func reset() {
+        pause()
+        timeRemaining = defaultTime
+    }
+    
+    private func tick() {
+        if timeRemaining > 0 {
+            timeRemaining -= 1
+        } else {
+            pause()
+            playAlarm()
+        }
+    }
+    
+    private func playAlarm() {
+        // Double chime
+        NSSound(named: NSSound.Name("Glass"))?.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            NSSound(named: NSSound.Name("Glass"))?.play()
+        }
+    }
+}
+
+

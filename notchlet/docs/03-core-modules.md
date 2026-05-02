@@ -2,7 +2,17 @@
 
 ## Free modules
 ### Calendar
-Show next meeting, countdown, and one-click join for Zoom, Google Meet, or Teams links.
+Features a complex 3-column horizontal layout separated by 80%-height secondary color dividers:
+1. **Grid Window**: An interactive monthly calendar grid with scrolling capabilities. 
+    - The clickable hit area (padding/radius) for month switching arrows is expanded for easier clicking.
+    - Clicking a specific date will show the events for that date.
+    - A calendar icon is shown below, **aligned to the right** of the calendar month subwindow, to quickly launch the actual macOS Calendar app.
+2. **Next Window**: Displays the immediate next event.
+    - Shows the location of the event in secondary text.
+    - If the event is online and within 10 minutes, a Join button is shown (opens in default browser, secondary color background).
+    - Time parsing: shows "In xx minutes" if `< 60` minutes away, or the exact start time otherwise. This time string is displayed **below** the join button if it exists.
+3. **Upcoming Window**: Displays the subsequent event using the exact same dynamic time and location logic.
+4. **Compact State (Menu Bar)**: When the notch is collapsed and an event is within schedule, the meeting name (truncated to 50 characters) is shown in the right side of the menu bar next to the time.
 
 ### Clipboard
 Show top 10 clipboard items and let the user restore one quickly.

@@ -12,12 +12,14 @@ Use SwiftUI for the main UI and AppKit only where needed.
 - Good fit for Liquid Glass styling.
 - Easy to keep modular.
 
-## Key APIs
-- EventKit for calendar.
-- NSPasteboard for clipboard.
-- StoreKit 2 for purchases.
-- Keychain for secrets.
-- AppKit for panel/window behavior when required.
+## Key APIs & Frameworks
+- **Calendar**: `EventKit` (`EKEventStore`) for querying local calendars and `.event` access. Regex matching for Zoom/Meet URLs.
+- **Clipboard**: `NSPasteboard` changeCount monitoring. `CGEvent` or AppleScript for simulating `Cmd+V` to restore items.
+- **Timer**: `Foundation.Timer` for precise background counting, `NSSound` for alerts.
+- **Music**: `MRMediaRemote` (Private framework requiring bridging header) for universal NowPlaying data, OR `NSAppleScript` for safe Apple Music / Spotify control.
+- **Claude**: `URLSession` for Anthropic HTTP API requests.
+- **StoreKit 2**: For premium upgrades.
+- **AppKit**: `NSPanel` (`LSUIElement`) for headless overlay behavior.
 
 ## Constraints
 - Keep code modular.

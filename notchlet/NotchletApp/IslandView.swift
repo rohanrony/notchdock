@@ -1,5 +1,18 @@
 import SwiftUI
 
+extension HorizontalAlignment {
+    private enum NotchCenterAlignment: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            return context[HorizontalAlignment.center]
+        }
+    }
+    static let notchCenter = HorizontalAlignment(NotchCenterAlignment.self)
+}
+
+extension Alignment {
+    static let notchCentered = Alignment(horizontal: .notchCenter, vertical: .top)
+}
+
 struct IslandView: View {
     @EnvironmentObject var appState: AppState
     @Environment(\.accessibilityReduceMotion) var reduceMotion
@@ -38,10 +51,11 @@ struct IslandView: View {
                 .padding(.horizontal, 16)
             }
             .frame(
-                minWidth: ThemeTokens.islandWidth,
+                minWidth: appState.isExpanded ? 0 : ThemeTokens.islandWidth,
+                maxWidth: appState.isExpanded ? ThemeTokens.expandedIslandWidth : nil,
                 minHeight: ThemeTokens.islandHeight
             )
-            .fixedSize() // Allows dynamic resizing to fit content
+            .fixedSize(horizontal: true, vertical: true) // Allow shrinking to content in both states
             .environment(\.colorScheme, .dark)
             .onHover { isHovering in
                 withAnimation(isHovering ? expandAnimation : collapseAnimation) {
@@ -51,24 +65,22 @@ struct IslandView: View {
             
             Spacer() // Push to top
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .notchCentered)
     }
     
     // MARK: - Subviews
     
     var compactContent: some View {
-        HStack {
-            Spacer()
+        HStack(spacing: 0) {
             if let activeId = appState.activeExtensionID,
                let activeExt = appState.registry.availableExtensions.first(where: { $0.id == activeId }) {
                 activeExt.compactView
             } else {
-                Image(systemName: "circle.fill")
-                    .foregroundColor(ThemeTokens.accentColor)
+                Spacer(minLength: 190)
             }
-            Spacer()
         }
-        .frame(width: ThemeTokens.islandWidth, height: ThemeTokens.islandHeight)
+        .frame(height: ThemeTokens.islandHeight)
+        .padding(.horizontal, 6)
         .transition(.asymmetric(
             insertion: .scale(scale: 0.9, anchor: .top).combined(with: .opacity),
             removal: .opacity.animation(.easeIn(duration: 0.1))
