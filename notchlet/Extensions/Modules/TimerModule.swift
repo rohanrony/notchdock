@@ -9,7 +9,7 @@ struct TimerCompactView: View {
         HStack(spacing: 0) {
             // LEFT SIDE: Timer Icon
             Image(systemName: "timer")
-                .font(.system(size: 13, weight: .medium))
+                .font(.system(size: TimerViewModel.Constants.monospacedFontSize, weight: .medium))
                 .foregroundColor(ThemeTokens.primaryText)
                 .padding(.trailing, 4) // Very close to notch
             
@@ -21,7 +21,7 @@ struct TimerCompactView: View {
             // RIGHT SIDE: Timer Text (if running)
             if viewModel.isRunning {
                 Text(viewModel.timeString)
-                    .font(.system(size: 13, weight: .medium, design: .monospaced))
+                    .font(.system(size: TimerViewModel.Constants.monospacedFontSize, weight: .medium, design: .monospaced))
                     .foregroundColor(ThemeTokens.primaryText)
                     .padding(.leading, 4) // Very close to notch
             }
@@ -49,7 +49,7 @@ struct TimerExpandedView: View {
                     HStack(spacing: 0) {
                         TextField("00", text: $editMinutes)
                             .textFieldStyle(.plain)
-                            .font(.system(size: 36, weight: .medium, design: .monospaced))
+                            .font(.system(size: TimerViewModel.Constants.expandedTimeFontSize, weight: .medium, design: .monospaced))
                             .frame(width: 45)
                             .multilineTextAlignment(.center)
                             .focused($focusedField, equals: .minutes)
@@ -164,7 +164,6 @@ struct TimerModule: NotchletExtension {
 
 struct TimerSettingsView: View {
     @ObservedObject var viewModel = TimerViewModel.shared
-    @AppStorage("timer_default_minutes") private var defaultMinutes: Int = 25
     
     var body: some View {
         ScrollView {
@@ -179,11 +178,11 @@ struct TimerSettingsView: View {
                     
                     HStack {
                         Slider(value: Binding(
-                            get: { Double(defaultMinutes) },
-                            set: { defaultMinutes = Int($0) }
+                            get: { Double(viewModel.defaultMinutes) },
+                            set: { viewModel.defaultMinutes = Int($0) }
                         ), in: 1...60, step: 1)
                         
-                        Text("\(defaultMinutes) min")
+                        Text("\(viewModel.defaultMinutes) min")
                             .font(.system(.body, design: .monospaced))
                             .frame(width: 60)
                     }
@@ -227,11 +226,28 @@ struct TimerSettingsView: View {
 class TimerViewModel: ObservableObject {
     static let shared = TimerViewModel()
     
-    @Published var timeRemaining: TimeInterval = 25 * 60 // 25 minutes
+    struct Constants {
+        static let defaultMinutes: Int = 25
+        static let tickInterval: TimeInterval = 1.0
+        static let alarmSecondChimeDelay: TimeInterval = 0.4
+        static let alarmSoundName: String = "Glass"
+        static let monospacedFontSize: CGFloat = 13
+        static let expandedTimeFontSize: CGFloat = 36
+    }
+    
+    @AppStorage("timer_default_minutes") var defaultMinutes: Int = Constants.defaultMinutes {
+        didSet {
+            // Update remaining time if not running
+            if !isRunning {
+                timeRemaining = TimeInterval(defaultMinutes * 60)
+            }
+        }
+    }
+    
+    @Published var timeRemaining: TimeInterval = TimeInterval(Constants.defaultMinutes * 60)
     @Published var isRunning: Bool = false
     
     private var timer: Foundation.Timer?
-    private var defaultTime: TimeInterval = 25 * 60
     
     func setTime(from string: String) {
         guard !isRunning else { return }
@@ -241,14 +257,12 @@ class TimerViewModel: ObservableObject {
            let secs = TimeInterval(components[1]) {
             let newTime = mins * 60 + secs
             if newTime > 0 {
-                defaultTime = newTime
                 timeRemaining = newTime
             }
         } else if components.count == 1,
                   let mins = TimeInterval(components[0]) {
             let newTime = mins * 60
             if newTime > 0 {
-                defaultTime = newTime
                 timeRemaining = newTime
             }
         }
@@ -265,7 +279,10 @@ class TimerViewModel: ObservableObject {
         return "\(minutes)m"
     }
     
-    private init() {} // Singleton
+    private init() {
+        // Initialize from storage
+        self.timeRemaining = TimeInterval(defaultMinutes * 60)
+    }
     
     func toggle() {
         if isRunning {
@@ -277,10 +294,10 @@ class TimerViewModel: ObservableObject {
     
     func start() {
         if timeRemaining <= 0 {
-            timeRemaining = defaultTime
+            timeRemaining = TimeInterval(defaultMinutes * 60)
         }
         isRunning = true
-        timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+        timer = Foundation.Timer.scheduledTimer(withTimeInterval: Constants.tickInterval, repeats: true) { [weak self] _ in
             self?.tick()
         }
         RunLoop.main.add(timer!, forMode: .common) // Keep running during UI interactions
@@ -294,7 +311,7 @@ class TimerViewModel: ObservableObject {
     
     func reset() {
         pause()
-        timeRemaining = defaultTime
+        timeRemaining = TimeInterval(defaultMinutes * 60)
     }
     
     private func tick() {
@@ -308,9 +325,9 @@ class TimerViewModel: ObservableObject {
     
     private func playAlarm() {
         // Double chime
-        NSSound(named: NSSound.Name("Glass"))?.play()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            NSSound(named: NSSound.Name("Glass"))?.play()
+        NSSound(named: NSSound.Name(Constants.alarmSoundName))?.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.alarmSecondChimeDelay) {
+            NSSound(named: NSSound.Name(Constants.alarmSoundName))?.play()
         }
     }
 }

@@ -209,11 +209,23 @@ struct GeneralSettingsView: View {
                             Toggle(ext.displayName, isOn: Binding(
                                 get: { appState.homeViewModuleIDs.contains(ext.id) },
                                 set: { val in
-                                    if val { appState.homeViewModuleIDs.insert(ext.id) }
-                                    else { appState.homeViewModuleIDs.remove(ext.id) }
+                                    if val {
+                                        if appState.homeViewModuleIDs.count < AppConfig.App.homeViewLimit {
+                                            appState.homeViewModuleIDs.insert(ext.id)
+                                        }
+                                    } else {
+                                        appState.homeViewModuleIDs.remove(ext.id)
+                                    }
                                 }
                             ))
                             .toggleStyle(.checkbox)
+                            .disabled(!appState.homeViewModuleIDs.contains(ext.id) && appState.homeViewModuleIDs.count >= AppConfig.App.homeViewLimit)
+                        }
+                        
+                        if appState.homeViewModuleIDs.count >= AppConfig.App.homeViewLimit {
+                            Text("Limit of \(AppConfig.App.homeViewLimit) widgets reached.")
+                                .font(.caption)
+                                .foregroundColor(.orange)
                         }
                     }
                 }

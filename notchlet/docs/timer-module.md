@@ -5,6 +5,8 @@ The Timer module provides a high-precision countdown utility integrated directly
 ## 1. Visual Design
 
 ### 1.1 Compact State (Island)
+- **Asymmetric Layout**: The module uses an asymmetric layout that hugs the notch naturally, avoiding forced symmetry.
+- **Dynamic Width**: The component scales its width dynamically to fit only the current content (icon and text), minimizing the visual footprint on the menu bar.
 - **Left of Notch**: A static `timer` SF Symbol.
 - **Right of Notch**: The current remaining time in `mm:ss` format (only shown when the timer is running).
 - **Font**: Monospaced digit system font (size 13) to prevent layout jitter during countdown.

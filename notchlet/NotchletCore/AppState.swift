@@ -12,8 +12,8 @@ class AppState: ObservableObject {
     @Published var homeViewModuleIDs: Set<String> = []
     @Published var registry: ExtensionRegistry
     @Published var purchaseManager: PurchaseManager
-    @Published var detectedNotchWidth: CGFloat = 190
-    @Published var detectedMenuBarHeight: CGFloat = 32 // Default fallback
+    @Published var detectedNotchWidth: CGFloat = AppConfig.App.defaultNotchWidth
+    @Published var detectedMenuBarHeight: CGFloat = AppConfig.App.defaultMenuBarHeight // Default fallback
     
     init() {
         // Detect actual notch width and height if available
@@ -29,22 +29,29 @@ class AppState: ObservableObject {
         self.registry = registry
         self.purchaseManager = PurchaseManager()
         
-        let firstID = registry.availableExtensions.first?.id
-        self.activeExtensionID = firstID
-        if let id = firstID {
-            self.enabledExtensionIDs.insert(id)
-        }
-        // Enable all free modules by default for now
-        for ext in registry.availableExtensions where !ext.isPremium {
-            self.enabledExtensionIDs.insert(ext.id)
-        }
+        let defaultOrder = [
+            "com.notchlet.calendar",
+            "com.notchlet.timer",
+            "com.notchlet.music",
+            "com.notchlet.clipboard",
+            "com.notchlet.claude"
+        ]
         
-        self.extensionOrder = registry.availableExtensions.map { $0.id }
-        self.homeViewModuleIDs = Set(registry.availableExtensions.prefix(3).map { $0.id })
+        let initialEnabled = [
+            "com.notchlet.calendar",
+            "com.notchlet.timer",
+            "com.notchlet.music",
+            "com.notchlet.clipboard"
+        ]
+        
+        self.extensionOrder = defaultOrder
+        self.enabledExtensionIDs = Set(initialEnabled)
+        self.activeExtensionID = "com.notchlet.calendar"
+        self.homeViewModuleIDs = Set(initialEnabled.prefix(3))
     }
     
     static func calculateNotchWidth() -> CGFloat {
-        guard let screen = NSScreen.main else { return 190 }
+        guard let screen = NSScreen.main else { return AppConfig.App.defaultNotchWidth }
         
         let screenWidth = screen.frame.width
         let leftAreaWidth = screen.auxiliaryTopLeftArea?.width ?? 0
@@ -59,11 +66,11 @@ class AppState: ObservableObject {
         }
         
         // Fallback for non-notch screens (default aesthetic width)
-        return 190
+        return AppConfig.App.defaultNotchWidth
     }
     
     static func calculateMenuBarHeight() -> CGFloat {
-        guard let screen = NSScreen.main else { return 32 }
+        guard let screen = NSScreen.main else { return AppConfig.App.defaultMenuBarHeight }
         
         let topInset = screen.safeAreaInsets.top
         if topInset > 0 {
@@ -71,6 +78,6 @@ class AppState: ObservableObject {
         }
         
         // Fallback for non-notch screens (standard macOS menu bar height is 24pt)
-        return 24
+        return AppConfig.App.fallbackMenuBarHeight
     }
 }

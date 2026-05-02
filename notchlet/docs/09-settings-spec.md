@@ -22,8 +22,12 @@ The Settings window is the primary interface for users to configure the applicat
 
 ### 3.2 Modules
 A dynamic list of all **enabled** modules. Selecting a module opens its specific settings page.
-- **Protocol Requirement**: Each module must implement a `settingsView` property.
-- **Default View**: "No specific settings for this module."
+
+#### 3.2.1 Calendar Module
+- **Visible Calendars**: Multi-select list of all system calendars (Work, Home, etc.) with toggles.
+- **Notch Display Thresholds**:
+    - **Show Next Event in minimized Notch**: Slider to set how many minutes before an event starts it should appear in the notch (5-120m).
+    - **Ongoing Event Logic**: Automatically transition to show the next upcoming event 10 minutes before it starts, even if a meeting is currently ongoing.
 
 ### 3.3 Extensions (Store)
 - **Marketplace**: List of all available modules (Free and Premium).
