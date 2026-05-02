@@ -557,7 +557,7 @@ struct MusicExpandedView: View {
                     }
                 }.shadow(color: viewModel.accentColor.opacity(0.3), radius: 12, x: 0, y: 6)
                 VStack(alignment: .leading, spacing: 1) {
-                    Text(viewModel.trackTitle).font(ThemeTokens.font(size: 15, weight: .bold)).foregroundColor(ThemeTokens.primaryText).lineLimit(1)
+                    Text(viewModel.trackTitle).font(ThemeTokens.font(size: 15, weight: .medium)).foregroundColor(ThemeTokens.primaryText).lineLimit(1)
                     Text(viewModel.artistName).font(ThemeTokens.font(size: 13, weight: .medium)).foregroundColor(ThemeTokens.secondaryText).lineLimit(1)
                 }
                 Spacer()
