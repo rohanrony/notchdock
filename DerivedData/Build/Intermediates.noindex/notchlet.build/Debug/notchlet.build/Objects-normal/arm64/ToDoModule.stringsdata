@@ -1,0 +1,40 @@
+{
+  "source": "/Users/rohanroy/Coding/notchlet/notchlet/Extensions/Modules/ToDoModule.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 270
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add a task...",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 337
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 443
+        }
+      },
+      {
+        "comment": "",
+        "key": "ToDo List Settings",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 495
+        }
+      }
+    ]
+  },
+  "version": 1
+}

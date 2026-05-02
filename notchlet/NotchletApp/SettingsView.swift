@@ -1,28 +1,32 @@
 import SwiftUI
+import AVFoundation
+import Speech
 import ServiceManagement
 
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState
     @State private var selectedSection: SettingsSection? = .general
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
     
     enum SettingsSection: Hashable {
         case general
         case module(String)
         case extensions
+        case permissions
         case support
         case about
     }
     
     var body: some View {
-        NavigationSplitView {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             VStack(spacing: 0) {
                 // Custom Sidebar Header with Toggle
                 HStack {
                     Spacer()
                     Button(action: {
-                        #if os(macOS)
-                        NSApp.sendAction(#selector(NSSplitViewController.toggleSidebar(_:)), to: nil, from: nil)
-                        #endif
+                        withAnimation {
+                            columnVisibility = columnVisibility == .all ? .detailOnly : .all
+                        }
                     }) {
                         Image(systemName: "sidebar.left")
                             .foregroundColor(.secondary)
@@ -46,6 +50,12 @@ struct SettingsView: View {
                         }
                     }
                     
+                    Section("Privacy") {
+                        NavigationLink(value: SettingsSection.permissions) {
+                            Label("Permissions", systemImage: "hand.raised.fill")
+                        }
+                    }
+                    
                     Section("Marketplace") {
                         NavigationLink(value: SettingsSection.extensions) {
                             Label("Extensions", systemImage: "puzzlepiece.extension")
@@ -63,33 +73,139 @@ struct SettingsView: View {
                 }
                 .listStyle(.sidebar)
             }
-            .navigationSplitViewColumnWidth(min: 150, ideal: 160, max: 180)
+            .navigationSplitViewColumnWidth(min: 160, ideal: 180, max: 200)
         } detail: {
-            Group {
-                if let section = selectedSection {
-                    switch section {
-                    case .general:
-                        GeneralSettingsView()
-                    case .module(let id):
-                        if let ext = appState.registry.availableExtensions.first(where: { $0.id == id }) {
-                            ext.settingsView
+            NavigationStack {
+                Group {
+                    if let section = selectedSection {
+                        switch section {
+                        case .general:
+                            GeneralSettingsView()
+                        case .module(let id):
+                            if let ext = appState.registry.availableExtensions.first(where: { $0.id == id }) {
+                                ext.settingsView
+                            }
+                        case .extensions:
+                            ExtensionsSettingsView()
+                        case .permissions:
+                            PermissionsSettingsView()
+                        case .support:
+                            SupportSettingsView()
+                        case .about:
+                            AboutSettingsView()
                         }
-                    case .extensions:
-                        ExtensionsSettingsView()
-                    case .support:
-                        SupportSettingsView()
-                    case .about:
-                        AboutSettingsView()
+                    } else {
+                        VStack(spacing: 16) {
+                            Image(systemName: "gearshape.2")
+                                .font(.system(size: 48))
+                                .foregroundColor(.secondary.opacity(0.3))
+                            Text("Select a category to get started")
+                                .foregroundColor(.secondary)
+                        }
                     }
-                } else {
-                    Text("Select a category")
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(NSColor.windowBackgroundColor))
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .navigationSplitViewStyle(.balanced)
-        .frame(width: 525, height: 420)
-        .toolbar(removing: .sidebarToggle)
+        .frame(width: 650, height: 480) // Slightly larger for better split-view layout
+    }
+}
+
+struct PermissionsSettingsView: View {
+    @State private var micStatus: String = "Checking..."
+    @State private var speechStatus: String = "Checking..."
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 24) {
+            Text("Privacy & Permissions")
+                .font(.title2).bold()
+            
+            VStack(alignment: .leading, spacing: 16) {
+                PermissionRow(
+                    icon: "mic.fill",
+                    title: "Microphone Access",
+                    description: "Required for voice-to-task dictation.",
+                    status: micStatus,
+                    action: requestMic
+                )
+                
+                PermissionRow(
+                    icon: "waveform",
+                    title: "Speech Recognition",
+                    description: "Required to convert your voice into text.",
+                    status: speechStatus,
+                    action: requestSpeech
+                )
+            }
+            
+            Text("Note: If permissions were previously denied, you must enable them in System Settings > Privacy & Security.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.top, 8)
+            
+            Spacer()
+        }
+        .padding(32)
+        .onAppear(perform: checkAllStatus)
+    }
+    
+    func checkAllStatus() {
+        let mic = AVCaptureDevice.authorizationStatus(for: .audio)
+        micStatus = mic == .authorized ? "Authorized" : (mic == .denied ? "Denied" : "Not Determined")
+        
+        let speech = SFSpeechRecognizer.authorizationStatus()
+        speechStatus = speech == .authorized ? "Authorized" : (speech == .denied ? "Denied" : "Not Determined")
+    }
+    
+    func requestMic() {
+        AVCaptureDevice.requestAccess(for: .audio) { _ in
+            DispatchQueue.main.async { checkAllStatus() }
+        }
+    }
+    
+    func requestSpeech() {
+        SFSpeechRecognizer.requestAuthorization { _ in
+            DispatchQueue.main.async { checkAllStatus() }
+        }
+    }
+}
+
+struct PermissionRow: View {
+    let icon: String
+    let title: String
+    let description: String
+    let status: String
+    let action: () -> Void
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            Image(systemName: icon)
+                .font(.title2)
+                .foregroundColor(ThemeTokens.accentColor)
+                .frame(width: 32)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.headline)
+                Text(description).font(.subheadline).foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            if status == "Authorized" {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.green)
+            } else {
+                Button("Request") {
+                    action()
+                }
+                .buttonStyle(.bordered)
+            }
+        }
+        .padding()
+        .background(Color.white.opacity(0.05))
+        .cornerRadius(12)
     }
 }
 

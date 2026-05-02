@@ -1,0 +1,24 @@
+{
+  "source": "/Users/rohanroy/Coding/notchlet/notchlet/Extensions/Modules/MusicModule.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Lofi Beats",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "Chillhop Music",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 28
+        }
+      }
+    ]
+  },
+  "version": 1
+}

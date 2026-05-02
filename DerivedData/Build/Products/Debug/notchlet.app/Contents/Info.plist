@@ -42,5 +42,9 @@
 	<string>17E202</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>26.3</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Notchlet displays your upcoming events in the notch.</string>
 </dict>
 </plist>

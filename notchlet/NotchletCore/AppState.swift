@@ -25,6 +25,7 @@ class AppState: ObservableObject {
         registry.register(TimerModule())
         registry.register(MusicModule())
         registry.register(ClaudeModule())
+        registry.register(ToDoModule())
         
         self.registry = registry
         self.purchaseManager = PurchaseManager()
@@ -34,14 +35,16 @@ class AppState: ObservableObject {
             "com.notchlet.timer",
             "com.notchlet.music",
             "com.notchlet.clipboard",
-            "com.notchlet.claude"
+            "com.notchlet.claude",
+            "com.notchlet.todo"
         ]
         
         let initialEnabled = [
             "com.notchlet.calendar",
             "com.notchlet.timer",
             "com.notchlet.music",
-            "com.notchlet.clipboard"
+            "com.notchlet.clipboard",
+            "com.notchlet.todo"
         ]
         
         self.extensionOrder = defaultOrder

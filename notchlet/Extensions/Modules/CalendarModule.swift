@@ -81,11 +81,11 @@ struct CalendarExpandedView: View {
                                         viewModel.loadEvents(for: date)
                                     }
 
-                                if hasEvents && !isToday && !isSelected {
+                                if hasEvents {
                                     Circle()
-                                        .fill(ThemeTokens.accentColor.opacity(0.7))
-                                        .frame(width: 4, height: 4)
-                                        .offset(y: 14)
+                                        .fill(isToday ? Color.white : ThemeTokens.accentColor.opacity(0.7))
+                                        .frame(width: CalendarViewModel.Constants.dotIndicatorSize, height: CalendarViewModel.Constants.dotIndicatorSize)
+                                        .offset(y: CalendarViewModel.Constants.dotIndicatorOffset)
                                 }
                             }
                             .frame(height: 28)

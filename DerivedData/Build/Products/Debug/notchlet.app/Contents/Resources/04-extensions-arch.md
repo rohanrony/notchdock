@@ -19,10 +19,15 @@ Each extension should expose:
 - icon
 - isPremium
 - optional productID
-- compact view
-- expanded view
-- settings view
-- lifecycle hooks
+- compact view (returns AnyView)
+- expanded view (returns AnyView)
+- settings view (returns AnyView)
+
+## State Management
+Extensions must be decoupled from the core UI thread. 
+- **ViewModels**: Each module's `expandedView` must be backed by a dedicated `@StateObject` ViewModel (e.g., `TimerViewModel`).
+- **Background Execution**: Modules must handle their own background polling or event listening (e.g., `NSPasteboard` observers, `Timer` loops) within their ViewModel.
+- **Data Persistence**: Use `@AppStorage` for simple toggles/API keys, or local JSON for historical data (e.g., Clipboard snippets).
 
 ## Rules
 - Extensions should be loosely coupled.

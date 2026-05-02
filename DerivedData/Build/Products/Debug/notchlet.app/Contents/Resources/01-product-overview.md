@@ -4,11 +4,11 @@
 Notchlet is a modular productivity overlay for macOS designed to transform the hardware notch area into a functional "Dynamic Island." It provides persistent, glanceable access to critical professional workflows—meetings, clipboard history, timers, and AI—without requiring users to switch focus from their active windows.
 
 ## 2. Core User Experience (The "Surface")
-The primary interface is a **floating, curved surface** anchored to the top-center of the primary display, mirroring the physical notch dimensions.
+The primary interface is a **floating, 3D-inspired solid surface** anchored to the top-center of the primary display, mirroring the physical notch dimensions.
 - **Idle State**: A slim, high-contrast bar displaying minimal status tokens (e.g., "3m to next meeting" or a playback icon).
-- **Active State (Expansion)**: Upon hover or click, the surface expands vertically and horizontally using spring-physics animations to reveal active modules.
+- **Active State (Expansion)**: Upon hover or click, the surface expands vertically and dynamically horizontally to reveal active modules without overlapping the physical notch.
 - **Interaction Model**: Mouse-driven expansion with keyboard shortcuts for quick-action toggles.
-- **Visuals**: Full support for macOS vibrancy (glassmorphism), dark mode, and high-DPI scaling.
+- **Visuals**: Full support for dark mode (solid #1B1B1B) with deep, multi-layered 3D drop shadows, avoiding heavy glassmorphism to keep rendering clean and performant.
 
 ## 3. Product Goals
 1. **Zero-Friction Access**: Reduce "context-switching fatigue" for common micro-tasks.
@@ -40,8 +40,8 @@ To maintain a tight feedback loop, the first release implements five core module
 - **UI**: Inline text entry. Responses are displayed in a compact, scrollable markdown view within the notch area.
 
 ## 5. Technical Requirements
-- **Core Stack**: Swift 6, SwiftUI, and AppKit (where necessary for panel windowing).
-- **Window Management**: `NSPanel` based transparent overlay with `canBecomeKey` for interactivity, using custom `mask` to match MacBook notch geometry.
+- **Core Stack**: Swift 6, SwiftUI, and AppKit.
+- **Window Management**: `NSPanel` transparent overlay. The app runs as a headless background agent (`LSUIElement`) using an `NSApplicationDelegateAdaptor`, meaning it has no Dock icon or menu bar presence outside of the Notch itself.
 - **Persistence**: SwiftData or local JSON store for settings and clipboard history.
 - **APIs**: Claude API (user-provided key), `EventKit` (Calendar), `MediaRemote` (System-wide music control).
 

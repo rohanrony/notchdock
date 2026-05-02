@@ -4,42 +4,146 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "15m",
+        "key": "%lld",
         "location": {
-          "startingColumn": 22,
-          "startingLine": 16
+          "startingColumn": 38,
+          "startingLine": 73
         }
       },
       {
         "comment": "",
-        "key": "Product Sync",
-        "location": {
-          "startingColumn": 22,
-          "startingLine": 32
-        }
-      },
-      {
-        "comment": "",
-        "key": "Next Meeting",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 25
-        }
-      },
-      {
-        "comment": "",
-        "key": "In 15m",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 28
-        }
-      },
-      {
-        "comment": "",
-        "key": "Join Zoom",
+        "key": "No Events",
         "location": {
           "startingColumn": 30,
-          "startingLine": 40
+          "startingLine": 167
+        }
+      },
+      {
+        "comment": "",
+        "key": "Join Meeting",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "Upcoming",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 183
+        }
+      },
+      {
+        "comment": "",
+        "key": "No Upcoming Events",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 213
+        }
+      },
+      {
+        "comment": "",
+        "key": "Calendar access not granted. Tap to allow.",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 240
+        }
+      },
+      {
+        "comment": "",
+        "key": "Calendar access denied. Open Settings to fix.",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 241
+        }
+      },
+      {
+        "comment": "",
+        "key": "Calendar Settings",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 303
+        }
+      },
+      {
+        "comment": "",
+        "key": "Apple Calendar Access",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 309
+        }
+      },
+      {
+        "comment": "",
+        "key": "Open Settings",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 474
+        }
+      },
+      {
+        "comment": "",
+        "key": "Allow Access",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 481
+        }
+      },
+      {
+        "comment": "",
+        "key": "Visible Calendars",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 342
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select All",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 346
+        }
+      },
+      {
+        "comment": "",
+        "key": "Deselect All",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 349
+        }
+      },
+      {
+        "comment": "",
+        "key": "Notch Display Thresholds",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 382
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show Next Event in minimized Notch",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 388
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lldm before",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 392
+        }
+      },
+      {
+        "comment": "",
+        "key": "When a meeting is ongoing, Notchlet will automatically switch to showing the next event 10 minutes before it starts.",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 409
         }
       }
     ]

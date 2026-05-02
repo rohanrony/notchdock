@@ -6,7 +6,7 @@
 	<integer>12</integer>
 	<key>logs</key>
 	<dict>
-		<key>1B4912F9-8350-4155-97ED-7EA3E2556ED9</key>
+		<key>F44EAABD-7311-411D-9EBD-75AA05CE8A37</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,17 +15,17 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>1B4912F9-8350-4155-97ED-7EA3E2556ED9.xcactivitylog</string>
+			<string>F44EAABD-7311-411D-9EBD-75AA05CE8A37.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>E</string>
+				<string>S</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>9</integer>
+				<integer>0</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -38,15 +38,15 @@
 			<key>schemeIdentifier-sharedScheme</key>
 			<integer>1</integer>
 			<key>signature</key>
-			<string>Building project notchlet with scheme notchlet</string>
+			<string>Building project notchlet with scheme notchlet and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>799372435.00243795</real>
+			<real>799402927.50162697</real>
 			<key>timeStoppedRecording</key>
-			<real>799372444.03586698</real>
+			<real>799402932.13715303</real>
 			<key>title</key>
-			<string>Building project notchlet with scheme notchlet</string>
+			<string>Building project notchlet with scheme notchlet and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>1B4912F9-8350-4155-97ED-7EA3E2556ED9</string>
+			<string>F44EAABD-7311-411D-9EBD-75AA05CE8A37</string>
 		</dict>
 	</dict>
 </dict>
