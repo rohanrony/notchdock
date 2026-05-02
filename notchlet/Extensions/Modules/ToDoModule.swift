@@ -310,7 +310,7 @@ struct ToDoRow: View {
                     .contentShape(Rectangle())
             }
         }
-        .padding(.vertical, 6)
+        .padding(.vertical, 3)
         .padding(.leading, 6) // Ultra-flush left
         .padding(.trailing, 8)
         .background(Color.white.opacity(isHovered ? 0.05 : 0))
@@ -357,7 +357,7 @@ struct AddToDoRow: View {
                 .buttonStyle(.plain)
             }
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 5)
         .padding(.leading, 6) // Ultra-flush left
         .padding(.trailing, 12)
         .background(Color.clear)
@@ -373,7 +373,7 @@ struct ToDoExpandedView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ScrollView {
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 1) {
                     ForEach(viewModel.items) { item in
                         ToDoRow(item: item)
                             .onDrag {
@@ -384,17 +384,15 @@ struct ToDoExpandedView: View {
                     }
                     
                     AddToDoRow()
-                        .padding(.top, 8)
+                        .padding(.top, 2)
                 }
-                .padding(.top, 16)
-                .padding(.bottom, 24)
+                .padding(.top, 8)
+                .padding(.bottom, 12)
             }
-            .frame(width: 636, alignment: .leading) // Calculated to match switcher icons
-            .padding(.horizontal, 16) // Match switcher internal padding
-            .frame(maxHeight: CGFloat(min(500, 40 + viewModel.items.count * 48 + 100)))
+            .padding(.horizontal, 16)
+            .frame(minWidth: 280, maxHeight: CGFloat(min(400, 30 + viewModel.items.count * 32 + 60)))
             .animation(ThemeTokens.Spring.standard, value: viewModel.items.count)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
