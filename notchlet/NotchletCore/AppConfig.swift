@@ -48,4 +48,8 @@ struct AppConfig {
         static let chimeDelay: Double = AppConfig.shared.value(for: "timer", key: "alarm_chime_delay", default: 0.4)
         static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "timer", key: "expanded_min_width", default: 260.0))
     }
+    
+    struct Music {
+        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "music", key: "expanded_min_width", default: 320.0))
+    }
 }

@@ -254,7 +254,6 @@ struct IslandView: View {
                     .padding()
             }
             
-            Spacer(minLength: 0)
         }
         .frame(minWidth: trayWidth)  // Shrink/grow tray to match active module's needs
         .transition(.asymmetric(
