@@ -89,34 +89,33 @@ struct IslandView: View {
         ))
     }
     
-    /// Distributes `orderedExtensions` into left and right icon arrays.
+    /// Distributes `orderedExtensions` into left and right arrays and calculates the symmetric slot count.
     ///
-    /// - Slots 1–5   → left side (L→R, closest to notch last)
-    /// - Slots 6–10  → right side, filling outward from notch (so slot 6 is
-    ///                  closest to notch on the right, slot 10 is farthest right)
-    /// - Slots 11+   → alternate: odd slot → left (extending further left),
-    ///                  even slot → right (extending further right)
-    ///
-    /// `rightIcons` is returned in display order: index 0 = closest to notch.
-    func distributeIcons(_ extensions: [any NotchletExtension]) -> (left: [any NotchletExtension], right: [any NotchletExtension]) {
+    /// Symmetry Rules:
+    /// - Right side always has 2 fixed icons (Pin + Gear).
+    /// - 1-2 Modules: Left fills [M1, M2]. Right is empty [Pin, Gear]. (2 slots each side)
+    /// - 3 Modules: Left [M1, M2, M3]. Right has 1 empty module slot [_, Pin, Gear]. (3 slots each)
+    /// - 4 Modules: Left [M1, M2, M3]. Right gets 1st module [M4, Pin, Gear]. (3 slots each)
+    /// - 5 Modules: Left [M1, M2, M3, M5]. Right has [_, M4, Pin, Gear]. (4 slots each)
+    /// - 6 Modules: Left [M1, M2, M3, M5]. Right has [M6, M4, Pin, Gear]. (4 slots each)
+    func distributeIcons(_ extensions: [any NotchletExtension]) -> (left: [any NotchletExtension], right: [any NotchletExtension], numSlots: Int) {
+        let n = extensions.count
+        // numSlots is the number of module slots (or fixed icon slots) per side to maintain symmetry.
+        // Base is 2 slots (for Pin/Gear). Each new pair of module icons adds 1 slot to each side.
+        let numSlots = max(2, n <= 2 ? 2 : (n % 2 == 0 ? n/2 + 1 : (n+1)/2 + 1))
+        
         var left: [any NotchletExtension] = []
         var right: [any NotchletExtension] = []
         
         for (index, ext) in extensions.enumerated() {
-            let slot = index + 1  // 1-based
-            if slot <= 5 {
-                // First 5 go to the left side
+            let i = index + 1 // 1-based index
+            if i <= 3 {
                 left.append(ext)
-            } else if slot <= 10 {
-                // Slots 6-10: fill right side from notch outward.
-                // Slot 6 = closest to notch (inserted at front), slot 10 = farthest right.
-                // We insert at index (slot - 6) to build [slot6, slot7, slot8, slot9, slot10]
-                // where index 0 is closest to notch.
+            } else if i == 4 {
                 right.append(ext)
             } else {
-                // Slot 11+: alternate between left and right.
-                // Odd slots (11, 13, …) → left; even slots (12, 14, …) → right.
-                if slot % 2 == 1 {
+                // Alternating from 5 onwards
+                if i % 2 != 0 {
                     left.append(ext)
                 } else {
                     right.append(ext)
@@ -124,7 +123,7 @@ struct IslandView: View {
             }
         }
         
-        return (left, right)
+        return (left, right, numSlots)
     }
     
     func moduleIconButton(ext: any NotchletExtension) -> some View {
@@ -148,17 +147,17 @@ struct IslandView: View {
             appState.registry.availableExtensions.first(where: { $0.id == id })
         }.filter { appState.enabledExtensionIDs.contains($0.id) }
         
-        let (leftIcons, rightIcons) = distributeIcons(orderedExtensions)
+        let (leftIcons, rightIcons, numSlots) = distributeIcons(orderedExtensions)
         
-        // Per-icon slot width: 24pt icon + 8pt spacing = 32pt; leading/trailing 16pt padding each side
-        let iconSlotWidth: CGFloat = 32
-        let barPadding: CGFloat = 16
-        let fixedRightIcons: CGFloat = 2  // pin + gear always present
-        let leftBarWidth  = barPadding + CGFloat(leftIcons.count)  * iconSlotWidth
-        let rightBarWidth = barPadding + (CGFloat(rightIcons.count) + fixedRightIcons) * iconSlotWidth
+        // Per-icon slot width (icon + spacing); leading/trailing padding each side
+        let iconSlotWidth: CGFloat = AppConfig.App.iconSlotWidth
+        let barPadding: CGFloat = AppConfig.App.barPadding
         
-        // Minimum gap to straddle the physical notch (notch width + 8pt breathing room each side)
-        let notchGap = appState.detectedNotchWidth + 16
+        // Symmetric bar width based on number of slots
+        let symmetricBarWidth = barPadding + CGFloat(numSlots) * iconSlotWidth
+        
+        // Minimum gap to straddle the physical notch (notch width + breathing room)
+        let notchGap = appState.detectedNotchWidth + AppConfig.App.notchBreathingRoom
         
         // Active module's required content width
         let activeMinWidth: CGFloat = {
@@ -169,32 +168,34 @@ struct IslandView: View {
             return 0
         }()
         
-        // Total desired tray width, capped at the global maximum
+        // Total desired tray width is the maximum of the symmetric icon bars + notch or the content's required width
         let trayWidth = min(
-            leftBarWidth + notchGap + rightBarWidth + activeMinWidth,
+            max(symmetricBarWidth * 2 + notchGap, activeMinWidth),
             ThemeTokens.expandedIslandWidth
         )
         
         return VStack(spacing: 8) {
             // Top Section: Fits exactly in the menu bar height
             HStack(spacing: 0) {
-                // Left side: Module icons (slots 1–5, then 11, 13, … extending outward)
+                // Left side: Module icons
                 HStack(spacing: 8) {
                     ForEach(Array(leftIcons.enumerated()), id: \.element.id) { _, ext in
                         moduleIconButton(ext: ext)
                     }
+                    Spacer(minLength: 0) // Push icons to the left, but stay within the symmetricBarWidth
                 }
+                .frame(width: symmetricBarWidth, alignment: .leading)
                 .padding(.leading, 16)
                 
-                // Hardware Notch Spacer — minLength keeps icons from overlapping the notch;
-                // the outer frame's minWidth (set per active module) drives the actual tray width.
-                // We align the center of this spacer to the .notchCenter guide to ensure symmetry.
+                // Hardware Notch Spacer — centered via alignment guide
                 Spacer(minLength: notchGap)
                     .alignmentGuide(.notchCenter) { d in d[HorizontalAlignment.center] }
                 
                 // Right side: Module icons + pin + gear
-                // rightIcons[0] is closest to notch → rendered leftmost in this HStack
                 HStack(spacing: 8) {
+                    Spacer(minLength: 0) // Push icons to the right
+                    
+                    // Module icons assigned to the right side
                     ForEach(Array(rightIcons.enumerated()), id: \.element.id) { _, ext in
                         moduleIconButton(ext: ext)
                     }
@@ -222,12 +223,8 @@ struct IslandView: View {
                     .help(appState.isPinned ? "Unpin – close on mouse-out" : "Pin open")
                     .animation(ThemeTokens.Spring.standard, value: appState.isPinned)
                     
-                    // Settings button – opened programmatically (SettingsLink doesn't work
-                    // inside a nonactivating NSPanel)
-                    Button(action: {
-                        NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-                        NSApp.activate(ignoringOtherApps: true)
-                    }) {
+                    // Settings button
+                    SettingsLink {
                         Image(systemName: "gearshape.fill")
                             .font(.system(size: 13, weight: .medium))
                             .foregroundColor(Color.gray)
@@ -238,6 +235,7 @@ struct IslandView: View {
                     .buttonStyle(.plain)
                     .help("Settings")
                 }
+                .frame(width: symmetricBarWidth, alignment: .trailing)
                 .padding(.trailing, 16)
             }
             .frame(height: appState.detectedMenuBarHeight)

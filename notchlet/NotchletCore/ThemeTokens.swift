@@ -4,8 +4,8 @@ struct ThemeTokens {
     // Geometry
     static let cornerRadius: CGFloat = 16
     static let islandHeight: CGFloat = 34
-    static let islandWidth: CGFloat = 190 // Matches physical notch exactly
-    static let expandedIslandWidth: CGFloat = 700 // Wide enough to span across the physical notch
+    static let islandWidth: CGFloat = AppConfig.App.defaultNotchWidth // Matches physical notch exactly
+    static let expandedIslandWidth: CGFloat = AppConfig.App.maxExpandedWidth // Wide enough to span across the physical notch
     
     // Colors & Materials
     static let glassMaterial = Material.ultraThinMaterial

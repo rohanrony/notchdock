@@ -502,7 +502,7 @@ struct CalendarModule: NotchletExtension {
     }
 
     /// 3-column layout: 200pt calendar grid + 2×dividers + 2×flexible event columns
-    var expandedMinWidth: CGFloat { 560 }
+    var expandedMinWidth: CGFloat { AppConfig.Calendar.expandedMinWidth }
 
     var compactView: AnyView {
         AnyView(CalendarCompactView())

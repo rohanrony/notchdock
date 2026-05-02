@@ -149,8 +149,8 @@ struct TimerModule: NotchletExtension {
     var productID: String? = nil
     var hasRequiredPermissions: Bool = true
     
-    /// Sleeker, compact time display
-    var expandedMinWidth: CGFloat { 260 }
+    /// Time display + controls rendered side by side
+    var expandedMinWidth: CGFloat { AppConfig.Timer.expandedMinWidth }
     
     var compactView: AnyView {
         AnyView(TimerCompactView())

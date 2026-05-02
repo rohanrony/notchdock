@@ -30,16 +30,22 @@ struct AppConfig {
         static let fallbackMenuBarHeight: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "fallback_menu_bar_height", default: 24.0))
         static let homeViewLimit: Int = AppConfig.shared.value(for: "app", key: "home_view_limit", default: 5)
         static let panelWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "panel_width", default: 400.0))
+        static let iconSlotWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "icon_slot_width", default: 32.0))
+        static let barPadding: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "bar_padding", default: 16.0))
+        static let notchBreathingRoom: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "notch_breathing_room", default: 8.0))
+        static let maxExpandedWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "app", key: "max_expanded_width", default: 700.0))
     }
     
     struct Calendar {
         static let minimizedThreshold: Int = AppConfig.shared.value(for: "calendar", key: "minimized_threshold", default: 60)
         static let ongoingThreshold: Int = AppConfig.shared.value(for: "calendar", key: "ongoing_transition_threshold", default: 10)
         static let upcomingCount: Int = AppConfig.shared.value(for: "calendar", key: "upcoming_events_count", default: 3)
+        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "calendar", key: "expanded_min_width", default: 560.0))
     }
     
     struct Timer {
         static let defaultDuration: Int = AppConfig.shared.value(for: "timer", key: "default_duration", default: 25)
         static let chimeDelay: Double = AppConfig.shared.value(for: "timer", key: "alarm_chime_delay", default: 0.4)
+        static let expandedMinWidth: CGFloat = CGFloat(AppConfig.shared.value(for: "timer", key: "expanded_min_width", default: 260.0))
     }
 }

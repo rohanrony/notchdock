@@ -24,9 +24,19 @@ Use solid, 3D-inspired surfaces with deep layered drop shadows. The island, expa
 - Extension cards.
 - Premium unlock sheets.
 
-## State indicators
-- **Locked Extension**: Use 50% opacity on icons with a subtle "Price Tag" token in the corner (e.g., "$1.00").
-- **Unlocked/Premium**: Use a restrained "Accent" glow on the card border to signify premium status.
-- **Active Module**: Indicated by a soft white background fill (Color.white.opacity(0.15)) behind the top bar icon, without any borders or outlines.
+## Notch Symmetry & Icon Distribution
+- **Symmetric Layout**: The tray maintains visual symmetry around the physical notch by ensuring an equal number of icon slots on both sides.
+- **Symmetry Algorithm**:
+  - The number of slots per side is `max(2, ceil(N/2) + 1)` where N is the number of active module icons.
+  - Right side always reserves 2 slots for the fixed action icons (Pin and Settings).
+  - Module icons are distributed such that the first three occupy the left side, the fourth occupies the right (next to the pin), and subsequent icons alternate.
+- **Notch Spacing**: A tight `4pt` breathing room is maintained between the physical notch edges and the nearest icons on both sides.
+- **Dynamic Width**: The tray width is calculated as `max(LeftBarWidth + NotchGap + RightBarWidth, ActiveModuleMinWidth)`, ensuring it never shrinks smaller than its icon bar but expands gracefully for complex modules like the Calendar.
+
+## Interaction & State
+- **Pinning**: A dedicated "Pin" action allows users to lock the notch in its expanded state, overriding the default hover-to-collapse behavior.
+  - **Inactive State**: Thin `pin` icon (SF Symbol), 50% opacity, 45-degree angle.
+  - **Active State**: Solid `pin.circle.fill` icon, upright, tinted with a warm amber accent (`hue: 0.08`), and a subtle 12% opacity background fill.
+- **Active Module**: Indicated by a soft white background fill (Color.white.opacity(0.15)) behind the top bar icon.
 - **Interactive State**: Use a subtle "Hover Glow" (white at 10% opacity) on glass surfaces.
 
