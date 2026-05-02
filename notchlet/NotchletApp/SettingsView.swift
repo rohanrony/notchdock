@@ -1,5 +1,6 @@
 import SwiftUI
 import ServiceManagement
+import AppKit
 
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState
@@ -101,6 +102,12 @@ struct SettingsView: View {
         .navigationSplitViewStyle(.balanced)
         .frame(width: 720, height: 520)
         .onAppear {
+            NSApp.activate(ignoringOtherApps: true)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSWindow.didBecomeKeyNotification)) { notification in
+            if let window = notification.object as? NSWindow, window.isMiniaturized {
+                window.deminiaturize(nil)
+            }
             NSApp.activate(ignoringOtherApps: true)
         }
     }
