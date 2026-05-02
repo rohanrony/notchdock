@@ -62,6 +62,9 @@ struct IslandView: View {
                 guard !appState.isPinned else { return }
                 withAnimation(isHovering ? expandAnimation : collapseAnimation) {
                     appState.isExpanded = isHovering
+                    if isHovering {
+                        appState.acknowledgeNudge()
+                    }
                 }
             }
             
@@ -74,8 +77,8 @@ struct IslandView: View {
     
     var compactContent: some View {
         HStack(spacing: 0) {
-            if let activeId = appState.activeExtensionID,
-               let activeExt = appState.registry.availableExtensions.first(where: { $0.id == activeId }) {
+            let activeId = appState.effectiveCompactExtensionID
+            if let activeExt = appState.registry.availableExtensions.first(where: { $0.id == activeId }) {
                 activeExt.compactView
             } else {
                 Spacer(minLength: 190)
@@ -130,6 +133,11 @@ struct IslandView: View {
         Button(action: {
             withAnimation {
                 appState.activeExtensionID = ext.id
+                appState.lastInteractionTimes[ext.id] = Date()
+                // Acknowledge nudge if the clicked extension has a compact view (meaning it's a live-capable switch)
+                if ext.hasCompactView {
+                    appState.acknowledgeNudge()
+                }
             }
         }) {
             Image(systemName: ext.iconName)

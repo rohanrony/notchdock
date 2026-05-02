@@ -175,6 +175,7 @@ struct TimerModule: NotchletExtension {
     var isPremium: Bool = false
     var productID: String? = nil
     var hasRequiredPermissions: Bool = true
+    var isLive: Bool { TimerViewModel.shared.isRunning }
     
     /// Time display + controls rendered side by side
     var expandedMinWidth: CGFloat { TimerViewModel.Constants.expandedMinWidth }
@@ -225,19 +226,33 @@ struct TimerSettingsView: View {
                 }
                 
                 SectionCard(title: "Quick Controls") {
-                    HStack(spacing: 12) {
-                        Button(action: { viewModel.toggle() }) {
-                            Label(viewModel.isRunning ? "Pause" : "Start", systemImage: viewModel.isRunning ? "pause.fill" : "play.fill")
-                                .frame(maxWidth: .infinity)
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(spacing: 12) {
+                            Button(action: { viewModel.toggle() }) {
+                                Label(viewModel.isRunning ? "Pause" : "Start", systemImage: viewModel.isRunning ? "pause.fill" : "play.fill")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(viewModel.isRunning ? .orange : ThemeTokens.accentColor)
+                            
+                            Button(action: { viewModel.reset() }) {
+                                Label("Reset", systemImage: "arrow.clockwise")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
                         }
-                        .buttonStyle(.bordered)
-                        .tint(viewModel.isRunning ? .orange : ThemeTokens.accentColor)
                         
-                        Button(action: { viewModel.reset() }) {
-                            Label("Reset", systemImage: "arrow.clockwise")
-                                .frame(maxWidth: .infinity)
+                        Divider()
+                        
+                        HStack(alignment: .top, spacing: 10) {
+                            Image(systemName: "bolt.fill")
+                                .font(.system(size: 12))
+                                .foregroundColor(ThemeTokens.accentColor)
+                            Text("Automatic Override: The notch will automatically switch to the timer when less than 60 seconds remain, ensuring you don't miss the countdown.")
+                                .font(.system(size: 11))
+                                .foregroundColor(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
-                        .buttonStyle(.bordered)
                     }
                     .padding(16)
                 }
@@ -312,6 +327,10 @@ class TimerViewModel: ObservableObject {
                 timeRemaining = newTime
             }
         }
+    }
+    
+    var isCritical: Bool {
+        isRunning && timeRemaining < 60
     }
     
     var timeString: String {

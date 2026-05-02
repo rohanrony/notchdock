@@ -416,6 +416,7 @@ struct ToDoModule: NotchletExtension {
     var isPremium: Bool = false
     var productID: String? = nil
     var hasRequiredPermissions: Bool = true
+    var hasCompactView: Bool = false
     
     var compactView: AnyView {
         AnyView(ToDoCompactView())

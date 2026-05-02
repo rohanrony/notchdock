@@ -793,6 +793,7 @@ struct MusicModule: NotchletExtension {
     var isPremium: Bool = false
     var productID: String? = nil
     var hasRequiredPermissions: Bool { true }
+    var isLive: Bool { MusicViewModel.shared.isPlaying }
     var expandedMinWidth: CGFloat { Constants.expandedMinWidth }
     var compactView: AnyView { AnyView(MusicCompactView()) }
     var expandedView: AnyView { AnyView(MusicExpandedView()) }

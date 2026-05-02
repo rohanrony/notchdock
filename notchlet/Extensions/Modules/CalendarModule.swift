@@ -511,6 +511,10 @@ struct CalendarModule: NotchletExtension {
     var hasRequiredPermissions: Bool {
         CalendarViewModel.shared.isAuthorized
     }
+    
+    var isLive: Bool {
+        CalendarViewModel.shared.shouldShowCompactDetails
+    }
 
     /// 3-column layout: 200pt calendar grid + 2×dividers + 2×flexible event columns
     var expandedMinWidth: CGFloat { CalendarViewModel.Constants.expandedMinWidth }

@@ -12,6 +12,10 @@ protocol NotchletExtension: Identifiable {
     // System Access
     var hasRequiredPermissions: Bool { get }
     
+    // Logic
+    var hasCompactView: Bool { get }
+    var isLive: Bool { get }
+    
     // Views
     @ViewBuilder var compactView: AnyView { get }
     @ViewBuilder var expandedView: AnyView { get }
@@ -23,6 +27,8 @@ protocol NotchletExtension: Identifiable {
 }
 
 extension NotchletExtension {
+    var hasCompactView: Bool { true }
+    var isLive: Bool { false }
     var expandedMinWidth: CGFloat { 0 }
     
     var settingsView: AnyView {
