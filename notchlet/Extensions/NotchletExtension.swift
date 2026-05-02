@@ -16,9 +16,15 @@ protocol NotchletExtension: Identifiable {
     @ViewBuilder var compactView: AnyView { get }
     @ViewBuilder var expandedView: AnyView { get }
     @ViewBuilder var settingsView: AnyView { get }
+    
+    /// Minimum width (pts) the expanded content needs to render correctly.
+    /// Return 0 to let the tray shrink to fit the icon bar only.
+    var expandedMinWidth: CGFloat { get }
 }
 
 extension NotchletExtension {
+    var expandedMinWidth: CGFloat { 0 }
+    
     var settingsView: AnyView {
         AnyView(
             VStack(spacing: 12) {

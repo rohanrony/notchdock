@@ -6,6 +6,7 @@ class AppState: ObservableObject {
     static let shared = AppState()
     
     @Published var isExpanded: Bool = false
+    @Published var isPinned: Bool = false
     @Published var activeExtensionID: String?
     @Published var enabledExtensionIDs: Set<String> = []
     @Published var extensionOrder: [String] = []

@@ -42,7 +42,7 @@ struct TimerExpandedView: View {
     }
     
     var body: some View {
-        HStack(alignment: .center, spacing: 48) {
+        HStack(alignment: .center, spacing: 32) {
             // Left: Time Input/Display
             HStack(spacing: 0) {
                 if !viewModel.isRunning {
@@ -130,7 +130,7 @@ struct TimerExpandedView: View {
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 20)
-        .frame(minWidth: 280) // Compact but enough for clarity
+        .frame(minWidth: 220) // Sleeker min width
     }
     
     private func applyChanges() {
@@ -148,6 +148,9 @@ struct TimerModule: NotchletExtension {
     var isPremium: Bool = false
     var productID: String? = nil
     var hasRequiredPermissions: Bool = true
+    
+    /// Sleeker, compact time display
+    var expandedMinWidth: CGFloat { 260 }
     
     var compactView: AnyView {
         AnyView(TimerCompactView())
