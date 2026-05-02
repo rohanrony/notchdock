@@ -6,6 +6,48 @@
 	<integer>12</integer>
 	<key>logs</key>
 	<dict>
+		<key>7A1F21E7-DB12-40C1-9878-9A208B99DC55</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7A1F21E7-DB12-40C1-9878-9A208B99DC55.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>NotchDock project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>NotchDock</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building project NotchDock with scheme NotchDock and configuration Debug</string>
+			<key>timeStartedRecording</key>
+			<real>799454836.96284497</real>
+			<key>timeStoppedRecording</key>
+			<real>799454843.41496503</real>
+			<key>title</key>
+			<string>Building project NotchDock with scheme NotchDock and configuration Debug</string>
+			<key>uniqueIdentifier</key>
+			<string>7A1F21E7-DB12-40C1-9878-9A208B99DC55</string>
+		</dict>
 		<key>F44EAABD-7311-411D-9EBD-75AA05CE8A37</key>
 		<dict>
 			<key>className</key>

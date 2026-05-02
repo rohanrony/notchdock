@@ -1,0 +1,72 @@
+{
+  "source": "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/ToDoModule.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 207
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add a task...",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 274
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 379
+        }
+      },
+      {
+        "comment": "",
+        "key": "ToDo Settings",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 438
+        }
+      },
+      {
+        "comment": "",
+        "key": "Enabled",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 445
+        }
+      },
+      {
+        "comment": "",
+        "key": "Enabled",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 449
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your tasks are stored exclusively on your Mac using encrypted local storage. NotchDock does not use any cloud servers, ensuring your data remains private and accessible only to you.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 463
+        }
+      },
+      {
+        "comment": "",
+        "key": "Secure, local-first storage.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 458
+        }
+      }
+    ]
+  },
+  "version": 1
+}

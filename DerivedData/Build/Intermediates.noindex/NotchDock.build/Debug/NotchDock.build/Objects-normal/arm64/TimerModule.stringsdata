@@ -1,0 +1,112 @@
+{
+  "source": "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/TimerModule.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Click to set time",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 76,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": ":",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "00",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "00",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 79
+        }
+      },
+      {
+        "comment": "",
+        "key": "Timer Settings",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 202
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lldm",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 215
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pause",
+        "location": {
+          "startingColumn": 61,
+          "startingLine": 232
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start",
+        "location": {
+          "startingColumn": 71,
+          "startingLine": 232
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reset",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 239
+        }
+      },
+      {
+        "comment": "",
+        "key": "Automatic Override: The notch will automatically switch to the timer when less than 60 seconds remain, ensuring you don't miss the countdown.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 251
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your timer settings and history are stored locally. NotchDock operates entirely on your Mac and does not transmit any activity data or usage patterns to external servers.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 269
+        }
+      },
+      {
+        "comment": "",
+        "key": "Privacy first.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 264
+        }
+      }
+    ]
+  },
+  "version": 1
+}

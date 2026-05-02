@@ -1,0 +1,209 @@
+{
+  "" : {
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDock-primary.dia",
+    "emit-module-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDock-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDock-primary-emit-module.dia",
+    "pch" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDock-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDock-primary.swiftdeps"
+  },
+  "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/CalendarModule.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/CalendarModule~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/ClaudeModule.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ClaudeModule~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/MusicModule.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/MusicModule~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/QuickAccessModule.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/QuickAccessModule~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/TimerModule.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/TimerModule~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/Modules/ToDoModule.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ToDoModule~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/NotchDockExtension.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockExtension~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockApp/IslandView.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/IslandView~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockApp/NotchDockApp.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchDockApp~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockApp/NotchPanel.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchPanel~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockApp/SettingsView.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/AppConfig.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppConfig~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/AppState.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/AppState~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/ExtensionRegistry.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ExtensionRegistry~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/LiquidGlassModifier.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/LiquidGlassModifier~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/NotchShape.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/NotchShape~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/PurchaseManager.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/PurchaseManager~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/ThemeTokens.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/ThemeTokens~partial.swiftmodule"
+  },
+  "/Users/rohanroy/Coding/notchlet/notchdock/NotchDockCore/UIComponents.swift" : {
+    "const-values" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents.swiftconstvalues",
+    "dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents.d",
+    "diagnostics" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents.dia",
+    "index-unit-output-path" : "/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents.o",
+    "llvm-bc" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents.bc",
+    "object" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents.o",
+    "swift-dependencies" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents.swiftdeps",
+    "swiftmodule" : "/Users/rohanroy/Coding/notchlet/DerivedData/Build/Intermediates.noindex/NotchDock.build/Debug/NotchDock.build/Objects-normal/arm64/UIComponents~partial.swiftmodule"
+  }
+}

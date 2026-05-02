@@ -1,0 +1,32 @@
+{
+  "source": "/Users/rohanroy/Coding/notchlet/notchdock/Extensions/NotchDockExtension.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "No specific settings for this module.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Access Required",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "Please grant permissions in System Settings to use this module.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 58
+        }
+      }
+    ]
+  },
+  "version": 1
+}
