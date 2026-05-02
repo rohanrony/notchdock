@@ -100,28 +100,28 @@ struct IslandView: View {
     /// - 6 Modules: Left [M1, M2, M3, M5]. Right has [M6, M4, Pin, Gear]. (4 slots each)
     func distributeIcons(_ extensions: [any NotchletExtension]) -> (left: [any NotchletExtension], right: [any NotchletExtension], numSlots: Int) {
         let n = extensions.count
-        // numSlots is the number of module slots (or fixed icon slots) per side to maintain symmetry.
-        // Base is 2 slots (for Pin/Gear). Each new pair of module icons adds 1 slot to each side.
-        let numSlots = max(2, n <= 2 ? 2 : (n % 2 == 0 ? n/2 + 1 : (n+1)/2 + 1))
+        
+        // We want a logical left-to-right flow: [M1, M2, M3] <GAP> [M4, M5, Pin, Gear]
+        // Left side has L modules. Right side has R modules + 2 fixed icons (Pin/Gear).
+        // The user wants Left > Right when total icons (n + 2) is odd.
+        // L + R = n. Total Left = L. Total Right = R + 2.
+        // We want L >= R + 2  => L >= (n - L) + 2 => 2L >= n + 2 => L >= (n+2)/2.
+        // To favor the left when odd, we use ceil((n+2)/2), which is (n + 3) / 2 in integer math.
+        let numLeft = (n + 3) / 2
         
         var left: [any NotchletExtension] = []
         var right: [any NotchletExtension] = []
         
         for (index, ext) in extensions.enumerated() {
-            let i = index + 1 // 1-based index
-            if i <= 3 {
+            if index < numLeft {
                 left.append(ext)
-            } else if i == 4 {
-                right.append(ext)
             } else {
-                // Alternating from 5 onwards
-                if i % 2 != 0 {
-                    left.append(ext)
-                } else {
-                    right.append(ext)
-                }
+                right.append(ext)
             }
         }
+        
+        // numSlots is the capacity of each side to ensure the tray background remains symmetric.
+        let numSlots = max(2, numLeft, right.count + 2)
         
         return (left, right, numSlots)
     }
@@ -210,7 +210,7 @@ struct IslandView: View {
                         }
                     }) {
                         Image(systemName: appState.isPinned ? "pin.fill" : "pin")
-                            .font(.system(size: 14, weight: .medium))
+                            .font(.system(size: 12, weight: .medium))
                             .foregroundColor(appState.isPinned
                                 ? Color(hue: 0.08, saturation: 0.8, brightness: 1.0)  // warm amber
                                 : ThemeTokens.secondaryText

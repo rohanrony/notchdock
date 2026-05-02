@@ -22,28 +22,28 @@ class AppState: ObservableObject {
         self.detectedMenuBarHeight = AppState.calculateMenuBarHeight()
         let registry = ExtensionRegistry()
         registry.register(CalendarModule())
-        registry.register(ClipboardModule())
-        registry.register(TimerModule())
-        registry.register(MusicModule())
         registry.register(ToDoModule())
+        registry.register(MusicModule())
+        registry.register(TimerModule())
+        registry.register(QuickAccessModule())
         
         self.registry = registry
         self.purchaseManager = PurchaseManager()
         
         let defaultOrder = [
             "com.notchlet.calendar",
-            "com.notchlet.timer",
+            "com.notchlet.todo",
             "com.notchlet.music",
-            "com.notchlet.clipboard",
-            "com.notchlet.todo"
+            "com.notchlet.timer",
+            "com.notchlet.quickaccess"
         ]
         
         let initialEnabled = [
             "com.notchlet.calendar",
-            "com.notchlet.timer",
+            "com.notchlet.todo",
             "com.notchlet.music",
-            "com.notchlet.clipboard",
-            "com.notchlet.todo"
+            "com.notchlet.timer",
+            "com.notchlet.quickaccess"
         ]
         
         self.extensionOrder = defaultOrder
