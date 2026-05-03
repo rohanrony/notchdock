@@ -1,4 +1,4 @@
-# NotchDock Product Requirements Document (PRD)
+# NotchDock Demo + Product Requirements Document (PRD)
 
 ---
 
