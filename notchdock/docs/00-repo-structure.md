@@ -22,8 +22,7 @@ notchdock/
 │       ├── MusicModule.swift
 │       ├── ToDoModule.swift
 │       ├── TimerModule.swift
-│       ├── ClaudeModule.swift
-│       └── ClipboardModule.swift
+│       └── QuickAccessModule.swift
 ├── Docs/
 │   ├── 00-repo-structure.md
 │   ├── 01-product-overview.md

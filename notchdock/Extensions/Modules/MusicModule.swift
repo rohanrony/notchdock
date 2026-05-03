@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 import Combine
 import CoreImage
 import os.log
@@ -74,9 +75,9 @@ class MusicManager {
         return .unknown
     }
     
-    /// Runs an AppleScript via `/usr/bin/osascript` subprocess.
-    /// This is intentionally NOT using NSAppleScript, which triggers FSFindFolder
-    /// Carbon calls inside our process and pollutes the console with -43 errors.
+    /// Runs an AppleScript via NSAppleScript.
+    /// Note: We use NSAppleScript instead of a subprocess because sandboxed apps
+    /// only share automation entitlements with the main process, not subprocesses.
     func runScript(_ source: String) -> String? {
         guard let script = NSAppleScript(source: source) else {
             NotchLog.error("Failed to initialize NSAppleScript", category: NotchLog.music)
@@ -88,11 +89,11 @@ class MusicManager {
         
         if let error = error {
             let errMsg = error["NSAppleScriptErrorMessage"] as? String ?? "Unknown Error"
-            NotchLog.error("NSAppleScript Error: \(errMsg)", category: NotchLog.security)
-            
+            // Filter out common non-fatal logs if necessary
             if errMsg.contains("privilege violation") || errMsg.contains("Not authorized") || errMsg.contains("-1743") {
                 return "PERMISSION_DENIED"
             }
+            NotchLog.error("NSAppleScript Error: \(errMsg)", category: NotchLog.security)
             return nil
         }
         
@@ -267,16 +268,7 @@ class MusicManager {
                     end if
                 end tell
                 """
-                
-                if let script = NSAppleScript(source: scriptSource) {
-                    var error: NSDictionary?
-                    script.executeAndReturnError(&error)
-                    if let error = error {
-                        NotchLog.error("NSAppleScript Error: \(error)", category: NotchLog.music)
-                    } else {
-                        NotchLog.info("NSAppleScript Play/Pause successful", category: NotchLog.music)
-                    }
-                }
+                _ = self.runScript(scriptSource)
             } else {
                 NotchLog.info("Launching \(bundleID) in background...", category: NotchLog.music)
                 if let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) {

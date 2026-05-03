@@ -1,13 +1,13 @@
 //
-//  notchdockUITests.swift
-//  notchdockUITests
+//  NotchDockUITests.swift
+//  NotchDockUITests
 //
 //  Created by Rohan Roy on 5/1/26.
 //
 
 import XCTest
 
-final class notchdockUITests: XCTestCase {
+final class NotchDockUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -44,10 +44,7 @@ final class notchdockUITests: XCTestCase {
         // However, we can try to click it or find sub-elements if they are already there but hidden.
         // In this app, the expanded content is only added to the hierarchy when isExpanded is true.
         
-        // Let's try to find the settings button. It might not be visible yet.
-        let settingsButton = app.buttons["settings_button"]
-        
-        // We can't easily hover, but we can try to force the state if we had a debug flag.
-        // For now, let's just verify the launch and basic elements.
+        // Note: Simulating hover expansion is complex in standard XCUITest.
+        // We will expand these tests as we add more automation-friendly hooks.
     }
 }

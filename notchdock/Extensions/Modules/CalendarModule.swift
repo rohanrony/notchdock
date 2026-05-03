@@ -141,6 +141,7 @@ struct CalendarExpandedView: View {
                             .foregroundColor(ThemeTokens.accentColor)
 
                         if let url = viewModel.meetingURL(for: event),
+                           url.scheme == "https",
                            let mins = viewModel.minutesUntil(event: event),
                            mins <= CalendarViewModel.Constants.meetingJoinThreshold {
                             Button(action: { NSWorkspace.shared.open(url) }) {

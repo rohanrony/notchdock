@@ -1,13 +1,13 @@
 //
-//  notchdockUITestsLaunchTests.swift
-//  notchdockUITests
+//  NotchDockUITestsLaunchTests.swift
+//  NotchDockUITests
 //
 //  Created by Rohan Roy on 5/1/26.
 //
 
 import XCTest
 
-final class notchdockUITestsLaunchTests: XCTestCase {
+final class NotchDockUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
