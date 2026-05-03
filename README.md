@@ -4,6 +4,7 @@
 
 ## 🎥 Video Demo
 
+<img width="1280" height="720" alt="Recording at 2026-05-03 15 52 07-Edited" src="https://github.com/user-attachments/assets/e8f6dde9-9de8-49ca-848b-c10028591064" />
 
 <img width="1280" height="720" alt="Recording at 2026-05-03 15 52 24-Edited" src="https://github.com/user-attachments/assets/bed74712-2e73-45df-ac7f-16f2d38edd27" />
 
