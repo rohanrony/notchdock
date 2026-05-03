@@ -1,9 +1,9 @@
-# Dynamic Island‑style macOS App Specification
+# NotchDock Security & Privacy Specification
 
 ## 1. Purpose
 - A lightweight macOS app that provides Dynamic Island‑style status indicators and notifications.
 - No full‑screen UI; mostly menu bar / status‑area interaction.
-- Built locally using Antigravity and AI models (Gemini / Claude).
+- Built locally using Antigravity and AI models.
 
 ## 2. Tech stack
 - Language: Swift (SwiftUI / AppKit).
@@ -19,7 +19,7 @@
 
 ### 3.2 Network & APIs
 - All network traffic must use HTTPS (or secure native channels).
-- Gemini / Claude API keys must be loaded at runtime (e.g., via environment‑like config) and never committed to source control.
+- All sensitive configuration (if any) must be loaded at runtime and never committed to source control.
 - The app must not send unnecessary data to any backend; only what is strictly required.
 
 ### 3.3 Permissions & entitlements

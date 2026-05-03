@@ -36,17 +36,16 @@ Implement the free core modules for NotchDock.
 
 Modules:
 - Calendar
-- Clipboard
+- Quick Access
+- ToDo
 - Timer
 - Music
-- Claude
 
 Requirements:
 - Keep each module isolated.
 - Give each module compact and expanded views.
 - Keep the music module free.
-- Do not add AI clipboard actions.
-- Keep Claude lightweight and API-key based.
+- Do not add AI snippet actions.
 ```
 
 ## Phase 3
@@ -57,7 +56,6 @@ Requirements:
 - Show installed extensions.
 - Show available extensions.
 - Support install, enable, disable, and purchase actions.
-- Add API key entry for Claude.
 - Add feature request and support links.
 - Add tip jar options.
 - Keep the popup polished and modular.

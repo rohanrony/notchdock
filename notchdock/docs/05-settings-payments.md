@@ -4,19 +4,14 @@
 The settings popup should be reachable from the island and contain:
 - Installed extensions
 - Available extensions
-- API keys
 - Payments
 - Feature requests
 - About / version info
 
-## API keys
-- Claude API key entry.
-- Store sensitive keys in Keychain, not plain preferences.
-
 ## Payments
-- Music module remains free.
+- Music, Calendar, ToDo, Timer, and Quick Access modules include free core functionality.
 - Support a tip jar with $5, $10, and $20 options.
-- Support $1 extension purchases for premium modules.
+- Support $1 extension purchases for premium modules (e.g., Pinboard, Pomodoro+, Multi-List).
 - **Mandatory**: Add "Restore Purchases" button for StoreKit 2 synchronization.
 
 ## Extension install flow

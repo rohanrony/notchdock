@@ -1,7 +1,7 @@
 # NotchDock Product Specification: v1.0
 
 ## 1. Executive Summary
-NotchDock is a modular productivity overlay for macOS designed to transform the hardware notch area into a functional "Dynamic Island." It provides persistent, glanceable access to critical professional workflows—meetings, clipboard history, timers, and AI—without requiring users to switch focus from their active windows.
+NotchDock is a modular productivity overlay for macOS designed to transform the hardware notch area into a functional "Dynamic Island." It provides persistent, glanceable access to critical professional workflows—meetings, snippets, timers, and tasks—without requiring users to switch focus from their active windows.
 
 ## 2. Core User Experience (The "Surface")
 The primary interface is a **floating, 3D-inspired solid surface** anchored to the top-center of the primary display, mirroring the physical notch dimensions.
@@ -19,32 +19,34 @@ The primary interface is a **floating, 3D-inspired solid surface** anchored to t
 ## 4. Feature Scope (v1 MVP)
 To maintain a tight feedback loop, the first release implements four core modules (with others in experimental status):
 
-### 4.1. Meeting Navigator
+### 4.1. Meeting Navigator (Calendar)
 - **Function**: Syncs with local calendars (via EventKit) to identify the immediate next event.
 - **UI**: Displays a countdown. A "Join" button appears 10 minutes before the start, launching Zoom/Meet/Teams links directly.
 
-### 4.2. Clipboard Stack
-- **Function**: Monitors system copy events and maintains a transient history of the last 10 items (text and links only).
-- **UI**: A vertical list within the expanded notch. Clicking an item restores it to the system clipboard for immediate pasting.
+### 4.2. Quick Access
+- **Function**: Maintains a transient history of snippets and notes for quick retrieval and insertion.
+- **UI**: A vertical list within the expanded notch. Clicking an item restores it to the system clipboard for immediate pasting. Includes editable headings.
 
-### 4.3. Focus Timer
-- **Function**: A simplified Pomodoro-style countdown timer.
-- **UI**: Integrated progress ring around the notch perimeter. Sends a system notification and haptic feedback (if supported) upon completion.
+### 4.3. Timer
+- **Function**: A simplified countdown timer with quick presets and custom entry.
+- **UI**: Integrated progress display. Sends a system notification and plays a sound upon completion.
 
-### 4.4. Media Hub
+### 4.4. Music
 - **Function**: Interfaces with Apple Music and Spotify via osascript subprocesses.
 - **UI**: Displays track info, album art (with dynamic color extraction), and minimalist Play/Pause/Skip controls.
 
-### 4.5. Claude Quick-Chat (Experimental)
-- **Status**: Currently deregistered for v1 release. Code remains for future integration.
-- **Function**: A dedicated input field for immediate queries to the Claude API.
-- **UI**: Inline text entry. Responses are displayed in a compact, scrollable markdown view within the notch area.
+### 4.5. ToDo List
+- **Function**: A lightweight task manager for tracking immediate to-dos.
+- **UI**: Interactive checklist with in-place task creation and persistence.
+
+### 4.6. Future Extensions (Roadmap)
+- **Status**: Features like Slack, Messages, and Mail are planned for future releases.
 
 ## 5. Technical Requirements
 - **Core Stack**: Swift 6, SwiftUI, and AppKit.
 - **Window Management**: `NSPanel` transparent overlay. The app runs as a headless background agent (`LSUIElement`) using an `NSApplicationDelegateAdaptor`, meaning it has no Dock icon or menu bar presence outside of the Notch itself.
-- **Persistence**: SwiftData or local JSON store for settings and clipboard history.
-- **APIs**: Claude API (user-provided key), `EventKit` (Calendar), `osascript` (Music/Spotify control).
+- **Persistence**: Local JSON store or UserDefaults for settings, todos, and snippets.
+- **APIs**: `EventKit` (Calendar), `osascript` (Music/Spotify control).
 
 ## 6. Non-Goals
 - **No Cloud Sync**: Version 1 data remains strictly local to the device.

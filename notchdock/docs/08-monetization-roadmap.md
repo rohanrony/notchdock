@@ -5,15 +5,15 @@ Use free core modules to build trust, then sell small premium extensions for $1 
 
 ## Free modules
 - Calendar
-- Clipboard
+- Quick Access
+- ToDo
 - Timer
 - Music
-- Claude basic chat
 
 ## Paid extensions
-- Claude chat history
-- Clipboard pinboard
-- Pomodoro plus
+- Quick Access Pinboard
+- Pomodoro Plus
+- Multi-List ToDo
 - Future productivity extensions
 
 ## Tip jar

@@ -4,15 +4,14 @@
 NotchDock uses a host shell plus extensions. The core app owns the island UI, settings, unlock state, and extension registry. Each feature lives in a separate module.
 
 ## Folder structure
-- NotchDockApp
-- NotchDockCore
+- NotchDockApp/
+- NotchDockCore/
 - Extensions/Modules/
     - CalendarModule.swift
     - MusicModule.swift
     - ToDoModule.swift
     - TimerModule.swift
-    - ClaudeModule.swift
-    - ClipboardModule.swift
+    - QuickAccessModule.swift
 
 ## Extension protocol
 Each extension should expose:

@@ -14,20 +14,17 @@ Features a complex 3-column horizontal layout separated by 80%-height secondary 
 3. **Upcoming Window**: Displays the subsequent event using the exact same dynamic time and location logic.
 4. **Compact State (Menu Bar)**: When the notch is collapsed and an event is within the threshold (default 60m), the event title is shown to the left of the notch, and the countdown/time to the right. While an event is ongoing, the display transitions to the next event 10 minutes before it starts.
 
-### Clipboard (Quick Access)
-Show recent clipboard items or frequent snippets and let the user restore them quickly.
+### Quick Access
+Maintain a history of snippets and notes for quick retrieval and insertion. Supports editable headings and persistent storage.
+
+### ToDo List
+A lightweight, interactive task manager. Tasks can be checked, added inline, and reordered.
 
 ### Timer
-Offer quick countdown presets such as 15, 25, and 50 minutes.
+Offer quick countdown presets such as 15, 25, and 50 minutes, plus manual time entry.
 
 ### Music
 Provide a premium now playing display and transport controls for Apple Music or Spotify. Features dynamic color extraction from artwork and a responsive music visualizer.
-
-
-## Planned / Experimental Modules
-### Claude
-- **Status**: Deregistered for initial release.
-- **Function**: Allow lightweight Claude chat using a user-entered API key. No clipboard AI actions. Features a perfectly round (20pt radius) pill-shaped input field. Status warnings (e.g., "API Key not configured") are shown in dark red and hidden entirely when configured.
 
 ## Module behavior
 Each module must have:
@@ -40,17 +37,16 @@ Each module must have:
 - Clear permission or auth states.
 
 ## Non-goals
-- No AI transform buttons on clipboard.
+- No AI transform buttons on snippets.
 - No full music library management.
-- No heavy chat workspace.
+- No complex project management in ToDo.
 
 ## Upgrade paths (See 08-monetization)
-- **Clipboard**: Upgrade to **Pinboard** ($1) to save favorite snippets permanently.
-- **Claude**: Upgrade to **History** ($1) to persist conversations across sessions.
+- **Quick Access**: Upgrade to **Pinboard** ($1) to save favorite snippets permanently.
 - **Timer**: Upgrade to **Pomodoro+** ($1) for detailed focus statistics and custom sounds.
+- **ToDo**: Upgrade to **Multi-List** ($1) for categorized task management.
 
 ## Permission requirements
 - **Calendar**: Requires `NSCalendarUsageDescription` (EventKit).
 - **Music**: Requires `NSAppleMusicUsageDescription` (MediaRemote).
-- **Clipboard**: Requires sandbox exceptions for Apple Events to restore items.
-
+- **Quick Access**: Requires sandbox exceptions for Apple Events to restore items.

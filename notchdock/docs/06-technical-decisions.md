@@ -14,11 +14,10 @@ Use SwiftUI for the main UI and AppKit only where needed.
 
 ## Key APIs & Frameworks
 - **Calendar**: `EventKit` (`EKEventStore`) for querying local calendars and `.event` access. Regex matching for Zoom/Meet URLs.
-- **Clipboard**: `NSPasteboard` changeCount monitoring. `CGEvent` or AppleScript for simulating `Cmd+V` to restore items.
+- **Quick Access**: `NSPasteboard` monitoring for snippets and manual entry for notes. Persistence via local JSON/UserDefaults.
 - **Timer**: `Foundation.Timer` for precise background counting, `NSSound` for alerts.
 - **Music**: `/usr/bin/osascript` via `Process` for robust, silent control of Apple Music and Spotify. This avoids system log pollution and framework overhead.
-- **Claude**: `URLSession` for Anthropic HTTP API requests.
-- **AppKit**: `NSPanel` (`LSUIElement`) for headless overlay behavior.
+- **AppKit**: `NSPanel` (`LSUIElement`) for overlay behavior. Settings window is a standard `NSWindow`.
 
 ## Constraints
 - Keep code modular.
