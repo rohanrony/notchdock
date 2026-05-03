@@ -3,22 +3,37 @@
 ---
 
 ## 🎥 Video Demo
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="1280" height="720" alt="Recording at 2026-05-03 15 52 07-Edited" src="https://github.com/user-attachments/assets/e8f6dde9-9de8-49ca-848b-c10028591064" />
+</a>
 
-<img width="1280" height="720" alt="Recording at 2026-05-03 15 52 07-Edited" src="https://github.com/user-attachments/assets/e8f6dde9-9de8-49ca-848b-c10028591064" />
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="1280" height="720" alt="Recording at 2026-05-03 15 52 24-Edited" src="https://github.com/user-attachments/assets/bed74712-2e73-45df-ac7f-16f2d38edd27" />
+</a>
 
-<img width="1280" height="720" alt="Recording at 2026-05-03 15 52 24-Edited" src="https://github.com/user-attachments/assets/bed74712-2e73-45df-ac7f-16f2d38edd27" />
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="635" height="315" alt="image" src="https://github.com/user-attachments/assets/59cee394-ad6d-43ca-b0cc-b60f957dfe87" />
+</a>
 
-<img width="635" height="315" alt="image" src="https://github.com/user-attachments/assets/59cee394-ad6d-43ca-b0cc-b60f957dfe87" />
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="691" height="372" alt="Screenshot 2026-05-03 at 4 27 48 PM" src="https://github.com/user-attachments/assets/21d6ad35-a1cc-47bc-abd9-3cb5e182e843" />
+</a>
 
-<img width="691" height="372" alt="Screenshot 2026-05-03 at 4 27 48 PM" src="https://github.com/user-attachments/assets/21d6ad35-a1cc-47bc-abd9-3cb5e182e843" />
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="540" height="201" alt="image" src="https://github.com/user-attachments/assets/1927ca40-71ad-4119-a067-2bcfae45b3e2" />
+</a>
 
-<img width="540" height="201" alt="image" src="https://github.com/user-attachments/assets/1927ca40-71ad-4119-a067-2bcfae45b3e2" />
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="751" height="228" alt="image" src="https://github.com/user-attachments/assets/dd2bde9e-df62-4339-8884-5f829fabf639" />
+</a>
 
-<img width="751" height="228" alt="image" src="https://github.com/user-attachments/assets/dd2bde9e-df62-4339-8884-5f829fabf639" />
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302" />
+</a>
 
-<img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302" />
+[NotchDock Demo Video](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
 
-NotchDock=Demo.vid(https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
+
 
 
 ---
