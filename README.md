@@ -3,7 +3,11 @@
 ---
 
 ## 🎥 Video Demo
-NotchDock=Demo.vid(https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
+
+
+<img width="1280" height="720" alt="Recording at 2026-05-03 15 52 24-Edited" src="https://github.com/user-attachments/assets/bed74712-2e73-45df-ac7f-16f2d38edd27" />
+
+<img width="691" height="372" alt="Screenshot 2026-05-03 at 4 27 48 PM" src="https://github.com/user-attachments/assets/21d6ad35-a1cc-47bc-abd9-3cb5e182e843" />
 
 <img width="693" height="370" alt="image" src="https://github.com/user-attachments/assets/aca66a74-4537-4893-ac6f-417736aff6c7" />
 
@@ -13,7 +17,7 @@ NotchDock=Demo.vid(https://github.com/user-attachments/assets/352bd85a-5fcc-414a
 
 <img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302" />
 
-
+NotchDock=Demo.vid(https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
 
 
 ---
