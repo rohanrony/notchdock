@@ -3,7 +3,19 @@
 ---
 
 ## 🎥 Video Demo
-https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997
+NotchDock=Demo.vid(https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
+
+<img width="693" height="370" alt="image" src="https://github.com/user-attachments/assets/aca66a74-4537-4893-ac6f-417736aff6c7" />
+
+<img width="540" height="201" alt="image" src="https://github.com/user-attachments/assets/1927ca40-71ad-4119-a067-2bcfae45b3e2" />
+
+<img width="751" height="228" alt="image" src="https://github.com/user-attachments/assets/dd2bde9e-df62-4339-8884-5f829fabf639" />
+
+<img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302" />
+
+
+
+
 ---
 
 ## 📦 Download
