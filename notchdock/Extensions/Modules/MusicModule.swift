@@ -1,3 +1,4 @@
+import SwiftUI
 import Combine
 import CoreImage
 import os.log
@@ -67,22 +68,9 @@ class MusicManager {
     }
     
     func getAuthStatus(bundleID: String) -> AuthStatus {
-        guard !bundleID.isEmpty else { return .unknown }
-        
-        // Only check permission for running apps to avoid procNotFound and FSFindFolder logs.
-        let runningApps = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID)
-        guard let app = runningApps.first else {
-            return .unknown 
-        }
-        
-        let target = NSAppleEventDescriptor(processIdentifier: app.processIdentifier)
-        guard let aeDesc = target.aeDesc else { return .unknown }
-        
-        let status = AEDeterminePermissionToAutomateTarget(aeDesc, 0x3f3f3f3f, 0x3f3f3f3f, false)
-        
-        if status == -1743 { return .denied }
-        if status == 0 { return .authorized }
-        
+        // We no longer call AEDeterminePermissionToAutomateTarget here because it 
+        // triggers 'procNotFound' console spam on macOS Sequoia when sandboxed.
+        // The permission status is now 'learned' from actual AppleScript results.
         return .unknown
     }
     
@@ -90,35 +78,25 @@ class MusicManager {
     /// This is intentionally NOT using NSAppleScript, which triggers FSFindFolder
     /// Carbon calls inside our process and pollutes the console with -43 errors.
     func runScript(_ source: String) -> String? {
-        NotchLog.sensitive("Executing AppleScript: \(source)", category: NotchLog.music)
-        
-        let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/osascript")
-        task.arguments = ["-e", source]
-        
-        let outPipe = Pipe()
-        let errPipe = Pipe()
-        task.standardOutput = outPipe
-        task.standardError = errPipe
-        
-        do {
-            try task.run()
-            task.waitUntilExit()
-        } catch {
-            NotchLog.error("Failed to run AppleScript: \(error.localizedDescription)", category: NotchLog.music)
+        guard let script = NSAppleScript(source: source) else {
+            NotchLog.error("Failed to initialize NSAppleScript", category: NotchLog.music)
             return nil
         }
         
-        // Check for permission denial in stderr (-1743)
-        let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
-        if let errStr = String(data: errData, encoding: .utf8), errStr.contains("-1743") {
-            NotchLog.error("AppleScript Permission Denied (-1743)", category: NotchLog.security)
-            return "PERMISSION_DENIED"
+        var error: NSDictionary?
+        let result = script.executeAndReturnError(&error)
+        
+        if let error = error {
+            let errMsg = error["NSAppleScriptErrorMessage"] as? String ?? "Unknown Error"
+            NotchLog.error("NSAppleScript Error: \(errMsg)", category: NotchLog.security)
+            
+            if errMsg.contains("privilege violation") || errMsg.contains("Not authorized") || errMsg.contains("-1743") {
+                return "PERMISSION_DENIED"
+            }
+            return nil
         }
         
-        let data = outPipe.fileHandleForReading.readDataToEndOfFile()
-        let result = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
-        return result
+        return result.stringValue?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     struct FullState {
@@ -136,33 +114,46 @@ class MusicManager {
         let mRun = isAppRunning(bundleID: PlayerApp.music.bundleID)
         let sRun = isAppRunning(bundleID: PlayerApp.spotify.bundleID)
         
-        let mAuth = getAuthStatus(bundleID: PlayerApp.music.bundleID) == .authorized
-        let sAuth = getAuthStatus(bundleID: PlayerApp.spotify.bundleID) == .authorized
+        let mAuthStatus = getAuthStatus(bundleID: PlayerApp.music.bundleID)
+        let sAuthStatus = getAuthStatus(bundleID: PlayerApp.spotify.bundleID)
+        
+        let mCanTry = mAuthStatus == .authorized || mAuthStatus == .unknown
+        let sCanTry = sAuthStatus == .authorized || sAuthStatus == .unknown
         
         // --- PHASE 1: Find any ACTIVELY PLAYING player ---
         
-        if mRun && mAuth {
-            let script = "tell application id \"\(PlayerApp.music.bundleID)\" to get (player state as text)"
-            if let res = runScript(script), res.contains("playing") {
-                var info = FullState(player: .music, title: "Not Playing", artist: "Music", isPlaying: true, progress: 0, duration: 1)
-                let fullScript = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to duration of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur\non error\nreturn \"error\"\nend try\nend tell"
-                if let data = runScript(fullScript), data != "error" {
-                    parse(data, into: &info)
-                    info.isPlaying = true
-                    return info
+        if mRun && mCanTry {
+            let script = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nget (player state as text)\non error\nreturn \"stopped\"\nend try\nend tell"
+            if let res = runScript(script) {
+                if res == "PERMISSION_DENIED" {
+                    return FullState(player: .music, title: "PERMISSION_DENIED", artist: "", isPlaying: false, progress: 0, duration: 1)
+                }
+                if res.contains("playing") {
+                    var info = FullState(player: .music, title: "Not Playing", artist: "Music", isPlaying: true, progress: 0, duration: 1)
+                    let fullScript = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to duration of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur\non error\nreturn \"error\"\nend try\nend tell"
+                    if let data = runScript(fullScript), data != "error" {
+                        parse(data, into: &info)
+                        info.isPlaying = true
+                        return info
+                    }
                 }
             }
         }
         
-        if sRun && sAuth {
-            let script = "tell application id \"\(PlayerApp.spotify.bundleID)\" to get (player state as text)"
-            if let res = runScript(script), res.contains("playing") {
-                var info = FullState(player: .spotify, title: "Not Playing", artist: "Spotify", isPlaying: true, progress: 0, duration: 1)
-                let fullScript = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to (duration of current track) / 1000\nset aURL to artwork url of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur & \"«»art:\" & aURL\non error\nreturn \"error\"\nend try\nend tell"
-                if let data = runScript(fullScript), data != "error" {
-                    parse(data, into: &info)
-                    info.isPlaying = true
-                    return info
+        if sRun && sCanTry {
+            let script = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nget (player state as text)\non error\nreturn \"stopped\"\nend try\nend tell"
+            if let res = runScript(script) {
+                if res == "PERMISSION_DENIED" {
+                    return FullState(player: .spotify, title: "PERMISSION_DENIED", artist: "", isPlaying: false, progress: 0, duration: 1)
+                }
+                if res.contains("playing") {
+                    var info = FullState(player: .spotify, title: "Not Playing", artist: "Spotify", isPlaying: true, progress: 0, duration: 1)
+                    let fullScript = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to (duration of current track) / 1000\nset aURL to artwork url of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur & \"«»art:\" & aURL\non error\nreturn \"error\"\nend try\nend tell"
+                    if let data = runScript(fullScript), data != "error" {
+                        parse(data, into: &info)
+                        info.isPlaying = true
+                        return info
+                    }
                 }
             }
         }
@@ -171,8 +162,8 @@ class MusicManager {
         
         if mRun {
             var info = FullState(player: .music, title: "Not Playing", artist: "Music", isPlaying: false, progress: 0, duration: 1)
-            if mAuth {
-                let script = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nreturn \"title:\" & tName & \"|artist:\" & aName\non error\nreturn \"error\"\nend try\nend tell"
+            if mCanTry {
+                let script = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(script), data != "error" {
                     parse(data, into: &info)
                 }
@@ -182,8 +173,8 @@ class MusicManager {
         
         if sRun {
             var info = FullState(player: .spotify, title: "Not Playing", artist: "Spotify", isPlaying: false, progress: 0, duration: 1)
-            if sAuth {
-                let script = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nreturn \"title:\" & tName & \"|artist:\" & aName\non error\nreturn \"error\"\nend try\nend tell"
+            if sCanTry {
+                let script = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(script), data != "error" {
                     parse(data, into: &info)
                 }
@@ -224,6 +215,8 @@ class MusicManager {
     }
     
     func fetchMusicArtwork() -> Data? {
+        guard isAppRunning(bundleID: PlayerApp.music.bundleID) else { return nil }
+        
         let tempDir = FileManager.default.temporaryDirectory
         let tempURL = tempDir.appendingPathComponent("notchdock_art.png")
         let tempPath = tempURL.path
@@ -248,6 +241,7 @@ class MusicManager {
         end tell
         """
         
+        let result = runScript(saveScript)
         if result == "ok" {
             return try? Data(contentsOf: tempURL)
         }
@@ -257,8 +251,49 @@ class MusicManager {
     /// Send play/pause to a known player. Caller supplies the player so we skip a redundant subprocess query.
     func togglePlay(player: PlayerApp) {
         let target = player == .none ? .music : player
+        let bundleID = target.bundleID
+        
         DispatchQueue.global(qos: .userInitiated).async {
-            _ = self.runScript("tell application id \"\(target.bundleID)\" to playpause")
+            let isRunning = !NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).isEmpty
+            
+            if isRunning {
+                let appName = target == .music ? "Music" : "Spotify"
+                let scriptSource = """
+                tell application "\(appName)"
+                    if player state is playing then
+                        pause
+                    else
+                        play
+                    end if
+                end tell
+                """
+                
+                if let script = NSAppleScript(source: scriptSource) {
+                    var error: NSDictionary?
+                    script.executeAndReturnError(&error)
+                    if let error = error {
+                        NotchLog.error("NSAppleScript Error: \(error)", category: NotchLog.music)
+                    } else {
+                        NotchLog.info("NSAppleScript Play/Pause successful", category: NotchLog.music)
+                    }
+                }
+            } else {
+                NotchLog.info("Launching \(bundleID) in background...", category: NotchLog.music)
+                if let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) {
+                    let config = NSWorkspace.OpenConfiguration()
+                    config.addsToRecentItems = false
+                    config.activates = false
+                    
+                    NSWorkspace.shared.openApplication(at: url, configuration: config) { app, error in
+                        if let error = error {
+                            NotchLog.error("Failed to launch \(bundleID): \(error.localizedDescription)", category: NotchLog.music)
+                        } else {
+                            Thread.sleep(forTimeInterval: 1.0)
+                            self.togglePlay(player: target)
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -335,10 +370,15 @@ class MusicViewModel: ObservableObject {
             let manager = MusicManager.shared
             let mIns = manager.isAppInstalled(bundleID: MusicManager.PlayerApp.music.bundleID)
             let sIns = manager.isAppInstalled(bundleID: MusicManager.PlayerApp.spotify.bundleID)
-            let mAuth = manager.getAuthStatus(bundleID: MusicManager.PlayerApp.music.bundleID)
-            let sAuth = manager.getAuthStatus(bundleID: MusicManager.PlayerApp.spotify.bundleID)
+            var mAuth = self.musicAuth
+            var sAuth = self.spotifyAuth
             
             let state = manager.fetchFullState(current: self.activePlayer)
+            
+            // If the script returned PERMISSION_DENIED or a privilege violation, 
+            // we know the status is .denied.
+            if state.player == .music && (state.title == "PERMISSION_DENIED" || state.title.contains("privilege violation")) { mAuth = .denied }
+            if state.player == .spotify && (state.title == "PERMISSION_DENIED" || state.title.contains("privilege violation")) { sAuth = .denied }
             
             DispatchQueue.main.async {
                 self.musicInstalled = mIns; self.spotifyInstalled = sIns
@@ -346,6 +386,20 @@ class MusicViewModel: ObservableObject {
                 
                 let mRun = manager.isAppRunning(bundleID: MusicManager.PlayerApp.music.bundleID)
                 let sRun = manager.isAppRunning(bundleID: MusicManager.PlayerApp.spotify.bundleID)
+                
+                // Silent Permission Learning: 
+                // If an app is running but we don't know its status, do a one-time lightweight check.
+                // This 'teaches' the app that it is authorized without aggressive polling.
+                if mRun && self.musicAuth == .unknown {
+                    let res = manager.runScript("tell application id \"\(MusicManager.PlayerApp.music.bundleID)\" to get name")
+                    if res == "PERMISSION_DENIED" || res?.contains("privilege violation") == true { self.musicAuth = .denied }
+                    else if res != nil { self.musicAuth = .authorized }
+                }
+                if sRun && self.spotifyAuth == .unknown {
+                    let res = manager.runScript("tell application id \"\(MusicManager.PlayerApp.spotify.bundleID)\" to get name")
+                    if res == "PERMISSION_DENIED" || res?.contains("privilege violation") == true { self.spotifyAuth = .denied }
+                    else if res != nil { self.spotifyAuth = .authorized }
+                }
 
                 let musicNeedsFix = mRun && mAuth == .denied
                 let spotifyNeedsFix = sRun && sAuth == .denied

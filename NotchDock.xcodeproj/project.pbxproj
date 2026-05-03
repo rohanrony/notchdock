@@ -400,6 +400,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "NotchDock uses automation to control music players like Apple Music and Spotify.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "NotchDock displays your upcoming events in the notch.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -432,6 +433,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "NotchDock uses automation to control music players like Apple Music and Spotify.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "NotchDock displays your upcoming events in the notch.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

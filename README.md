@@ -7,10 +7,20 @@ NotchDock is a modular productivity overlay for macOS designed to transform the 
 NotchDock is built around a plugin-based "module" architecture. The v1 MVP includes five core modules:
 
 - 📅 **Calendar**: Syncs with local calendars to display your next meeting countdown and offers a one-click "Join" button for Zoom, Google Meet, or Teams.
-- 📋 **Clipboard Stack**: Monitors system copy events and maintains a transient history of the last 10 items for quick restoration.
+- 📋 **ToDo / QuickAccess**: A secure, Keychain-backed snippet manager and task list for rapid data entry and retrieval.
 - ⏱️ **Focus Timer**: A simplified Pomodoro-style countdown timer with presets for 15, 25, and 50 minutes.
-- 🎵 **Media Hub**: Interfaces with macOS `NowPlaying` APIs to control system-wide audio (Spotify, Apple Music, Browser).
-- ✨ **Claude Quick-Chat**: A dedicated, perfectly round pill-shaped input field for immediate queries to the Claude API.
+- 🎵 **Music Module**: Hardened Apple Music and Spotify integration via secure, sandboxed AppleScript IPC.
+- 🗒️ **Quick Access**: A streamlined utility for storing and copying frequently used text snippets.
+
+## Security & Privacy
+
+NotchDock is designed with a **privacy-first, local-only** architecture:
+
+- **App Sandbox**: Runs in a highly restricted macOS Sandbox, ensuring it only has access to the specific resources you authorize.
+- **Local-First**: Your data never leaves your machine. We do not use any cloud backends for module storage or synchronization.
+- **Keychain Security**: All sensitive user data and tokens are stored in the macOS Keychain, not in plain text or standard configuration files.
+- **Privacy-Aware Logging**: Uses native `os.log` with private formatting to ensure sensitive information never appears in system logs.
+- **Hardened IPC**: Communicates with external apps (like Music/Spotify) via sanitized, in-process automation to prevent script injection.
 
 ## Design Aesthetic
 
