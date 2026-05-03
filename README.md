@@ -8,6 +8,8 @@
 
 <img width="1280" height="720" alt="Recording at 2026-05-03 15 52 24-Edited" src="https://github.com/user-attachments/assets/bed74712-2e73-45df-ac7f-16f2d38edd27" />
 
+<img width="635" height="315" alt="image" src="https://github.com/user-attachments/assets/59cee394-ad6d-43ca-b0cc-b60f957dfe87" />
+
 <img width="691" height="372" alt="Screenshot 2026-05-03 at 4 27 48 PM" src="https://github.com/user-attachments/assets/21d6ad35-a1cc-47bc-abd9-3cb5e182e843" />
 
 <img width="540" height="201" alt="image" src="https://github.com/user-attachments/assets/1927ca40-71ad-4119-a067-2bcfae45b3e2" />
