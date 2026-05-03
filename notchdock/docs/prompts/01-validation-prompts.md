@@ -20,14 +20,18 @@ Document:
 Review the full NotchDock spec set for internal consistency.
 
 Files:
+- 00-repo-structure.md
 - 01-product-overview.md
 - 02-design-system.md
-- 03-core-modules.md
+- 03-core-modules.md (and /extensions/ specs)
 - 04-extensions-arch.md
 - 05-settings-payments.md
 - 06-technical-decisions.md
 - 07-animations-motion.md
 - 08-monetization-roadmap.md
+- 09-settings-spec.md
+- 10-security-checks.md
+- 11-testing-and-build-workflow.md
 
 Tasks:
 1. Check for contradictions.
