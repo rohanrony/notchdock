@@ -855,7 +855,11 @@ struct MusicModule: NotchDockExtension {
     var iconName: String = "music.note"
     var isPremium: Bool = false
     var productID: String? = nil
-    var hasRequiredPermissions: Bool { true }
+    var hasRequiredPermissions: Bool {
+        // We return true if at least one source is not explicitly denied.
+        // This allows the module to try and trigger a prompt on first use.
+        return MusicViewModel.shared.musicAuth != .denied || MusicViewModel.shared.spotifyAuth != .denied
+    }
     var isLive: Bool { MusicViewModel.shared.isPlaying }
     var expandedMinWidth: CGFloat { Constants.expandedMinWidth }
     var compactView: AnyView { AnyView(MusicCompactView()) }

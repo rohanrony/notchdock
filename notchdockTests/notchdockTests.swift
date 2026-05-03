@@ -7,11 +7,11 @@
 
 import XCTest
 @testable import notchdock
-
+class notchdockTests: XCTestCase {
     var appState: AppState!
     
     override func setUpWithError() throws {
-        super.setUp()
+        try super.setUpWithError()
         // We use the shared instance for now, but in a real app we might want to inject a mock registry
         appState = AppState.shared
     }
