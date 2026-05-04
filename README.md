@@ -1,14 +1,27 @@
-# NotchDock Product Requirements Document (PRD)
+# NotchDock Demo + Product Requirements Document (PRD)
 
 ---
 
 ## 🎥 Video Demo
-https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="1280" height="720" alt="Recording at 2026-05-03 15 52 07-Edited" src="https://github.com/user-attachments/assets/e8f6dde9-9de8-49ca-848b-c10028591064" />
+</a>
+
+<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
+  <img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302" />
+</a>
+
+[NotchDock Demo Video](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
+
+
+
+
 ---
 
 ## 📦 Download
 
 [**Download NotchDock DMG**](https://github.com/rohanrony/notchdock/releases)
+
 
 ---
 
@@ -85,10 +98,27 @@ To bridge the gap between hardware and software by turning a static design eleme
 
 ---
 
-## 7. Roadmap (Future Extensions)
-- **Messaging Integration**: Quick glance for Slack, Messages, and Mail.
-- **System Telemetry**: Monitoring CPU, RAM, and battery health.
-- **Custom Theming**: User-definable accent colors and transparency levels.
+## 7. Roadmap (Upcoming Features)
+
+### 7.1 Core System & UX Enhancements
+- **Dynamic Dock State**: Implementation of a "Minimize to Tray" feature where the Pin button transforms to convert the Dock into a Menu Bar icon. Clicking the Menu Bar icon restores the NotchDock overlay.
+- **Interactive Home View**: 
+    - Development of a **Widgetized Home Page** allowing users to see glanceable data (e.g., Music widget, Calendar summary) at once.
+    - **Drag-and-Drop Assembly**: Users will be able to customize their Home View by dragging and dropping widgets.
+- **Extension Reordering**: Native drag-and-drop support within the expansion tray to customize module sequence.
+
+### 7.2 Module Improvements
+- **Meeting Navigator (Calendar)**: Persistent "Join" links that remain accessible throughout the duration of an ongoing meeting, ensuring quick re-entry if disconnected.
+- **Messages (iMessage Integration)**:
+    - **Compact Design**: Reimagined UI following the ultra-tight "ToDo" module aesthetic.
+    - **Smart Feed**: Displaying the top 3 most recent or pinned conversations.
+    - **Quick Reply**: An expandable tray that provides space for typing and emoji selection without leaving the Notch interface.
+
+### 7.3 New Extensions Roadmap
+- **Reminders (NotchList)**: Deep integration with the macOS Reminders app. Automatically creates and manages a dedicated `notchlist` (e.g., `notchlist 1`, `notchlist 2`) for rapid task entry.
+- **AirDrop & Files**: Quick-drop zone for files to initiate AirDrop or move files to common directories.
+- **Communication Suite**: Dedicated modules for **Mail**, **Slack**, and **WhatsApp**.
+- **Live Camera**: A privacy-aware camera preview module for quick "mirror" checks (pending security hardening).
 
 ---
 
