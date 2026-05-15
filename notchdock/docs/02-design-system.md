@@ -40,3 +40,8 @@ Use solid, 3D-inspired surfaces with deep layered drop shadows. The island, expa
 - **Active Module**: Indicated by a soft white background fill (Color.white.opacity(0.15)) behind the top bar icon.
 - **Interactive State**: Use a subtle "Hover Glow" (white at 10% opacity) on glass surfaces.
 
+## Menu Bar Icon (Minimized Mode)
+- **Design**: A custom vector-based `NSImage` representing the application's identity.
+- **Shape**: A filled "notch" silhouette centered inside an un-filled rounded square border.
+- **Behavior**: Uses `isTemplate = true` to automatically adapt to system accessibility and theme colors (White on Dark menu bar, Black on Light menu bar).
+- **Interaction**: Standard macOS `NSStatusItem` behavior with a native dropdown menu.
