@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import EventKit
 @testable import NotchDock
 
 class NotchDockTests: XCTestCase {
@@ -254,5 +255,20 @@ class NotchDockTests: XCTestCase {
         event.startDate = now.addingTimeInterval(300)
         XCTAssertTrue(viewModel.canJoinMeeting(event))
         XCTAssertEqual(viewModel.meetingURL(for: event)?.absoluteString, "https://meet.google.com/abc-defg-hij")
+    }
+
+    func testMusicManagerParsingPausedState() throws {
+        let manager = MusicManager.shared
+        var state = MusicManager.FullState(player: .music, title: "", artist: "", isPlaying: false, progress: 0, duration: 1)
+        
+        // Simulating the expected output from updated AppleScript when paused
+        let pausedResponse = "title:Test Song«»artist:Test Artist«»pos:100.0«»dur:200.0"
+        
+        manager.parse(pausedResponse, into: &state)
+        
+        XCTAssertEqual(state.title, "Test Song")
+        XCTAssertEqual(state.artist, "Test Artist")
+        XCTAssertEqual(state.progress, 0.5, "Progress should be 0.5 (100/200) even when paused")
+        XCTAssertEqual(state.duration, 200.0)
     }
 }

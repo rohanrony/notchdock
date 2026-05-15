@@ -164,7 +164,7 @@ class MusicManager {
         if mRun {
             var info = FullState(player: .music, title: "Not Playing", artist: "Music", isPlaying: false, progress: 0, duration: 1)
             if mCanTry {
-                let script = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName\non error\nreturn \"error\"\nend try\nend tell"
+                let script = "tell application id \"\(PlayerApp.music.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to duration of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(script), data != "error" {
                     parse(data, into: &info)
                 }
@@ -175,7 +175,7 @@ class MusicManager {
         if sRun {
             var info = FullState(player: .spotify, title: "Not Playing", artist: "Spotify", isPlaying: false, progress: 0, duration: 1)
             if sCanTry {
-                let script = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName\non error\nreturn \"error\"\nend try\nend tell"
+                let script = "tell application id \"\(PlayerApp.spotify.bundleID)\"\ntry\nset tName to name of current track\nset aName to artist of current track\nset pPos to player position\nset pDur to (duration of current track) / 1000\nset aURL to artwork url of current track\nreturn \"title:\" & tName & \"«»artist:\" & aName & \"«»pos:\" & pPos & \"«»dur:\" & pDur & \"«»art:\" & aURL\non error\nreturn \"error\"\nend try\nend tell"
                 if let data = runScript(script), data != "error" {
                     parse(data, into: &info)
                 }
@@ -186,7 +186,7 @@ class MusicManager {
         return FullState(player: .none, title: "Not Playing", artist: "No Media Detected", isPlaying: false, progress: 0, duration: 1)
     }
     
-    private func parse(_ res: String, into info: inout FullState) {
+    func parse(_ res: String, into info: inout FullState) {
         let parts = res.components(separatedBy: "«»")
         for part in parts {
             let kv = part.components(separatedBy: ":")

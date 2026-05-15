@@ -9,6 +9,7 @@ The Music module provides a premium, integrated media controller for macOS. It s
 3. **Playback Controls**: Full control over playback (Play/Pause, Next, Previous) and precise seeking via a custom slider.
 4. **App Integration**: Quick-launch button to open the active music player directly from the tray.
 5. **Music Visualizer**: Real-time animated visualizer that responds to playback state.
+6. **Persistent Progress**: The progress slider maintains its current position when playback is paused, rather than resetting to zero.
 
 ## UI Components & Design
 
@@ -23,7 +24,7 @@ The Music module provides a premium, integrated media controller for macOS. It s
     - **Title**: 15pt medium text (`ThemeTokens.primaryText`).
     - **Artist**: 13pt medium text (`ThemeTokens.secondaryText`).
 - **Quick Action**: 24x24 rounded rectangle button (6pt radius) containing the player's SF Symbol (`apple.logo` or `play.circle.fill`). Opens the app via file-based URL activation.
-- **Premium Slider**: Custom interactive progress bar. Supports dragging for seeking and updates in real-time.
+- **Premium Slider**: Custom interactive progress bar. Supports dragging for seeking and updates in real-time. The slider holds its current progress value during pause states to provide visual continuity.
 - **Playback Controls**: 
     - Backward/Forward: 18pt SF Symbols.
     - Play/Pause: 24pt SF Symbol with fixed 28pt width to prevent layout shift.
