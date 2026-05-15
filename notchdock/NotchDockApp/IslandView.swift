@@ -52,10 +52,11 @@ struct IslandView: View {
             }
             .frame(
                 minWidth: appState.isExpanded ? 0 : appState.detectedNotchWidth,
-                maxWidth: appState.isExpanded ? ThemeTokens.expandedIslandWidth : nil,
+                maxWidth: appState.isExpanded ? ThemeTokens.expandedIslandWidth : appState.detectedNotchWidth,
                 minHeight: appState.detectedMenuBarHeight
             )
-            .fixedSize(horizontal: true, vertical: true)
+            .fixedSize(horizontal: appState.isExpanded, vertical: true)
+            .contentShape(Rectangle())
             .environment(\.colorScheme, .dark)
             .onHover { isHovering in
                 // Pinned: always stay expanded; only collapse on hover-out when not pinned

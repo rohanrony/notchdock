@@ -57,7 +57,7 @@ To bridge the gap between hardware and software by turning a static design eleme
 ## 4. User Experience & Design
 
 ### 4.1 The "Surface" Interaction Model
-- **Idle State**: A slim, high-contrast bar displaying minimal status tokens.
+- **Idle State**: A slim, high-contrast bar displaying minimal status tokens. The activation zone is strictly restricted to the physical notch width to prevent accidental hover-triggers.
 - **Active State**: Upon hover, the surface expands vertically and dynamically horizontally to reveal active modules.
 - **Symmetric Expansion**: The UI expands perfectly around the physical hardware notch.
 - **Pinning**: A system to lock the notch in an open state for persistent monitoring.

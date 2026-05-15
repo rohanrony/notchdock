@@ -38,6 +38,7 @@ Use solid, 3D-inspired surfaces with deep layered drop shadows. The island, expa
   - **Inactive State**: Thin `pin` icon (SF Symbol), secondary text color, upright.
   - **Active State**: Solid `pin.fill` icon, upright, tinted with a warm amber accent (`hue: 0.08`), and a 15% opacity amber background glow.
 - **Active Module**: Indicated by a soft white background fill (Color.white.opacity(0.15)) behind the top bar icon.
+- **Hover Hit-Test**: When in the idle (collapsed) state, the interactive area is clipped to the `detectedNotchWidth`. This ensures the island only expands when the user intends to interact with the notch area itself.
 - **Interactive State**: Use a subtle "Hover Glow" (white at 10% opacity) on glass surfaces.
 
 ## Menu Bar Icon (Minimized Mode)

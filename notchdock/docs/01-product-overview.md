@@ -12,6 +12,7 @@ The primary interface is a **floating, 3D-inspired solid surface** anchored to t
     - **Interaction**: Left-clicking the icon opens a native menu with "Restore to Normal View", "Settings", and "Quit" options.
 - **Interaction Model**: Mouse-driven expansion with a **Pinning** system to lock the notch open. 
     - **Minimize Button**: A dedicated button in the expanded notch view to instantly collapse the app into the menu bar icon.
+    - **Activation Zone**: Expansion is strictly restricted to the area corresponding to the physical notch. Hovering over the menu bar outside this zone will not trigger expansion, preventing accidental activations.
     - **Keyboard Shortcuts**: System-wide toggles for quick access.
 - **Visuals**: Full support for dark mode (solid #0C0C0C) with deep, multi-layered 3D drop shadows. The icon bar is perfectly balanced around the notch with a tight 4pt spacing margin.
 

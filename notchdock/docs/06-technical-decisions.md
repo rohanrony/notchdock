@@ -24,4 +24,5 @@ Use SwiftUI for the main UI and AppKit only where needed.
 - Prefer small view models and focused services.
 - **Privacy**: All permission strings (EventKit, MediaRemote) must be explicitly defined in the app's `Info.plist`.
 - **Accessibility**: All interactive elements must include VoiceOver labels; UI must respect `accessibilityReduceMotion`.
-- Avoid overbuilding v1.
+## Interaction Logic
+- **Restricted Hover Zone**: To prevent accidental activations, the notch surface's hover hit-test area is strictly constrained to the physical notch's detected width using `.contentShape(Rectangle())` and explicit frame management in the idle state.
