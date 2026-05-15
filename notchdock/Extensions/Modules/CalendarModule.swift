@@ -141,10 +141,7 @@ struct CalendarExpandedView: View {
                             .font(.system(size: 14, weight: .medium))
                             .foregroundColor(ThemeTokens.accentColor)
 
-                        if let url = viewModel.meetingURL(for: event),
-                           url.scheme == "https",
-                           let mins = viewModel.minutesUntil(event: event),
-                           mins <= CalendarViewModel.Constants.meetingJoinThreshold {
+                        if viewModel.canJoinMeeting(event), let url = viewModel.meetingURL(for: event) {
                             Button(action: { NSWorkspace.shared.open(url) }) {
                                 Text("Join Meeting")
                                     .font(.system(size: 12, weight: .bold))
@@ -986,17 +983,35 @@ class CalendarViewModel: ObservableObject {
         if let notes = event.notes {
             for pattern in patterns {
                 if notes.contains(pattern),
-                   let range = notes.range(of: pattern),
-                   let urlEnd = notes[range.lowerBound...].firstIndex(of: "\n") {
-                    let urlString = String(notes[range.lowerBound..<urlEnd])
-                    return URL(string: urlString.trimmingCharacters(in: .whitespaces))
-                } else if notes.contains(pattern) {
-                    let words = notes.components(separatedBy: .whitespacesAndNewlines)
-                    return words.compactMap { URL(string: $0) }.first(where: { $0.absoluteString.hasPrefix(pattern) })
+                   let range = notes.range(of: pattern) {
+                    
+                    // Find end of URL (space, newline, or end of string)
+                    let substring = notes[range.lowerBound...]
+                    let endOfUrl = substring.firstIndex(where: { $0.isWhitespace || $0.isNewline }) ?? substring.endIndex
+                    let urlString = String(notes[range.lowerBound..<endOfUrl])
+                    
+                    if let url = URL(string: urlString.trimmingCharacters(in: .whitespaces)) {
+                        return url
+                    }
                 }
             }
         }
         return nil
+    }
+
+    func canJoinMeeting(_ event: EKEvent) -> Bool {
+        guard let url = meetingURL(for: event), url.scheme == "https" else { return false }
+        let now = Date()
+        
+        // Ongoing check
+        if event.startDate <= now && (event.endDate ?? now) > now {
+            return true
+        }
+        
+        // Starting soon check
+        let diff = event.startDate.timeIntervalSince(now)
+        let minsUntil = diff / 60
+        return minsUntil > 0 && minsUntil <= Double(Constants.meetingJoinThreshold)
     }
 
     // MARK: - Formatting

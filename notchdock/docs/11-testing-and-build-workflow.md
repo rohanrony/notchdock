@@ -13,7 +13,7 @@ NotchDock uses a dual-testing approach to ensure both logic and interface stabil
     - `AppState`: Intelligent notch selection and priority logic.
     - `AppConfig`: Configuration JSON loading and default values.
     - `Security`: AppleScript string sanitization.
-    - `Modules`: ViewModel logic for ToDo, QuickAccess, and Music.
+    - `Modules`: ViewModel logic for ToDo, QuickAccess, Music, and Calendar.
 
 ### 1.2 UI Tests (`NotchDockUITests`)
 - **Location**: `notchdockUITests/notchdockUITests.swift`

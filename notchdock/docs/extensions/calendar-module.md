@@ -42,7 +42,7 @@ A 3-column horizontal layout:
 **Column 2 — Current/Next Event**
 - Shows the primary event. The header dynamically changes to **"CURRENT"** if an event is ongoing, or **"NEXT"** otherwise.
 - Displays: Title, Location, Formatted time, Notes (3-line max).
-- If the event is within **10 minutes** and has a meeting link (Zoom, Google Meet, Teams, Webex — parsed from `event.url` or `event.notes`), a "Join Meeting" button is displayed.
+- If the event is ongoing or starts within **10 minutes** and has a meeting link (Zoom, Google Meet, Teams, Webex — parsed from `event.url` or `event.notes`), a "Join Meeting" button is displayed.
 
 **Column 3 — Upcoming**
 - Shows a unified list of upcoming items:

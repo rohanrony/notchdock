@@ -217,4 +217,42 @@ class NotchDockTests: XCTestCase {
         XCTAssertFalse(appState.isNudgeActive)
         XCTAssertEqual(appState.effectiveCompactExtensionID, "com.notchdock.music", "After nudge acknowledgment, should return to active module")
     }
+
+    func testCalendarJoinLinkLogic() throws {
+        let viewModel = CalendarViewModel.shared
+        let store = EKEventStore()
+        let event = EKEvent(eventStore: store)
+        
+        event.title = "Test Meeting"
+        event.url = URL(string: "https://zoom.us/j/123456")
+        
+        let now = Date()
+        
+        // 1. Future meeting (far away) - should NOT show
+        event.startDate = now.addingTimeInterval(3600) // 1 hour
+        event.endDate = now.addingTimeInterval(5400)
+        XCTAssertFalse(viewModel.canJoinMeeting(event))
+        
+        // 2. Future meeting (starting soon) - SHOULD show
+        event.startDate = now.addingTimeInterval(300) // 5 mins
+        event.endDate = now.addingTimeInterval(2100)
+        XCTAssertTrue(viewModel.canJoinMeeting(event))
+        
+        // 3. Ongoing meeting - SHOULD show
+        event.startDate = now.addingTimeInterval(-300) // Started 5 mins ago
+        event.endDate = now.addingTimeInterval(1500)
+        XCTAssertTrue(viewModel.canJoinMeeting(event))
+        
+        // 4. Past meeting - should NOT show
+        event.startDate = now.addingTimeInterval(-3600)
+        event.endDate = now.addingTimeInterval(-1800)
+        XCTAssertFalse(viewModel.canJoinMeeting(event))
+        
+        // 5. URL parsing from notes
+        event.url = nil
+        event.notes = "Join here: https://meet.google.com/abc-defg-hij"
+        event.startDate = now.addingTimeInterval(300)
+        XCTAssertTrue(viewModel.canJoinMeeting(event))
+        XCTAssertEqual(viewModel.meetingURL(for: event)?.absoluteString, "https://meet.google.com/abc-defg-hij")
+    }
 }
