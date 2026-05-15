@@ -104,6 +104,14 @@ class AppState: ObservableObject {
         self.homeViewModuleIDs = Set(initialEnabled.prefix(3))
         self.lastInteractionTimes["com.notchdock.calendar"] = Date()
         
+        // UI Test Hooks
+        if ProcessInfo.processInfo.arguments.contains("--test-expanded") {
+            self.isExpanded = true
+        }
+        if ProcessInfo.processInfo.arguments.contains("--test-todo") {
+            self.activeExtensionID = "com.notchdock.todo"
+        }
+        
         startNudgeMonitor()
     }
     

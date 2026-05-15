@@ -158,6 +158,7 @@ struct TimerExpandedView: View {
         .padding(.horizontal, 24)
         .padding(.bottom, 20)
         .frame(minWidth: 220) // Sleeker min width
+        .accessibilityIdentifier("timer_view")
     }
     
     private func applyChanges() {

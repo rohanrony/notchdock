@@ -341,6 +341,7 @@ struct ToDoExpandedView: View {
             .frame(minWidth: 280, maxHeight: CGFloat(min(400, 30 + viewModel.items.count * 32 + 60)))
             .animation(ThemeTokens.Spring.standard, value: viewModel.items.count)
         }
+        .accessibilityIdentifier("todo_view")
     }
 }
 

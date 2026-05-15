@@ -699,6 +699,7 @@ struct MusicExpandedView: View {
                 Button(action: { viewModel.nextTrack() }) { Image(systemName: "forward.fill").font(.system(size: 18)) }.buttonStyle(.plain)
             }.foregroundColor(ThemeTokens.primaryText)
         }.padding(.horizontal, 24).padding(.top, 12).padding(.bottom, viewModel.hasPermission ? 24 : 8)
+        .accessibilityIdentifier("music_view")
         if !viewModel.hasPermission { HStack(spacing: 6) { Image(systemName: "exclamationmark.triangle.fill").font(.system(size: 10)); Text("Access Required. Check Settings.").font(ThemeTokens.font(size: 10, weight: .semibold)) }.foregroundColor(.orange).padding(.bottom, 12) }
         else if !viewModel.anyAuthConfirmed { Text("No music sources authorized. Visit Settings.").font(ThemeTokens.font(size: 9)).foregroundColor(ThemeTokens.secondaryText.opacity(0.5)).padding(.bottom, 8) }
     }

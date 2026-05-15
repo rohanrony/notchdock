@@ -162,4 +162,59 @@ class NotchDockTests: XCTestCase {
         XCTAssertEqual(MusicManager.PlayerApp.music.bundleID, "com.apple.Music")
         XCTAssertEqual(MusicManager.PlayerApp.spotify.bundleID, "com.spotify.client")
     }
+
+    func testTimerLogic() throws {
+        let viewModel = TimerViewModel.shared
+        viewModel.reset()
+        
+        // Default duration
+        XCTAssertEqual(viewModel.timeRemaining, TimeInterval(viewModel.defaultMinutes * 60))
+        
+        // Manual set
+        viewModel.setTime(from: "05:30")
+        XCTAssertEqual(viewModel.timeRemaining, 330)
+        
+        // Start/Stop
+        viewModel.start()
+        XCTAssertTrue(viewModel.isRunning)
+        viewModel.pause()
+        XCTAssertFalse(viewModel.isRunning)
+        
+        // Critical state
+        viewModel.setTime(from: "00:59")
+        viewModel.start()
+        XCTAssertTrue(viewModel.isCritical)
+        viewModel.pause()
+        
+        viewModel.reset()
+    }
+
+    func testMusicViewModelInitialState() throws {
+        let viewModel = MusicViewModel.shared
+        XCTAssertEqual(viewModel.trackTitle, "Not Playing")
+        XCTAssertFalse(viewModel.isPlaying)
+        XCTAssertEqual(viewModel.progress, 0.0)
+    }
+
+    func testAppStateModuleSwitching() throws {
+        // Ensure we can switch and it updates correctly
+        appState.activeExtensionID = "com.notchdock.todo"
+        XCTAssertEqual(appState.activeExtensionID, "com.notchdock.todo")
+        
+        appState.activeExtensionID = "com.notchdock.timer"
+        XCTAssertEqual(appState.activeExtensionID, "com.notchdock.timer")
+    }
+
+    func testCalendarNudgeLogic() throws {
+        // Nudge should activate when requested
+        appState.isNudgeActive = false
+        appState.activeExtensionID = "com.notchdock.music"
+        
+        appState.isNudgeActive = true
+        XCTAssertEqual(appState.effectiveCompactExtensionID, "com.notchdock.calendar", "Nudge should override active module in compact view")
+        
+        appState.acknowledgeNudge()
+        XCTAssertFalse(appState.isNudgeActive)
+        XCTAssertEqual(appState.effectiveCompactExtensionID, "com.notchdock.music", "After nudge acknowledgment, should return to active module")
+    }
 }

@@ -1,14 +1,14 @@
 # Calendar Module Specification
 
-The Calendar module integrates with the macOS EventKit framework to display real Apple Calendar events directly in the notch.
+The Calendar module integrates with the macOS EventKit framework to display real Apple Calendar events and **Scheduled Reminders** directly in the notch.
 
 ## 1. Permission Model
-The module requires `NSCalendarUsageDescription` in `Info.plist` and uses `EKEventStore` to request access.
+The module requires `NSCalendarUsageDescription` and `NSRemindersUsageDescription` in `Info.plist` and uses `EKEventStore` to request access to both events and reminders.
 
 | Status | Behavior |
 |---|---|
 | `.notDetermined` | Expanded view shows a prompt with an "Allow Access" button. Settings tab shows a connection card. |
-| `.authorized` / `.fullAccess` | Events fetched and displayed. `hasRequiredPermissions` returns `true`. |
+| `.authorized` / `.fullAccess` | Events and reminders fetched and displayed. `hasRequiredPermissions` returns `true`. |
 | `.denied` | "Open Settings" button deep-links to `x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars`. |
 | `.restricted` | Shows a "Restricted by policy" message with no action. |
 
@@ -44,9 +44,11 @@ A 3-column horizontal layout:
 - Displays: Title, Location, Formatted time, Notes (3-line max).
 - If the event is within **10 minutes** and has a meeting link (Zoom, Google Meet, Teams, Webex — parsed from `event.url` or `event.notes`), a "Join Meeting" button is displayed.
 
-**Column 3 — Upcoming Events**
-- Shows the next **3** events after the primary event.
-- Scrollable list with: Title, Formatted time, Location (if available).
+**Column 3 — Upcoming**
+- Shows a unified list of upcoming items:
+    - **Events**: Next 3 events after the primary event (Calendar icon).
+    - **Scheduled Reminders**: Next 3 reminders with due dates (Bell icon).
+- Scrollable list with Title and Formatted time.
 
 ### 2.3 Permission Guard
 When access is not granted, the expanded panel is replaced by a centered prompt card with an icon, description text, and an action button. This ensures the module is always gracefully handled.
@@ -63,9 +65,10 @@ A status card that dynamically adapts:
 - **Connected**: Green checkmark seal, "Connected" status, no action button.
 - **Denied**: Red X seal, "Access Denied" with an "Open Settings" button linking to System Preferences Privacy pane.
 
-### Calendars Section (Visible when Connected)
-- **Visible Calendars**: A list of all discovered system calendars (Work, Personal, etc.) with toggles to enable or disable them in NotchDock. 
-- Colors are preserved from the system calendar settings.
+### Calendars & Lists (Visible when Connected)
+- **Visible Calendars**: A list of all discovered system calendars with toggles.
+- **Scheduled Reminders**: A list of all discovered system reminder lists with toggles.
+- Colors and titles are preserved from system settings.
 
 ### Thresholds Section
 - **Show Next Event in minimized Notch**: Slider to configure how early an upcoming event appears (5-120 minutes).
@@ -75,13 +78,14 @@ A status card that dynamically adapts:
 
 ## 4. Data & Logic
 
-### Event Fetching
-- Events are fetched for the **next 7 days** from `Date()`.
-- Results are filtered by the **Visible Calendars** selected in Settings.
-- Results are sorted ascending by `startDate`.
-- The first result is assigned to `nextEvent`, the next 3 to `upcomingEvents`.
-- Logic transitions from an ongoing event to the next one 10 minutes before the next one starts.
-- A `Timer` refreshes events every **60 seconds** to keep the display current.
+### Event & Reminder Fetching
+- Events and reminders are fetched for the **next 7 days** from `Date()`.
+- Results are filtered by the **Visible Calendars** and **Reminder Lists** selected in Settings.
+- Events are sorted ascending by `startDate`.
+- Reminders are sorted ascending by `dueDate`.
+- The first event result is assigned to `nextEvent`, the next 3 to `upcomingEvents`.
+- The next 3 reminders with due dates are assigned to `upcomingReminders`.
+- A `Timer` refreshes data every **60 seconds** to keep the display current.
 
 ### Event Dot Caching
 - On each month navigation, all event dates in that month are fetched and stored as a `Set<String>` (`"yyyy-MM-dd"` format) for O(1) lookup during grid rendering.
@@ -113,3 +117,4 @@ Computed at runtime from `EKEventStore.authorizationStatus(for: .event)`. Return
 - Event creation shortcut from the expanded view.
 - Support for event alerts and notifications.
 - Configurable "Upcoming" window: today only vs. 7-day vs. 30-day.
+- Drag-and-drop support for reordering reminders.

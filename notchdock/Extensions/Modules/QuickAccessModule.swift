@@ -247,6 +247,7 @@ struct QuickAccessExpandedView: View {
             }
             .frame(minWidth: 320, maxHeight: 400)
         }
+        .accessibilityIdentifier("quickaccess_view")
     }
 }
 

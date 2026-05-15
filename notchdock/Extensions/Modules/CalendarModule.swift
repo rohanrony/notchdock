@@ -14,6 +14,7 @@ struct CalendarExpandedView: View {
 
     var body: some View {
         calendarContentView
+            .accessibilityIdentifier("calendar_view")
             .onAppear {
                 selectedGridDate = nil
                 viewModel.resetToToday()
@@ -179,22 +180,28 @@ struct CalendarExpandedView: View {
                     .frame(width: 1)
                     .padding(.vertical, 16)
 
-                // COLUMN 3: Upcoming Events
+                // COLUMN 3: Upcoming
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Upcoming")
                         .font(.system(size: 12, weight: .bold, design: .rounded))
                         .foregroundColor(ThemeTokens.secondaryText)
                         .textCase(.uppercase)
 
-                    if !viewModel.upcomingEvents.isEmpty {
+                    if !viewModel.upcomingEvents.isEmpty || !viewModel.upcomingReminders.isEmpty {
                         ScrollView(.vertical, showsIndicators: false) {
                             VStack(alignment: .leading, spacing: 12) {
+                                // Events
                                 ForEach(viewModel.upcomingEvents, id: \.stableId) { event in
                                     VStack(alignment: .leading, spacing: 2) {
-                                        Text(event.title ?? "Untitled")
-                                            .font(.system(size: 14, weight: .semibold))
-                                            .foregroundColor(ThemeTokens.primaryText)
-                                            .lineLimit(1)
+                                        HStack(spacing: 4) {
+                                            Image(systemName: "calendar")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(ThemeTokens.secondaryText)
+                                            Text(event.title ?? "Untitled")
+                                                .font(.system(size: 14, weight: .semibold))
+                                                .foregroundColor(ThemeTokens.primaryText)
+                                                .lineLimit(1)
+                                        }
 
                                         Text(viewModel.formatTimeString(for: event.startDate))
                                             .font(.system(size: 12, weight: .medium))
@@ -208,10 +215,31 @@ struct CalendarExpandedView: View {
                                         }
                                     }
                                 }
+                                
+                                // Reminders
+                                ForEach(viewModel.upcomingReminders, id: \.stableId) { reminder in
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        HStack(spacing: 4) {
+                                            Image(systemName: "bell.fill")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(ThemeTokens.accentColor)
+                                            Text(reminder.title ?? "Untitled")
+                                                .font(.system(size: 14, weight: .semibold))
+                                                .foregroundColor(ThemeTokens.primaryText)
+                                                .lineLimit(1)
+                                        }
+
+                                        if let dueDate = reminder.dueDateComponents?.date {
+                                            Text(viewModel.formatTimeString(for: dueDate))
+                                                .font(.system(size: 12, weight: .medium))
+                                                .foregroundColor(ThemeTokens.accentColor)
+                                        }
+                                    }
+                                }
                             }
                         }
                     } else {
-                        Text("No Upcoming Events")
+                        Text("Nothing Scheduled")
                             .font(.system(size: 14))
                             .foregroundColor(ThemeTokens.secondaryText)
                     }
@@ -368,6 +396,49 @@ struct CalendarSettingsView: View {
                                     }
                                     
                                     if index < viewModel.availableCalendars.count - 1 {
+                                        Divider().padding(.leading, 16)
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // Reminder selection
+                    SectionCard(title: "Scheduled Reminders", subtitle: "Select which reminder lists to show in the notch.") {
+                        VStack(spacing: 0) {
+                            HStack {
+                                Spacer()
+                                Button("Select All") { viewModel.selectAllReminderLists() }
+                                    .buttonStyle(.link)
+                                    .font(.system(size: 11) )
+                                Text("•")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
+                                Button("Deselect All") { viewModel.deselectAllReminderLists() }
+                                    .buttonStyle(.link)
+                                    .font(.system(size: 11))
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.top, 12)
+                            .padding(.bottom, 4)
+                            
+                            VStack(spacing: 0) {
+                                ForEach(Array(viewModel.availableReminderLists.enumerated()), id: \.element.calendarIdentifier) { index, list in
+                                    SettingsRow(list.title) {
+                                        HStack(spacing: 12) {
+                                            Circle()
+                                                .fill(Color(nsColor: list.color))
+                                                .frame(width: 8, height: 8)
+                                            
+                                            Toggle("", isOn: Binding(
+                                                get: { viewModel.enabledReminderIDs.contains(list.calendarIdentifier) },
+                                                set: { _ in viewModel.toggleReminderList(list.calendarIdentifier) }
+                                            ))
+                                            .toggleStyle(.checkbox)
+                                        }
+                                    }
+                                    
+                                    if index < viewModel.availableReminderLists.count - 1 {
                                         Divider().padding(.leading, 16)
                                     }
                                 }
@@ -551,17 +622,22 @@ class CalendarViewModel: ObservableObject {
         static let dotIndicatorOffset: CGFloat = 14
         static let gridDaySize: CGFloat = 24
         static let gridRowHeight: CGFloat = 28
+        static let upcomingRemindersCount: Int = 3
     }
 
     private let store = EKEventStore()
 
     @Published var currentMonth: Date = Date()
     @Published var authorizationStatus: EKAuthorizationStatus = EKEventStore.authorizationStatus(for: .event)
+    @Published var reminderAuthorizationStatus: EKAuthorizationStatus = EKEventStore.authorizationStatus(for: .reminder)
     @Published var nextEvent: EKEvent? = nil
     @Published var upcomingEvents: [EKEvent] = []
+    @Published var upcomingReminders: [EKReminder] = []
     @Published var availableCalendars: [EKCalendar] = []
+    @Published var availableReminderLists: [EKCalendar] = []
 
     @AppStorage("calendar_enabled_ids") private var enabledIDsString: String = ""
+    @AppStorage("reminders_enabled_ids") private var enabledReminderIDsString: String = ""
     @AppStorage("calendar_minimized_threshold") var minimizedThreshold: Int = Constants.defaultMinimizedThreshold
     let ongoingThreshold: Int = Constants.defaultOngoingThreshold
 
@@ -570,8 +646,22 @@ class CalendarViewModel: ObservableObject {
         set { enabledIDsString = newValue.joined(separator: ",") }
     }
 
+    var enabledReminderIDs: Set<String> {
+        get { Set(enabledReminderIDsString.components(separatedBy: ",").filter { !$0.isEmpty }) }
+        set { enabledReminderIDsString = newValue.joined(separator: ",") }
+    }
+
     var isAuthorized: Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
+        if #available(macOS 14.0, *) {
+            return status == .fullAccess
+        } else {
+            return status.rawValue == 3 // EKAuthorizationStatus.authorized
+        }
+    }
+
+    var isAuthorizedForReminders: Bool {
+        let status = EKEventStore.authorizationStatus(for: .reminder)
         if #available(macOS 14.0, *) {
             return status == .fullAccess
         } else {
@@ -592,6 +682,10 @@ class CalendarViewModel: ObservableObject {
             fetchEvents()
             startRefreshTimer()
         }
+        if isAuthorizedForReminders {
+            refreshReminderLists()
+            fetchReminders()
+        }
     }
 
     func refreshCalendars() {
@@ -600,6 +694,14 @@ class CalendarViewModel: ObservableObject {
         // If enabledIDs is empty, enable all by default
         if enabledIDsString.isEmpty {
             enabledCalendarIDs = Set(availableCalendars.map { $0.calendarIdentifier })
+        }
+    }
+
+    func refreshReminderLists() {
+        self.availableReminderLists = store.calendars(for: .reminder).sorted { $0.title < $1.title }
+        
+        if enabledReminderIDsString.isEmpty {
+            enabledReminderIDs = Set(availableReminderLists.map { $0.calendarIdentifier })
         }
     }
 
@@ -614,6 +716,17 @@ class CalendarViewModel: ObservableObject {
         fetchEvents()
     }
 
+    func toggleReminderList(_ id: String) {
+        var current = enabledReminderIDs
+        if current.contains(id) {
+            current.remove(id)
+        } else {
+            current.insert(id)
+        }
+        enabledReminderIDs = current
+        fetchReminders()
+    }
+
     func selectAllCalendars() {
         enabledCalendarIDs = Set(availableCalendars.map { $0.calendarIdentifier })
         fetchEvents()
@@ -622,6 +735,16 @@ class CalendarViewModel: ObservableObject {
     func deselectAllCalendars() {
         enabledCalendarIDs = []
         fetchEvents()
+    }
+
+    func selectAllReminderLists() {
+        enabledReminderIDs = Set(availableReminderLists.map { $0.calendarIdentifier })
+        fetchReminders()
+    }
+
+    func deselectAllReminderLists() {
+        enabledReminderIDs = []
+        fetchReminders()
     }
 
 
@@ -640,6 +763,15 @@ class CalendarViewModel: ObservableObject {
                     }
                 }
             }
+            store.requestFullAccessToReminders { [weak self] granted, error in
+                DispatchQueue.main.async {
+                    self?.reminderAuthorizationStatus = EKEventStore.authorizationStatus(for: .reminder)
+                    if granted {
+                        self?.refreshReminderLists()
+                        self?.fetchReminders()
+                    }
+                }
+            }
         } else {
             store.requestAccess(to: .event) { [weak self] granted, error in
                 DispatchQueue.main.async {
@@ -651,6 +783,15 @@ class CalendarViewModel: ObservableObject {
                     }
                 }
             }
+            store.requestAccess(to: .reminder) { [weak self] granted, error in
+                DispatchQueue.main.async {
+                    self?.reminderAuthorizationStatus = EKEventStore.authorizationStatus(for: .reminder)
+                    if granted {
+                        self?.refreshReminderLists()
+                        self?.fetchReminders()
+                    }
+                }
+            }
         }
     }
 
@@ -659,6 +800,7 @@ class CalendarViewModel: ObservableObject {
     func resetToToday() {
         currentMonth = Date()
         fetchEvents()
+        fetchReminders()
     }
 
     func fetchEvents() {
@@ -713,6 +855,37 @@ class CalendarViewModel: ObservableObject {
 
         // Also cache all dates with events for the current month grid
         loadDatesWithEvents(for: currentMonth)
+        fetchReminders()
+    }
+
+    func fetchReminders() {
+        guard isAuthorizedForReminders else { return }
+        if availableReminderLists.isEmpty { refreshReminderLists() }
+        
+        let enabledLists = availableReminderLists.filter { enabledReminderIDs.contains($0.calendarIdentifier) }
+        guard !enabledLists.isEmpty else {
+            DispatchQueue.main.async { self.upcomingReminders = [] }
+            return
+        }
+        
+        let now = Date()
+        let endOfDay = calendar.date(byAdding: .day, value: Constants.daysInFutureToFetch, to: now) ?? now
+        
+        let predicate = store.predicateForReminders(in: enabledLists)
+        store.fetchReminders(matching: predicate) { [weak self] reminders in
+            guard let self = self else { return }
+            
+            let filtered = (reminders ?? []).filter { reminder in
+                guard !reminder.isCompleted, let dueDate = reminder.dueDateComponents?.date else { return false }
+                return dueDate >= now && dueDate <= endOfDay
+            }.sorted { 
+                ($0.dueDateComponents?.date ?? Date.distantFuture) < ($1.dueDateComponents?.date ?? Date.distantFuture) 
+            }
+            
+            DispatchQueue.main.async {
+                self.upcomingReminders = Array(filtered.prefix(Constants.upcomingRemindersCount))
+            }
+        }
     }
 
     func loadEvents(for date: Date) {
@@ -736,6 +909,22 @@ class CalendarViewModel: ObservableObject {
             self.nextEvent = events.first
             self.upcomingEvents = Array(events.dropFirst().prefix(Constants.upcomingEventsCount))
         }
+        
+        // Also fetch reminders for this day
+        let reminderPredicate = store.predicateForReminders(in: nil) // We filter manually below anyway or can use enabled lists
+        store.fetchReminders(matching: reminderPredicate) { [weak self] reminders in
+            guard let self = self else { return }
+            let filtered = (reminders ?? []).filter { reminder in
+                guard let dueDate = reminder.dueDateComponents?.date else { return false }
+                return self.calendar.isDate(dueDate, inSameDayAs: date) && !reminder.isCompleted
+            }.sorted {
+                ($0.dueDateComponents?.date ?? Date.distantFuture) < ($1.dueDateComponents?.date ?? Date.distantFuture)
+            }
+            
+            DispatchQueue.main.async {
+                self.upcomingReminders = filtered
+            }
+        }
     }
 
     func loadDatesWithEvents(for month: Date) {
@@ -755,9 +944,20 @@ class CalendarViewModel: ObservableObject {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
 
-        let dates = Set(events.map { formatter.string(from: $0.startDate) })
-        DispatchQueue.main.async {
-            self.datesWithEvents = dates
+        var dates = Set(events.map { formatter.string(from: $0.startDate) })
+        
+        // Add dates with reminders
+        let reminderPredicate = store.predicateForReminders(in: nil)
+        store.fetchReminders(matching: reminderPredicate) { [weak self] reminders in
+            guard let self = self else { return }
+            for reminder in (reminders ?? []) {
+                if let dueDate = reminder.dueDateComponents?.date, !reminder.isCompleted {
+                    dates.insert(formatter.string(from: dueDate))
+                }
+            }
+            DispatchQueue.main.async {
+                self.datesWithEvents = dates
+            }
         }
     }
 
@@ -771,6 +971,7 @@ class CalendarViewModel: ObservableObject {
         refreshTimer?.invalidate()
         refreshTimer = Timer.scheduledTimer(withTimeInterval: Constants.refreshInterval, repeats: true) { [weak self] _ in
             self?.fetchEvents()
+            self?.fetchReminders()
         }
     }
 
@@ -945,5 +1146,12 @@ class CalendarViewModel: ObservableObject {
 extension EKEvent {
     var stableId: String {
         return "\(eventIdentifier ?? "")-\(startDate.timeIntervalSince1970)"
+    }
+}
+
+extension EKReminder {
+    var stableId: String {
+        let datePart = dueDateComponents?.date?.timeIntervalSince1970 ?? 0
+        return "\(calendarItemIdentifier)-\(datePart)"
     }
 }
