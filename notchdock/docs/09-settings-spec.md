@@ -20,6 +20,7 @@ The entry point for global app configuration.
 - **Module Order**: Interactive list allowing users to drag-and-drop to reorder modules in the notch switcher.
 - **System**:
     - **Launch at Login**: Managed via `SMAppService.mainApp`.
+    - **Minimized Mode**: Option to "Minimize to Icon View" which replaces the notch surface with a small, draggable floating icon.
 
 ### 3.2 Extensions
 A "Coming Soon" page showcasing the future roadmap for NotchDock.

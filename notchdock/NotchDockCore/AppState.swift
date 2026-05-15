@@ -8,6 +8,7 @@ class AppState: ObservableObject {
     
     @Published var isExpanded: Bool = false
     @Published var isPinned: Bool = false
+    @Published var isMinimized: Bool = false
     @Published var activeExtensionID: String? {
         didSet {
             if let id = activeExtensionID {

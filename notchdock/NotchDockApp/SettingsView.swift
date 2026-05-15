@@ -265,6 +265,29 @@ struct GeneralSettingsView: View {
                                 }
                             }
                     }
+                    
+                    Divider().padding(.leading, 48)
+                    
+                    SettingsRow("Minimize to Icon View", icon: "square.dashed") {
+                        Toggle("", isOn: $appState.isMinimized)
+                            .toggleStyle(.switch)
+                            .scaleEffect(0.8)
+                    }
+                    
+                    Divider().padding(.leading, 48)
+                    
+                    SettingsRow("Quit NotchDock", icon: "power") {
+                        Button(role: .destructive) {
+                            NSApplication.shared.terminate(nil)
+                        } label: {
+                            Text("Quit")
+                                .font(.system(size: 11, weight: .semibold))
+                                .padding(.horizontal, 8)
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.red)
+                        .controlSize(.small)
+                    }
                 }
             }
             .padding(.horizontal, 32)

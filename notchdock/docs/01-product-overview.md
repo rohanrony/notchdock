@@ -7,6 +7,9 @@ NotchDock is a modular productivity overlay for macOS designed to transform the 
 The primary interface is a **floating, 3D-inspired solid surface** anchored to the top-center of the primary display, mirroring the physical notch dimensions.
 - **Idle State**: A slim, high-contrast bar displaying minimal status tokens (e.g., "3m to next meeting" or a playback icon).
 - **Active State (Expansion)**: Upon hover, the surface expands vertically and dynamically horizontally to reveal active modules. The expansion is **symmetric** around the physical notch.
+- **Minimized State (Icon View)**: A user-selectable alternative state where the notch surface is hidden and replaced by a small, floating app icon. 
+    - **Interaction**: Clicking the icon opens a mini-menu with two options: "Restore to Normal View" and "Settings".
+    - **Draggable**: The icon can be moved anywhere on the screen (optional, but standard for floating icons).
 - **Interaction Model**: Mouse-driven expansion with a **Pinning** system to lock the notch open. Keyboard shortcuts provide quick-action toggles.
 - **Visuals**: Full support for dark mode (solid #0C0C0C) with deep, multi-layered 3D drop shadows. The icon bar is perfectly balanced around the notch with a tight 4pt spacing margin.
 

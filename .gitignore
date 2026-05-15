@@ -56,8 +56,10 @@ Temporary Items
 # Packaging and Distribution
 packaging/
 test_dmg/
+scratch/
 *.dmg
-
+*.png
+*.app
 # AI Agents
 .agents/
 

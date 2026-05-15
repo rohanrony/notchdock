@@ -233,6 +233,23 @@ struct IslandView: View {
                     .help(appState.isPinned ? "Unpin – close on mouse-out" : "Pin open")
                     .animation(ThemeTokens.Spring.standard, value: appState.isPinned)
                     
+                    // Minimize button
+                    Button(action: {
+                        withAnimation(ThemeTokens.Spring.standard) {
+                            appState.isMinimized = true
+                            appState.isExpanded = false
+                        }
+                    }) {
+                        Image(systemName: "arrow.down.right.and.arrow.up.left")
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundColor(ThemeTokens.secondaryText)
+                            .frame(width: 22, height: 22)
+                            .background(Color.clear)
+                            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
+                    .help("Minimize to Menu Bar")
+                    
                     // Settings button
                     SettingsLink {
                         Image(systemName: "gearshape.fill")
