@@ -226,8 +226,8 @@ struct ToDoRow: View {
                 } else {
                     Text(item.text)
                         .font(.system(size: 14, weight: .regular))
-                        .foregroundColor(item.isCompleted ? ThemeTokens.secondaryText.opacity(0.35) : ThemeTokens.secondaryText)
-                        .strikethrough(item.isCompleted, color: ThemeTokens.secondaryText.opacity(0.5))
+                        .foregroundColor(item.isCompleted ? ThemeTokens.primaryText.opacity(0.6) : ThemeTokens.secondaryText)
+                        .strikethrough(item.isCompleted, color: ThemeTokens.primaryText.opacity(0.4))
                         .lineLimit(nil) // Enable multi-line wrapping
                         .fixedSize(horizontal: false, vertical: true) // Allow vertical growth
                         .frame(maxWidth: .infinity, alignment: .leading)

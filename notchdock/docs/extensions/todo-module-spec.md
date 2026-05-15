@@ -21,7 +21,7 @@ The ToDo module provides a lightweight, premium task manager directly from the m
 
 #### Task Item Row (`ToDoRow`)
 - **Checkbox (Left)**: Circle outline → filled circle + `checkmark` on completion. Scale pulse on tap.
-- **Task Text (Center)**: 14pt regular, multi-line. Faded + strikethrough when complete.
+- **Task Text (Center)**: 14pt regular, multi-line. Faded white (`ThemeTokens.primaryText.opacity(0.6)`) + strikethrough when complete. Improved visibility over previous gray tone.
 - **Hover Actions (Right)**: `xmark.circle.fill` delete button + `line.3.horizontal` reorder handle.
 - **Row Padding**: 3pt vertical, 6pt leading (ultra-flush left), 8pt trailing.
 
