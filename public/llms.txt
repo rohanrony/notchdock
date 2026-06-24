@@ -1,0 +1,31 @@
+# NotchDock
+
+> Transform your MacBook notch into an interactive status dock and utility tray.
+
+NotchDock is a macOS utility application that turns the MacBook bezel/notch area into a dynamic hoverable control center containing helpful widgets.
+
+## Key Features
+- **Sports Live Updates**: Track world cup scores, leagues, and team events with automated refreshing data.
+- **Calendar & Events**: Integrates with macOS Calendar to show meeting agendas and countdown timers.
+- **Clipboard History**: A quick access panel to review and click-to-copy clipboard history.
+- **To-Do List**: A simple checklist scratchpad with drag-to-reorder capabilities.
+- **Media Controller**: Universal playback controls for system-level audio feeds.
+- **Stocks Tracker**: Real-time stock prices, indices, and crypto watchlists with sparklines.
+- **Live Status Bar**: Always-on indicators showing state or details directly on the bezel/notch area.
+
+## System Requirements
+- Requires macOS Monterey (12.0) or newer.
+- Built to run in macOS sandbox with secure permissions.
+
+## Installation & Setup
+1. Download the latest `NotchDock.dmg` installer.
+2. Drag the `NotchDock` application to the `/Applications` folder.
+3. Grant standard macOS Accessibility permissions in System Settings (needed to track hover positions around the notch).
+4. Hover your cursor near your MacBook notch to reveal the dock.
+
+## Resources & Links
+- **Official Website**: https://notchdock.app
+- **GitHub Repository**: https://github.com/rohanrony/notchdock
+- **Releases (DMG Download)**: https://github.com/rohanrony/notchdock/releases
+- **Issue Tracker / Support**: https://github.com/rohanrony/notchdock/issues
+- **Contact Support**: mailto:notchdock@gmail.com

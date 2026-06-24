@@ -813,6 +813,7 @@ code {
 .showcase-image-wrapper {
   padding: 24px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #0e0e11;
