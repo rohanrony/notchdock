@@ -36,6 +36,16 @@ NotchDock is designed with a **privacy-first, local-only** architecture:
 - **Privacy-Aware Logging**: Uses native `os.log` with private formatting to ensure sensitive information never appears in system logs.
 - **Hardened IPC**: Communicates with external apps (like Music/Spotify) via sanitized, in-process automation to prevent script injection.
 
+## 🌐 Data Sources & API Disclaimers
+
+NotchDock integrates with third-party public endpoints to provide real-time dashboard updates:
+
+- **Sports Scores**: Powered by ESPN's public scoreboard APIs. Game logs, schedules, and standings are queried directly client-side with native rate-limiting and cooldown buffers (2.0s to 5.0s) to prevent endpoint abuse.
+- **Stock Market Data**: Powered by Yahoo Finance's query APIs. Stocks, crypto tracking, and sparkline data are queried directly client-side using standard session crumb initialization.
+
+### Legal Disclaimer
+This project is an independent, open-source productivity utility. It is **not** affiliated, associated, authorized, endorsed by, or in any way officially connected with Yahoo, Inc., ESPN, Disney, or any of their subsidiaries or affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of these names does not imply any affiliation with or endorsement by them.
+
 ## Design Aesthetic
 
 NotchDock features a deeply integrated, hardware-like aesthetic:
