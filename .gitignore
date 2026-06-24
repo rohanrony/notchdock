@@ -1,0 +1,35 @@
+# >>> Switchboard managed exclusions >>>
+# Switchboard runtime state (per-session, not shareable)
+.switchboard/*
+!.switchboard/reviews/
+!.switchboard/plans/
+!.switchboard/sessions/
+!.switchboard/CLIENT_CONFIG.md
+!.switchboard/README.md
+!.switchboard/SWITCHBOARD_PROTOCOL.md
+
+# ClickUp integration config (workspace-specific IDs)
+.switchboard/clickup-config.json
+
+# Linear integration config (workspace-specific IDs and sync map)
+.switchboard/linear-config.json
+.switchboard/linear-sync.json
+
+# Notion integration config and page content cache
+.switchboard/notion-config.json
+.switchboard/notion-cache.md
+
+# kanban.db is already excluded by .switchboard/* above — explicit entry for documentation clarity.
+# Never commit the kanban database: it contains machine-local state that differs per developer.
+.switchboard/kanban.db
+.switchboard/*.db-shm
+.switchboard/*.db-wal
+# <<< Switchboard managed exclusions <<<
+
+# Standard exclusions
+node_modules/
+.npm-cache/
+.DS_Store
+dist/
+*.log
+

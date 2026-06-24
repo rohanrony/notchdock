@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpg" href="/assets/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>NotchDock | Unleash Your MacBook Notch</title>
+    <meta name="title" content="NotchDock | Unleash Your MacBook Notch" />
+    <meta name="description" content="Transform your MacBook notch into an interactive status dock and utility tray. Track live sports, control media, manage clipboards, and check calendars in one click." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="NotchDock | Unleash Your MacBook Notch" />
+    <meta property="og:description" content="Transform your MacBook notch into an interactive status dock and utility tray. Track live sports, control media, manage clipboards, and check calendars in one click." />
+    <meta property="og:image" content="/assets/logo.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="NotchDock | Unleash Your MacBook Notch" />
+    <meta property="twitter:description" content="Transform your MacBook notch into an interactive status dock and utility tray. Track live sports, control media, manage clipboards, and check calendars in one click." />
+    <meta property="twitter:image" content="/assets/logo.jpg" />
+
+    <!-- FontAwesome & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    
+    <!-- Interactive Top Page Notch (The WOW factor) -->
+    <div class="interactive-notch-container" id="page-notch-container">
+      <div class="page-notch" id="page-notch">
+        <div class="notch-collapsed-content">
+          <div class="live-indicator">
+            <span class="pulse-dot"></span>
+            <span class="indicator-text">COD 0 - 0 COL 59'</span>
+          </div>
+          <i class="fa-solid fa-microphone mic-icon"></i>
+        </div>
+        <div class="notch-expanded-content">
+          <div class="notch-mini-widget music-widget">
+            <div class="widget-header">
+              <span class="widget-title"><i class="fa-solid fa-music text-purple"></i> Now Playing</span>
+              <span class="widget-status">Live Session</span>
+            </div>
+            <div class="music-details">
+              <div class="music-art-mock">
+                <i class="fa-solid fa-music"></i>
+              </div>
+              <div class="music-info">
+                <h4>Midnight City</h4>
+                <p>M83 — Hurry Up, We're Dreaming</p>
+              </div>
+            </div>
+            <div class="music-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 45%;"></div>
+              </div>
+              <div class="progress-time">
+                <span>1:42</span>
+                <span>-2:01</span>
+              </div>
+            </div>
+            <div class="music-controls">
+              <button><i class="fa-solid fa-backward-step"></i></button>
+              <button class="play-btn"><i class="fa-solid fa-pause"></i></button>
+              <button><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo-link">
+          <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" id="nav-logo-img" />
+          <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+        </a>
+        <nav class="nav-menu">
+          <a href="#features" class="nav-item">Features</a>
+          <a href="#showcase" class="nav-item">Showcase</a>
+          <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
+          <a href="https://github.com/rohanrony/notchdock/releases/" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-container">
+          <div class="hero-text">
+            <div class="badge">Now in Beta</div>
+            <h1>Unleash Your MacBook <span class="text-accent">Notch</span></h1>
+            <p class="hero-desc">Your screen's most underutilized space, now a beautiful interactive dock. View live sports scores, track tasks, manage clipboard history, and control media with a simple hover.</p>
+            <div class="hero-actions">
+              <a href="https://github.com/rohanrony/notchdock/releases/" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download DMG</a>
+              <a href="#showcase" class="btn btn-outline btn-lg">See How It Works</a>
+            </div>
+            <div class="hero-meta">
+              <span><i class="fa-brands fa-apple"></i> Requires macOS Monterey or newer</span>
+              <span class="separator">•</span>
+              <span>v0.13.6 Beta</span>
+            </div>
+          </div>
+          
+          <div class="hero-mockup">
+            <div class="macbook-frame">
+              <div class="macbook-screen">
+                <div class="macbook-notch-mock"></div>
+                <div class="macbook-wallpaper">
+                  <div class="macbook-notch-overlay-active">
+                    <img src="/assets/hero.gif" alt="NotchDock Live Demonstration" class="screen-preview-img" id="hero-preview-img" />
+                  </div>
+                </div>
+              </div>
+              <div class="macbook-body"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Showcase Section -->
+      <section class="showcase-section" id="showcase">
+        <div class="section-header">
+          <span class="section-tag">Preview</span>
+          <h2>A Widget for Every Need</h2>
+          <p class="section-subtitle">Click through the modules to see how NotchDock adapts to your workflow.</p>
+        </div>
+
+        <div class="showcase-container">
+          <div class="showcase-tabs">
+            <button class="tab-btn active" data-tab="sports" id="tab-sports">
+              <i class="fa-solid fa-circle-nodes tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Sports Live Updates</h3>
+                <p>Track real-time scores & stats</p>
+              </div>
+            </button>
+            <button class="tab-btn" data-tab="calendar" id="tab-calendar">
+              <i class="fa-solid fa-calendar-days tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Calendar & Events</h3>
+                <p>View agenda and upcoming calls</p>
+              </div>
+            </button>
+            <button class="tab-btn" data-tab="clipboard" id="tab-clipboard">
+              <i class="fa-solid fa-clipboard-list tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Clipboard History</h3>
+                <p>Quick access to copied text</p>
+              </div>
+            </button>
+            <button class="tab-btn" data-tab="todo" id="tab-todo">
+              <i class="fa-solid fa-list-check tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>To-Do List</h3>
+                <p>Manage list and drag-to-reorder</p>
+              </div>
+            </button>
+            <button class="tab-btn" data-tab="music" id="tab-music">
+              <i class="fa-solid fa-music tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Media Controller</h3>
+                <p>Control music and audio feeds</p>
+              </div>
+            </button>
+            <button class="tab-btn" data-tab="stocks" id="tab-stocks">
+              <i class="fa-solid fa-chart-line tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Stocks Tracker</h3>
+                <p>Track real-time stocks & indices</p>
+              </div>
+            </button>
+            <button class="tab-btn" data-tab="notchbar" id="tab-notchbar">
+              <i class="fa-solid fa-window-maximize tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Live Status Bar</h3>
+                <p>Always-on indicators on the notch</p>
+              </div>
+            </button>
+          </div>
+
+          <div class="showcase-preview-card">
+            <div class="browser-mock-header">
+              <div class="browser-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="browser-url">NotchDock Widget Preview - <span id="preview-title">Sports Tracker</span></div>
+            </div>
+            <div class="showcase-image-wrapper">
+              <img src="/assets/sports_view.png" alt="Showcase Preview" class="showcase-img" id="showcase-img-element" />
+              <!-- Sub-selector for Notch Bar states (only visible when notchbar tab is active) -->
+              <div class="notchbar-sub-selector" id="notchbar-sub-selector" style="display: none;">
+                <button class="sub-tab-btn active" data-sub-img="/assets/notch_bar_view.png">Default Bezel</button>
+                <button class="sub-tab-btn" data-sub-img="/assets/notch_stock_bar.png">Stocks Ticker</button>
+                <button class="sub-tab-btn" data-sub-img="/assets/notch_timer_bar.png">Focus Timer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Grid Section -->
+      <section class="features-section" id="features">
+        <div class="section-header">
+          <span class="section-tag">Key Features</span>
+          <h2>Packed with Utilities</h2>
+          <p class="section-subtitle">Designed to stay out of the way, until you need it.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon bg-purple"><i class="fa-solid fa-trophy"></i></div>
+            <h3>Live Match Scores</h3>
+            <p>Track world cup scores, leagues, and team events with automated refreshing data directly underneath the notch.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-blue"><i class="fa-solid fa-business-time"></i></div>
+            <h3>Meeting Agenda</h3>
+            <p>Integrates with macOS Calendars to highlight your next standup, meeting, or event timer in a clean layout.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-green"><i class="fa-solid fa-copy"></i></div>
+            <h3>Quick Access Clipboard</h3>
+            <p>Save snippets, emails, SSH logins, and templates. One-click copy makes writing commands or emails instant.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-orange"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>Task Manager</h3>
+            <p>A quick-access scratchpad checklist. Write down immediate tasks and check them off directly in the notch panel.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-red"><i class="fa-solid fa-compact-disc"></i></div>
+            <h3>Universal Music Control</h3>
+            <p>Play, pause, skip, and see track progress for system-level audio feeds without disrupting your current application.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-green"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Stocks & Indices Tracker</h3>
+            <p>Track real-time stock prices, world indices, commodities, and crypto watchlists with custom sparklines and gain indicators.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-teal"><i class="fa-solid fa-microphone-lines"></i></div>
+            <h3>Hardware Indicators</h3>
+            <p>Know when your microphone is active or screen is sharing via direct dynamic notch expansion states.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-green"><i class="fa-solid fa-kitchen-set"></i></div>
+            <h3>Cooking more in the Kitchen</h3>
+            <p>More widgets and integrations are on the way. We are actively expanding the ecosystem with new notch-driven utilities.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works / Steps Section -->
+      <section class="steps-section">
+        <div class="section-header">
+          <span class="section-tag">Getting Started</span>
+          <h2>Setup in 3 Steps</h2>
+        </div>
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Download</h3>
+            <p>Grab the latest release DMG package directly from our landing page.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Grant Permission</h3>
+            <p>Drag to Applications and grant accessibility and screen sharing permissions in settings.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Hover & Reveal</h3>
+            <p>Hover near your MacBook notch to open the dynamic dock.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Download / CTA Section -->
+      <section class="cta-section" id="download">
+        <div class="cta-card">
+          <div class="cta-bg-gradient"></div>
+          <h2>Ready to transform your screen?</h2>
+          <p>Download NotchDock today and turn your MacBook notch into your favorite shortcut dock.</p>
+          <div class="cta-buttons">
+            <a href="https://github.com/rohanrony/notchdock/releases/" class="btn btn-white btn-lg" id="btn-dmg-download"><i class="fa-solid fa-download"></i> Download for macOS (DMG)</a>
+            <a href="mailto:notchdock@gmail.com" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-envelope"></i> Contact Support</a>
+          </div>
+          <p class="cta-sub">Free for personal use. Built with security and sandbox standards on macOS.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <a href="#" class="footer-logo">
+            <img src="/assets/logo.jpg" alt="NotchDock Logo" />
+            <span><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+          </a>
+          <p>Reinventing the screen notch for ultimate macOS efficiency.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Application</h4>
+            <a href="#features">Features</a>
+            <a href="#showcase">Showcase</a>
+            <a href="https://github.com/rohanrony/notchdock/releases/">Download Release</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:notchdock@gmail.com">Email Support</a>
+            <a href="https://github.com/rohanrony/notchdock/issues" target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> Report Bug / Request Feature</a>
+            <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NotchDock. All rights reserved. Created for macOS productivity.</p>
+      </div>
+    </footer>
+
+    <!-- Style and Main JS Injection -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
