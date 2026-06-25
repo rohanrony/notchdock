@@ -674,7 +674,7 @@ code {
 /* 6. Showcase Section */
 .showcase-section {
   padding: 80px 24px;
-  max-width: 1100px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
@@ -707,9 +707,9 @@ code {
 
 .showcase-container {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 0.8fr 1.3fr;
   gap: 60px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .showcase-tabs {
@@ -810,14 +810,46 @@ code {
   font-weight: 500;
 }
 
-.showcase-image-wrapper {
-  padding: 24px;
+.mac-notch-bezel {
+  height: 8px;
+  background-color: #000;
+  width: 100%;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  z-index: 20;
+}
+
+.mac-notch-cutout {
+  width: 160px;
+  height: 26px;
+  background-color: #000;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  position: absolute;
+  top: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mac-notch-camera {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #1a1a24;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.showcase-image-wrapper {
+  padding: 0 24px 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   background-color: #0e0e11;
-  min-height: 360px;
+  min-height: 420px;
+  background-image: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 70%);
 }
 
 .showcase-img {
@@ -1235,26 +1267,29 @@ code {
 ---------------------------------------------------- */
 .showcase-interactive-container {
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 380px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
   overflow: hidden;
   animation: fadeIn 0.4s ease-out;
+  padding-top: 12px;
 }
 
 /* Universal styles for individual widget panels */
 .nd-widget {
   width: 100%;
-  height: 100%;
+  max-width: 800px;
+  height: auto;
+  min-height: 280px;
   background: rgba(10, 10, 12, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 1px rgba(255, 255, 255, 0.1) inset;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -1278,10 +1313,10 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.05);
+  border-bottom: none;
   padding: 10px 16px;
-  background: rgba(20, 20, 25, 0.35);
-  margin: -20px -20px 16px -20px;
+  background: transparent;
+  margin: -12px -20px 16px -20px;
 }
 .nd-widget-header-left, .nd-widget-header-right {
   display: flex;
@@ -1316,20 +1351,19 @@ code {
 /* Segmented Controllers */
 .nd-segmented-control {
   display: flex;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 8px;
-  padding: 3px;
-  gap: 4px;
-  margin-bottom: 12px;
+  background: transparent;
+  padding: 0;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 .nd-segment-btn {
   background: none;
   border: none;
   color: var(--text-muted);
-  padding: 6px 12px;
-  font-size: 0.72rem;
+  padding: 6px 14px;
+  font-size: 0.8rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: var(--ease-fast);
 }
@@ -1337,13 +1371,14 @@ code {
   color: var(--text-white);
 }
 .nd-segment-btn.active {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
 /* 1. Sports Widget */
-.nd-sports-widget {
+.nd-widget.nd-sports-widget {
   height: 100%;
+  max-width: 800px;
 }
 .nd-sports-top-row {
   display: flex;
@@ -1877,8 +1912,9 @@ code {
 }
 
 /* 6. Stocks Widget */
-.nd-stocks-widget {
+.nd-widget.nd-stocks-widget {
   height: 100%;
+  max-width: 760px;
 }
 .nd-stocks-top-row {
   margin-bottom: 12px;
@@ -1892,18 +1928,18 @@ code {
 }
 .nd-stock-index-card {
   display: flex;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 12px;
-  padding: 12px;
+  padding: 16px 20px;
   align-items: center;
   justify-content: space-between;
   transition: var(--ease-fast);
   cursor: pointer;
 }
 .nd-stock-index-card:hover, .nd-stock-index-card.active {
-  background: rgba(85, 107, 47, 0.06);
-  border-color: var(--accent-green);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 .nd-stock-index-left {
   display: flex;
@@ -1912,66 +1948,83 @@ code {
   width: 25%;
 }
 .nd-stock-symbol-badge {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  padding: 2px 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-white);
+  background: rgba(48, 209, 88, 0.1);
+  border: none;
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #30d158;
   text-align: center;
   align-self: flex-start;
 }
-.nd-stock-index-card.active .nd-stock-symbol-badge {
-  background: rgba(85, 107, 47, 0.18);
-  border-color: var(--accent-green);
-  color: #fff;
-}
 .nd-stock-index-name {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-left: 2px;
 }
 .nd-stock-sparkline-box {
-  width: 20%;
-  height: 24px;
+  width: 24%;
+  height: 32px;
 }
 .nd-stock-index-metrics {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  font-size: 0.62rem;
+  display: flex;
+  font-size: 0.7rem;
   font-family: var(--font-mono);
-  color: var(--text-muted);
-  gap: 2px 8px;
-  width: 28%;
+  gap: 16px;
+  width: auto;
+}
+.nd-stock-metric-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nd-stock-metric-row {
+  display: flex;
+  gap: 12px;
+}
+.nd-stock-metric-label {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+  width: 18px;
+}
+.nd-stock-metric-val {
+  color: rgba(255, 255, 255, 0.8);
+}
+.nd-stock-index-right-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 .nd-stock-index-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2px;
-  width: 22%;
+  gap: 4px;
 }
 .nd-stock-index-price {
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   font-family: var(--font-mono);
   color: var(--text-white);
 }
 .nd-stock-index-change {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 .nd-stock-index-change.positive { color: #30d158; }
 .nd-stock-index-change.negative { color: #ff453a; }
 .nd-stock-bookmark {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.15);
   cursor: pointer;
   transition: var(--ease-fast);
-  margin-top: 2px;
+}
+.nd-stock-bookmark:hover {
+  color: rgba(255, 255, 255, 0.4);
 }
 .nd-stock-bookmark.active {
   color: var(--accent-green);
@@ -2165,6 +2218,301 @@ code {
 }
 .wp-space-gray {
   background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+/* ----------------------------------------------------
+   Match Details View
+---------------------------------------------------- */
+.nd-widget-sports-details {
+  overflow-y: auto;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.nd-md-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.nd-md-back {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+  transition: var(--ease-fast);
+}
+
+.nd-md-back:hover {
+  color: var(--text-white);
+  transform: translateX(-2px);
+}
+
+.nd-match-scoreboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.nd-md-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 30%;
+}
+
+.nd-md-team.right {
+  align-items: center;
+}
+
+.nd-md-flag {
+  font-size: 2.2rem;
+}
+
+.nd-md-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.nd-md-record {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.nd-md-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.nd-md-score {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-white);
+  letter-spacing: 0.05em;
+}
+
+.nd-md-dash {
+  color: var(--text-muted);
+}
+
+.nd-md-time {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nd-md-section-title {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.nd-md-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.nd-md-stat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nd-md-stat-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.nd-md-stat-name {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+.nd-md-stat-bars {
+  display: flex;
+  gap: 4px;
+  height: 6px;
+}
+
+.nd-md-bar {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  flex: 1;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.nd-md-bar.left .fill {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background: #30d158;
+}
+
+.nd-md-bar.right .fill {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background: #ff453a;
+}
+
+.nd-md-events {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.nd-md-event-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--text-white);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nd-md-event-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.nd-md-event-time {
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 24px;
+}
+
+.nd-md-event-player {
+  font-weight: 600;
+}
+
+.nd-md-badge {
+  font-size: 0.55rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  font-weight: 800;
+}
+
+.nd-md-badge.blue {
+  background: rgba(10, 132, 255, 0.15);
+  color: #0a84ff;
+  border: 1px solid rgba(10, 132, 255, 0.3);
+}
+
+.nd-md-performers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.nd-md-perf-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nd-md-perf-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.nd-md-perf-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nd-md-perf-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.nd-md-perf-sub {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.macbook-mockup-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.showcase-preview-card {
+  width: 100%;
+  z-index: 10;
+}
+
+.mac-laptop-base {
+  width: 112%;
+  height: 18px;
+  background: linear-gradient(to bottom, #1e1e24 0%, #050508 100%);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: -2px;
+  z-index: 5;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: none;
+}
+
+.mac-laptop-groove {
+  width: 140px;
+  height: 6px;
+  background: #000;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 /* Responsive adjustment for sports and stocks split widgets */

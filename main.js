@@ -169,6 +169,110 @@ function renderSportsWidget() {
   if (!container) return;
   
   const state = showState.sports;
+
+  if (state.matchDetailsId) {
+    const match = state.matches.find(m => m.id === state.matchDetailsId) || state.matches[0];
+    
+    container.innerHTML = `
+      <div class="nd-widget nd-widget-sports-details">
+        <div class="nd-md-header">
+          <button class="nd-md-back" id="nd-md-back-btn"><i class="fa-solid fa-chevron-left"></i></button>
+          <span>⚽ FIFA World Cup 2026</span>
+          <div style="width: 24px;"></div>
+        </div>
+        
+        <div class="nd-match-scoreboard">
+          <div class="nd-md-team">
+            <span class="nd-md-flag">${match.flagA}</span>
+            <span class="nd-md-name">${match.teamA}</span>
+            <span class="nd-md-record">${match.recordA}</span>
+          </div>
+          <div class="nd-md-center">
+            <div class="nd-md-score">2 <span class="nd-md-dash">-</span> 0</div>
+            <div class="nd-md-time"><span class="live-dot" style="color: #ff453a;">🔴</span> 90'+3'</div>
+          </div>
+          <div class="nd-md-team right">
+            <span class="nd-md-flag">${match.flagB}</span>
+            <span class="nd-md-name">${match.teamB}</span>
+            <span class="nd-md-record">${match.recordB}</span>
+          </div>
+        </div>
+
+        <div class="nd-md-section-title">TEAM STATISTICS</div>
+        <div class="nd-md-stats">
+          <div class="nd-md-stat-row">
+            <div class="nd-md-stat-labels"><span>49%</span><span class="nd-md-stat-name">POSSESSION</span><span>51%</span></div>
+            <div class="nd-md-stat-bars"><div class="nd-md-bar left"><div class="fill bg-green" style="width: 49%;"></div></div><div class="nd-md-bar right"><div class="fill bg-red" style="width: 51%;"></div></div></div>
+          </div>
+          <div class="nd-md-stat-row">
+            <div class="nd-md-stat-labels"><span>90%</span><span class="nd-md-stat-name">PASSING ACCURACY</span><span>80%</span></div>
+            <div class="nd-md-stat-bars"><div class="nd-md-bar left"><div class="fill bg-green" style="width: 90%;"></div></div><div class="nd-md-bar right"><div class="fill bg-red" style="width: 80%;"></div></div></div>
+          </div>
+          <div class="nd-md-stat-row">
+            <div class="nd-md-stat-labels"><span>9 (3)</span><span class="nd-md-stat-name">SHOTS (ON TARGET)</span><span>12 (1)</span></div>
+            <div class="nd-md-stat-bars"><div class="nd-md-bar left"><div class="fill bg-green" style="width: 42%;"></div></div><div class="nd-md-bar right"><div class="fill bg-red" style="width: 58%;"></div></div></div>
+          </div>
+          <div class="nd-md-stat-row">
+            <div class="nd-md-stat-labels"><span>13</span><span class="nd-md-stat-name">FOULS</span><span>9</span></div>
+            <div class="nd-md-stat-bars"><div class="nd-md-bar left"><div class="fill bg-green" style="width: 59%;"></div></div><div class="nd-md-bar right"><div class="fill bg-red" style="width: 41%;"></div></div></div>
+          </div>
+          <div class="nd-md-stat-row">
+            <div class="nd-md-stat-labels"><span>1</span><span class="nd-md-stat-name">CORNERS</span><span>5</span></div>
+            <div class="nd-md-stat-bars"><div class="nd-md-bar left"><div class="fill bg-green" style="width: 16%;"></div></div><div class="nd-md-bar right"><div class="fill bg-red" style="width: 84%;"></div></div></div>
+          </div>
+          <div class="nd-md-stat-row">
+            <div class="nd-md-stat-labels"><span>0</span><span class="nd-md-stat-name">OFFSIDES</span><span>1</span></div>
+            <div class="nd-md-stat-bars"><div class="nd-md-bar left"><div class="fill bg-green" style="width: 0%;"></div></div><div class="nd-md-bar right"><div class="fill bg-red" style="width: 100%;"></div></div></div>
+          </div>
+        </div>
+
+        <div class="nd-md-section-title">MATCH EVENTS</div>
+        <div class="nd-md-events">
+          <div class="nd-md-event-row">
+            <span class="nd-md-event-time">55'</span>
+            <i class="fa-solid fa-futbol text-green"></i>
+            <span class="nd-md-event-player">Mateo Chávez <span class="nd-md-badge blue">MEX</span></span>
+          </div>
+          <div class="nd-md-event-row">
+            <span class="nd-md-event-time">61'</span>
+            <i class="fa-solid fa-futbol text-green"></i>
+            <span class="nd-md-event-player">Julián Quiñones <span class="nd-md-badge blue">MEX</span></span>
+          </div>
+          <div class="nd-md-event-row">
+            <span class="nd-md-event-time">64'</span>
+            <span style="color: #ffd60a; font-size: 0.8rem; margin: 0 4px;">🟨</span>
+            <span class="nd-md-event-player">Edson Álvarez <span class="nd-md-badge blue">MEX</span></span>
+          </div>
+        </div>
+
+        <div class="nd-md-section-title">KEY PERFORMERS</div>
+        <div class="nd-md-performers">
+          <div class="nd-md-perf-card">
+            <div class="nd-md-perf-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="nd-md-perf-info">
+              <div class="nd-md-perf-name">Julián Quiñones</div>
+              <div class="nd-md-perf-sub">MEX • 4</div>
+            </div>
+          </div>
+          <div class="nd-md-perf-card">
+            <div class="nd-md-perf-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="nd-md-perf-info">
+              <div class="nd-md-perf-name">Roberto Alvarado</div>
+              <div class="nd-md-perf-sub">MEX • 44</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.querySelector('#nd-md-back-btn').addEventListener('click', () => {
+      state.matchDetailsId = null;
+      const sportsTabBtn = document.getElementById('tab-sports');
+      if (sportsTabBtn) sportsTabBtn.click();
+      else renderSportsWidget();
+    });
+    return;
+  }
   
   let listHTML = '';
   if (state.currentTab === 'past') {
@@ -301,6 +405,7 @@ function renderSportsWidget() {
       const id = row.getAttribute('data-id');
       if (!id) return;
       state.matches.forEach(m => m.selected = (m.id === id));
+      state.matchDetailsId = id;
       renderSportsWidget();
     });
   });
@@ -753,29 +858,31 @@ function renderStocksWidget() {
         
         <div class="nd-stock-sparkline-box">
           <svg viewBox="0 0 50 20" width="100%" height="100%">
-            <path d="${s.sparkline}" fill="none" stroke="${isPositive ? '#30d158' : '#ff453a'}" stroke-width="1.5" />
+            <path d="${s.sparkline}" fill="none" stroke="${isPositive ? '#799139' : '#b2504a'}" stroke-width="1.5" />
           </svg>
         </div>
         
         <div class="nd-stock-index-metrics">
-          <div>
-            <div>O $${s.open.toFixed(2)}</div>
-            <div>H $${s.high.toFixed(2)}</div>
-            <div>L $${s.low.toFixed(2)}</div>
-            <div>V ${s.vol}</div>
+          <div class="nd-stock-metric-col">
+            <div class="nd-stock-metric-row"><span class="nd-stock-metric-label">O</span> <span class="nd-stock-metric-val">$${s.open.toFixed(2)}</span></div>
+            <div class="nd-stock-metric-row"><span class="nd-stock-metric-label">H</span> <span class="nd-stock-metric-val">$${s.high.toFixed(2)}</span></div>
+            <div class="nd-stock-metric-row"><span class="nd-stock-metric-label">L</span> <span class="nd-stock-metric-val">$${s.low.toFixed(2)}</span></div>
+            <div class="nd-stock-metric-row"><span class="nd-stock-metric-label">V</span> <span class="nd-stock-metric-val">${s.vol}</span></div>
           </div>
-          <div>
-            <div>MC --</div>
-            <div>PE --</div>
-            <div>EP --</div>
+          <div class="nd-stock-metric-col">
+            <div class="nd-stock-metric-row"><span class="nd-stock-metric-label">MC</span> <span class="nd-stock-metric-val">--</span></div>
+            <div class="nd-stock-metric-row"><span class="nd-stock-metric-label">PE</span> <span class="nd-stock-metric-val">--</span></div>
+            <div class="nd-stock-metric-row"><span class="nd-stock-metric-label">EP</span> <span class="nd-stock-metric-val">--</span></div>
           </div>
         </div>
         
-        <div class="nd-stock-index-right">
-          <span class="nd-stock-index-price" id="price-${s.symbol.replace('^', '\\^')}">$${s.price.toFixed(2)}</span>
-          <span class="nd-stock-index-change ${isPositive ? 'positive' : 'negative'}">
-            ${isPositive ? '+' : ''}${s.change.toFixed(2)} (${isPositive ? '+' : ''}${s.changePercent.toFixed(2)}%)
-          </span>
+        <div class="nd-stock-index-right-wrapper">
+          <div class="nd-stock-index-right">
+            <span class="nd-stock-index-price" id="price-${s.symbol.replace('^', '\\^')}">$${s.price.toFixed(2)}</span>
+            <span class="nd-stock-index-change ${isPositive ? 'positive' : 'negative'}">
+              ${isPositive ? '+' : ''}${s.change.toFixed(2)} (${isPositive ? '+' : ''}${s.changePercent.toFixed(2)}%)
+            </span>
+          </div>
           <i class="fa-solid fa-bookmark nd-stock-bookmark ${s.bookmarked ? 'active' : ''}" data-id="${s.symbol}"></i>
         </div>
       </div>
@@ -996,7 +1103,17 @@ function initShowcaseTabs() {
   const tabData = {
     sports: {
       title: 'Sports Live Updates',
-      render: renderSportsWidget
+      render: () => {
+        showState.sports.matchDetailsId = null;
+        renderSportsWidget();
+      }
+    },
+    'match-stats': {
+      title: 'Match Statistics',
+      render: () => {
+        showState.sports.matchDetailsId = 's5'; // Default to Mexico vs Czechia
+        renderSportsWidget();
+      }
     },
     calendar: {
       title: 'Calendar & Meeting Agenda',
