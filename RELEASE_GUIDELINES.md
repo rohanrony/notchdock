@@ -5,9 +5,7 @@ This guide details the steps to synchronize, update, and push the latest NotchDo
 ---
 
 ## 🛠️ Step 1: Copy Latest Release Assets
-Because macOS IDEs and code assistants run in a restricted App Sandbox, copying binary files must be executed from a **native macOS Terminal** (Terminal.app or iTerm2).
-
-Open your native Terminal, navigate to the public directory, and run the copy commands:
+Open your Terminal, navigate to the public directory, and run the copy commands:
 
 ```bash
 # Navigate to the public repository
@@ -15,9 +13,6 @@ cd /Users/rohanroy/Coding/notchdock-public
 
 # Copy the latest README.md
 cp /Users/rohanroy/Coding/notchdock/README.md ./
-
-# Copy the latest compiled NotchDock.dmg installer
-cp /Users/rohanroy/Coding/notchdock/NotchDock.dmg ./
 ```
 
 ---
@@ -48,8 +43,8 @@ Locate the version badge span around line 108 in `index.html` and update it:
 Once files and version numbers are updated, commit and push the changes to the `dev` branch on GitHub:
 
 ```bash
-# Add all changed files (including README.md, NotchDock.dmg, package.json, index.html)
-git add README.md NotchDock.dmg package.json index.html
+# Add all changed files (including README.md, package.json, index.html)
+git add README.md package.json index.html
 
 # Commit the updates
 git commit -m "chore: update release assets and version to v0.13.6"
