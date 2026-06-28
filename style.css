@@ -2547,3 +2547,77 @@ code {
   }
 }
 
+/* 10. Privacy Policy Page Layout */
+.privacy-hero {
+  padding: 160px 24px 40px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.privacy-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 100px 24px;
+}
+
+.privacy-content {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.privacy-section {
+  margin-bottom: 32px;
+}
+
+.privacy-section:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--text-white);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.privacy-section p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.privacy-section ul {
+  margin-left: 20px;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+}
+
+.privacy-section li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.privacy-last-updated {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 24px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .privacy-hero {
+    padding: 120px 20px 30px 20px;
+  }
+  .privacy-content {
+    padding: 24px;
+  }
+}
+
+
