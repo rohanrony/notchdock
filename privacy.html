@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpg" href="/assets/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Privacy Policy | NotchDock</title>
+    <meta name="title" content="Privacy Policy | NotchDock" />
+    <meta name="description" content="Privacy policy and data collection practices for the NotchDock macOS utility application and website." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://notchdock.app/privacy.html" />
+
+    <!-- FontAwesome & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="/index.html" class="logo-link">
+          <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" id="nav-logo-img" />
+          <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/index.html#features" class="nav-item">Features</a>
+          <a href="/index.html#showcase" class="nav-item">Showcase</a>
+          <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
+          <a href="https://github.com/rohanrony/notchdock/releases/" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <section class="privacy-hero">
+        <div class="badge">Privacy First</div>
+        <h1>NotchDock Privacy Policy</h1>
+      </section>
+
+      <div class="privacy-container">
+        <div class="privacy-content">
+          <p class="intro" style="font-size: 1.15rem; color: var(--text-white); font-weight: 500; margin-bottom: 24px;">
+            Your privacy is paramount. NotchDock is built to be a private, secure, and lightweight macOS companion. This Privacy Policy details exactly how your data is handled.
+          </p>
+          
+          <div style="background: linear-gradient(135deg, rgba(85, 107, 47, 0.1) 0%, rgba(85, 107, 47, 0.03) 100%); border-left: 4px solid var(--accent-green); padding: 20px; border-radius: 12px; margin-bottom: 32px;">
+            <p style="color: var(--text-white); font-weight: 500; margin-bottom: 0;">
+              NotchDock operates strictly on a local-first architecture. We do not maintain proprietary cloud servers, nor do we collect, harvest, transmit, or monetize your personal information, credentials, or usage telemetry.
+            </p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>1. Data Collection & Storage</h2>
+            <p>All configurations, preferences, and workspace components are stored safely on your machine. Specifically:</p>
+            <ul>
+              <li><strong>Sports Module:</strong> Favorite teams, layout preferences, and pinned game IDs are stored locally in macOS <code>UserDefaults</code>. No sports tracking or personal data is collected.</li>
+              <li><strong>Stocks Module:</strong> Watchlist tickers and custom names are saved locally in macOS <code>UserDefaults</code>.</li>
+              <li><strong>ToDo List & Quick Access:</strong> Snippets, tasks, and notes are stored entirely on your local filesystem and within standard local app sandbox directories.</li>
+              <li><strong>Calendar & Reminders:</strong> Access is requested using macOS's native EventKit APIs. Event metadata (titles, timings, participants) is queried on-demand and processed strictly in-memory. This data is never written to disk by NotchDock or uploaded.</li>
+            </ul>
+          </div>
+
+          <div class="privacy-section">
+            <h2>2. Network & API Integrations</h2>
+            <p>To display live updates on your notch widgets, the app securely requests data directly from third-party public endpoints:</p>
+            <ul>
+              <li><strong>Sports Live Scores:</strong> Scores are requested directly from public ESPN API endpoints over HTTPS. Requests are read-only and contain no user identity or tracking tokens.</li>
+              <li><strong>Stock Market Data:</strong> Financial tickers are fetched directly from Yahoo Finance public APIs over HTTPS. No API keys or account log-ins are utilized.</li>
+            </ul>
+            <p>Connections to these external APIs are direct from your device to the service provider, governed by their respective privacy terms. We implement client-side rate limits to prevent endpoint abuse.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>3. Permissions & Sandboxing</h2>
+            <p>NotchDock requests minimal OS entitlements to perform its duties:</p>
+            <ul>
+              <li><strong>Network:</strong> Required to query sports scores and stock tickers.</li>
+              <li><strong>Calendar & Reminders:</strong> Requested only if you enable the Calendar/ToDo modules to view upcoming events.</li>
+              <li><strong>Launch at Login:</strong> Registered locally through macOS ServiceManagement APIs (<code>SMAppService</code>) if toggled by you.</li>
+            </ul>
+          </div>
+
+          <div class="privacy-section">
+            <h2>4. Diagnostics & Logs</h2>
+            <p>To assist in debugging and stability monitoring, the app includes a diagnostic logger:</p>
+            <ul>
+              <li>All log records are kept in a local, volatile buffer.</li>
+              <li>Sensitive strings, credentials, or custom user text are automatically redacted in-memory as <code>[REDACTED SENSITIVE DATA]</code>.</li>
+              <li>Diagnostics are only shared if you manually export the logs from the Support settings and upload/send them to us for troubleshooting.</li>
+            </ul>
+          </div>
+
+          <div class="privacy-section">
+            <h2>5. No Analytics or Advertisements</h2>
+            <p>NotchDock does not include third-party advertising SDKs, session recording, or marketing telemetry platforms. We do not track your clicks, usage duration, or feature interactions.</p>
+          </div>
+
+          <div class="privacy-section">
+            <h2>6. Contact & Support</h2>
+            <p>If you have any questions or concerns about this policy or the application's design, you can contact us at:</p>
+            <ul>
+              <li><strong>GitHub Repository:</strong> <a href="https://github.com/rohanrony/notchdock" target="_blank" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">github.com/rohanrony/notchdock</a></li>
+              <li><strong>Support Email:</strong> <a href="mailto:notchdock@gmail.com" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">notchdock@gmail.com</a></li>
+            </ul>
+          </div>
+
+          <div class="privacy-last-updated">
+            Last Updated: June 28, 2026
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <a href="/index.html" class="footer-logo">
+            <img src="/assets/logo.jpg" alt="NotchDock Logo" />
+            <span><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+          </a>
+          <p>Reinventing the screen notch for ultimate macOS efficiency.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Application</h4>
+            <a href="/index.html#features">Features</a>
+            <a href="/index.html#showcase">Showcase</a>
+            <a href="https://github.com/rohanrony/notchdock/releases/">Download Release</a>
+            <a href="/privacy.html">Privacy Policy</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:notchdock@gmail.com">Email Support</a>
+            <a href="https://github.com/rohanrony/notchdock/issues" target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> Report Bug / Request Feature</a>
+            <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <p><strong>Disclaimer:</strong> NotchDock is an independent, open-source productivity utility. The sports live updates and stock tracking modules utilize public data feeds from ESPN and Yahoo Finance respectively. NotchDock is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Yahoo, Inc., ESPN, Disney, or any of their subsidiaries or affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of these names does not imply any affiliation with or endorsement by them.</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NotchDock. All rights reserved. Created for macOS productivity.</p>
+      </div>
+    </footer>
+
+    <!-- Style and Main JS Injection -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
