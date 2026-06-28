@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotchDock Release Notes</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-color: #0071e3;
+            --border-color: #e5e5ea;
+            --badge-added-bg: rgba(52, 199, 89, 0.1);
+            --badge-added-text: #34c759;
+            --badge-improved-bg: rgba(0, 113, 227, 0.1);
+            --badge-improved-text: #0071e3;
+            --badge-fixed-bg: rgba(255, 149, 0, 0.1);
+            --badge-fixed-text: #ff9500;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --card-bg: #1c1c1e;
+                --text-primary: #f5f5f7;
+                --text-secondary: #86868b;
+                --accent-color: #2997ff;
+                --border-color: #2c2c2e;
+                --badge-added-bg: rgba(48, 209, 88, 0.15);
+                --badge-added-text: #30d158;
+                --badge-improved-bg: rgba(10, 132, 255, 0.15);
+                --badge-improved-text: #0a84ff;
+                --badge-fixed-bg: rgba(255, 159, 10, 0.15);
+                --badge-fixed-text: #ff9f0a;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 24px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .release-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .release-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .version {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+            color: var(--accent-color);
+        }
+
+        .date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 16px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title.added {
+            color: var(--badge-added-text);
+        }
+
+        .section-title.improved {
+            color: var(--badge-improved-text);
+        }
+
+        .section-title.fixed {
+            color: var(--badge-fixed-text);
+        }
+
+        ul {
+            margin: 0 0 16px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 13.5px;
+        }
+
+        li strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>What's New in NotchDock</h1>
+            <p class="subtitle">Official Release Notes</p>
+        </header>
+
+        <!-- Version 0.14.0 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.0</h2>
+                <span class="date">June 28, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Privacy Policy</strong>: Created a premium, responsive `releases/privacy.html` policy document detailing NotchDock's local-first architecture and third-party data handlers.</li>
+                <li><strong>Settings</strong>: Added a direct link to the hosted Privacy Policy (`https://notchdock.app/privacy.html`) on the About screen.</li>
+                <li><strong>Testing</strong>: Updated the `testSettingsLinks` unit test to assert the new Privacy Policy URL in `SettingsLinks`.</li>
+                <li><strong>Settings</strong>: Disclaimer footnote in the About section stating third-party data is public, provided "as-is", and not affiliated with ESPN or Yahoo Finance.</li>
+                <li><strong>Settings</strong>: Free Public Beta badge and monetization explanation text on the About page.</li>
+                <li><strong>Testing</strong>: UI test to verify the disclaimer, beta badge, and beta description text displays on the About settings page.</li>
+                <li><strong>Sports Module</strong>: Premium Game Stats Popup loading experience with stable layout heights, pulsing skeleton loader screens, and staggered progressive fade-in/slide-up animations on data load completion.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Sports Module</strong>: Added horizontal padding to the stats popup views (statistics, key performers, match events, and skeleton loaders) to keep the contents aligned and visually balanced within the wider popover window.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Sports Module</strong>: Resolved an extraneous closing brace compiler error at the top level of the module file.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.13.10 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.13.10</h2>
+                <span class="date">June 27, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Automated Apple</strong>: Developer ID code signing, DMG notarization, and verification integration in `release.sh`.</li>
+                <li><strong>Sparkle 2</strong>: auto-update framework support and automated update feed (`appcast.xml`) generation.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Segregated debug</strong>: and release build sandbox containers using a `.debug` bundle identifier suffix for development.</li>
+                <li><strong>Restructured and</strong>: renamed `package.sh` to `release.sh` and consolidated release workflow documentation.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.13.6 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.13.6</h2>
+                <span class="date">June 24, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Sports Live Scores & Stats</strong>: Expand the notch automatically on score updates, and view detailed team statistics (possession, shots, events).</li>
+                <li><strong>Smart Music Controls</strong>: Seamless permission status prompts and automatic hide timeout when music is paused.</li>
+                <li><strong>Diagnostic Logs Export</strong>: Export app diagnostics directly from settings to easily troubleshoot issues.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Layout & Scroll Performance</strong>: Restructured dynamic image loading to prevent rendering hitches.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Sports Scoreboard Symmetry</strong>: Fixed alignments for team records and points.</li>
+                <li><strong>Hover Stability</strong>: Prevented unwanted notch expansions when interacting near the notch edges.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

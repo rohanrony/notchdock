@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+    <channel>
+        <title>NotchDock Changelog</title>
+        <link>https://notchdock.app/appcast.xml</link>
+        <description>Most recent updates for NotchDock.</description>
+        <language>en</language>
+        <item>
+            <title>0.14.0</title>
+            <pubDate>Sun, 28 Jun 2026 17:17:40 -0400</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.14.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.3</sparkle:minimumSystemVersion>
+            <enclosure url="NotchDock-0.14.1.dmg" length="5691457" type="application/octet-stream"/>
+        </item>
+        <item>
+            <title>Version 0.13.6</title>
+            <sparkle:releaseNotesLink>
+                https://notchdock.app/releases/release-notes.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Sat, 27 Jun 2026 16:30:00 -0400</pubDate>
+            <enclosure url="https://github.com/rohanrony/notchdock/releases/download/v0.13.6/NotchDock-0.13.6.dmg" sparkle:version="0.13.6" sparkle:shortVersionString="0.13.6" length="4679627" type="application/octet-stream" sparkle:edSignature="ogW68FkeMkhtN26fF2PrNkg/Fnt6mD9FvtPWEwZcR4Y=ogW68FkeMkhtN26fF2PrNkg/Fnt6mD9FvtPWEwZcR4Y="/>
+        </item>
+    </channel>
+</rss>
