@@ -434,6 +434,55 @@ code {
   font-size: 1.1rem;
 }
 
+/* Page Notch Premium Widgets */
+.sports-art-mock {
+  /* Inherit default dark background from .music-art-mock */
+}
+
+.stocks-art-mock {
+  /* Inherit default dark background from .music-art-mock */
+}
+
+.stocks-price-text span {
+  font-size: 0.7rem;
+  margin-left: 4px;
+}
+
+.text-green {
+  color: #30d158;
+}
+
+.text-red {
+  color: #ff453a;
+}
+
+/* Controls hover styles for Sports & Stocks buttons */
+.sports-controls button,
+.stocks-controls button {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--ease-fast);
+}
+
+.sports-controls button:hover,
+.stocks-controls button:hover {
+  color: var(--text-white);
+  transform: scale(1.15);
+}
+
+.sports-controls button.sports-play-btn,
+.stocks-controls button.stocks-play-btn {
+  font-size: 1.1rem;
+}
+
+.sports-controls button.active {
+  color: #30d158;
+  text-shadow: 0 0 8px rgba(48, 209, 88, 0.6);
+}
+
 /* 4. Navigation Header (Apple Glass Navbar) */
 .navbar {
   position: absolute;
@@ -639,6 +688,7 @@ code {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
   transform-origin: top center;
   animation: floatScreen 7s ease-in-out infinite;
+  transition: opacity 0.5s ease-in-out;
 }
 
 @keyframes floatScreen {

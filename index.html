@@ -65,10 +65,11 @@
           <i class="fa-solid fa-microphone mic-icon"></i>
         </div>
         <div class="notch-expanded-content">
-          <div class="notch-mini-widget music-widget">
+          <!-- Music Widget -->
+          <div class="notch-mini-widget music-widget" id="notch-music-widget">
             <div class="widget-header">
-              <span class="widget-title"><i class="fa-solid fa-music text-purple"></i> Now Playing</span>
-              <span class="widget-status">Live Session</span>
+              <span class="widget-title"><i class="fa-solid fa-music text-green"></i> NOW PLAYING</span>
+              <span class="widget-status">LIVE SESSION</span>
             </div>
             <div class="music-details">
               <div class="music-art-mock">
@@ -89,9 +90,71 @@
               </div>
             </div>
             <div class="music-controls">
-              <button><i class="fa-solid fa-backward-step"></i></button>
+              <button class="prev-btn"><i class="fa-solid fa-backward-step"></i></button>
               <button class="play-btn"><i class="fa-solid fa-pause"></i></button>
-              <button><i class="fa-solid fa-forward-step"></i></button>
+              <button class="next-btn"><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+          </div>
+
+          <!-- Sports Widget -->
+          <div class="notch-mini-widget sports-widget" id="notch-sports-widget" style="display: none;">
+            <div class="widget-header">
+              <span class="widget-title"><i class="fa-solid fa-futbol text-green"></i> LIVE MATCH</span>
+              <span class="widget-status">LIVE SESSION</span>
+            </div>
+            <div class="music-details sports-details">
+              <div class="music-art-mock sports-art-mock">
+                <i class="fa-solid fa-futbol"></i>
+              </div>
+              <div class="music-info sports-info">
+                <h4>COD 0 - 0 COL</h4>
+                <p>Copa América • Group Stage</p>
+              </div>
+            </div>
+            <div class="music-progress sports-progress">
+              <div class="progress-bar">
+                <div class="progress-fill sports-progress-fill" style="width: 65%;"></div>
+              </div>
+              <div class="progress-time sports-progress-time">
+                <span class="sports-time-elapsed">59'</span>
+                <span class="sports-time-remaining">-31'</span>
+              </div>
+            </div>
+            <div class="music-controls sports-controls">
+              <button class="sports-prev-btn"><i class="fa-solid fa-star"></i></button>
+              <button class="sports-play-btn"><i class="fa-solid fa-pause"></i></button>
+              <button class="sports-next-btn"><i class="fa-solid fa-chart-simple"></i></button>
+            </div>
+          </div>
+
+          <!-- Stocks Widget -->
+          <div class="notch-mini-widget stocks-widget" id="notch-stocks-widget" style="display: none;">
+            <div class="widget-header">
+              <span class="widget-title"><i class="fa-solid fa-chart-line text-green"></i> MARKET OPEN</span>
+              <span class="widget-status">LIVE SESSION</span>
+            </div>
+            <div class="music-details stocks-details">
+              <div class="music-art-mock stocks-art-mock">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+              </div>
+              <div class="music-info stocks-info">
+                <h4>NASDAQ (^IXIC)</h4>
+                <p class="stocks-price-text">$25,750.10 <span class="text-green">+163.06 (+0.64%)</span></p>
+              </div>
+            </div>
+            <div class="music-progress stocks-progress">
+              <div class="progress-bar">
+                <div class="progress-fill stocks-progress-fill" style="width: 60%;"></div>
+              </div>
+              <div class="progress-time stocks-progress-time">
+                <span>Low: $25,634.08</span>
+                <span>High: $25,827.33</span>
+              </div>
+            </div>
+            <div class="music-controls stocks-controls">
+              <button class="stocks-prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="stocks-play-btn"><i class="fa-solid fa-pause"></i></button>
+              <button class="stocks-next-btn"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
           </div>
         </div>
@@ -141,7 +204,7 @@
                 <div class="macbook-notch-mock"></div>
                 <div class="macbook-wallpaper">
                   <div class="macbook-notch-overlay-active">
-                    <img src="/assets/hero.gif" alt="NotchDock Live Demonstration" class="screen-preview-img" id="hero-preview-img" />
+                    <img src="/assets/SportsModule.gif" alt="NotchDock Live Demonstration" class="screen-preview-img" id="hero-preview-img" />
                   </div>
                 </div>
               </div>
