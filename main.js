@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractiveNotch();
   initScrollEffects();
   initPremiumInteractions();
+  initUnifiedAutoRotation();
 });
 
 /**
@@ -1176,6 +1177,17 @@ function initShowcaseTabs() {
         previewTitle.textContent = tabData[tabId].title;
       }
 
+      // Sync with top notch interactive widget
+      if (typeof window.triggerNotchTab === 'function') {
+        if (tabId === 'sports' || tabId === 'match-stats') {
+          window.triggerNotchTab('sports');
+        } else if (tabId === 'music') {
+          window.triggerNotchTab('music');
+        } else if (tabId === 'stocks') {
+          window.triggerNotchTab('stocks');
+        }
+      }
+
       if (interactiveContainer) {
         interactiveContainer.style.opacity = '0';
         interactiveContainer.style.transform = 'scale(0.99) translateY(2px)';
@@ -1213,75 +1225,257 @@ function initShowcaseTabs() {
  */
 function initInteractiveNotch() {
   const pageNotch = document.getElementById('page-notch');
-  const playBtn = document.querySelector('.play-btn');
-  const progressFill = document.querySelector('.progress-fill');
-  const liveIndicatorText = document.querySelector('.indicator-text');
-  
   if (!pageNotch) return;
 
-  // Track progress bar animation simulation when play button is active
-  let isPlaying = true;
-  let progressPercent = 45;
-  let progressInterval;
+  const liveIndicatorText = document.querySelector('.indicator-text');
+  const pulseDot = document.querySelector('.pulse-dot');
 
-  function startProgress() {
-    progressInterval = setInterval(() => {
-      if (progressPercent >= 100) {
-        progressPercent = 0;
+  // Shared state structures
+  const musicState = {
+    isPlaying: true,
+    progressPercent: 45,
+    trackDuration: 243, // M83 Midnight City duration: 4:03
+    title: 'Midnight City',
+    artist: 'M83',
+    album: "Hurry Up, We're Dreaming"
+  };
+
+  const sportsState = {
+    isPlaying: true,
+    elapsedMinutes: 59,
+    scoreA: 0,
+    scoreB: 0,
+    isStarred: false
+  };
+
+  const stocksList = [
+    { symbol: '^DJI', name: 'Dow Jones', price: 52142.21, change: 475.37, changePercent: 0.92, open: 51701.37, high: 52247.23, low: 51701.37 },
+    { symbol: '^IXIC', name: 'NASDAQ', price: 25750.10, change: 163.06, changePercent: 0.64, open: 25638.91, high: 25827.33, low: 25634.08 },
+    { symbol: '^GSPC', name: 'S&P 500', price: 7410.74, change: 45.28, changePercent: 0.61, open: 7386.25, high: 7424.92, low: 7384.21 }
+  ];
+  const stocksState = {
+    isPlaying: true,
+    activeIndex: 1 // NASDAQ by default
+  };
+
+  let activeTab = 'music';
+
+  // Toggle active widgets helper
+  function switchTab(tabId) {
+    activeTab = tabId;
+    
+    // Hide all notch widget containers
+    document.getElementById('notch-music-widget').style.display = 'none';
+    document.getElementById('notch-sports-widget').style.display = 'none';
+    document.getElementById('notch-stocks-widget').style.display = 'none';
+    
+    // Show selected notch widget container
+    if (tabId === 'sports') {
+      document.getElementById('notch-sports-widget').style.display = 'flex';
+    } else if (tabId === 'music') {
+      document.getElementById('notch-music-widget').style.display = 'flex';
+    } else if (tabId === 'stocks') {
+      document.getElementById('notch-stocks-widget').style.display = 'flex';
+    }
+
+    // Update active class on switch-btn elements in all widget headers
+    document.querySelectorAll('.notch-widget-switcher .switch-btn').forEach(btn => {
+      if (btn.getAttribute('data-notch-tab') === tabId) {
+        btn.classList.add('active');
       } else {
-        progressPercent += 0.4;
+        btn.classList.remove('active');
       }
-      if (progressFill) {
-        progressFill.style.width = `${progressPercent}%`;
-      }
-    }, 1000);
+    });
+
+    syncCollapsedContent();
   }
 
-  // Start by default
-  startProgress();
+  function formatTime(secs) {
+    const m = Math.floor(secs / 60);
+    const s = Math.floor(secs % 60);
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  }
 
-  if (playBtn) {
-    playBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Avoid triggering parent expand/collapse
-      
-      const icon = playBtn.querySelector('i');
-      if (!icon) return;
+  // Update collapsed view
+  function syncCollapsedContent() {
+    if (!liveIndicatorText || !pulseDot) return;
 
-      if (isPlaying) {
-        // Pause
-        isPlaying = false;
-        icon.className = 'fa-solid fa-play';
-        clearInterval(progressInterval);
-        document.querySelector('.widget-status').textContent = 'Paused';
-      } else {
-        // Play
-        isPlaying = true;
-        icon.className = 'fa-solid fa-pause';
-        document.querySelector('.widget-status').textContent = 'Live Session';
-        startProgress();
+    if (activeTab === 'sports') {
+      pulseDot.style.backgroundColor = '#30d158';
+      pulseDot.style.boxShadow = '0 0 8px #30d158';
+      liveIndicatorText.textContent = `COD ${sportsState.scoreA} - ${sportsState.scoreB} COL ${sportsState.elapsedMinutes}'`;
+    } else if (activeTab === 'music') {
+      pulseDot.style.backgroundColor = '#d946ef';
+      pulseDot.style.boxShadow = '0 0 8px #d946ef';
+      liveIndicatorText.textContent = `${musicState.title} — ${musicState.artist}`;
+    } else if (activeTab === 'stocks') {
+      const activeStock = stocksList[stocksState.activeIndex];
+      const isPositive = activeStock.change >= 0;
+      pulseDot.style.backgroundColor = isPositive ? '#30d158' : '#ff453a';
+      pulseDot.style.boxShadow = `0 0 8px ${isPositive ? '#30d158' : '#ff453a'}`;
+      liveIndicatorText.textContent = `${activeStock.symbol} $${activeStock.price.toFixed(2)} (${isPositive ? '+' : ''}${activeStock.changePercent.toFixed(2)}%)`;
+    }
+  }
+
+  // Bind Switcher Buttons
+  document.querySelectorAll('.notch-widget-switcher .switch-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tabId = btn.getAttribute('data-notch-tab');
+      switchTab(tabId);
+    });
+  });
+
+  // Expose global click dispatcher for showcase sync
+  window.triggerNotchTab = function(tabId) {
+    if (['sports', 'music', 'stocks'].includes(tabId)) {
+      switchTab(tabId);
+    }
+  };
+
+  // --- Music Widget Simulation ---
+  const musicContainer = document.getElementById('notch-music-widget');
+  const musicProgressFill = musicContainer.querySelector('.progress-fill');
+  const musicTimeElapsed = musicContainer.querySelector('.progress-time span:first-child');
+  const musicTimeRemaining = musicContainer.querySelector('.progress-time span:last-child');
+  const musicPlayBtn = musicContainer.querySelector('.play-btn');
+
+  setInterval(() => {
+    if (musicState.isPlaying) {
+      musicState.progressPercent += 0.2;
+      if (musicState.progressPercent >= 100) {
+        musicState.progressPercent = 0;
+      }
+      if (musicProgressFill) {
+        musicProgressFill.style.width = `${musicState.progressPercent}%`;
+      }
+      const elapsed = (musicState.progressPercent / 100) * musicState.trackDuration;
+      const remaining = musicState.trackDuration - elapsed;
+      if (musicTimeElapsed) musicTimeElapsed.textContent = formatTime(elapsed);
+      if (musicTimeRemaining) musicTimeRemaining.textContent = `-${formatTime(remaining)}`;
+      syncCollapsedContent();
+    }
+  }, 1000);
+
+  if (musicPlayBtn) {
+    musicPlayBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      musicState.isPlaying = !musicState.isPlaying;
+      const icon = musicPlayBtn.querySelector('i');
+      if (icon) {
+        icon.className = musicState.isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
       }
     });
   }
 
-  // Live score dynamic simulation (cycles names every 10s)
-  const scores = [
-    "COD 0 - 0 COL 59'",
-    "COD 0 - 1 COL 64'",
-    "COD 1 - 1 COL 78'",
-    "COD 1 - 2 COL 89' FT"
-  ];
-  let scoreIdx = 0;
+  const musicPrevBtn = musicContainer.querySelector('.prev-btn');
+  const musicNextBtn = musicContainer.querySelector('.next-btn');
+  if (musicPrevBtn) {
+    musicPrevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      musicState.progressPercent = 0;
+    });
+  }
+  if (musicNextBtn) {
+    musicNextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      musicState.progressPercent = 0;
+    });
+  }
+
+  // --- Sports Widget Simulation ---
+  const sportsContainer = document.getElementById('notch-sports-widget');
+  const sportsScoreText = sportsContainer.querySelector('.match-score');
+  const sportsTimeText = sportsContainer.querySelector('.match-time');
+
+  const sportsState = {
+    isPlaying: true,
+    scoreA: 0,
+    scoreB: 0,
+    elapsedMinutes: 59
+  };
+
+  function renderNotchSportsUI() {
+    if (sportsScoreText) {
+      sportsScoreText.textContent = `${sportsState.scoreA} - ${sportsState.scoreB}`;
+    }
+    if (sportsTimeText) {
+      sportsTimeText.innerHTML = `<span class="live-dot text-green">●</span> ${sportsState.elapsedMinutes}'`;
+    }
+    syncCollapsedContent();
+  }
 
   setInterval(() => {
-    scoreIdx = (scoreIdx + 1) % scores.length;
-    if (liveIndicatorText) {
-      liveIndicatorText.style.opacity = '0';
-      setTimeout(() => {
-        liveIndicatorText.textContent = scores[scoreIdx];
-        liveIndicatorText.style.opacity = '1';
-      }, 300);
+    if (sportsState.isPlaying) {
+      sportsState.elapsedMinutes++;
+      if (sportsState.elapsedMinutes > 90) sportsState.elapsedMinutes = 0;
+      
+      // Randomly score a goal
+      if (Math.random() > 0.98) {
+        if (Math.random() > 0.5) sportsState.scoreA++;
+        else sportsState.scoreB++;
+      }
+      renderNotchSportsUI();
     }
-  }, 12000);
+  }, 1000);
+
+  // --- Stocks Widget Simulation ---
+  const stocksContainer = document.getElementById('notch-stocks-widget');
+  const stocksProgressFill = stocksContainer.querySelector('.stocks-progress-fill');
+  const stocksNameText = stocksContainer.querySelector('.stock-name');
+  const stocksChangeText = stocksContainer.querySelector('.stock-change');
+  const stocksPriceTextLarge = stocksContainer.querySelector('.stock-price-large');
+  const stocksLowText = stocksContainer.querySelector('.stock-low');
+  const stocksHighText = stocksContainer.querySelector('.stock-high');
+
+  function renderNotchStocksUI() {
+    const activeStock = stocksList[stocksState.activeIndex];
+    const isPositive = activeStock.change >= 0;
+
+    if (stocksNameText) stocksNameText.textContent = `${activeStock.name} (${activeStock.symbol})`;
+    
+    if (stocksChangeText) {
+      stocksChangeText.textContent = `${isPositive ? '+' : ''}${activeStock.change.toFixed(2)} (${isPositive ? '+' : ''}${activeStock.changePercent.toFixed(2)}%)`;
+      stocksChangeText.className = `stock-change ${isPositive ? 'text-green' : 'text-red'}`;
+    }
+
+    if (stocksPriceTextLarge) {
+      stocksPriceTextLarge.textContent = `$${activeStock.price.toFixed(2)}`;
+    }
+
+    if (stocksLowText) stocksLowText.textContent = `Low: $${activeStock.low.toFixed(2)}`;
+    if (stocksHighText) stocksHighText.textContent = `High: $${activeStock.high.toFixed(2)}`;
+
+    // Range slider progress fill
+    const range = activeStock.high - activeStock.low;
+    const currentPos = activeStock.price - activeStock.low;
+    const percent = range > 0 ? (currentPos / range) * 100 : 50;
+    if (stocksProgressFill) {
+      stocksProgressFill.style.width = `${Math.max(0, Math.min(100, percent))}%`;
+    }
+
+    syncCollapsedContent();
+  }
+
+  setInterval(() => {
+    if (stocksState.isPlaying) {
+      // Simulate live market fluctuation
+      stocksList.forEach((s, idx) => {
+        const changeVal = (Math.random() - 0.48) * 3;
+        s.price += changeVal;
+        s.change += changeVal;
+        s.changePercent = (s.change / s.open) * 100;
+        if (s.price > s.high) s.high = s.price;
+        if (s.price < s.low) s.low = s.price;
+      });
+
+      renderNotchStocksUI();
+    }
+  }, 3000);
+
+
+  // Initial Sync
+  switchTab('music');
 }
 
 /**
@@ -1379,4 +1573,71 @@ function initPremiumInteractions() {
       card.style.setProperty('--mouse-y', `${y}px`);
     });
   });
+}
+
+/**
+ * Rotates the hero section preview GIFs sequentially
+ */
+/**
+ * 5. Unified Auto Rotation
+ * Automatically rotates the Hero GIF, the top notch interactive widgets,
+ * and the showcase section every 5 seconds synchronously.
+ */
+function initUnifiedAutoRotation() {
+  const heroImg = document.getElementById('hero-preview-img');
+  
+  // The tabs we want to cycle through
+  const tabs = ['tab-music', 'tab-sports', 'tab-stocks'];
+  
+  // The GIFs that correspond to each tab
+  const gifs = {
+    'tab-music': '/assets/hero.gif',
+    'tab-sports': '/assets/SportsModule.gif',
+    'tab-stocks': '/assets/StocksModule.gif'
+  };
+
+  // Preload the next GIFs to avoid loading delays
+  Object.values(gifs).forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+
+  let currentTabIndex = 0;
+  let isHovered = false;
+
+  const notch = document.getElementById('page-notch');
+  if (notch) {
+    notch.addEventListener('mouseenter', () => isHovered = true);
+    notch.addEventListener('mouseleave', () => isHovered = false);
+  }
+
+  setInterval(() => {
+    // Pause auto-rotation if the user is interacting with the notch
+    if (isHovered) return;
+
+    currentTabIndex = (currentTabIndex + 1) % tabs.length;
+    const tabId = tabs[currentTabIndex];
+    
+    // 1. Trigger the showcase tab (which inherently syncs the top notch)
+    const tabToClick = document.getElementById(tabId);
+    if (tabToClick) {
+      tabToClick.click();
+    }
+    
+    // 2. Sync the Hero GIF
+    if (heroImg) {
+      heroImg.style.opacity = '0';
+      setTimeout(() => {
+        heroImg.src = gifs[tabId];
+        let loaded = false;
+        const fadeIn = () => {
+          if (loaded) return;
+          loaded = true;
+          heroImg.style.opacity = '1';
+        };
+        heroImg.onload = fadeIn;
+        setTimeout(fadeIn, 300);
+      }, 500);
+    }
+  }, 5000); // 5 seconds
 }

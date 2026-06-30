@@ -434,6 +434,172 @@ code {
   font-size: 1.1rem;
 }
 
+/* Page Notch Premium Widgets - Sports & Stocks Expanded */
+.sports-scoreboard-expanded {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px 0 6px;
+  background: var(--bg-card);
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.team-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.team-flag {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.team-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.score-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-score {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  letter-spacing: 1px;
+  color: var(--text-white);
+}
+
+.match-time {
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.live-dot {
+  font-size: 0.6rem;
+  animation: pulse-dot 1.5s infinite alternate;
+}
+
+.match-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Stocks Ticker Expanded */
+.stocks-ticker-expanded {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0 6px;
+  background: var(--bg-card);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.stocks-ticker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.stock-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.stock-change {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.stocks-ticker-price {
+  margin-bottom: 14px;
+}
+
+.stock-price-large {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-white);
+}
+
+.stocks-ticker-range {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.range-bar {
+  flex-grow: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.range-fill {
+  height: 100%;
+  background: var(--accent-green);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.text-green {
+  color: #30d158;
+}
+
+.text-red {
+  color: #ff453a;
+}
+
+/* Controls hover styles for Sports & Stocks buttons */
+.sports-controls button,
+.stocks-controls button {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--ease-fast);
+}
+
+.sports-controls button:hover,
+.stocks-controls button:hover {
+  color: var(--text-white);
+  transform: scale(1.15);
+}
+
+.sports-controls button.sports-play-btn,
+.stocks-controls button.stocks-play-btn {
+  font-size: 1.1rem;
+}
+
+.sports-controls button.active {
+  color: #30d158;
+  text-shadow: 0 0 8px rgba(48, 209, 88, 0.6);
+}
+
 /* 4. Navigation Header (Apple Glass Navbar) */
 .navbar {
   position: absolute;
@@ -639,6 +805,7 @@ code {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
   transform-origin: top center;
   animation: floatScreen 7s ease-in-out infinite;
+  transition: opacity 0.5s ease-in-out;
 }
 
 @keyframes floatScreen {

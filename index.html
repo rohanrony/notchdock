@@ -65,10 +65,11 @@
           <i class="fa-solid fa-microphone mic-icon"></i>
         </div>
         <div class="notch-expanded-content">
-          <div class="notch-mini-widget music-widget">
+          <!-- Music Widget -->
+          <div class="notch-mini-widget music-widget" id="notch-music-widget">
             <div class="widget-header">
-              <span class="widget-title"><i class="fa-solid fa-music text-purple"></i> Now Playing</span>
-              <span class="widget-status">Live Session</span>
+              <span class="widget-title"><i class="fa-solid fa-music text-green"></i> NOW PLAYING</span>
+              <span class="widget-status">LIVE SESSION</span>
             </div>
             <div class="music-details">
               <div class="music-art-mock">
@@ -89,9 +90,58 @@
               </div>
             </div>
             <div class="music-controls">
-              <button><i class="fa-solid fa-backward-step"></i></button>
+              <button class="prev-btn"><i class="fa-solid fa-backward-step"></i></button>
               <button class="play-btn"><i class="fa-solid fa-pause"></i></button>
-              <button><i class="fa-solid fa-forward-step"></i></button>
+              <button class="next-btn"><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+          </div>
+
+          <!-- Sports Widget -->
+          <div class="notch-mini-widget sports-widget" id="notch-sports-widget" style="display: none;">
+            <div class="widget-header">
+              <span class="widget-title"><i class="fa-solid fa-futbol text-green"></i> LIVE MATCH</span>
+              <span class="widget-status">LIVE SESSION</span>
+            </div>
+            <div class="sports-scoreboard-expanded">
+              <div class="team-side">
+                <span class="team-flag">🇨🇴</span>
+                <span class="team-name">COL</span>
+              </div>
+              <div class="score-center">
+                <h2 class="match-score">0 - 0</h2>
+                <span class="match-time text-green"><span class="live-dot">●</span> 59'</span>
+              </div>
+              <div class="team-side right">
+                <span class="team-name">COD</span>
+                <span class="team-flag">🇨🇩</span>
+              </div>
+            </div>
+            <div class="match-footer">
+              <p>Copa América • Group Stage</p>
+            </div>
+          </div>
+
+          <!-- Stocks Widget -->
+          <div class="notch-mini-widget stocks-widget" id="notch-stocks-widget" style="display: none;">
+            <div class="widget-header">
+              <span class="widget-title"><i class="fa-solid fa-chart-line text-green"></i> MARKET OPEN</span>
+              <span class="widget-status">LIVE SESSION</span>
+            </div>
+            <div class="stocks-ticker-expanded">
+              <div class="stocks-ticker-header">
+                <h3 class="stock-name">NASDAQ (^IXIC)</h3>
+                <span class="stock-change text-green">+163.06 (+0.64%)</span>
+              </div>
+              <div class="stocks-ticker-price">
+                <h1 class="stock-price-large">$25,750.10</h1>
+              </div>
+              <div class="stocks-ticker-range">
+                <span class="stock-low">Low: $25,634.08</span>
+                <div class="range-bar">
+                  <div class="range-fill stocks-progress-fill" style="width: 60%;"></div>
+                </div>
+                <span class="stock-high">High: $25,827.33</span>
+              </div>
             </div>
           </div>
         </div>
@@ -141,7 +191,7 @@
                 <div class="macbook-notch-mock"></div>
                 <div class="macbook-wallpaper">
                   <div class="macbook-notch-overlay-active">
-                    <img src="/assets/hero.gif" alt="NotchDock Live Demonstration" class="screen-preview-img" id="hero-preview-img" />
+                    <img src="/assets/SportsModule.gif" alt="NotchDock Live Demonstration" class="screen-preview-img" id="hero-preview-img" />
                   </div>
                 </div>
               </div>
