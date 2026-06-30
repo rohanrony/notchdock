@@ -145,6 +145,35 @@
             <p class="subtitle">Official Release Notes</p>
         </header>
 
+        <!-- Version 0.14.6 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.6</h2>
+                <span class="date">June 30, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Sports Module</strong>: Penalty shootout support for soccer matches, including bracketed shootout scores displayed next to regulation scores in both the expanded card view and the match stats popup.</li>
+                <li><strong>Sports Module</strong>: Custom robust decoders for `ESPNLinescore` and `ESPNCompetitor` to safely parse shootout goals represented as Double, Int, or String in the JSON responses.</li>
+                <li><strong>Sports Module</strong>: Status detail fallback parser `parseShootoutFromStatusDetail` in `makeGame` to extract shootout scores from the status string when native linescores are absent.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Sports Module</strong>: Decoupled shootout scores into dedicated `homeShootoutScore`/`awayShootoutScore` properties to ensure period linescores grids and match stats tables remain clean of shootout elements.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Resolved missing</strong>: application icon in built app by extracting PNG files from `AppIcon.icns` and adding them to the asset catalog `Assets.xcassets/AppIcon.appiconset`.</li>
+                <li><strong>Updated `.gitignore`</strong>: to prevent PNG files inside `.xcassets` directories from being ignored by Git.</li>
+                <li><strong>Testing & State Synchronization</strong>: Fixed state reset bug where assigning `isExpanded = false` or `activeExtensionID` to their current values in observers redundantly cleared `selectedGameForStats` by introducing transition check guards (`oldValue && !isExpanded` and `oldValue != activeExtensionID`).</li>
+                <li><strong>Testing</strong>: Guarded the hover-out collapse block in `IslandView.swift` to prevent spurious initial hover events from triggering collapse timers when views first render.</li>
+                <li><strong>Testing</strong>: Silenced real ESPN API data tasks during tests by adding `isTesting` checks inside `fetchScores()`, `fetchPastAndUpcomingGames()`, and `fetchGameStats(for:)` in `SportsModule.swift`, preventing background network requests from leaking and corrupting mock test states in subsequent tests.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.14.5 -->
         <div class="release-card">
             <div class="release-header">

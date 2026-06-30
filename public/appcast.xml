@@ -6,6 +6,18 @@
         <description>Most recent updates for NotchDock.</description>
         <language>en</language>
         <item>
+            <title>0.14.6</title>
+            <pubDate>Tue, 30 Jun 2026 14:00:15 -0400</pubDate>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>0.14.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.3</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/rohanrony/notchdock/releases/download/v0.14.6/NotchDock-0.14.6.dmg" length="12445963" type="application/octet-stream" sparkle:edSignature="zz9UYgaNeEfnNVOlJ+V2gpCa3t72jPyXBKyYpkTTo2jmheb1RwIdSqCXTTjBSmK2raDPLFT9ZodvFga5g+l9Ag=="/>
+            <sparkle:deltas>
+                <enclosure url="https://notchdock.app/NotchDock9-6.delta" sparkle:deltaFrom="6" length="1260634" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="WAAwStzRZbLI+1URReYNX/mPnh2BWAZCpyk06qlsraWhQu1kmXwcVLfg2sYkDLtmyaus5RqOPXXNRx5bJXj/CQ=="/>
+                <enclosure url="https://notchdock.app/NotchDock9-5.delta" sparkle:deltaFrom="5" length="8440518" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="yOGH/RORE6gx2JlLN6xKRra2nMFjfOajgm7nqOkdKPquTi4uqGhc2aQr+4kaSPJPSOCogbCEsWh9rzsXOX7CDg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.14.5</title>
             <pubDate>Tue, 30 Jun 2026 01:18:36 -0400</pubDate>
             <sparkle:version>6</sparkle:version>
@@ -23,17 +35,6 @@
             <sparkle:shortVersionString>0.14.4-beta1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.3</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/rohanrony/notchdock/releases/download/v0.14.4-beta1/NotchDock-0.14.4-beta1.dmg" length="4085758" type="application/octet-stream" sparkle:edSignature="bN+3iz0FLgZpyER1hM7dj2hLOQWHt825KAzXwGEGWVFwr0kFcUxRAwYpzFtDrQ+IGRKwPn04Q7YC2ifbcqL9AA=="/>
-        </item>
-        <item>
-            <title>0.14.1</title>
-            <pubDate>Sun, 28 Jun 2026 17:19:18 -0400</pubDate>
-            <sparkle:version>4</sparkle:version>
-            <sparkle:shortVersionString>0.14.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>26.3</sparkle:minimumSystemVersion>
-            <enclosure url="http://localhost:8001/NotchDock-0.14.3.dmg" length="5705369" type="application/octet-stream" sparkle:edSignature="oHvFdo+Mqmh4egudlZEg06V3EDatK9qqZOo5ZJuZ6hfw/6t5/D+bKVy3ak20eg3fNSFb2i2CfecpECHOF7OpBQ=="/>
-            <sparkle:deltas>
-                <enclosure url="http://localhost:8001/NotchDock4-1.delta" sparkle:deltaFrom="1" length="11738" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="K6nHJKO6cUVkyHOW8+1vVM7Xg4+CJf4MMZvAQi6ZdDKgJTJDXWk0H9LfbnC5d3os0i4VLGF1Yu+LQGXnxnRbCQ=="/>
-            </sparkle:deltas>
         </item>
         <item>
             <title>Version 0.13.6</title>
