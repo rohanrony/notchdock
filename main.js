@@ -1388,12 +1388,7 @@ function initInteractiveNotch() {
   const sportsScoreText = sportsContainer.querySelector('.match-score');
   const sportsTimeText = sportsContainer.querySelector('.match-time');
 
-  const sportsState = {
-    isPlaying: true,
-    scoreA: 0,
-    scoreB: 0,
-    elapsedMinutes: 59
-  };
+
 
   function renderNotchSportsUI() {
     if (sportsScoreText) {
