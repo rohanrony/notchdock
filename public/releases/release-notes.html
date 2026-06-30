@@ -145,6 +145,20 @@
             <p class="subtitle">Official Release Notes</p>
         </header>
 
+        <!-- Version 0.14.8 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.8</h2>
+                <span class="date">June 30, 2026</span>
+            </div>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Music Module</strong>: Resolved permission status bug where the "Apple Music" authorization state remained stuck in "Access Not Requested" (Allow Access) when permission had already been granted in System Settings. Clicking "Allow Access" now verifies permission inline via an AppleScript query; if already authorized, it updates the state to `.authorized` and bypasses opening the System Settings app.</li>
+                <li><strong>Testing</strong>: Added unit test `testMusicRequestPermissionBehavior` to verify the state updates of both authorized and denied permission scenarios.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.14.6 -->
         <div class="release-card">
             <div class="release-header">
