@@ -1,5 +1,5 @@
 from PIL import Image
-import sys
+import sys 
 
 def extract(gif_path, out_path):
     with Image.open(gif_path) as im:
