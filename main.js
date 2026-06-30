@@ -1385,84 +1385,62 @@ function initInteractiveNotch() {
 
   // --- Sports Widget Simulation ---
   const sportsContainer = document.getElementById('notch-sports-widget');
-  const sportsProgressFill = sportsContainer.querySelector('.sports-progress-fill');
-  const sportsTimeElapsed = sportsContainer.querySelector('.sports-time-elapsed');
-  const sportsTimeRemaining = sportsContainer.querySelector('.sports-time-remaining');
-  const sportsPlayBtn = sportsContainer.querySelector('.sports-play-btn');
-  const sportsPrevBtn = sportsContainer.querySelector('.sports-prev-btn'); // Star
-  const sportsScoreText = sportsContainer.querySelector('.sports-info h4');
+  const sportsScoreText = sportsContainer.querySelector('.match-score');
+  const sportsTimeText = sportsContainer.querySelector('.match-time');
+
+  const sportsState = {
+    isPlaying: true,
+    scoreA: 0,
+    scoreB: 0,
+    elapsedMinutes: 59
+  };
+
+  function renderNotchSportsUI() {
+    if (sportsScoreText) {
+      sportsScoreText.textContent = `${sportsState.scoreA} - ${sportsState.scoreB}`;
+    }
+    if (sportsTimeText) {
+      sportsTimeText.innerHTML = `<span class="live-dot text-green">●</span> ${sportsState.elapsedMinutes}'`;
+    }
+    syncCollapsedContent();
+  }
 
   setInterval(() => {
     if (sportsState.isPlaying) {
-      // Clock ticks
-      sportsState.elapsedMinutes += 1;
-      if (sportsState.elapsedMinutes > 90) {
-        sportsState.elapsedMinutes = 59; // Loop back for demo
+      sportsState.elapsedMinutes++;
+      if (sportsState.elapsedMinutes > 90) sportsState.elapsedMinutes = 0;
+      
+      // Randomly score a goal
+      if (Math.random() > 0.98) {
+        if (Math.random() > 0.5) sportsState.scoreA++;
+        else sportsState.scoreB++;
       }
-
-      // Live score random simulation
-      if (Math.random() < 0.05) {
-        sportsState.scoreB += 1;
-        if (sportsScoreText) {
-          sportsScoreText.textContent = `COD ${sportsState.scoreA} - ${sportsState.scoreB} COL`;
-          // Quick subtle flash effect
-          sportsScoreText.style.color = '#30d158';
-          setTimeout(() => { sportsScoreText.style.color = ''; }, 1000);
-        }
-      }
-
-      // Update UI
-      if (sportsProgressFill) {
-        sportsProgressFill.style.width = `${(sportsState.elapsedMinutes / 90) * 100}%`;
-      }
-      if (sportsTimeElapsed) sportsTimeElapsed.textContent = `${sportsState.elapsedMinutes}'`;
-      if (sportsTimeRemaining) sportsTimeRemaining.textContent = `-${90 - sportsState.elapsedMinutes}'`;
-
-      syncCollapsedContent();
+      renderNotchSportsUI();
     }
-  }, 4000);
-
-  if (sportsPlayBtn) {
-    sportsPlayBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      sportsState.isPlaying = !sportsState.isPlaying;
-      const icon = sportsPlayBtn.querySelector('i');
-      if (icon) {
-        icon.className = sportsState.isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-      }
-    });
-  }
-
-  if (sportsPrevBtn) {
-    sportsPrevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      sportsState.isStarred = !sportsState.isStarred;
-      sportsPrevBtn.classList.toggle('active', sportsState.isStarred);
-      const icon = sportsPrevBtn.querySelector('i');
-      if (icon) {
-        icon.className = sportsState.isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star';
-      }
-    });
-  }
+  }, 1000);
 
   // --- Stocks Widget Simulation ---
   const stocksContainer = document.getElementById('notch-stocks-widget');
   const stocksProgressFill = stocksContainer.querySelector('.stocks-progress-fill');
-  const stocksTitle = stocksContainer.querySelector('.stocks-info h4');
-  const stocksPriceText = stocksContainer.querySelector('.stocks-price-text');
-  const stocksPlayBtn = stocksContainer.querySelector('.stocks-play-btn');
-  const stocksPrevBtn = stocksContainer.querySelector('.stocks-prev-btn');
-  const stocksNextBtn = stocksContainer.querySelector('.stocks-next-btn');
-  const stocksLowText = stocksContainer.querySelector('.stocks-progress-time span:first-child');
-  const stocksHighText = stocksContainer.querySelector('.stocks-progress-time span:last-child');
+  const stocksNameText = stocksContainer.querySelector('.stock-name');
+  const stocksChangeText = stocksContainer.querySelector('.stock-change');
+  const stocksPriceTextLarge = stocksContainer.querySelector('.stock-price-large');
+  const stocksLowText = stocksContainer.querySelector('.stock-low');
+  const stocksHighText = stocksContainer.querySelector('.stock-high');
 
   function renderNotchStocksUI() {
     const activeStock = stocksList[stocksState.activeIndex];
     const isPositive = activeStock.change >= 0;
 
-    if (stocksTitle) stocksTitle.textContent = `${activeStock.name} (${activeStock.symbol})`;
-    if (stocksPriceText) {
-      stocksPriceText.innerHTML = `$${activeStock.price.toFixed(2)} <span class="${isPositive ? 'text-green' : 'text-red'}">${isPositive ? '+' : ''}${activeStock.change.toFixed(2)} (${isPositive ? '+' : ''}${activeStock.changePercent.toFixed(2)}%)</span>`;
+    if (stocksNameText) stocksNameText.textContent = `${activeStock.name} (${activeStock.symbol})`;
+    
+    if (stocksChangeText) {
+      stocksChangeText.textContent = `${isPositive ? '+' : ''}${activeStock.change.toFixed(2)} (${isPositive ? '+' : ''}${activeStock.changePercent.toFixed(2)}%)`;
+      stocksChangeText.className = `stock-change ${isPositive ? 'text-green' : 'text-red'}`;
+    }
+
+    if (stocksPriceTextLarge) {
+      stocksPriceTextLarge.textContent = `$${activeStock.price.toFixed(2)}`;
     }
 
     if (stocksLowText) stocksLowText.textContent = `Low: $${activeStock.low.toFixed(2)}`;
@@ -1495,32 +1473,6 @@ function initInteractiveNotch() {
     }
   }, 3000);
 
-  if (stocksPlayBtn) {
-    stocksPlayBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      stocksState.isPlaying = !stocksState.isPlaying;
-      const icon = stocksPlayBtn.querySelector('i');
-      if (icon) {
-        icon.className = stocksState.isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
-      }
-    });
-  }
-
-  if (stocksPrevBtn) {
-    stocksPrevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      stocksState.activeIndex = (stocksState.activeIndex - 1 + stocksList.length) % stocksList.length;
-      renderNotchStocksUI();
-    });
-  }
-
-  if (stocksNextBtn) {
-    stocksNextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      stocksState.activeIndex = (stocksState.activeIndex + 1) % stocksList.length;
-      renderNotchStocksUI();
-    });
-  }
 
   // Initial Sync
   switchTab('music');
