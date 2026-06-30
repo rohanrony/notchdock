@@ -166,6 +166,7 @@
 
             <div class="section-title fixed">Fixed</div>
             <ul>
+                <li><strong>Updater</strong>: Enabled Sparkle's sandboxed updater installer launcher service (`SUEnableInstallerLauncherService = YES` / `INFOPLIST_KEY_SUEnableInstallerLauncherService`) to resolve updater launch failure abort errors during updates in the macOS App Sandbox.</li>
                 <li><strong>Resolved missing</strong>: application icon in built app by extracting PNG files from `AppIcon.icns` and adding them to the asset catalog `Assets.xcassets/AppIcon.appiconset`.</li>
                 <li><strong>Updated `.gitignore`</strong>: to prevent PNG files inside `.xcassets` directories from being ignored by Git.</li>
                 <li><strong>Testing & State Synchronization</strong>: Fixed state reset bug where assigning `isExpanded = false` or `activeExtensionID` to their current values in observers redundantly cleared `selectedGameForStats` by introducing transition check guards (`oldValue && !isExpanded` and `oldValue != activeExtensionID`).</li>
