@@ -1,96 +1,179 @@
-# NotchDock
+# NotchDock: End-User & Usage Guide
 
-NotchDock is a modular productivity overlay for macOS designed to transform the hardware notch area into a functional, premium "Dynamic Island." It provides persistent, glanceable access to critical professional workflows—meetings, clipboard history, timers, and AI—without requiring users to switch focus from their active windows.
+NotchDock is a premium, modular productivity overlay for macOS designed to transform the hardware notch area of your MacBook Pro (or the top-center edge of any display) into a functional, glanceable "Dynamic Island." 
 
-## 🎥 Video Demo
+By turning a static design element into a hub of active workflows, NotchDock gives you instant, distraction-free access to your calendar, tasks, focus timers, music playback, snippets, sports scores, and stock portfolios—all without forcing you to switch focus from your active windows.
 
-<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
-  <img width="1280" height="720" alt="Recording at 2026-05-03 15 52 07-Edited" src="https://github.com/user-attachments/assets/e8f6dde9-9de8-49ca-848b-c10028591064" />
-</a>
+![Sports Module Demo](notchdock/marketing.assets/SportsModule.gif)
 
-<a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
-  <img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302" />
-</a>
+![NotchDock Demo](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
 
-[NotchDock Demo Video](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
+---
 
-## Features
+## 🎥 Video Demo & Overview
 
-NotchDock is built around a plugin-based "module" architecture. The v1 MVP includes seven core modules:
+To see NotchDock in action, watch our short demonstration video:
 
-- 📅 **Calendar**: Syncs with local calendars to display your next meeting countdown and offers a one-click "Join" button for Zoom, Google Meet, or Teams.
-- 📋 **ToDo List**: A lightweight task manager for tracking immediate, high-priority to-dos.
-- ⏱️ **Focus Timer**: A simplified Pomodoro-style countdown timer with presets for 15, 25, and 50 minutes.
-- 🎵 **Music Module**: Hardened Apple Music and Spotify integration via secure, sandboxed AppleScript IPC.
-- 🗒️ **Quick Access**: A streamlined utility for storing and copying frequently used text snippets.
-- 🏀 **Sports scores**: Tracks live game scores and scheduling updates for favorite teams and leagues (including FIFA World Cup 2026 and UEFA Champions League) with custom score notifications and compact view pinning.
-- 📈 **Stocks Tracker**: Tracks real-time stock prices, indices, and cryptocurrencies with custom watchlists, gradient sparkline charts, and detailed daily/fundamental statistics.
+[**Watch the NotchDock Demo Video**](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
 
-## Security & Privacy
+---
 
-NotchDock is designed with a **privacy-first, local-only** architecture:
+## 🕹️ How NotchDock Works
 
-- **App Sandbox**: Runs in a highly restricted macOS Sandbox, ensuring it only has access to the specific resources you authorize.
-- **Local-First**: Your data never leaves your machine. We do not use any cloud backends for module storage or synchronization.
-- **Keychain Security**: All sensitive user data and tokens are stored in the macOS Keychain, not in plain text or standard configuration files.
-- **Privacy-Aware Logging**: Uses native `os.log` with private formatting to ensure sensitive information never appears in system logs.
-- **Hardened IPC**: Communicates with external apps (like Music/Spotify) via sanitized, in-process automation to prevent script injection.
+NotchDock resides at the top of your display and behaves like an integrated hardware element. It operates in three main states:
 
-## 🌐 Data Sources & API Disclaimers
+### 1. Idle / Compact State
+* **Glanceable Status**: When you are working, NotchDock stays out of your way, displaying a slim bar around your screen's notch with minimal status tokens (e.g., meeting countdowns, active focus timers, live scores, or stock quotes).
+* **Live App Rotation**: If you have multiple "live-tracking" modules enabled (such as Sports Scores or Stocks), NotchDock will automatically rotate between them in the compact view every **15 seconds** so you can monitor updates hands-free.
 
-NotchDock integrates with third-party public endpoints to provide real-time dashboard updates:
+### 2. Hover to Expand
+* **Natural Gestures**: Simply move your cursor over the compact notch area. To prevent accidental triggers while browsing or using screen menus, the activation zone is restricted strictly to the width of the physical notch.
+* **Expanded View**: Upon hover, the tray smoothly expands downward and horizontally to reveal the active app's interface and the control bar.
 
-- **Sports Scores**: Powered by ESPN's public scoreboard APIs. Game logs, schedules, and standings are queried directly client-side with native rate-limiting and cooldown buffers (2.0s to 5.0s) to prevent endpoint abuse.
-- **Stock Market Data**: Powered by Yahoo Finance's query APIs. Stocks, crypto tracking, and sparkline data are queried directly client-side using standard session crumb initialization.
+### 3. Expanded Tray Controls
+When NotchDock is expanded, the top bar of the tray gives you access to core controls:
+* **App Switcher**: Icons for all enabled apps are displayed on the left and right sides of the notch. Click an icon to switch the active view.
+* **Pin Open**: Click the **Pin** icon 📌 (which glows warm amber when active) to lock the tray open. This keeps NotchDock expanded even when you move your cursor away, allowing you to monitor active tasks or sports games.
+* **Minimize to Menu Bar (Icon View)**: Click the **Minimize** icon ↘️↖️ to completely hide the notch overlay and convert it into a tiny icon in your macOS Menu Bar. Click the Menu Bar icon to restore it to the screen overlay at any time.
+* **Settings**: Click the **Gear** icon ⚙️ to open the settings panel.
+* **Drag-and-Drop Reordering**: Customize your App Switcher layout by holding and dragging any app icon to a new spot in the top bar. Your custom layout is saved automatically.
 
-### Legal Disclaimer
-This project is an independent, productivity utility. It is **not** affiliated, associated, authorized, endorsed by, or in any way officially connected with Yahoo, Inc., ESPN, Disney, or any of their subsidiaries or affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of these names does not imply any affiliation with or endorsement by them.
+---
 
-## Design Aesthetic
+## 📅 Usage Guide: The 7 Core Apps
 
-NotchDock features a deeply integrated, hardware-like aesthetic:
-- **Solid 3D Surfaces**: Uses a deep `#1B1B1B` background with multi-layered drop shadows to create a floating 3D effect without relying on heavy glassmorphism.
-- **Dynamic Horizontal Layout**: The tray dynamically stretches horizontally based on content, using a central spacer guaranteeing it always clears the physical MacBook notch.
-- **Ultra-Compact**: Internal module padding and redundant headlines are stripped away to create a flawlessly tight vertical footprint.
-- **Native Typography**: Exclusively uses the macOS San Francisco system font.
+NotchDock comes preloaded with seven modular apps. You can enable, disable, and order them to fit your workflow.
 
-## Technical Stack
+### 1. 📅 Meeting Navigator (Calendar & Reminders)
+Synchronizes directly with your local macOS Calendars and Reminders to keep your schedule at the front of your mind.
+* **What it does**: Tracks your upcoming events and displays a countdown timer to your next meeting.
+* **Compact View**: Displays the title of the next event and a countdown timer (e.g., `Meeting in 15m`).
+* **Expanded View**:
+  * **Interactive Grid**: A complete monthly calendar view. Tapping a day displays the scheduled events for that day.
+  * **Event Card**: Detailed view of your next event, including title, location, notes, and exact time.
+  * **One-Click Join**: A "Join Meeting" button appears automatically **10 minutes before** any online meeting (supporting Zoom, Google Meet, and Microsoft Teams), launching the video link instantly.
+  * **Upcoming Schedule**: A scrollable column displaying upcoming calendar events and pending reminder lists.
+* **Key Settings**:
+  * Select which specific calendars and reminder lists are visible.
+  * Adjust the **Show in Minimized Notch** threshold (from 5 minutes to 120 minutes) to control how early upcoming events appear.
 
-- **Language**: Swift 6
-- **UI Framework**: SwiftUI
-- **Window Management**: AppKit (`NSPanel`)
-- **Architecture**: Runs as a headless background agent (`LSUIElement`) via `NSApplicationDelegateAdaptor`. It has no Dock icon or menu bar presence outside of the Notch overlay itself.
+---
 
-## Getting Started
+### 2. 📋 ToDo List
+A lightweight, friction-free checklist designed for immediate, high-priority tasks.
+* **What it does**: Helps you capture and cross off tasks during your workday without opening heavy task managers.
+* **Compact View**: Remains silent unless prioritized, letting you focus on your current screen.
+* **Expanded View**:
+  * **Add Tasks**: Simply type a task in the entry box and hit **Enter** or tap **Add**.
+  * **Interactive Checklist**: Mark tasks complete with checkboxes or swipe/click to remove them. All entries are persisted locally.
 
-### Prerequisites
-- macOS 14.0+ (Sonoma or later recommended)
-- Xcode 15+
+---
 
-### Build and Run
-Because NotchDock runs as a headless background process, running it from the terminal via the provided build script is recommended:
+### 3. ⏱️ Focus Timer (Pomodoro)
+A focus companion designed to structure work sessions using Pomodoro techniques or custom counts.
+* **What it does**: Tracks work blocks and provides notifications when focus intervals end.
+* **Compact View**: Shows a countdown of your active focus session (e.g., `Focus: 24:15`).
+* **Expanded View**:
+  * **Focus Presets**: Start standard sessions instantly with 15, 25, or 50-minute presets.
+  * **Controls**: Pause, resume, or cancel active timers at any time.
+* **Smart Nudges**: When a timer is running, NotchDock will briefly slide open at key milestones (like 5 minutes remaining) to keep you aware of your time. When the timer finishes, a native notification triggers and an alarm chime plays.
 
-```bash
-# Compile and run the app
-./build-and-run.sh
-```
+---
 
-*(Note: If you run multiple instances from Xcode during development, you may need to force-quit old `notchdock` background processes via Activity Monitor since they will not appear in the Dock).*
+### 4. 🎵 Music Controller
+A playback dashboard that connects securely with Spotify and Apple Music via local automation.
+* **What it does**: Displays currently playing tracks and lets you control your music from the notch.
+* **Compact View**: Displays a clean, dynamic music visualizer wave next to the album artwork when music is playing.
+* **Expanded View**:
+  * **Track Metadata**: Displays track name, artist, and full high-resolution album artwork.
+  * **Adaptive Accent Styling**: The interface background dynamically shifts color to match the dominant theme of the current song's album art.
+  * **Playback Controls**: Play/pause, skip forward, skip backward, and seek through the song using an interactive playback slider.
+  * **Quick Launch**: Tap the app icon (Apple Music logo or Spotify icon) in the corner to bring the active player application to the front.
+* **Key Settings**: Toggle whether music info is displayed in the compact notch state.
 
-### Packaging as a DMG
-To package NotchDock as a styled distribution disk image (`NotchDock.dmg`):
+---
 
-1. Install `create-dmg` via Homebrew:
-   ```bash
-   brew install create-dmg
-   ```
-2. Run the packaging script from the repository root:
-   ```bash
-   ./scripts/release.sh
-   ```
+### 5. 🏀 Sports Scores
+Pulls live, real-time sports updates client-side using public scoreboard data.
+* **What it does**: Keeps you updated on active matches and schedules for your favorite leagues and teams.
+* **Compact View**: Pins a live game's score directly to the notch (e.g., `BOS 104 - 101 MIA | 4th`).
+* **Expanded View**:
+  * **Scores & Schedule**: Shows matchups, live scores, quarter/half status, team records, and logos.
+  * **Detailed Stats**: Hover over any match card to open a temporary statistics overlay showing team stats and period-by-period linescore grids.
+  * **Pin Game**: Tap a game to lock it to the compact view.
+* **Live Update Nudges**: When a team scores in a pinned game, NotchDock automatically slides open for 5 seconds to show you the updated score, then collapses back into place.
+* **Key Settings**: Enable/disable specific leagues (e.g., NBA, NFL, UEFA Champions League, Premier League) and search/add favorite teams to track.
 
-*(Note: Under macOS, processes spawned programmatically by IDEs or IDE agents run under sandboxing constraints that block disk volume mounting. If you encounter sandbox permission errors, run `./scripts/release.sh` from a native macOS Terminal or iTerm2 application).*
+---
 
-## Documentation
+### 6. 📈 Stocks Tracker
+Real-time tracking of stock prices, indices, and cryptocurrency portfolios.
 
-Full architectural decisions, design system tokens, and monetization roadmaps can be found in the `notchdock/docs/` directory.
+![Stocks Module Demo](notchdock/marketing.assets/StocksModule.gif)
+
+* **What it does**: Monitors market movements and daily trends.
+* **Compact View**: Displays your pinned stock ticker symbol, live price, and daily change percentage (e.g., `AAPL $184.22 (+1.45%)`).
+* **Expanded View**:
+  * **Multiple Watchlists**: Organize assets into custom watchlists (Tech, Indices, Crypto, Custom) with editable names.
+  * **Gradient Sparklines**: Displays a visual mini-chart of daily performance trends.
+  * **Market Data**: Provides detailed daily metrics (Open, High, Low, Volume) and fundamental stats (Market Cap, P/E, EPS).
+  * **Pin Ticker**: Pin any asset to display it in the compact notch.
+* **Key Settings**: Toggle display outside standard market hours, rename watchlists, and search/add tickers to lists.
+
+---
+
+### 7. 🗒️ Quick Access (Snippets)
+A utility for storing and copying your most frequently used text snippets.
+
+![Quick Access Demo](https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302)
+
+* **What it does**: Holds template messages, email signatures, code snippets, or common URLs for instant clipboard access.
+* **Compact View**: Remains silent until expanded.
+* **Expanded View**:
+  * Displays a list of custom snippets with editable headings.
+  * Tap any snippet to copy it instantly to your macOS clipboard, ready to paste anywhere.
+
+---
+
+## ⚙️ App Settings & Customization
+
+Click the **Gear** icon in the expanded NotchDock panel to open the settings window:
+
+* **General**: Enable or disable specific apps. Check or change the global ordering list.
+* **Launch at Login**: Enable this to ensure NotchDock starts automatically whenever you turn on your Mac.
+* **Minimize to Icon View**: Toggles whether the notch overlay is enabled or if NotchDock runs purely inside the macOS Menu Bar.
+* **App Settings**: Configure visible calendars, leagues, stock watchlists, and music sources on a per-app basis.
+
+---
+
+## 🔒 Privacy, Security & Permissions
+
+NotchDock is designed with a strict **privacy-first, local-only architecture**:
+* **Sandbox Security**: Runs inside a restricted macOS Sandbox, meaning it cannot access files, networks, or system resources unless you explicitly grant access.
+* **No Cloud Storage**: None of your data, calendar events, tasks, notes, watchlists, or keychain credentials ever leave your machine.
+* **No Telemetry**: NotchDock does not track your behavior, log your usage, or send diagnostic metrics back to any server.
+
+### Required Permissions
+To operate fully, macOS will ask you to authorize the following:
+1. **Accessibility**: Required for NotchDock to detect window layouts, menu bar configurations, and correctly overlay the tray around the physical notch.
+2. **Calendars & Reminders**: Required for the Meeting Navigator app to sync and fetch local schedules.
+3. **Automation (AppleScript)**: Required for the Music Controller app to control Apple Music and Spotify.
+4. **Notifications**: Required to trigger alerts for focus timer completions or upcoming calendar events.
+
+---
+
+## 🛠️ Troubleshooting & Diagnostics
+
+### Re-triggering System Permissions
+If you accidentally denied permission to an app (such as Calendar or Music):
+1. Open your Mac's **System Settings** ➡️ **Privacy & Security**.
+2. Locate the corresponding section (e.g., **Calendars**, **Automation**, or **Accessibility**).
+3. Enable the switch next to **NotchDock**.
+4. Restart NotchDock.
+
+### Logs & Diagnostics
+If you experience any issues or need to debug:
+1. Open NotchDock **Settings** ➡️ **Support**.
+2. Under **Diagnostics & Logs**, you can view the live log entries.
+3. Use the **Copy Logs** or **Export Logs** buttons to save or share your diagnostics safely (sensitive credentials and private details are automatically sanitized out of all logs).
+4. Tap **Quit NotchDock** in General Settings to completely stop the application if you need to perform a clean restart.
