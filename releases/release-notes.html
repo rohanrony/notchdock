@@ -145,6 +145,48 @@
             <p class="subtitle">Official Release Notes</p>
         </header>
 
+        <!-- Version 0.14.4-beta1 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.4-beta1</h2>
+                <span class="date">June 29, 2026</span>
+            </div>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Roadmap</strong>: Removed redundant "Planned" badges/texts from the Apps Roadmap settings view.</li>
+                <li><strong>Testing</strong>: Added UI test `testAppsRoadmapView` to verify the Apps Roadmap page loads and the "Planned" badges do not exist.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Fixed Xcode</strong>: build warning by removing `Info.plist` from target membership exceptions list in the Folder Sync configurations, preventing it from being copied as a raw bundle resource.</li>
+                <li><strong>Testing</strong>: Resolved unit test host background pollution by introducing dynamic framework-based test runner detection to disable background fetching and polling timers in `CalendarViewModel`, `SportsViewModel`, `StocksViewModel`, and `AppState` at startup.</li>
+                <li><strong>Testing</strong>: Fixed a timing bug in `testNewCalendarNotchviewLogicDetailed()` by setting the test event start date to 20 minutes ago and extending its duration to 3 hours, aligning it with the expected key, duration, and phase assertions.</li>
+                <li><strong>Testing</strong>: Synchronized Combine updates in unit tests by introducing run loop spinning (`spinRunLoop()`) to allow asynchronous notifications to deliver before assertions are evaluated.</li>
+                <li><strong>Testing</strong>: Fixed test isolation issues in `testStocksViewModelLogic()` by resetting the view model's pinned tickers and index.</li>
+                <li><strong>Testing</strong>: Implemented a global `resetSharedStates()` setup & teardown cleanup in `notchdockTests.swift` that runs before and after each test case, resetting all shared singletons (`AppState.shared`, `SportsViewModel.shared`, `StocksViewModel.shared`, `TimerViewModel.shared`) and flushing Combine main loop dispatches, guaranteeing complete test-to-test execution isolation.</li>
+                <li><strong>Testing</strong>: Fixed `testNotchLogMaxLimit()` false positive substring match on 'Log line 1' by checking for exact line suffix match instead of simple substring containment.</li>
+                <li><strong>Testing</strong>: Restored original `switchInterval` values properly during test setup and teardown inside `testSingleAppUpdatesLoopingAndSwitching()` to avoid local developer config leaks.</li>
+                <li><strong>Stocks Module</strong>: Corrected a state update race condition in `clampPinnedIndex` by triggering it synchronously inside `pinnedTickers.didSet` rather than asynchronously via a Combine subscription, preventing `willSet` timing races.</li>
+                <li><strong>Sports Module</strong>: Corrected a date grouping sort order assertion in `testSportsDateGrouping()`.</li>
+                <li><strong>AppState</strong>: Wrapped `selectedGameForStats` state resets in `AppState` inside `if !isTesting` guards to prevent asynchronous layout updates in the running host application from resetting the view model's stats selection to `nil` during test runs.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.14.1 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.1</h2>
+                <span class="date">June 28, 2026</span>
+            </div>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Resolved Sparkle</strong>: update error by introducing a physical `Info.plist` template to correctly merge custom Sparkle keys (`SUFeedURL`, `SUPublicEDKey`) during the Xcode build process.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.14.0 -->
         <div class="release-card">
             <div class="release-header">
