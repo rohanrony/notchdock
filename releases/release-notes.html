@@ -145,6 +145,70 @@
             <p class="subtitle">Official Release Notes</p>
         </header>
 
+        <!-- Version 0.14.9 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.9</h2>
+                <span class="date">July 06, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Setup Assistant (Onboarding)</strong>: Polished, premium onboarding flow that opens automatically on first launch to guide users through required permissions. Includes clear cards for:</li>
+                <li><strong>Calendar & Reminders</strong>: Checks local EventKit authorization.</li>
+                <li><strong>Music & Spotify Control</strong>: Checks AppleScript Automation authorization.</li>
+                <li><strong>ToDo Checklist</strong>: Labeled as "Local Storage Enabled" with an interactive "Grant Access" button to prompt for macOS Keychain password authorization.</li>
+                <li><strong>Quick Access Snippets</strong>: Labeled as "Local Storage Enabled" with an interactive "Grant Access" button to prompt for macOS Keychain password authorization.</li>
+                <li><strong>Setup Assistant Settings Relaunch</strong>: Added an option under Settings > General > System to manually relaunch the Setup Assistant at any time.</li>
+                <li><strong>Testing</strong>: Added unit test `testOnboardingWizardStateTracking` to verify the setup assistant lifecycle and completion persistence.</li>
+                <li><strong>Documentation</strong>: Added [docs/13-setup-assistant.md](file:///Users/rohanroy/Coding/notchdock-source/notchdock/docs/13-setup-assistant.md) detailing the Setup Assistant implementation and mechanics.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.14.8 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.8</h2>
+                <span class="date">June 30, 2026</span>
+            </div>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Music Module</strong>: Resolved permission status bug where the "Apple Music" authorization state remained stuck in "Access Not Requested" (Allow Access) when permission had already been granted in System Settings. Clicking "Allow Access" now verifies permission inline via an AppleScript query; if already authorized, it updates the state to `.authorized` and bypasses opening the System Settings app.</li>
+                <li><strong>Testing</strong>: Added unit test `testMusicRequestPermissionBehavior` to verify the state updates of both authorized and denied permission scenarios.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.14.6 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.6</h2>
+                <span class="date">June 30, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Sports Module</strong>: Penalty shootout support for soccer matches, including bracketed shootout scores displayed next to regulation scores in both the expanded card view and the match stats popup.</li>
+                <li><strong>Sports Module</strong>: Custom robust decoders for `ESPNLinescore` and `ESPNCompetitor` to safely parse shootout goals represented as Double, Int, or String in the JSON responses.</li>
+                <li><strong>Sports Module</strong>: Status detail fallback parser `parseShootoutFromStatusDetail` in `makeGame` to extract shootout scores from the status string when native linescores are absent.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Sports Module</strong>: Decoupled shootout scores into dedicated `homeShootoutScore`/`awayShootoutScore` properties to ensure period linescores grids and match stats tables remain clean of shootout elements.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Updater</strong>: Enabled Sparkle's sandboxed updater installer launcher service (`SUEnableInstallerLauncherService = YES` / `INFOPLIST_KEY_SUEnableInstallerLauncherService`) to resolve updater launch failure abort errors during updates in the macOS App Sandbox.</li>
+                <li><strong>Resolved missing</strong>: application icon in built app by extracting PNG files from `AppIcon.icns` and adding them to the asset catalog `Assets.xcassets/AppIcon.appiconset`.</li>
+                <li><strong>Updated `.gitignore`</strong>: to prevent PNG files inside `.xcassets` directories from being ignored by Git.</li>
+                <li><strong>Testing & State Synchronization</strong>: Fixed state reset bug where assigning `isExpanded = false` or `activeExtensionID` to their current values in observers redundantly cleared `selectedGameForStats` by introducing transition check guards (`oldValue && !isExpanded` and `oldValue != activeExtensionID`).</li>
+                <li><strong>Testing</strong>: Guarded the hover-out collapse block in `IslandView.swift` to prevent spurious initial hover events from triggering collapse timers when views first render.</li>
+                <li><strong>Testing</strong>: Silenced real ESPN API data tasks during tests by adding `isTesting` checks inside `fetchScores()`, `fetchPastAndUpcomingGames()`, and `fetchGameStats(for:)` in `SportsModule.swift`, preventing background network requests from leaking and corrupting mock test states in subsequent tests.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.14.5 -->
         <div class="release-card">
             <div class="release-header">
