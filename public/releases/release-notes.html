@@ -145,6 +145,26 @@
             <p class="subtitle">Official Release Notes</p>
         </header>
 
+        <!-- Version 0.14.9 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.9</h2>
+                <span class="date">July 06, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Setup Assistant (Onboarding)</strong>: Polished, premium onboarding flow that opens automatically on first launch to guide users through required permissions. Includes clear cards for:</li>
+                <li><strong>Calendar & Reminders</strong>: Checks local EventKit authorization.</li>
+                <li><strong>Music & Spotify Control</strong>: Checks AppleScript Automation authorization.</li>
+                <li><strong>ToDo Checklist</strong>: Labeled as "Local Storage Enabled" with an interactive "Grant Access" button to prompt for macOS Keychain password authorization.</li>
+                <li><strong>Quick Access Snippets</strong>: Labeled as "Local Storage Enabled" with an interactive "Grant Access" button to prompt for macOS Keychain password authorization.</li>
+                <li><strong>Setup Assistant Settings Relaunch</strong>: Added an option under Settings > General > System to manually relaunch the Setup Assistant at any time.</li>
+                <li><strong>Testing</strong>: Added unit test `testOnboardingWizardStateTracking` to verify the setup assistant lifecycle and completion persistence.</li>
+                <li><strong>Documentation</strong>: Added [docs/13-setup-assistant.md](file:///Users/rohanroy/Coding/notchdock-source/notchdock/docs/13-setup-assistant.md) detailing the Setup Assistant implementation and mechanics.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.14.8 -->
         <div class="release-card">
             <div class="release-header">
