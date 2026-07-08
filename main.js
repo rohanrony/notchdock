@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractiveNotch();
   initScrollEffects();
   initPremiumInteractions();
+  initTestimonials();
   initUnifiedAutoRotation();
 });
 
@@ -317,7 +318,7 @@ function renderSportsWidget() {
       <div style="padding: 10px 16px;">
         <table style="width: 100%; border-collapse: collapse; font-size: 0.72rem; color: var(--text-white); text-align: left;">
           <thead>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-muted);">
+            <tr style="border-bottom: 1px solid var(--translucent-op-10); color: var(--text-muted);">
               <th style="padding: 6px;">Team</th>
               <th>W</th>
               <th>D</th>
@@ -663,7 +664,7 @@ function renderTodoWidget() {
         <div class="nd-todo-item ${task.completed ? 'completed' : ''}" data-id="${task.id}">
           <div class="nd-todo-left">
             <div class="nd-todo-checkbox ${task.completed ? 'checked' : ''}" data-id="${task.id}">
-              ${task.completed ? '<i class="fa-solid fa-circle-check" style="color: var(--accent-green);"></i>' : '<i class="fa-regular fa-circle" style="color: rgba(255,255,255,0.25);"></i>'}
+              ${task.completed ? '<i class="fa-solid fa-circle-check" style="color: var(--accent-green);"></i>' : '<i class="fa-regular fa-circle" style="color: var(--translucent-op-25);"></i>'}
             </div>
             <span class="nd-todo-text" data-id="${task.id}">${escapeHTML(task.text)}</span>
           </div>
@@ -983,22 +984,22 @@ function renderNotchBarWidget() {
 
   if (state.mode === 'stocks') {
     adjacentLeft = `
-      <span style="color: rgba(255,255,255,0.5); font-weight: 500;">^GSPC</span>
-      <span style="color: #fff; font-weight: 700; font-family: var(--font-mono);">$7409.23</span>
+      <span style="color: var(--text-muted); font-weight: 500;">^GSPC</span>
+      <span style="color: var(--text-white); font-weight: 700; font-family: var(--font-mono);">$7409.23</span>
     `;
     adjacentRight = `
       <span style="color: #30d158; font-weight: 700; font-family: var(--font-mono);">+43.77 (+0.59%)</span>
     `;
   } else if (state.mode === 'timer') {
     adjacentLeft = `
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle; color: rgba(255,255,255,0.95);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle; color: var(--text-white);">
         <circle cx="12" cy="13" r="7" />
         <polyline points="12 9 12 13 15 13" />
         <line x1="12" y1="2" x2="12" y2="4" />
         <line x1="9" y1="2" x2="15" y2="2" />
       </svg>
     `;
-    const timerColor = state.timerSeconds < 10 ? '#ff453a' : '#fff';
+    const timerColor = state.timerSeconds < 10 ? '#ff453a' : 'var(--text-white)';
     adjacentRight = `
       <span style="color: ${timerColor}; font-weight: 700; font-family: var(--font-mono);">${formatTimer(state.timerSeconds)}</span>
     `;
@@ -1484,18 +1485,12 @@ function initScrollEffects() {
   window.addEventListener('scroll', () => {
     const scrollPos = window.scrollY;
 
-    // Sticky Header backdrop blur intensity increase
+    // Sticky Header backdrop blur intensity increase via class toggling
     if (header) {
       if (scrollPos > 40) {
-        header.style.padding = '8px 24px';
-        header.style.background = 'rgba(10, 10, 12, 0.85)';
-        header.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-        header.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.5)';
+        header.classList.add('navbar-scrolled');
       } else {
-        header.style.padding = '12px 24px';
-        header.style.background = 'rgba(10, 10, 12, 0.6)';
-        header.style.borderColor = 'var(--border-color)';
-        header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+        header.classList.remove('navbar-scrolled');
       }
     }
 
@@ -1636,3 +1631,100 @@ function initUnifiedAutoRotation() {
     }
   }, 5000); // 5 seconds
 }
+
+/**
+ * 6. Customer Testimonials & Review Simulator
+ * Handles displaying reviews, interactive privacy toggles, compact views,
+ * and a live review builder with real-time card previews.
+ */
+function initTestimonials() {
+  const testimonialsGrid = document.getElementById('testimonials-grid');
+  if (!testimonialsGrid) return;
+
+  // 1. Initial State Data (Hardcoded as requested)
+  // Some users may not have a favorite widget (empty or omitted 'favorite' field)
+  const testimonials = [
+    {
+      name: "reddit/Easy-Cobbler-1631",
+      title: "Reddit User",
+      feedback: "Quick notes please;",
+      favorite: "", // No favorite widget
+      rating: 5,
+      date: "1 day ago",
+      initials: "EC"
+    },
+    {
+      name: "reddit/valiantay",
+      title: "Reddit User",
+      feedback: "Need in Windows!",
+      favorite: "", // No favorite widget
+      rating: 5,
+      date: "3 days ago",
+      initials: "V"
+    },
+    {
+      name: "reddit/chainsawJaguar",
+      title: "Reddit User",
+      feedback: "I'm super excited to be able to get sports scores in the notch. :)",
+      favorite: "⚽ Sports Tracker",
+      rating: 5,
+      date: "5 days ago",
+      initials: "CJ"
+    },
+    {
+      name: "reddit/AceReviewer",
+      title: "Reddit User",
+      feedback: "This is amazing. More people need to try this.",
+      favorite: "", // No favorite widget
+      rating: 5,
+      date: "1 week ago",
+      initials: "AR"
+    }
+  ];
+
+  // Render Grid Function
+  testimonialsGrid.innerHTML = '';
+
+  testimonials.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'testimonial-card';
+    
+    // Ratings HTML
+    let starsHTML = '';
+    for (let i = 0; i < t.rating; i++) {
+      starsHTML += '<i class="fa-solid fa-star"></i>';
+    }
+
+    // Only render favorite badge if it's set
+    const badgeHTML = t.favorite 
+      ? `<span class="testimonial-badge">${escapeHTML(t.favorite)}</span>`
+      : '';
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-header-info">
+          <div class="testimonial-avatar">
+            <span>${escapeHTML(t.initials)}</span>
+          </div>
+          <div class="testimonial-user-details">
+            <span class="testimonial-name">${escapeHTML(t.name)}</span>
+            <span class="testimonial-title">${escapeHTML(t.title)}</span>
+          </div>
+        </div>
+        <div class="testimonial-rating">
+          ${starsHTML}
+        </div>
+      </div>
+      <div class="testimonial-body">
+        ${escapeHTML(t.feedback)}
+      </div>
+      <div class="testimonial-footer">
+        ${badgeHTML}
+        <span class="testimonial-date">${escapeHTML(t.date)}</span>
+      </div>
+    `;
+
+    testimonialsGrid.appendChild(card);
+  });
+}
+
