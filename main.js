@@ -1645,40 +1645,40 @@ function initTestimonials() {
   // Some users may not have a favorite widget (empty or omitted 'favorite' field)
   const testimonials = [
     {
-      name: "Sarah Jenkins",
-      title: "Senior Product Designer",
-      feedback: "The media controller on the notch is a game changer. I no longer have to break my focus to control Spotify while working. Beautifully crafted.",
-      favorite: "🎵 Media Controller",
+      name: "reddit/Easy-Cobbler-1631",
+      title: "Reddit User",
+      feedback: "Quick notes please;",
+      favorite: "", // No favorite widget
       rating: 5,
-      date: "2 days ago",
-      initials: "SJ"
+      date: "1 day ago",
+      initials: "EC"
     },
     {
-      name: "Marc Leclerc",
-      title: "macOS Developer",
-      feedback: "NotchDock fits macOS so naturally that I forget it's not a native OS feature. The clipboard access history has saved me hours of repetitive copy-pasting.",
+      name: "reddit/valiantay",
+      title: "Reddit User",
+      feedback: "Need in Windows!",
       favorite: "", // No favorite widget
+      rating: 5,
+      date: "3 days ago",
+      initials: "V"
+    },
+    {
+      name: "reddit/chainsawJaguar",
+      title: "Reddit User",
+      feedback: "I'm super excited to be able to get sports scores in the notch. :)",
+      favorite: "⚽ Sports Tracker",
       rating: 5,
       date: "5 days ago",
-      initials: "ML"
+      initials: "CJ"
     },
     {
-      name: "Elena Rostova",
-      title: "Product Manager",
-      feedback: "Tracking my meeting schedule and live score updates in a single hover is incredibly convenient. Sleek, minimal, and doesn't drain battery.",
-      favorite: "📅 Calendar Agenda",
-      rating: 5,
-      date: "1 week ago",
-      initials: "ER"
-    },
-    {
-      name: "David Chen",
-      title: "Solutions Architect",
-      feedback: "I've been using NotchDock during beta and it has completely streamlined my calendar schedule tracking. 5 stars!",
+      name: "reddit/AceReviewer",
+      title: "Reddit User",
+      feedback: "This is amazing. More people need to try this.",
       favorite: "", // No favorite widget
       rating: 5,
-      date: "2 weeks ago",
-      initials: "DC"
+      date: "1 week ago",
+      initials: "AR"
     }
   ];
 
