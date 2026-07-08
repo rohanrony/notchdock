@@ -117,6 +117,19 @@ const showState = {
     timerRunning: false,
     timerSeconds: 1500,
     timerInterval: null
+  },
+  notepad: {
+    notes: (() => {
+      try {
+        const saved = localStorage.getItem('nd_notes');
+        if (saved) return JSON.parse(saved);
+      } catch (e) {}
+      return [
+        { id: 'n1', title: 'Product Feedback Notes', content: '• Hover sensitivity: define a dead zone or set a panel delay.\n• Resource usage: optimize background widgets refresh rate.\n• Widget customization: drag & drop rearrange/hide widgets.', date: 'Jul 8' },
+        { id: 'n2', title: 'Code Snippets', content: '// Dead zone check\nif (cursor.y < deadZoneHeight) {\n  // do not open dock\n}', date: 'Jul 7' }
+      ];
+    })(),
+    activeNoteId: 'n1'
   }
 };
 
@@ -126,6 +139,12 @@ function escapeHTML(str) {
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
+}
+
+function saveNotesState() {
+  try {
+    localStorage.setItem('nd_notes', JSON.stringify(showState.notepad.notes));
+  } catch (e) {}
 }
 
 function getWidgetHeaderHTML(activeTab) {
@@ -139,6 +158,7 @@ function getWidgetHeaderHTML(activeTab) {
           ${sportsFieldSVG}
         </span>
         <i class="fa-solid fa-list-check nd-hdr-icon ${activeTab === 'todo' ? 'active' : ''}" data-tab-nav="todo" title="To-Do List"></i>
+        <i class="fa-regular fa-note-sticky nd-hdr-icon ${activeTab === 'notepad' ? 'active' : ''}" data-tab-nav="notepad" title="Notepad"></i>
         <i class="fa-solid fa-music nd-hdr-icon ${activeTab === 'music' ? 'active' : ''}" data-tab-nav="music" title="Media Player"></i>
         <i class="fa-solid fa-chart-line nd-hdr-icon ${activeTab === 'stocks' ? 'active' : ''}" data-tab-nav="stocks" title="Stocks"></i>
       </div>
@@ -723,6 +743,185 @@ function renderTodoWidget() {
   }
 }
 
+// 4b. Notepad Widget Renderer
+function getNoteWordCount(content) {
+  if (!content) return '0 words · 0 characters';
+  const chars = content.length;
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  return `${words} word${words === 1 ? '' : 's'} · ${chars} character${chars === 1 ? '' : 's'}`;
+}
+
+function renderNotepadWidget() {
+  const container = document.getElementById('showcase-interactive-container');
+  if (!container) return;
+
+  const state = showState.notepad;
+  let activeNote = state.notes.find(n => n.id === state.activeNoteId);
+  if (!activeNote && state.notes.length > 0) {
+    state.activeNoteId = state.notes[0].id;
+    activeNote = state.notes[0];
+  }
+
+  // Sidebar list
+  let listHTML = '';
+  state.notes.forEach(note => {
+    const isActive = note.id === state.activeNoteId;
+    const snippet = note.content ? note.content.substring(0, 30) + (note.content.length > 30 ? '...' : '') : 'Empty note';
+    listHTML += `
+      <div class="nd-notepad-item ${isActive ? 'active' : ''}" data-note-id="${note.id}">
+        <div class="nd-notepad-item-title">${escapeHTML(note.title || 'Untitled Note')}</div>
+        <div class="nd-notepad-item-snippet">${escapeHTML(snippet)}</div>
+        <div class="nd-notepad-item-date">${escapeHTML(note.date)}</div>
+      </div>
+    `;
+  });
+
+  // Editor HTML
+  let editorHTML = '';
+  if (activeNote) {
+    editorHTML = `
+      <div class="nd-notepad-editor-header">
+        <input type="text" id="nd-notepad-title-input" class="nd-notepad-title-input" value="${escapeHTML(activeNote.title)}" placeholder="Note Title" />
+      </div>
+      <textarea id="nd-notepad-content-input" class="nd-notepad-content-input" placeholder="Start writing your thoughts...">${escapeHTML(activeNote.content)}</textarea>
+      <div class="nd-notepad-editor-footer">
+        <span class="nd-notepad-word-count">${getNoteWordCount(activeNote.content)}</span>
+        <div class="nd-notepad-editor-actions">
+          <button id="nd-notepad-copy-btn" class="nd-notepad-action-btn" title="Copy to Clipboard">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+          <button id="nd-notepad-delete-btn" class="nd-notepad-action-btn" title="Delete Note">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  } else {
+    editorHTML = `
+      <div class="nd-notepad-empty-editor">
+        <i class="fa-regular fa-note-sticky" style="font-size: 2.5rem; color: var(--translucent-op-15); margin-bottom: 12px;"></i>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">No notes selected. Click the plus icon to create a new note.</p>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="nd-widget nd-notepad-widget">
+      ${getWidgetHeaderHTML('notepad')}
+      <div class="nd-notepad-body">
+        <div class="nd-notepad-sidebar">
+          <div class="nd-notepad-sidebar-header">
+            <span>Notes</span>
+            <button id="nd-notepad-add-btn" class="nd-notepad-icon-btn" title="Create New Note">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <div class="nd-notepad-notes-list">
+            ${listHTML || '<div style="padding: 12px; font-size: 0.75rem; color: var(--text-muted); text-align: center;">No notes</div>'}
+          </div>
+        </div>
+        <div class="nd-notepad-divider"></div>
+        <div class="nd-notepad-editor">
+          ${editorHTML}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Attach event listeners
+  // 1. Select note
+  container.querySelectorAll('.nd-notepad-item').forEach(item => {
+    item.addEventListener('click', () => {
+      state.activeNoteId = item.getAttribute('data-note-id');
+      renderNotepadWidget();
+    });
+  });
+
+  // 2. Add note
+  const addBtn = container.querySelector('#nd-notepad-add-btn');
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      const today = new Date();
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const dateStr = `${monthNames[today.getMonth()]} ${today.getDate()}`;
+      const newNote = {
+        id: 'n_' + Date.now(),
+        title: 'New Note',
+        content: '',
+        date: dateStr
+      };
+      state.notes.unshift(newNote);
+      state.activeNoteId = newNote.id;
+      saveNotesState();
+      renderNotepadWidget();
+      const contentEl = document.getElementById('nd-notepad-content-input');
+      if (contentEl) contentEl.focus();
+    });
+  }
+
+  if (activeNote) {
+    // 3. Edit title
+    const titleInput = container.querySelector('#nd-notepad-title-input');
+    if (titleInput) {
+      titleInput.addEventListener('input', (e) => {
+        activeNote.title = e.target.value;
+        saveNotesState();
+        const sidebarItem = container.querySelector(`.nd-notepad-item[data-note-id="${activeNote.id}"] .nd-notepad-item-title`);
+        if (sidebarItem) {
+          sidebarItem.textContent = e.target.value || 'Untitled Note';
+        }
+      });
+    }
+
+    // 4. Edit content
+    const contentInput = container.querySelector('#nd-notepad-content-input');
+    if (contentInput) {
+      contentInput.addEventListener('input', (e) => {
+        activeNote.content = e.target.value;
+        saveNotesState();
+        const countEl = container.querySelector('.nd-notepad-word-count');
+        if (countEl) {
+          countEl.textContent = getNoteWordCount(e.target.value);
+        }
+        const snippetEl = container.querySelector(`.nd-notepad-item[data-note-id="${activeNote.id}"] .nd-notepad-item-snippet`);
+        if (snippetEl) {
+          const snippet = e.target.value ? e.target.value.substring(0, 30) + (e.target.value.length > 30 ? '...' : '') : 'Empty note';
+          snippetEl.textContent = snippet;
+        }
+      });
+    }
+
+    // 5. Copy content
+    const copyBtn = container.querySelector('#nd-notepad-copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(activeNote.content).then(() => {
+          const originalHTML = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<i class="fa-solid fa-check" style="color: #30d158;"></i>';
+          setTimeout(() => {
+            copyBtn.innerHTML = originalHTML;
+          }, 1500);
+        });
+      });
+    }
+
+    // 6. Delete note
+    const deleteBtn = container.querySelector('#nd-notepad-delete-btn');
+    if (deleteBtn) {
+      deleteBtn.addEventListener('click', () => {
+        state.notes = state.notes.filter(n => n.id !== activeNote.id);
+        if (state.notes.length > 0) {
+          state.activeNoteId = state.notes[0].id;
+        } else {
+          state.activeNoteId = null;
+        }
+        saveNotesState();
+        renderNotepadWidget();
+      });
+    }
+  }
+}
+
 // 5. Music Widget Renderer
 function renderMusicWidget() {
   const container = document.getElementById('showcase-interactive-container');
@@ -1128,6 +1327,10 @@ function initShowcaseTabs() {
     todo: {
       title: 'Quick To-Do Tasks',
       render: renderTodoWidget
+    },
+    notepad: {
+      title: 'Quick Notepad & Snippets',
+      render: renderNotepadWidget
     },
     music: {
       title: 'System Media Controller',
@@ -1679,6 +1882,31 @@ function initTestimonials() {
       rating: 5,
       date: "1 week ago",
       initials: "AR"
+    },
+    {
+      name: "reddit/YgrekMartinovsky",
+      title: "Reddit User",
+      feedback: `Overall, it's very good. I've used several similar apps, Atoll for the longest time, and this one is one of the best. A plus.
+
+Great design and fluidity: Visually, the app looks very "Apple-esque." Animations to expand the dock when hovering over a stock are smooth and natural.
+
+Widgets: Integrating the music controller, clipboard history, and calendar view in one place is a hit. The live sports score view is especially impressive and super convenient when you don't want to take your mind off work.
+
+Usability: Instead of installing several separate tools in the menu bar, I have an aesthetically pleasing, hidden command center under the notch that doesn't take up valuable screen space.
+
+Slight improvement needed.
+
+Hover sensitivity: Sometimes the app activates too easily when I simply move the cursor to the top of the screen, for example, to switch tabs in the browser or click something in the system menu. It can be irritating when the dock suddenly obscures what I'm aiming for. It would be helpful to have the option to set a delay before the panel slides out, or to define a "dead zone."
+
+Resource Usage (Beta): I've noticed that with active widgets that refresh data in real time (like the stock market or live scores), power and CPU usage can increase significantly. It would be worth optimizing the background refresh rate to save battery life on my MacBook.
+
+Widget Customization: Currently, I'm missing a bit more flexibility – I'd like to be able to more easily rearrange widgets or completely hide ones I'm not using (like the stock market) to minimize the entire panel.
+
+I'd also appreciate if you could add a notepad.`,
+      favorite: "⚽ Sports Tracker",
+      rating: 5,
+      date: "2 days ago",
+      initials: "YM"
     }
   ];
 
@@ -1700,6 +1928,9 @@ function initTestimonials() {
       ? `<span class="testimonial-badge">${escapeHTML(t.favorite)}</span>`
       : '';
 
+    const needsReadMore = t.feedback.length > 180;
+    const displayFeedback = needsReadMore ? t.feedback.substring(0, 180) + '...' : t.feedback;
+
     card.innerHTML = `
       <div class="card-header">
         <div class="card-header-info">
@@ -1716,15 +1947,91 @@ function initTestimonials() {
         </div>
       </div>
       <div class="testimonial-body">
-        ${escapeHTML(t.feedback)}
+        ${escapeHTML(displayFeedback)}
       </div>
+      ${needsReadMore ? `<button class="testimonial-read-more-btn" style="z-index: 10;">Read More <i class="fa-solid fa-arrow-right" style="font-size: 0.7rem;"></i></button>` : ''}
       <div class="testimonial-footer">
         ${badgeHTML}
         <span class="testimonial-date">${escapeHTML(t.date)}</span>
       </div>
     `;
 
+    if (needsReadMore) {
+      const readMoreBtn = card.querySelector('.testimonial-read-more-btn');
+      readMoreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openTestimonialPopup(t);
+      });
+    }
+
     testimonialsGrid.appendChild(card);
   });
+}
+
+function openTestimonialPopup(t) {
+  const overlay = document.createElement('div');
+  overlay.className = 'testimonial-popup-overlay';
+  
+  let starsHTML = '';
+  for (let i = 0; i < t.rating; i++) {
+    starsHTML += '<i class="fa-solid fa-star"></i>';
+  }
+  
+  const badgeHTML = t.favorite 
+    ? `<span class="testimonial-badge">${escapeHTML(t.favorite)}</span>`
+    : '';
+
+  overlay.innerHTML = `
+    <div class="testimonial-popup-card">
+      <button class="testimonial-popup-close" title="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="card-header" style="border: none; padding: 0; margin: 0; display: flex; justify-content: space-between; align-items: center; background: transparent; width: 100%;">
+        <div class="card-header-info" style="margin-bottom: 0; display: flex; align-items: center; gap: 12px;">
+          <div class="testimonial-avatar">
+            <span>${escapeHTML(t.initials)}</span>
+          </div>
+          <div class="testimonial-user-details" style="display: flex; flex-direction: column;">
+            <span class="testimonial-name" style="font-weight: 600;">${escapeHTML(t.name)}</span>
+            <span class="testimonial-title" style="font-size: 0.75rem; color: var(--text-muted);">${escapeHTML(t.title)}</span>
+          </div>
+        </div>
+        <div class="testimonial-rating" style="margin-bottom: 0; display: flex; gap: 3px; color: #ff9f0a;">
+          ${starsHTML}
+        </div>
+      </div>
+      <div class="testimonial-popup-body">
+        ${escapeHTML(t.feedback)}
+      </div>
+      <div class="testimonial-footer" style="margin-top: 0; padding-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--translucent-op-3);">
+        ${badgeHTML}
+        <span class="testimonial-date" style="font-size: 0.7rem; color: var(--text-muted);">${escapeHTML(t.date)}</span>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  setTimeout(() => {
+    overlay.classList.add('active');
+  }, 10);
+
+  const closePopup = () => {
+    overlay.classList.remove('active');
+    setTimeout(() => {
+      overlay.remove();
+    }, 300);
+  };
+
+  overlay.querySelector('.testimonial-popup-close').addEventListener('click', closePopup);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closePopup();
+  });
+  
+  const escHandler = (e) => {
+    if (e.key === 'Escape') {
+      closePopup();
+      document.removeEventListener('keydown', escHandler);
+    }
+  };
+  document.addEventListener('keydown', escHandler);
 }
 
