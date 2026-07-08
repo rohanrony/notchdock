@@ -145,6 +145,31 @@
             <p class="subtitle">Official Release Notes</p>
         </header>
 
+        <!-- Version 0.14.10 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.14.10</h2>
+                <span class="date">July 07, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Module Guides</strong>: Created a centralized guide system with custom step-by-step guides for all 7 application modules.</li>
+                <li><strong>Onboarding Guides</strong>: Inserted a "Module Guides" step into the Setup Assistant flow allowing users to browse through instructions for each widget.</li>
+                <li><strong>Settings Guides</strong>: Added "How to Use" guide cards at the bottom of settings views for Calendar, Music, Quick Access, Sports, Stocks, Timer, and ToDo modules.</li>
+                <li><strong>Testing</strong>: Added unit test `testModuleGuidesContentAndStructure` to verify guide content, icons, and layout structure.</li>
+                <li><strong>Stocks Module Drag-and-Drop Reordering</strong>: Direct, intuitive drag-and-drop support to reorder watchlist categories (tabs) and individual stock items within watchlists inside the expanded panel view.</li>
+                <li><strong>Stocks Module Drag Affordance</strong>: Integrated a subtle, premium drag handle (`line.3.horizontal`) on the far-left of each stock card in the expanded list, showing low opacity (`0.12`) normally and fading up to `0.35` on hover.</li>
+                <li><strong>Testing</strong>: Added unit test cases for the new `moveWatchlist(from:to:)` method inside `testStocksReorderingLogic` in `notchdockTests.swift`.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Settings Theme</strong>: Converted color tokens in `ThemeTokens` to dynamic colors using the `NSColor` dynamic provider, and removed the forced `.dark` color scheme from `SettingsView`. This allows the settings panel to dynamically support a premium Light Mode (with light gray background, solid white cards, and dark gray text) and Dark Mode depending on the system color scheme, while the main app (NotchPanel/IslandView and OnboardingView) remains in the dark color scheme as requested.</li>
+                <li><strong>Testing</strong>: Added `testSettingsViewInitialization` unit test to verify settings view construction.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.14.9 -->
         <div class="release-card">
             <div class="release-header">
