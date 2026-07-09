@@ -1,5 +1,4 @@
-// Import CSS to let Vite bundle it
-import './style.css';
+// CSS is linked in index.html directly
 
 document.addEventListener('DOMContentLoaded', () => {
   initShowcaseTabs();
