@@ -4,7 +4,7 @@ NotchDock is a premium, modular productivity overlay for macOS designed to trans
 
 By turning a static design element into a hub of active workflows, NotchDock gives you instant, distraction-free access to your calendar, tasks, focus timers, music playback, snippets, sports scores, and stock portfolios—all without forcing you to switch focus from your active windows.
 
-![Sports Module Demo](notchdock/marketing.assets/SportsModule.gif)
+![Sports Widget Demo](notchdock/marketing.assets/SportsWidget.gif)
 
 ![NotchDock Demo](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
 
@@ -18,13 +18,26 @@ To see NotchDock in action, watch our short demonstration video:
 
 ---
 
+## 🚀 Setup Assistant (First-Launch Guide)
+
+When you open NotchDock for the first time, the **Setup Assistant** launches automatically to help you get configured:
+* **System Permissions Checklist**: Easily grant access for Calendars & Reminders and AppleScript Automation (Music controls) in one place.
+* **Keychain Storage Authorization**: Prompts and authorizes secure local database storage for the ToDo List and Quick Access widgets.
+* **Interactive Widget Guides**: A built-in directory where you can read usage tips, features, and settings for each of the 7 core widgets.
+* **Interaction Tips**: Explains how to trigger hover-expansion, lock the panel open using the Pin button, or minimize the app to the macOS Menu Bar.
+
+> [!TIP]
+> You can manually relaunch this onboarding wizard at any time. Click the **Gear icon ⚙️** in the expanded panel to open Settings, select **General**, and click the **"Launch Guide..."** button under the **System** card.
+
+---
+
 ## 🕹️ How NotchDock Works
 
 NotchDock resides at the top of your display and behaves like an integrated hardware element. It operates in three main states:
 
 ### 1. Idle / Compact State
 * **Glanceable Status**: When you are working, NotchDock stays out of your way, displaying a slim bar around your screen's notch with minimal status tokens (e.g., meeting countdowns, active focus timers, live scores, or stock quotes).
-* **Live App Rotation**: If you have multiple "live-tracking" modules enabled (such as Sports Scores or Stocks), NotchDock will automatically rotate between them in the compact view every **15 seconds** so you can monitor updates hands-free.
+* **Live App Rotation**: If you have multiple "live-tracking" widgets enabled (such as Sports Scores or Stocks), NotchDock will automatically rotate between them in the compact view every **15 seconds** so you can monitor updates hands-free.
 
 ### 2. Hover to Expand
 * **Natural Gestures**: Simply move your cursor over the compact notch area. To prevent accidental triggers while browsing or using screen menus, the activation zone is restricted strictly to the width of the physical notch.
@@ -46,37 +59,45 @@ NotchDock comes preloaded with seven modular apps. You can enable, disable, and 
 
 ### 1. 📅 Meeting Navigator (Calendar & Reminders)
 Synchronizes directly with your local macOS Calendars and Reminders to keep your schedule at the front of your mind.
-* **What it does**: Tracks your upcoming events and displays a countdown timer to your next meeting.
+* **What it does**: Tracks your upcoming events and reminders, displaying countdown timers to meetings.
 * **Compact View**: Displays the title of the next event and a countdown timer (e.g., `Meeting in 15m`).
 * **Expanded View**:
-  * **Interactive Grid**: A complete monthly calendar view. Tapping a day displays the scheduled events for that day.
-  * **Event Card**: Detailed view of your next event, including title, location, notes, and exact time.
-  * **One-Click Join**: A "Join Meeting" button appears automatically **10 minutes before** any online meeting (supporting Zoom, Google Meet, and Microsoft Teams), launching the video link instantly.
-  * **Upcoming Schedule**: A scrollable column displaying upcoming calendar events and pending reminder lists.
+  * **3-Column Layout**: A premium, vertically-aligned horizontal split-pane:
+    - **Month Grid**: A complete, interactive monthly calendar. Highlighted today indicator and small event dot indicators below each date. Navigation chevrons for shifting months and a quick shortcut to launch the macOS Calendar app.
+    - **Schedule List**: A unified list of all events and reminders for the selected day. Includes Apple Calendar-style check toggles for Scheduled Reminders, allowing you to mark them complete directly with automatic syncing back to the system Reminders store.
+    - **Details Pane**: Displays full details of the selected event or reminder, including description, notes, time, location (with a map pin icon), and completion status.
+  * **One-Click Join**: A "Join Meeting" button appears automatically **10 minutes before** any online meeting (supporting Zoom, Google Meet, Microsoft Teams, and Webex) in the Details Pane, launching the video link instantly.
 * **Key Settings**:
   * Select which specific calendars and reminder lists are visible.
   * Adjust the **Show in Minimized Notch** threshold (from 5 minutes to 120 minutes) to control how early upcoming events appear.
+  * Set the ongoing transition threshold.
 
 ---
 
 ### 2. 📋 ToDo List
-A lightweight, friction-free checklist designed for immediate, high-priority tasks.
-* **What it does**: Helps you capture and cross off tasks during your workday without opening heavy task managers.
-* **Compact View**: Remains silent unless prioritized, letting you focus on your current screen.
+A lightweight, friction-free checklist designed for immediate, high-priority tasks, organized into category folders.
+* **What it does**: Helps you capture, categorize, and complete tasks during your workday.
+* **Compact View**: Displays a checklist icon and an animated remaining task count badge for the active folder.
 * **Expanded View**:
-  * **Add Tasks**: Simply type a task in the entry box and hit **Enter** or tap **Add**.
-  * **Interactive Checklist**: Mark tasks complete with checkboxes or swipe/click to remove them. All entries are persisted locally.
+  * **Multiple Folders (Sub-Tabs)**: Group tasks into custom folders (e.g., "Work", "Personal") toggled via horizontal scrollable tabs in the header.
+  * **Drag-and-Drop Reordering**: Drag and drop folder tabs in the header to reorder them, or drag individual task cards inside a folder to reorder the checklist.
+  * **Add Tasks**: Inline task creation at the bottom of the list.
+  * **Interactive Checklist**: Mark tasks complete with checkbox checkmarks, with animated scaling pulse feedback and strikethrough styling upon completion.
+  * **Hover Actions**: Move your mouse over any task to reveal delete (`xmark.circle.fill`) and reorder handle controls.
+* **Key Settings**: Manage folders directly from settings (set active picker, add, delete, rename, and drag-and-drop to reorder them). All data is saved securely using JSON Keychain persistence.
 
 ---
 
 ### 3. ⏱️ Focus Timer (Pomodoro)
 A focus companion designed to structure work sessions using Pomodoro techniques or custom counts.
-* **What it does**: Tracks work blocks and provides notifications when focus intervals end.
-* **Compact View**: Shows a countdown of your active focus session (e.g., `Focus: 24:15`).
+* **What it does**: Tracks work blocks, Pomodoro sessions, and custom durations.
+* **Compact View**: Displays a timer icon and a ticking remaining countdown (e.g. `14:59`) only when the timer is running, and stays silent when idle.
 * **Expanded View**:
-  * **Focus Presets**: Start standard sessions instantly with 15, 25, or 50-minute presets.
-  * **Controls**: Pause, resume, or cancel active timers at any time.
-* **Smart Nudges**: When a timer is running, NotchDock will briefly slide open at key milestones (like 5 minutes remaining) to keep you aware of your time. When the timer finishes, a native notification triggers and an alarm chime plays.
+  * **Custom Duration Inputs**: Two-digit fields for minutes and seconds with automatic cursor tabbing when stopped.
+  * **Interactive Slider**: A premium Apple-style capsule slider allows you to drag to set your baseline duration (1 to 60 minutes) when stopped, with smooth hover and drag animations.
+  * **Remaining Progress Bar**: When running, the slider circular thumb hides and the bar acts as a clean, non-interactive visual progress display indicating the remaining percentage of the session.
+  * **Focus Presets & Controls**: Quick-launch buttons for standard presets (15, 25, or 50 minutes) alongside Play/Pause and Reset controls.
+* **Smart Nudges & Blinking Alarms**: Slides open to notify at key remaining-time checkpoints. Upon reaching zero, it plays a double chime, auto-expands the notch, locks navigation controls, and blinks at a 1Hz frequency until acknowledged by hovering over the panel.
 
 ---
 
@@ -109,16 +130,18 @@ Pulls live, real-time sports updates client-side using public scoreboard data.
 ### 6. 📈 Stocks Tracker
 Real-time tracking of stock prices, indices, and cryptocurrency portfolios.
 
-![Stocks Module Demo](notchdock/marketing.assets/StocksModule.gif)
+![Stocks Widget Demo](notchdock/marketing.assets/StocksWidget.gif)
 
-* **What it does**: Monitors market movements and daily trends.
-* **Compact View**: Displays your pinned stock ticker symbol, live price, and daily change percentage (e.g., `AAPL $184.22 (+1.45%)`).
+* **What it does**: Monitors market movements, trends, and fundamental metrics.
+* **Compact View**: Displays your pinned stock ticker symbol, live price, and daily change percentage (e.g., `AAPL $184.22 (+1.45%)`). Rotates between multiple pinned tickers and animates with a rolling stock-board effect.
 * **Expanded View**:
-  * **Multiple Watchlists**: Organize assets into custom watchlists (Tech, Indices, Crypto, Custom) with editable names.
-  * **Gradient Sparklines**: Displays a visual mini-chart of daily performance trends.
-  * **Market Data**: Provides detailed daily metrics (Open, High, Low, Volume) and fundamental stats (Market Cap, P/E, EPS).
-  * **Pin Ticker**: Pin any asset to display it in the compact notch.
-* **Key Settings**: Toggle display outside standard market hours, rename watchlists, and search/add tickers to lists.
+  * **Multiple Watchlists**: Organize assets into up to 10 watchlists with user-editable names, displayed as clean backgroundless tabs with a prominent active pill selector.
+  * **Timeframe Selector**: Filter historical data using a dropdown menu in the header (1D, 5D, 1M, 3M, 6M, 1Y, 5Y, Max).
+  * **Gradient Sparklines**: Visual sparkline charts of daily trend performance with a fading gradient. Supports **Interactive Scrubbing/Hovering**: hovering over a sparkline renders a vertical scrub line, overlays a pulsing dot on the trend line, and displays a glassmorphic floating price tooltip at the cursor position.
+  * **Drag-and-Drop Reordering**: Hold and drag stock cards (via far-left handles that fade in on hover) or watchlist tabs to reorder them in real-time.
+  * **Market Data & Fundamentals**: Shows detailed daily metrics (Open, High, Low, Volume) and fundamental stats (Market Cap, static EPS, and dynamically recalculated P/E Ratio).
+  * **Pin Ticker**: Pin any asset to display it in the compact notch using a simple bookmark toggle icon.
+* **Key Settings**: Toggle display outside standard US market hours (9:30 AM to 4:00 PM ET), adjust live matches/stock rotation interval (5 to 300 seconds), manage watchlists (add, delete, rename), query and add custom symbols via Yahoo autocomplete search, and reorder watchlists/tickers via drag-and-drop lists.
 
 ---
 
