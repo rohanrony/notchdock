@@ -50,7 +50,7 @@
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css?v=1">
   </head>
   <body>
     
@@ -246,6 +246,13 @@
                 <p>Manage list and drag-to-reorder</p>
               </div>
             </button>
+            <button class="tab-btn" data-tab="notepad" id="tab-notepad">
+              <i class="fa-regular fa-note-sticky tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Quick Notepad</h3>
+                <p>Jot down ideas & save snippets</p>
+              </div>
+            </button>
             <button class="tab-btn" data-tab="music" id="tab-music">
               <i class="fa-solid fa-music tab-icon"></i>
               <div class="tab-btn-text">
@@ -284,6 +291,12 @@
           </div>
           <div class="mac-laptop-base">
             <div class="mac-laptop-groove"></div>
+          </div>
+          <!-- Interactive Demo Hint -->
+          <div class="showcase-interactive-hint">
+            <span class="pulse-dot"></span>
+            <i class="fa-solid fa-hand-pointer"></i>
+            <span><strong>Interactive Demo:</strong> Feel free to click the controls, edit the notepad, or try the widgets directly inside the notch!</span>
           </div>
           </div>
         </div>
@@ -366,7 +379,7 @@
         <div class="testimonials-container">
           <div class="section-header">
             <span class="section-tag">Testimonials</span>
-            <h2>Loved by Beta Testers</h2>
+            <h2>Loved by 100+ Beta Testers</h2>
             <p class="section-subtitle">See what early users think of their new interactive notch experience.</p>
           </div>
 
@@ -430,6 +443,6 @@
     </footer>
 
     <!-- Style and Main JS Injection -->
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/main.js?v=1"></script>
   </body>
 </html>
