@@ -145,6 +145,37 @@
             <p class="subtitle">Official Release Notes</p>
         </header>
 
+        <!-- Version 0.15.0 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.15.0</h2>
+                <span class="date">July 10, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Quick Notes Widget</strong>: A rich-text notepad integrated right into your Notch. Syncs with Apple Notes, offering a split sidebar layout, search, live word/character counters, and text formatting.</li>
+                <li><strong>Interactive Calendar & Reminders</strong>: Restructured the expanded calendar into a premium 3-column view, and added support for checking off calendar reminders directly from the schedule list.</li>
+                <li><strong>Custom Timer Slider</strong>: A sleek Apple-style duration slider with smooth hover scaling animations.</li>
+                <li><strong>Stocks Timeframes & Scrubbing</strong>: Filter stock history by custom timeframes (1D, 5D, etc.) and scrub across charts with a floating, glassmorphic price tooltip.</li>
+                <li><strong>ToDo Folders</strong>: Organize your checklist into custom folders (e.g., Work, Personal) with full drag-and-drop reordering support and folder settings.</li>
+                <li><strong>Onboarding Permission Checkups</strong>: A revised Setup Assistant that synchronizes widget storage permissions securely with System Settings.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Smarter Tray Dismissal</strong>: Replaced standard hover checks with boundary-sensitive tracking, ensuring the tray closes instantly and accurately.</li>
+                <li><strong>Tightened Layout Density</strong>: Reduced padding and grid spacings in Stocks and ToDo list headers for a cleaner, unified native macOS feel.</li>
+                <li><strong>Stocks API Optimization</strong>: Configured rate-limit aware lazy loading to only fetch detailed quotes when the panel is expanded.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Quick Notes Formatting Focus</strong>: Resolved panel collapse issues when clicking formatting buttons, ensuring formatting toolbar remains responsive.</li>
+                <li><strong>Stocks Deadlock</strong>: Fixed startup circular initialization issues to guarantee robust load times.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.14.10 -->
         <div class="release-card">
             <div class="release-header">
@@ -154,12 +185,12 @@
 
             <div class="section-title added">Added</div>
             <ul>
-                <li><strong>Module Guides</strong>: Created a centralized guide system with custom step-by-step guides for all 7 application modules.</li>
-                <li><strong>Onboarding Guides</strong>: Inserted a "Module Guides" step into the Setup Assistant flow allowing users to browse through instructions for each widget.</li>
-                <li><strong>Settings Guides</strong>: Added "How to Use" guide cards at the bottom of settings views for Calendar, Music, Quick Access, Sports, Stocks, Timer, and ToDo modules.</li>
-                <li><strong>Testing</strong>: Added unit test `testModuleGuidesContentAndStructure` to verify guide content, icons, and layout structure.</li>
-                <li><strong>Stocks Module Drag-and-Drop Reordering</strong>: Direct, intuitive drag-and-drop support to reorder watchlist categories (tabs) and individual stock items within watchlists inside the expanded panel view.</li>
-                <li><strong>Stocks Module Drag Affordance</strong>: Integrated a subtle, premium drag handle (`line.3.horizontal`) on the far-left of each stock card in the expanded list, showing low opacity (`0.12`) normally and fading up to `0.35` on hover.</li>
+                <li><strong>Widget Guides</strong>: Created a centralized guide system with custom step-by-step guides for all 7 application widgets.</li>
+                <li><strong>Onboarding Guides</strong>: Inserted a "Widget Guides" step into the Setup Assistant flow allowing users to browse through instructions for each widget.</li>
+                <li><strong>Settings Guides</strong>: Added "How to Use" guide cards at the bottom of settings views for Calendar, Music, Quick Access, Sports, Stocks, Timer, and ToDo widgets.</li>
+                <li><strong>Testing</strong>: Added unit test `testWidgetGuidesContentAndStructure` to verify guide content, icons, and layout structure.</li>
+                <li><strong>Stocks Widget Drag-and-Drop Reordering</strong>: Direct, intuitive drag-and-drop support to reorder watchlist categories (tabs) and individual stock items within watchlists inside the expanded panel view.</li>
+                <li><strong>Stocks Widget Drag Affordance</strong>: Integrated a subtle, premium drag handle (`line.3.horizontal`) on the far-left of each stock card in the expanded list, showing low opacity (`0.12`) normally and fading up to `0.35` on hover.</li>
                 <li><strong>Testing</strong>: Added unit test cases for the new `moveWatchlist(from:to:)` method inside `testStocksReorderingLogic` in `notchdockTests.swift`.</li>
             </ul>
 
@@ -199,7 +230,7 @@
 
             <div class="section-title fixed">Fixed</div>
             <ul>
-                <li><strong>Music Module</strong>: Resolved permission status bug where the "Apple Music" authorization state remained stuck in "Access Not Requested" (Allow Access) when permission had already been granted in System Settings. Clicking "Allow Access" now verifies permission inline via an AppleScript query; if already authorized, it updates the state to `.authorized` and bypasses opening the System Settings app.</li>
+                <li><strong>Music Widget</strong>: Resolved permission status bug where the "Apple Music" authorization state remained stuck in "Access Not Requested" (Allow Access) when permission had already been granted in System Settings. Clicking "Allow Access" now verifies permission inline via an AppleScript query; if already authorized, it updates the state to `.authorized` and bypasses opening the System Settings app.</li>
                 <li><strong>Testing</strong>: Added unit test `testMusicRequestPermissionBehavior` to verify the state updates of both authorized and denied permission scenarios.</li>
             </ul>
         </div>
@@ -213,14 +244,14 @@
 
             <div class="section-title added">Added</div>
             <ul>
-                <li><strong>Sports Module</strong>: Penalty shootout support for soccer matches, including bracketed shootout scores displayed next to regulation scores in both the expanded card view and the match stats popup.</li>
-                <li><strong>Sports Module</strong>: Custom robust decoders for `ESPNLinescore` and `ESPNCompetitor` to safely parse shootout goals represented as Double, Int, or String in the JSON responses.</li>
-                <li><strong>Sports Module</strong>: Status detail fallback parser `parseShootoutFromStatusDetail` in `makeGame` to extract shootout scores from the status string when native linescores are absent.</li>
+                <li><strong>Sports Widget</strong>: Penalty shootout support for soccer matches, including bracketed shootout scores displayed next to regulation scores in both the expanded card view and the match stats popup.</li>
+                <li><strong>Sports Widget</strong>: Custom robust decoders for `ESPNLinescore` and `ESPNCompetitor` to safely parse shootout goals represented as Double, Int, or String in the JSON responses.</li>
+                <li><strong>Sports Widget</strong>: Status detail fallback parser `parseShootoutFromStatusDetail` in `makeGame` to extract shootout scores from the status string when native linescores are absent.</li>
             </ul>
 
             <div class="section-title improved">Improvements</div>
             <ul>
-                <li><strong>Sports Module</strong>: Decoupled shootout scores into dedicated `homeShootoutScore`/`awayShootoutScore` properties to ensure period linescores grids and match stats tables remain clean of shootout elements.</li>
+                <li><strong>Sports Widget</strong>: Decoupled shootout scores into dedicated `homeShootoutScore`/`awayShootoutScore` properties to ensure period linescores grids and match stats tables remain clean of shootout elements.</li>
             </ul>
 
             <div class="section-title fixed">Fixed</div>
@@ -230,7 +261,7 @@
                 <li><strong>Updated `.gitignore`</strong>: to prevent PNG files inside `.xcassets` directories from being ignored by Git.</li>
                 <li><strong>Testing & State Synchronization</strong>: Fixed state reset bug where assigning `isExpanded = false` or `activeExtensionID` to their current values in observers redundantly cleared `selectedGameForStats` by introducing transition check guards (`oldValue && !isExpanded` and `oldValue != activeExtensionID`).</li>
                 <li><strong>Testing</strong>: Guarded the hover-out collapse block in `IslandView.swift` to prevent spurious initial hover events from triggering collapse timers when views first render.</li>
-                <li><strong>Testing</strong>: Silenced real ESPN API data tasks during tests by adding `isTesting` checks inside `fetchScores()`, `fetchPastAndUpcomingGames()`, and `fetchGameStats(for:)` in `SportsModule.swift`, preventing background network requests from leaking and corrupting mock test states in subsequent tests.</li>
+                <li><strong>Testing</strong>: Silenced real ESPN API data tasks during tests by adding `isTesting` checks inside `fetchScores()`, `fetchPastAndUpcomingGames()`, and `fetchGameStats(for:)` in `SportsWidget.swift`, preventing background network requests from leaking and corrupting mock test states in subsequent tests.</li>
             </ul>
         </div>
 
@@ -275,8 +306,8 @@
                 <li><strong>Testing</strong>: Implemented a global `resetSharedStates()` setup & teardown cleanup in `notchdockTests.swift` that runs before and after each test case, resetting all shared singletons (`AppState.shared`, `SportsViewModel.shared`, `StocksViewModel.shared`, `TimerViewModel.shared`) and flushing Combine main loop dispatches, guaranteeing complete test-to-test execution isolation.</li>
                 <li><strong>Testing</strong>: Fixed `testNotchLogMaxLimit()` false positive substring match on 'Log line 1' by checking for exact line suffix match instead of simple substring containment.</li>
                 <li><strong>Testing</strong>: Restored original `switchInterval` values properly during test setup and teardown inside `testSingleAppUpdatesLoopingAndSwitching()` to avoid local developer config leaks.</li>
-                <li><strong>Stocks Module</strong>: Corrected a state update race condition in `clampPinnedIndex` by triggering it synchronously inside `pinnedTickers.didSet` rather than asynchronously via a Combine subscription, preventing `willSet` timing races.</li>
-                <li><strong>Sports Module</strong>: Corrected a date grouping sort order assertion in `testSportsDateGrouping()`.</li>
+                <li><strong>Stocks Widget</strong>: Corrected a state update race condition in `clampPinnedIndex` by triggering it synchronously inside `pinnedTickers.didSet` rather than asynchronously via a Combine subscription, preventing `willSet` timing races.</li>
+                <li><strong>Sports Widget</strong>: Corrected a date grouping sort order assertion in `testSportsDateGrouping()`.</li>
                 <li><strong>AppState</strong>: Wrapped `selectedGameForStats` state resets in `AppState` inside `if !isTesting` guards to prevent asynchronous layout updates in the running host application from resetting the view model's stats selection to `nil` during test runs.</li>
             </ul>
         </div>
@@ -309,17 +340,17 @@
                 <li><strong>Settings</strong>: Disclaimer footnote in the About section stating third-party data is public, provided "as-is", and not affiliated with ESPN or Yahoo Finance.</li>
                 <li><strong>Settings</strong>: Free Public Beta badge and monetization explanation text on the About page.</li>
                 <li><strong>Testing</strong>: UI test to verify the disclaimer, beta badge, and beta description text displays on the About settings page.</li>
-                <li><strong>Sports Module</strong>: Premium Game Stats Popup loading experience with stable layout heights, pulsing skeleton loader screens, and staggered progressive fade-in/slide-up animations on data load completion.</li>
+                <li><strong>Sports Widget</strong>: Premium Game Stats Popup loading experience with stable layout heights, pulsing skeleton loader screens, and staggered progressive fade-in/slide-up animations on data load completion.</li>
             </ul>
 
             <div class="section-title improved">Improvements</div>
             <ul>
-                <li><strong>Sports Module</strong>: Added horizontal padding to the stats popup views (statistics, key performers, match events, and skeleton loaders) to keep the contents aligned and visually balanced within the wider popover window.</li>
+                <li><strong>Sports Widget</strong>: Added horizontal padding to the stats popup views (statistics, key performers, match events, and skeleton loaders) to keep the contents aligned and visually balanced within the wider popover window.</li>
             </ul>
 
             <div class="section-title fixed">Fixed</div>
             <ul>
-                <li><strong>Sports Module</strong>: Resolved an extraneous closing brace compiler error at the top level of the module file.</li>
+                <li><strong>Sports Widget</strong>: Resolved an extraneous closing brace compiler error at the top level of the widget file.</li>
             </ul>
         </div>
 
