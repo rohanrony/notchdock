@@ -1,0 +1,126 @@
+# NotchDock Complete Documentation (`llms-full.txt`)
+
+> Comprehensive single-file text documentation for NotchDock — the macOS utility app that transforms your MacBook notch into an interactive status dock and utility tray.
+
+---
+
+## Table of Contents
+1. [Overview & Architecture](#overview--architecture)
+2. [Feature Details](#feature-details)
+   - [Live Sports Score Tracker](#1-live-sports-score-tracker)
+   - [Mac Stock Portfolio & Crypto Tracker](#2-mac-stock-portfolio--crypto-tracker)
+   - [Mac Clipboard Manager](#3-mac-clipboard-manager)
+   - [Mac Media Controller](#4-mac-media-controller)
+   - [Mac Pomodoro & Quick Notes](#5-mac-pomodoro--quick-notes)
+   - [Silent Notch Notifications](#6-silent-notch-notifications)
+3. [System Requirements & Installation](#system-requirements--installation)
+4. [Privacy & Security Policy](#privacy--security-policy)
+5. [Links & Resources](#links--resources)
+
+---
+
+## Overview & Architecture
+
+NotchDock is a lightweight macOS menu bar and notch utility application built natively for macOS (Monterey 12.0+). It transforms the MacBook camera hardware notch into a rich, interactive hover dock that houses utility widgets including live sports scores, stock portfolios, clipboard history, media controls, Pomodoro timers, and silent notifications.
+
+### How It Works
+- **Hover Detection**: Detects cursor movement in proximity to the screen notch area to smoothly expand the status dock.
+- **Zero Distraction**: Runs silently in the background without stealing window focus or cluttering the desktop wallpaper.
+- **Privacy-First**: Operates 100% on-device. No analytics, tracking, or cloud data harvesting.
+
+---
+
+## Feature Details
+
+### 1. Live Sports Score Tracker
+- **URL**: https://notchdock.app/features/mac-sports-tracker.html
+- **Summary**: Displays live scores, match minutes, and game stats directly underneath the MacBook notch.
+- **Supported Leagues**: NFL, Premier League, UEFA Champions League, NBA, MLB, NHL, and FIFA World Cup.
+- **Key Capabilities**:
+  - Auto-refreshing score updates without desktop notification popups.
+  - Team pin capability to follow favorite clubs or teams.
+  - Micro sparkline graphics showing match momentum and time remaining.
+
+### 2. Mac Stock Portfolio & Crypto Tracker
+- **URL**: https://notchdock.app/features/mac-stock-portfolio.html
+- **Summary**: Real-time market ticker and watchlist for stock market indices, individual equities, and cryptocurrencies.
+- **Key Capabilities**:
+  - Live prices for S&P 500, Nasdaq, Dow Jones, and major crypto assets (BTC, ETH, SOL).
+  - Intraday sparkline charts visible on hover.
+  - Customizable watchlist with price alerts displayed inside the camera bezel notch.
+
+### 3. Mac Clipboard Manager
+- **URL**: https://notchdock.app/features/mac-clipboard-manager.html
+- **Summary**: Instant history tray for copied text, links, image previews, and code snippets.
+- **Key Capabilities**:
+  - One-click copy/paste from the notch tray.
+  - Searchable history buffer with persistent local storage.
+  - Privacy safeguards: Sensitive strings (passwords, auth tokens) can be automatically excluded.
+
+### 4. Mac Media Controller
+- **URL**: https://notchdock.app/features/mac-media-controller.html
+- **Summary**: Universal media playback widget embedded into the notch tray.
+- **Key Capabilities**:
+  - Album art display, track title, artist name, and progress timeline.
+  - Play, pause, skip, and volume adjustment without switching active applications.
+  - Supports Apple Music, Spotify, YouTube, Web Browsers, and system-level audio feeds.
+
+### 5. Mac Pomodoro & Quick Notes
+- **URL**: https://notchdock.app/features/mac-pomodoro-notes.html
+- **Summary**: Integrated focus timer and scratchpad for fast task tracking.
+- **Key Capabilities**:
+  - Customizable focus sessions (25 min work, 5 min break) with subtle visual notch countdown.
+  - Drag-and-drop task reordering.
+  - Persistent quick notes scratchpad for fast thoughts and meeting takeaways.
+
+### 6. Silent Notch Notifications
+- **URL**: https://notchdock.app/features/silent-notch-notifications.html
+- **Summary**: Ambient status indicators replacing intrusive system banner alerts.
+- **Key Capabilities**:
+  - Glow effects and subtle text marquees integrated directly into the black notch bezel.
+  - Displays background progress (renders, builds, timers, background transfers).
+  - Keeps workflow focused and free from banner spam.
+
+---
+
+## Upcoming Widget Roadmap
+
+NotchDock is actively expanding its ecosystem to dominate macOS notch productivity. Planned roadmap widgets include:
+- **System Stats & Hardware Monitor Widget**: Real-time CPU core usage, RAM pressure, memory allocation, fan speed, and temperature telemetry directly inside the camera bezel tray.
+- **Quick App Launcher & Action Dock**: Customizable shortcut grid to launch favorite applications, execute shell scripts, or trigger macOS Shortcuts from the notch tray.
+- **Battery Health & Charging Tray**: Live battery percentage indicator, charge wattage draw, remaining battery life estimator, and battery health cycle metrics.
+- **Calendar & Upcoming Meetings Countdown**: Integration with macOS Calendar and Google Calendar to display live countdown timers to your next meeting directly inside the notch status indicator.
+- **Custom API & Webhooks Tray**: Custom JSON feed rendering, GitHub Actions build status indicators, Vercel deployment statuses, or custom REST endpoint monitoring under your notch.
+
+---
+
+
+## System Requirements & Installation
+
+- **macOS Version**: macOS 12.0 (Monterey), macOS 13.0 (Ventura), macOS 14.0 (Sonoma), macOS 15.0 (Sequoia) or newer.
+- **Hardware Support**: Compatible with Apple Silicon (M1, M2, M3, M4) MacBooks (MacBook Pro 14"/16", MacBook Air 13"/15") as well as Intel-based Macs.
+- **Permissions**: Requires standard macOS Accessibility permission in System Settings -> Privacy & Security -> Accessibility to track cursor position near screen edges.
+
+### Installation Instructions
+1. Download `NotchDock.dmg` from the GitHub Releases page.
+2. Mount the DMG image and drag `NotchDock.app` into `/Applications`.
+3. Open `NotchDock.app`. On first launch, follow the prompt to enable Accessibility access in macOS System Settings.
+4. Hover near the notch area to activate the dock.
+
+---
+
+## Privacy & Security Policy
+
+- **Local-Only Execution**: NotchDock does not collect, track, or transmit any user data.
+- **Clipboard Safety**: Copy-paste buffer items are stored locally in application sandbox memory and are never uploaded anywhere.
+- **Network Requests**: The only outgoing network requests are direct API fetches for user-requested public data (such as live sports scores or stock market tickers) and checking for app updates via the public Appcast feed.
+
+---
+
+## Links & Resources
+
+- **Official Website**: https://notchdock.app/
+- **GitHub Repository**: https://github.com/rohanrony/notchdock
+- **Releases & DMG Downloads**: https://github.com/rohanrony/notchdock/releases
+- **Issue Tracker**: https://github.com/rohanrony/notchdock/issues
+- **Contact Support**: mailto:notchdock@gmail.com
