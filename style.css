@@ -50,6 +50,20 @@
   --border-widget: var(--translucent-op-10);
   --bg-features-section: rgba(14, 14, 20, 0.2);
 
+  /* Card, Table, and Container Color Tokens */
+  --bg-card-element: rgba(18, 18, 22, 0.7);
+  --border-card-element: rgba(255, 255, 255, 0.1);
+  --shadow-card-element: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --bg-table-wrapper: #14171d;
+  --border-table-wrapper: rgba(255, 255, 255, 0.12);
+  --bg-table-header: rgba(255, 255, 255, 0.08);
+  --border-table-row: rgba(255, 255, 255, 0.08);
+  --table-text-title: #ffffff;
+  --table-text-body: #e5e7eb;
+  --table-text-dim: #9ca3af;
+  --bg-highlight-column: rgba(74, 222, 128, 0.08);
+  --bg-highlight-cell: rgba(74, 222, 128, 0.05);
+
   /* Dynamic Opacities (White in dark, Black in light) */
   --translucent-op-1: rgba(255, 255, 255, 0.01);
   --translucent-op-2: rgba(255, 255, 255, 0.02);
@@ -68,45 +82,9 @@
   --translucent-op-95: rgba(255, 255, 255, 0.95);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg-color: #f5f5f7;
-    --text-main: #1d1d1f;
-    --text-muted: #86868b;
-    --text-white: #000000;
-
-    /* Element Specific overrides */
-    --bg-navbar: rgba(255, 255, 255, 0.7);
-    --bg-navbar-scrolled: rgba(255, 255, 255, 0.85);
-    --border-color-scrolled: rgba(0, 0, 0, 0.08);
-    --shadow-navbar-scrolled: 0 12px 40px rgba(0, 0, 0, 0.08);
-    --bg-cta-card: #ffffff;
-    --bg-footer: #f5f5f7;
-    --bg-showcase: #ffffff;
-    --bg-browser-header: #e8e8ed;
-    --bg-screen: #f5f5f7;
-    --bg-wallpaper: #ffffff;
-    --bg-widget: rgba(255, 255, 255, 0.96);
-    --border-widget: rgba(0, 0, 0, 0.1);
-    --bg-features-section: rgba(0, 0, 0, 0.02);
-
-    /* Dynamic Opacities (inverted to black-based) */
-    --translucent-op-1: rgba(0, 0, 0, 0.01);
-    --translucent-op-2: rgba(0, 0, 0, 0.02);
-    --translucent-op-3: rgba(0, 0, 0, 0.03);
-    --translucent-op-4: rgba(0, 0, 0, 0.04);
-    --translucent-op-5: rgba(0, 0, 0, 0.05);
-    --translucent-op-6: rgba(0, 0, 0, 0.06);
-    --translucent-op-8: rgba(0, 0, 0, 0.08);
-    --translucent-op-10: rgba(0, 0, 0, 0.1);
-    --translucent-op-12: rgba(0, 0, 0, 0.12);
-    --translucent-op-15: rgba(0, 0, 0, 0.15);
-    --translucent-op-20: rgba(0, 0, 0, 0.2);
-    --translucent-op-25: rgba(0, 0, 0, 0.25);
-    --translucent-op-35: rgba(0, 0, 0, 0.35);
-    --translucent-op-75: rgba(0, 0, 0, 0.75);
-    --translucent-op-95: rgba(0, 0, 0, 0.95);
-  }
+/* Enforce Dark Theme Color Scheme globally across all browsers & OS settings */
+html {
+  color-scheme: dark;
 }
 
 /* Force dark theme variables for the top-page notch simulator */
@@ -1191,11 +1169,41 @@ code {
   margin-bottom: 20px;
 }
 
-/* Monochromatic Overrides for Icon Containers */
-.bg-purple, .bg-blue, .bg-green, .bg-orange, .bg-red, .bg-teal {
-  background: var(--translucent-op-3) !important;
-  border: 1px solid var(--translucent-op-5) !important;
-  color: var(--accent-green) !important;
+/* Vibrant Glassmorphic Icon Containers */
+.bg-purple {
+  background: rgba(168, 85, 247, 0.12) !important;
+  border: 1px solid rgba(168, 85, 247, 0.25) !important;
+  color: #c084fc !important;
+}
+
+.bg-blue {
+  background: rgba(59, 130, 246, 0.12) !important;
+  border: 1px solid rgba(59, 130, 246, 0.25) !important;
+  color: #60a5fa !important;
+}
+
+.bg-green {
+  background: rgba(74, 222, 128, 0.12) !important;
+  border: 1px solid rgba(74, 222, 128, 0.25) !important;
+  color: #4ade80 !important;
+}
+
+.bg-orange {
+  background: rgba(249, 115, 22, 0.12) !important;
+  border: 1px solid rgba(249, 115, 22, 0.25) !important;
+  color: #fb923c !important;
+}
+
+.bg-red {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border: 1px solid rgba(239, 68, 68, 0.25) !important;
+  color: #f87171 !important;
+}
+
+.bg-teal {
+  background: rgba(20, 184, 166, 0.12) !important;
+  border: 1px solid rgba(20, 184, 166, 0.25) !important;
+  color: #2dd4bf !important;
 }
 
 .feature-card h3 {
@@ -1408,14 +1416,233 @@ code {
   text-align: left;
 }
 
-.footer-bottom {
+/* Why NotchDock Section */
+.why-different-section {
+  padding: 80px 24px;
+  background-color: var(--bg-features-section);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.why-different-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
   max-width: 1100px;
-  margin: 0 auto;
-  padding-top: 0;
+  margin: 40px auto 0 auto;
+}
+
+.why-card {
+  background: var(--bg-card-element);
+  border: 1px solid var(--border-card-element);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card-element);
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-green);
+}
+
+.why-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: 0.78rem;
-  color: var(--translucent-op-35);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.why-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-white);
+}
+
+.why-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 90px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-container {
+  width: 100%;
+}
+
+.faq-list {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background: var(--bg-card-element);
+  border: 1px solid var(--border-card-element);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-card-element);
+}
+
+.faq-item[open] {
+  border-color: var(--accent-green);
+}
+
+.faq-question {
+  padding: 22px 28px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--text-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-chevron {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+  color: #34d399;
+}
+
+.faq-answer {
+  padding: 0 28px 24px 28px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.faq-answer p {
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* Comparison Table Component (Theme-responsive light/dark) */
+.comparison-table-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--bg-table-wrapper);
+  border: 1px solid var(--border-table-wrapper);
+  border-radius: 14px;
+  padding: 1.75rem;
+  overflow-x: auto;
+  box-shadow: var(--shadow-card-element);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 650px;
+  font-size: 0.95rem;
+}
+
+.comparison-table thead tr {
+  border-bottom: 2px solid var(--border-table-wrapper);
+  background: var(--bg-table-header);
+}
+
+.comparison-table th {
+  padding: 0.9rem 1.1rem;
+  color: var(--table-text-title);
+  font-weight: 700;
+}
+
+.comparison-table th.highlight-column {
+  color: var(--accent-green);
+  background: var(--bg-highlight-column);
+}
+
+.comparison-table tbody tr {
+  border-bottom: 1px solid var(--border-table-row);
+}
+
+.comparison-table td {
+  padding: 0.85rem 1.1rem;
+  color: var(--table-text-body);
+}
+
+.comparison-table td.feature-label {
+  font-weight: 600;
+  color: var(--table-text-title);
+}
+
+.comparison-table td.highlight-cell {
+  font-weight: 600;
+  color: var(--accent-green);
+  background: var(--bg-highlight-cell);
+}
+
+.comparison-table td.dim-cell {
+  color: var(--table-text-dim);
+}
+
+/* Status Pills & Badges for Feature Comparison Matrix */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.status-pill.status-success {
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.status-pill.status-warning {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.status-pill.status-danger,
+.status-pill.status-none {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Executive Summary Callout Box */
+.summary-callout {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(74, 222, 128, 0.04);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
 }
 
 /* 11. Responsive Media Queries */

@@ -44,7 +44,7 @@ NotchDock integrates with third-party public endpoints to provide real-time dash
 - **Stock Market Data**: Powered by Yahoo Finance's query APIs. Stocks, crypto tracking, and sparkline data are queried directly client-side using standard session crumb initialization.
 
 ### Legal Disclaimer
-This project is an independent, open-source productivity utility. It is **not** affiliated, associated, authorized, endorsed by, or in any way officially connected with Yahoo, Inc., ESPN, Disney, or any of their subsidiaries or affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of these names does not imply any affiliation with or endorsement by them.
+This project is an independent productivity utility. It is **not** affiliated, associated, authorized, endorsed by, or in any way officially connected with Yahoo, Inc., ESPN, Disney, or any of their subsidiaries or affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of these names does not imply any affiliation with or endorsement by them.
 
 ## Design Aesthetic
 

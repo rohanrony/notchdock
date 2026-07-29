@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>NotchDock | Unleash Your MacBook Notch</title>
-    <meta name="title" content="NotchDock | Unleash Your MacBook Notch" />
-    <meta name="description" content="Transform your MacBook notch into an interactive status dock and utility tray. Track live sports, control media, manage clipboards, and check calendars in one click." />
-    <meta name="keywords" content="MacBook notch, macOS utility, NotchDock, mac dock, live sports tracker mac, clipboard manager mac, mac media controller" />
+    <title>NotchDock — Interactive MacBook Notch Widget Tray & Productivity Dock for macOS</title>
+    <meta name="title" content="NotchDock — Interactive MacBook Notch Widget Tray & Productivity Dock for macOS" />
+    <meta name="description" content="Transform your MacBook notch into an interactive status tray for live sports, stock watchlists, clipboard history & media controls. 100% local, silent & hover-activated for macOS." />
+    <meta name="keywords" content="MacBook notch app, mac notch dock, mac sports score tracker, mac stock portfolio tracker, mac clipboard manager, mac media controller, macOS notch widget, notch utility tray" />
     <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/" />
@@ -18,15 +18,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://notchdock.app/" />
-    <meta property="og:title" content="NotchDock | Unleash Your MacBook Notch" />
-    <meta property="og:description" content="Transform your MacBook notch into an interactive status dock and utility tray. Track live sports, control media, manage clipboards, and check calendars in one click." />
+    <meta property="og:title" content="NotchDock — Interactive MacBook Notch Widget Tray & Productivity Dock" />
+    <meta property="og:description" content="NotchDock transforms your MacBook screen notch into a silent, hover-activated status tray for live sports, stock watchlists, clipboard history, and media controls — built for macOS power users who want instant real-time updates without menu bar clutter." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/" />
-    <meta property="twitter:title" content="NotchDock | Unleash Your MacBook Notch" />
-    <meta property="twitter:description" content="Transform your MacBook notch into an interactive status dock and utility tray. Track live sports, control media, manage clipboards, and check calendars in one click." />
+    <meta property="twitter:title" content="NotchDock — Interactive MacBook Notch Widget Tray & Productivity Dock" />
+    <meta property="twitter:description" content="NotchDock transforms your MacBook screen notch into a silent, hover-activated status tray for live sports, stock watchlists, clipboard history, and media controls — built for macOS power users who want instant real-time updates without menu bar clutter." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) for Search Engines & LLMs -->
@@ -36,34 +36,64 @@
       "@graph": [
         {
           "@type": "SoftwareApplication",
+          "@id": "https://notchdock.app/#software",
           "name": "NotchDock",
           "operatingSystem": "macOS",
-          "applicationCategory": "UtilityApplication",
+          "applicationCategory": "ProductivityApplication",
+          "applicationSubCategory": "DesktopApplication",
           "url": "https://notchdock.app/",
           "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "USD"
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
           },
           "downloadUrl": "https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg",
-          "description": "Transform your MacBook hardware notch into an interactive status dock and utility tray for sports scores, stock portfolios, clipboard history, media playback controls, tasks, and silent status notifications.",
-          "releaseVersion": "0.13.6",
-          "requirements": "Requires macOS Monterey (12.0) or newer"
+          "description": "NotchDock transforms your MacBook screen notch into a silent, hover-activated status tray for live sports, stock watchlists, clipboard history, and media controls — built for macOS power users who want instant real-time updates without menu bar clutter.",
+          "softwareVersion": "0.13.6",
+          "releaseNotes": "https://github.com/rohanrony/notchdock/releases",
+          "requirements": "Requires macOS Monterey (12.0) or newer (M1/M2/M3/M4 Apple Silicon & Intel Macs)",
+          "featureList": [
+            "Live Sports Score Tracker (NFL, Premier League, NBA, MLB)",
+            "Real-Time Stock & Crypto Watchlist with Sparkline Charts",
+            "Mac Clipboard History Manager & Text Snippets Tray",
+            "Universal Media Playback Scrubber for Spotify & Apple Music",
+            "Focus Pomodoro Timer & Drag-and-Drop Task Checklist",
+            "Silent Notch Ambient Status Indicators",
+            "100% Local and On-Device Execution"
+          ]
         },
         {
           "@type": "WebSite",
+          "@id": "https://notchdock.app/#website",
           "name": "NotchDock",
           "url": "https://notchdock.app/",
           "description": "The ultimate macOS productivity notch tray and widget ecosystem for MacBook Pro & MacBook Air.",
           "publisher": {
             "@type": "Organization",
-            "name": "NotchDock",
-            "url": "https://notchdock.app/",
-            "logo": "https://notchdock.app/assets/logo.jpg"
+            "@id": "https://notchdock.app/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://notchdock.app/#webpage",
+          "url": "https://notchdock.app/",
+          "name": "NotchDock — Interactive MacBook Notch Widget Tray & Productivity Dock for macOS",
+          "description": "Transform your MacBook notch into an interactive status tray for live sports, stock watchlists, clipboard history & media controls. 100% local, silent & hover-activated for macOS.",
+          "isPartOf": {
+            "@id": "https://notchdock.app/#website"
+          },
+          "about": {
+            "@id": "https://notchdock.app/#software"
+          },
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".speakable-answer", ".faq-answer"]
           }
         },
         {
           "@type": "Organization",
+          "@id": "https://notchdock.app/#organization",
           "name": "NotchDock",
           "url": "https://notchdock.app/",
           "logo": "https://notchdock.app/assets/logo.jpg",
@@ -73,6 +103,7 @@
         },
         {
           "@type": "BreadcrumbList",
+          "@id": "https://notchdock.app/#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -196,7 +227,10 @@
         </a>
         <nav class="nav-menu">
           <a href="#features" class="nav-item">Features</a>
+          <a href="/why-notchdock.html" class="nav-item">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html" class="nav-item">Compare</a>
           <a href="#showcase" class="nav-item">Showcase</a>
+          <a href="#faq" class="nav-item">FAQ</a>
           <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
           <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
         </nav>
@@ -210,17 +244,19 @@
       <section class="hero-section">
         <div class="hero-container">
           <div class="hero-text">
-            <div class="badge">Now in Beta</div>
-            <h1>Unleash Your MacBook <span class="text-accent">Notch</span></h1>
-            <p class="hero-desc">Your screen's most underutilized space, now a beautiful interactive dock. View live sports scores, track tasks, manage clipboard history, and control media with a simple hover.</p>
+            <div class="badge">Now in Beta • macOS 12.0+</div>
+            <h1>Turn Your MacBook Notch Into an <span class="text-accent">Interactive Productivity Dock</span></h1>
+            <p class="hero-desc speakable-answer">NotchDock is a freemium macOS desktop utility application that transforms the static hardware camera notch on MacBook Pro and MacBook Air into a hover-activated status tray. It gives power users instant access to live sports scores, real-time stock watchlists with sparkline charts, clipboard history, Pomodoro timer notes, and universal media controls — operating 100% locally on-device with zero menu bar clutter and zero cloud tracking.</p>
             <div class="hero-actions">
-              <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download DMG</a>
+              <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download Free Beta (DMG)</a>
               <a href="#showcase" class="btn btn-outline btn-lg">See How It Works</a>
             </div>
             <div class="hero-meta">
               <span><i class="fa-brands fa-apple"></i> Requires macOS Monterey or newer</span>
               <span class="separator">•</span>
-              <span>Beta</span>
+              <span>100% On-Device & Private</span>
+              <span class="separator">•</span>
+              <span>Free Download</span>
             </div>
           </div>
           
@@ -413,6 +449,97 @@
         </div>
       </section>
 
+      <!-- Why Different Section -->
+      <section class="why-different-section" id="why-different">
+        <div class="section-header">
+          <span class="section-tag">Why NotchDock</span>
+          <h2>Built Different for macOS Power Users</h2>
+          <p class="section-subtitle">Reinventing hardware dead space into a silent, instant-access utility tray.</p>
+        </div>
+        <div class="why-different-grid">
+          <div class="why-card">
+            <div class="why-icon bg-purple"><i class="fa-solid fa-gem"></i></div>
+            <h3>Hardware Dead Space → Active Dock</h3>
+            <p>Your camera notch sits idle 99% of the time. NotchDock turns that wasted screen real estate into a hover-activated tray packed with live widgets and productivity tools.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon bg-blue"><i class="fa-solid fa-ghost"></i></div>
+            <h3>Zero Menu Bar & Screen Clutter</h3>
+            <p>Stop crowding your menu bar with dozens of single-purpose status items or floating widgets. Hover to reveal everything you need, then slide away cleanly when done.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon bg-green"><i class="fa-solid fa-user-shield"></i></div>
+            <h3>100% Local & Private Execution</h3>
+            <p>Your clipboard snippets, stock holdings, notes, and task lists stay strictly on your Mac. No cloud tracking, no accounts required, and zero telemetry transmitted off-device.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison Summary Section (GEO / SEO & Intent Targeting) -->
+      <section class="why-different-section" id="compare-summary" style="border-top: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.015);">
+        <div class="section-header">
+          <span class="section-tag">Comparison</span>
+          <h2>NotchDock vs Other Mac Notch Apps</h2>
+          <p class="section-subtitle">How NotchDock compares to NotchNook, Boring Notch, Seam, and Alcove.</p>
+        </div>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th class="highlight-column"><i class="fa-solid fa-crown"></i> NotchDock</th>
+                <th>NotchNook</th>
+                <th>Boring Notch</th>
+                <th>Seam / Alcove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature-label">Pricing & License</td>
+                <td class="highlight-cell"><span class="status-pill status-success">Freemium</span></td>
+                <td>$25 (Paid License)</td>
+                <td>Free / Open Source</td>
+                <td>Freemium / Paid</td>
+              </tr>
+              <tr>
+                <td class="feature-label">Live Sports Score Tracker</td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Built-in (EPL, NFL, NBA, MLB)</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+              </tr>
+              <tr>
+                <td class="feature-label">Stock & Crypto Watchlist</td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Real-time + Sparklines</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+              </tr>
+              <tr>
+                <td class="feature-label">Mac Clipboard Manager</td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Full History & Snippets</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-triangle-exclamation"></i> File Shelf Only</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+              </tr>
+              <tr>
+                <td class="feature-label">100% Local & Privacy-First</td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> 0 Cloud Telemetry</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-triangle-exclamation"></i> Online auth check</span></td>
+                <td><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Local</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-triangle-exclamation"></i> Cloud metrics</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="text-align: center; margin-top: 1.5rem;">
+            <a href="/compare/mac-notch-apps.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+              <span>Read Full Notch App Comparison Matrix</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- Customer Testimonials & Review Simulator Section -->
       <section class="testimonials-section" id="testimonials">
         <div class="testimonials-container">
@@ -422,8 +549,6 @@
             <p class="section-subtitle">See what early users think of their new interactive notch experience.</p>
           </div>
 
-
-
           <!-- Testimonials Grid Container -->
           <div class="testimonials-grid" id="testimonials-grid">
             <!-- Dynamic reviews will be loaded here via JS -->
@@ -431,19 +556,81 @@
         </div>
       </section>
 
-      <!-- Download / CTA Section -->
-      <section class="cta-section" id="download">
-        <div class="cta-card">
-          <div class="cta-bg-gradient"></div>
-          <h2>Ready to transform your screen?</h2>
-          <p>Download NotchDock today and turn your MacBook notch into your favorite shortcut dock.</p>
-          <div class="cta-buttons">
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" class="btn btn-white btn-lg" id="btn-dmg-download"><i class="fa-solid fa-download"></i> Download for macOS (DMG)</a>
-            <a href="mailto:notchdock@gmail.com" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-envelope"></i> Contact Support</a>
+      <!-- FAQ Section (AEO & LLM Search Optimized) -->
+      <section class="faq-section" id="faq">
+        <div class="faq-container">
+          <div class="section-header">
+            <span class="section-tag">Help & Answers</span>
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about NotchDock on macOS.</p>
           </div>
-          <p class="cta-sub">Free for personal use. Built with security and sandbox standards on macOS.</p>
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary class="faq-question">
+                <span>What is NotchDock and how does it work?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>NotchDock is a lightweight macOS desktop application that turns your MacBook hardware camera notch into an interactive status tray. By hovering your mouse cursor over the notch area at the top of your screen, NotchDock expands to show live sports scores, market watchlists, clipboard history, media controls, tasks, and silent notifications.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Who is NotchDock built for?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>NotchDock is built for macOS power users, sports fans, day traders, developers, and productivity enthusiasts who want real-time status updates without cluttering their menu bar, switching desktop spaces, or dealing with intrusive popup notifications.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Why is NotchDock different from other Mac menu bar apps?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>Traditional utilities clog your top menu bar or interrupt your workflow with banner alerts. NotchDock utilizes the unused screen real estate around your MacBook camera bezel, operates completely on-device with zero data tracking, and remains 100% silent until you hover your mouse.</p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Which Mac models and macOS versions are supported?</span>
+                <i class="fa-solid fa-chevron-down faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>NotchDock supports all MacBooks running macOS Monterey (12.0) or newer, including macOS Ventura, macOS Sonoma, and macOS Sequoia. It runs natively on both Apple Silicon (M1, M2, M3, M4) MacBook Pro & MacBook Air, as well as Intel Macs.</p>
+              </div>
+            </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Is NotchDock private, secure, and free?</span>
+              <i class="fa-solid fa-chevron-down faq-chevron"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes! NotchDock is completely free during public beta. It operates 100% on-device with zero cloud server dependencies, zero tracking, and zero data collection. Your clipboard text and stock watchlists never leave your Mac.</p>
+            </div>
+          </details>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <!-- Download / CTA Section -->
+    <section class="cta-section" id="download">
+      <div class="cta-card">
+        <div class="cta-bg-gradient"></div>
+        <h2>Ready to transform your screen?</h2>
+        <p>Download NotchDock today and turn your MacBook notch into your favorite shortcut dock.</p>
+        <div class="cta-buttons">
+          <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" class="btn btn-white btn-lg" id="btn-dmg-download"><i class="fa-solid fa-download"></i> Download for macOS (DMG)</a>
+          <a href="mailto:notchdock@gmail.com" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-envelope"></i> Contact Support</a>
+        </div>
+        <p class="cta-sub">Free for personal use. Built with security and sandbox standards on macOS.</p>
+      </div>
+    </section>
 
     </main>
 
@@ -470,6 +657,8 @@
           <div class="footer-col">
             <h4>Application</h4>
             <a href="#features">Features</a>
+            <a href="/why-notchdock.html">Why NotchDock</a>
+            <a href="/compare/mac-notch-apps.html">Notch App Comparison</a>
             <a href="#showcase">Showcase</a>
             <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg">Download Release</a>
             <a href="/privacy.html">Privacy Policy</a>
@@ -483,7 +672,7 @@
         </div>
       </div>
       <div class="footer-disclaimer">
-        <p><strong>Disclaimer:</strong> NotchDock is an independent, open-source productivity utility. The sports live updates and stock tracking modules utilize public data feeds from ESPN and Yahoo Finance respectively. NotchDock is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Yahoo, Inc., ESPN, Disney, or any of their subsidiaries or affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of these names does not imply any affiliation with or endorsement by them.</p>
+        <p><strong>Disclaimer:</strong> NotchDock is an independent productivity utility. The sports live updates and stock tracking modules utilize public data feeds from ESPN and Yahoo Finance respectively. NotchDock is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Yahoo, Inc., ESPN, Disney, or any of their subsidiaries or affiliates. All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of these names does not imply any affiliation with or endorsement by them.</p>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 NotchDock. All rights reserved. Created for macOS productivity.</p>
