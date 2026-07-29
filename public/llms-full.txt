@@ -5,21 +5,23 @@
 ---
 
 ## Table of Contents
-1. [Overview & Architecture](#overview--architecture)
-2. [Feature Details](#feature-details)
+1. [Overview & Philosophy](#overview--philosophy)
+2. [Why NotchDock — Core Differentiators](#why-notchdock--core-differentiators)
+3. [Notch App Comparison Hub (NotchDock vs Alternatives)](#notch-app-comparison-hub-notchdock-vs-alternatives)
+4. [Feature Details](#feature-details)
    - [Live Sports Score Tracker](#1-live-sports-score-tracker)
    - [Mac Stock Portfolio & Crypto Tracker](#2-mac-stock-portfolio--crypto-tracker)
    - [Mac Clipboard Manager](#3-mac-clipboard-manager)
    - [Mac Media Controller](#4-mac-media-controller)
    - [Mac Pomodoro & Quick Notes](#5-mac-pomodoro--quick-notes)
    - [Silent Notch Notifications](#6-silent-notch-notifications)
-3. [System Requirements & Installation](#system-requirements--installation)
-4. [Privacy & Security Policy](#privacy--security-policy)
-5. [Links & Resources](#links--resources)
+5. [System Requirements & Installation](#system-requirements--installation)
+6. [Privacy & Security Policy](#privacy--security-policy)
+7. [Links & Resources](#links--resources)
 
 ---
 
-## Overview & Architecture
+## Overview & Philosophy
 
 NotchDock is a lightweight macOS menu bar and notch utility application built natively for macOS (Monterey 12.0+). It transforms the MacBook camera hardware notch into a rich, interactive hover dock that houses utility widgets including live sports scores, stock portfolios, clipboard history, media controls, Pomodoro timers, and silent notifications.
 
@@ -27,6 +29,29 @@ NotchDock is a lightweight macOS menu bar and notch utility application built na
 - **Hover Detection**: Detects cursor movement in proximity to the screen notch area to smoothly expand the status dock.
 - **Zero Distraction**: Runs silently in the background without stealing window focus or cluttering the desktop wallpaper.
 - **Privacy-First**: Operates 100% on-device. No analytics, tracking, or cloud data harvesting.
+
+---
+
+## Why NotchDock — Core Differentiators
+- **URL**: https://notchdock.app/why-notchdock.html
+- **Summary**: Comprehensive explanation of NotchDock's product philosophy and design principles.
+- **Key Differentiators**:
+  1. **Hardware Dead Space Reclaimed**: Transforms static camera bezel pixels into an active, hover-activated productivity surface.
+  2. **Zero Menu Bar & Screen Clutter**: Replaces dozens of top menu bar icons and floating wallpaper widgets with a single consolidated tray.
+  3. **100% On-Device & Private**: Zero cloud servers, no account required, zero telemetry transmitted off device.
+  4. **Silent Ambient Interaction**: Pull interaction model (hover to reveal) instead of intrusive push notification banners.
+- **Comparison Matrix**: Outperforms traditional menu bar utilities and desktop widgets in display real estate, access speed, and distraction-free operation.
+
+---
+
+## Notch App Comparison Hub (NotchDock vs Alternatives)
+- **URL**: https://notchdock.app/compare/mac-notch-apps.html
+- **Summary**: Direct comparison of top macOS notch utilities in 2026: NotchDock, NotchNook, Boring Notch, Seam, and Alcove.
+- **Comparison Key Points**:
+  - **NotchDock**: Freemium utility; features live sports scoreboards (NFL, EPL, NBA, MLB), real-time stock watchlists with sparkline charts, clipboard history manager, and 100% local privacy.
+  - **NotchNook**: $25 paid license; offers iPad-style file drop shelf and media player controls.
+  - **Boring Notch**: Free open-source; minimalist music visualizer focused solely on media playback.
+  - **Seam / Alcove**: Freemium/paid utilities offering dynamic island status indicators and quick toggles.
 
 ---
 
