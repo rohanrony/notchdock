@@ -1,30 +1,36 @@
 # NotchDock
 
-> NotchDock transforms your MacBook screen notch into a silent, hover-activated status tray for live sports, stock watchlists, clipboard history, and media controls — built for macOS power users who want instant real-time updates without menu bar clutter or intrusive notifications.
+> NotchDock transforms your MacBook screen notch into an intelligent live update hub and silent notification center for real-time sports scores, intraday stock watchlists, clipboard history, meeting countdowns, and media controls — engineered for macOS power users who want ambient status updates without noisy notification banners or menu bar clutter.
 
-NotchDock is a lightweight macOS desktop utility application that lives in the hardware notch area of Apple Silicon (M1/M2/M3/M4) and Intel MacBooks. It gives users immediate hover-to-reveal access to productivity widgets, live trackers, and status feeds without taking up screen real estate or sending intrusive push notifications.
+NotchDock is a lightweight macOS desktop utility application that lives in the hardware notch cutout area of Apple Silicon (M1/M2/M3/M4) and Intel MacBooks. It gives users glanceable micro-status indicators and immediate hover-to-reveal access to rich interactive widgets without consuming screen real estate, sending disruptive popup alerts, or transmitting user telemetry off-device.
 
-## Core Widgets & Feature Pages
+## Core Pillars: Intelligent Notifications & Live Activities
 
-- [Why NotchDock (Philosophy & Differentiators)](https://notchdock.app/why-notchdock.html): Philosophy document explaining how NotchDock reclaims hardware dead space around the MacBook camera bezel, replaces menu bar clutter, ensures 100% local privacy, and implements silent hover-activated ambient interaction.
-- [Notch App Comparison Hub (NotchDock vs NotchNook, Boring Notch, Seam, Alcove)](https://notchdock.app/compare/mac-notch-apps.html): In-depth comparison matrix evaluating top macOS notch apps in 2026 across pricing, live sports scores, stock watchlists, clipboard manager, and 100% on-device privacy.
-- [Live Sports Score Tracker](https://notchdock.app/features/mac-sports-tracker.html): Real-time live score updates for Football (NFL/NCAA), Soccer (Premier League, Champions League, World Cup, La Liga), NBA, MLB, and custom team scoreboards directly under the MacBook notch.
+- **Intelligent Ambient Notifications**: Replaces disruptive top-right macOS notification banners with silent pulse dots, status tickers, and glanceable indicators inside the camera bezel.
+- **Always-On Live Activities**: Automated real-time score feeds for Premier League, Champions League, NFL, NBA, MLB, and intraday stock/crypto sparklines (S&P 500, NASDAQ, Bitcoin).
+- **Hover-Activated Productivity Tray**: Hover your mouse over the screen notch to instantly reveal full scoreboards, candlestick charts, clipboard snippet history, Pomodoro timers, and universal media controls.
+- **100% Local & Privacy-First**: Zero cloud telemetry, zero accounts, and zero data tracking. All clipboard snippets and watchlist holdings remain strictly on your Mac.
+
+## Blog & Engineering Guides (Knowledge Hub)
+
+- [NotchDock Blog Hub](https://notchdock.app/blog/): Knowledge base and engineering insights on ambient macOS notifications, Live Activities, and focus optimization.
+- [The Death of Intrusive Banners: Why Intelligent Notch Notifications are the Future of macOS](https://notchdock.app/blog/intelligent-mac-notifications-live-updates.html): Deep-dive into cognitive load, attention fragmentation, and how silent notch live updates replace noisy system banners.
+- [How to Turn Your MacBook Notch Into an Always-On Live Activity Center](https://notchdock.app/blog/macbook-notch-dynamic-island-live-sports-stocks.html): Complete guide to configuring real-time sports scores, market watchlists, and clipboard workflows under the camera bezel.
+- [How to Fix macOS Notification Fatigue](https://notchdock.app/blog/how-to-fix-mac-notification-fatigue.html): A 3-tier notification triage framework to eliminate alert overload while keeping critical live updates glanceable.
+
+## Feature & Use-Case Pages
+
+- [Silent Notch Notifications Module](https://notchdock.app/features/silent-notch-notifications.html): Dedicated feature guide on how NotchDock delivers ambient, non-intrusive status indicators without chime distractions.
+- [Why NotchDock (Philosophy & Differentiators)](https://notchdock.app/why-notchdock.html): Philosophy document explaining how NotchDock reclaims hardware dead space, solves menu bar overload, and enforces 100% on-device privacy.
+- [Notch App Comparison Hub (NotchDock vs NotchNook, Boring Notch, Seam, Alcove)](https://notchdock.app/compare/mac-notch-apps.html): In-depth comparison matrix evaluating top macOS notch apps in 2026 across pricing, live sports scores, stock watchlists, clipboard manager, and privacy.
+- [Live Sports Score Tracker](https://notchdock.app/features/mac-sports-tracker.html): Real-time score updates for Football (NFL/NCAA), Soccer (Premier League, Champions League, World Cup, La Liga), NBA, and MLB directly under the MacBook notch.
 - [Mac Stock Portfolio & Crypto Tracker](https://notchdock.app/features/mac-stock-portfolio.html): Watch live stock prices, market indices (S&P 500, Nasdaq), crypto rates (BTC, ETH), and sparkline charts with silent hover display on macOS.
 - [Mac Clipboard Manager](https://notchdock.app/features/mac-clipboard-manager.html): Persistent clipboard history panel to store, search, and click-to-paste text snippets, links, images, and code snippets from the MacBook notch.
 - [Mac Media Playback Controller](https://notchdock.app/features/mac-media-controller.html): Universal media controls, album artwork preview, track scrubber, and volume control for Spotify, Apple Music, YouTube, and web audio feeds.
 - [Mac Pomodoro & Quick Notes](https://notchdock.app/features/mac-pomodoro-notes.html): Built-in focus Pomodoro timer, task checklist scratchpad, and drag-and-drop notes tray accessible from the notch header.
-- [Premier League (EPL) Match Ticker](https://notchdock.app/use-cases/epl-mac-scores.html): Dedicated guide for tracking real-time Premier League goals, Champions League fixtures, and World Cup scores directly underneath the MacBook notch during work.
+- [Premier League (EPL) Match Ticker](https://notchdock.app/use-cases/epl-mac-scores.html): Dedicated guide for tracking real-time Premier League goals, Champions League fixtures, and scores underneath the notch.
 - [S&P 500 & Index Tracker Widget](https://notchdock.app/use-cases/sp500-mac-widget.html): Track S&P 500 (^GSPC), NASDAQ 100, and stock equities with real-time intraday range bars from your MacBook camera bezel.
 - [Discreet Work & Study Updates Guide](https://notchdock.app/use-cases/discreet-work-updates-mac.html): How MacBook users follow live sports scores and market indices discreetly during office hours without browser tab clutter or pop-up notifications.
-
-## Upcoming Widget Roadmap
-
-NotchDock is expanding its ecosystem to dominate macOS notch productivity. Upcoming widgets in the roadmap include:
-- **System Stats & Hardware Monitor Widget**: Live CPU usage, RAM pressure, memory footprint, fan speeds, and internal temperature graphs directly underneath the camera bezel.
-- **Quick App Launcher & Action Dock**: Customizable shortcut launcher to open applications, run terminal scripts, or execute macOS Shortcuts from the notch tray.
-- **Battery Health & Charging Tray**: Real-time battery level percentage, wattage draw, estimated remaining time, and charge cycle counter.
-- **Calendar & Upcoming Meetings Countdown**: Syncs with macOS Calendar and Google Calendar to display live countdown timers to your next meeting directly inside the notch status indicator.
-- **Custom API & Webhooks Tray**: Display custom JSON key-value feeds, build statuses (GitHub Actions, Vercel), server health checks, or custom metrics under your notch.
 
 ## Installation & System Requirements
 
@@ -47,8 +53,4 @@ NotchDock is expanding its ecosystem to dominate macOS notch productivity. Upcom
 - [Appcast XML](https://notchdock.app/appcast.xml): Auto-update software feed for Sparkle / macOS updater integrations.
 - [GitHub Repository](https://github.com/rohanrony/notchdock): Source code, bug reports, feature requests, and releases.
 - [Issue Tracker & Support](https://github.com/rohanrony/notchdock/issues): Community support and issue tracking.
-
-## Full Site Context Document
-
-- [Full Site Documentation](https://notchdock.app/llms-full.txt): Complete concatenated text documentation of all NotchDock feature pages, specs, and setup instructions in a single Markdown document for deep context LLMs and browser agents.
-
+- [Full Site Documentation](https://notchdock.app/llms-full.txt): Complete concatenated text documentation of all NotchDock feature pages, specs, and setup instructions in a single Markdown document.

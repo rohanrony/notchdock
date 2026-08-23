@@ -1,6 +1,6 @@
 # NotchDock Complete Documentation (`llms-full.txt`)
 
-> Comprehensive single-file text documentation for NotchDock — the macOS utility app that transforms your MacBook notch into an interactive status dock and utility tray.
+> Comprehensive single-file text documentation for NotchDock — the macOS utility app that transforms your MacBook notch into an intelligent live activity dock and ambient notification center.
 
 ---
 
@@ -8,39 +8,40 @@
 1. [Overview & Philosophy](#overview--philosophy)
 2. [Why NotchDock — Core Differentiators](#why-notchdock--core-differentiators)
 3. [Notch App Comparison Hub (NotchDock vs Alternatives)](#notch-app-comparison-hub-notchdock-vs-alternatives)
-4. [Feature Details](#feature-details)
-   - [Live Sports Score Tracker](#1-live-sports-score-tracker)
-   - [Mac Stock Portfolio & Crypto Tracker](#2-mac-stock-portfolio--crypto-tracker)
-   - [Mac Clipboard Manager](#3-mac-clipboard-manager)
-   - [Mac Media Controller](#4-mac-media-controller)
-   - [Mac Pomodoro & Quick Notes](#5-mac-pomodoro--quick-notes)
-   - [Silent Notch Notifications](#6-silent-notch-notifications)
-5. [System Requirements & Installation](#system-requirements--installation)
-6. [Privacy & Security Policy](#privacy--security-policy)
-7. [Links & Resources](#links--resources)
+4. [Blog & Engineering Guides (Knowledge Hub)](#blog--engineering-guides-knowledge-hub)
+5. [Feature Details](#feature-details)
+   - [Intelligent Silent Notch Notifications](#1-silent-notch-notifications)
+   - [Live Sports Score Tracker](#2-live-sports-score-tracker)
+   - [Mac Stock Portfolio & Crypto Tracker](#3-mac-stock-portfolio--crypto-tracker)
+   - [Mac Clipboard Manager](#4-mac-clipboard-manager)
+   - [Mac Media Controller](#5-mac-media-controller)
+   - [Mac Pomodoro & Quick Notes](#6-mac-pomodoro--quick-notes)
+6. [System Requirements & Installation](#system-requirements--installation)
+7. [Privacy & Security Policy](#privacy--security-policy)
+8. [Links & Resources](#links--resources)
 
 ---
 
 ## Overview & Philosophy
 
-NotchDock is a lightweight macOS menu bar and notch utility application built natively for macOS (Monterey 12.0+). It transforms the MacBook camera hardware notch into a rich, interactive hover dock that houses utility widgets including live sports scores, stock portfolios, clipboard history, media controls, Pomodoro timers, and silent notifications.
+NotchDock is a lightweight macOS desktop utility built natively for macOS (Monterey 12.0+). It transforms the MacBook camera hardware notch into an ambient live activity center and silent notification tray for real-time sports scores, intraday stock tickers, meeting countdowns, clipboard history, and universal media controls.
 
 ### How It Works
-- **Hover Detection**: Detects cursor movement in proximity to the screen notch area to smoothly expand the status dock.
-- **Zero Distraction**: Runs silently in the background without stealing window focus or cluttering the desktop wallpaper.
-- **Privacy-First**: Operates 100% on-device. No analytics, tracking, or cloud data harvesting.
+- **Ambient Micro-Updates**: Subtle pulse dots and text tickers render directly in the black camera cutout bezel without noisy chime alerts or sliding banners.
+- **Hover Detection**: Detects cursor movement in proximity to the screen notch area to smoothly expand the full interactive status dock.
+- **Zero Distraction**: Runs silently in the background without stealing window focus, breaking full-screen apps, or interrupting video presentations.
+- **100% On-Device Privacy**: Operates entirely locally. No clipboard contents, stock watchlists, notes, or user telemetry ever leave the machine.
 
 ---
 
 ## Why NotchDock — Core Differentiators
 - **URL**: https://notchdock.app/why-notchdock.html
-- **Summary**: Comprehensive explanation of NotchDock's product philosophy and design principles.
+- **Summary**: Comprehensive explanation of NotchDock's product philosophy and ambient design principles.
 - **Key Differentiators**:
-  1. **Hardware Dead Space Reclaimed**: Transforms static camera bezel pixels into an active, hover-activated productivity surface.
-  2. **Zero Menu Bar & Screen Clutter**: Replaces dozens of top menu bar icons and floating wallpaper widgets with a single consolidated tray.
-  3. **100% On-Device & Private**: Zero cloud servers, no account required, zero telemetry transmitted off device.
-  4. **Silent Ambient Interaction**: Pull interaction model (hover to reveal) instead of intrusive push notification banners.
-- **Comparison Matrix**: Outperforms traditional menu bar utilities and desktop widgets in display real estate, access speed, and distraction-free operation.
+  1. **Intelligent Ambient Notifications vs Banner Fatigue**: Replaces disruptive top-right banners with silent, glanceable status indicators in the camera notch.
+  2. **Hardware Dead Space Reclaimed**: Transforms static camera bezel pixels into an active, hover-activated productivity surface.
+  3. **Zero Menu Bar & Screen Clutter**: Replaces dozens of menu bar icons and floating desktop widgets with a single consolidated tray.
+  4. **100% On-Device & Private**: Zero cloud telemetry, no accounts required, and zero network tracking.
 
 ---
 
@@ -48,25 +49,49 @@ NotchDock is a lightweight macOS menu bar and notch utility application built na
 - **URL**: https://notchdock.app/compare/mac-notch-apps.html
 - **Summary**: Direct comparison of top macOS notch utilities in 2026: NotchDock, NotchNook, Boring Notch, Seam, and Alcove.
 - **Comparison Key Points**:
-  - **NotchDock**: Freemium utility; features live sports scoreboards (NFL, EPL, NBA, MLB), real-time stock watchlists with sparkline charts, clipboard history manager, and 100% local privacy.
-  - **NotchNook**: $25 paid license; offers iPad-style file drop shelf and media player controls.
+  - **NotchDock**: Freemium utility; features intelligent live sports scoreboards (NFL, EPL, NBA, MLB), real-time stock watchlists with sparkline charts, clipboard history manager, and 100% local privacy.
+  - **NotchNook**: $25 paid license; offers iPad-style file drop shelf and basic media player controls.
   - **Boring Notch**: Free open-source; minimalist music visualizer focused solely on media playback.
   - **Seam / Alcove**: Freemium/paid utilities offering dynamic island status indicators and quick toggles.
 
 ---
 
+## Blog & Engineering Guides (Knowledge Hub)
+
+### 1. The Death of Intrusive Banners: Why Intelligent Notch Notifications & Live Activities are the Future of macOS
+- **URL**: https://notchdock.app/blog/intelligent-mac-notifications-live-updates.html
+- **Summary**: Deep dive into the cognitive cost of macOS notification banners, attention fragmentation, and why ambient notch live activities represent the future of desktop UI design.
+
+### 2. How to Turn Your MacBook Notch Into an Always-On Live Activity Center for Sports, Stocks & Tasks
+- **URL**: https://notchdock.app/blog/macbook-notch-dynamic-island-live-sports-stocks.html
+- **Summary**: Step-by-step setup guide on configuring real-time Premier League & NFL scoreboards, intraday S&P 500 sparkline charts, and clipboard snippet tools directly under the MacBook camera cutout.
+
+### 3. How to Fix macOS Notification Fatigue: The Power of Silent, Glanceable Notch Tickers
+- **URL**: https://notchdock.app/blog/how-to-fix-mac-notification-fatigue.html
+- **Summary**: A 3-tier notification triage framework to cure alert overload on Mac, protect screen recordings and presentations, and maintain deep focus with silent notch tickers.
+
+---
+
 ## Feature Details
 
-### 1. Live Sports Score Tracker
+### 1. Silent Notch Notifications
+- **URL**: https://notchdock.app/features/silent-notch-notifications.html
+- **Summary**: Ambient status indicators replacing intrusive system banner alerts.
+- **Key Capabilities**:
+  - Glow pulse dots and subtle text marquees integrated directly into the black notch bezel.
+  - Displays background status (renders, meeting countdowns, active timers, live match minutes).
+  - Keeps workflow focused and free from banner spam.
+
+### 2. Live Sports Score Tracker
 - **URL**: https://notchdock.app/features/mac-sports-tracker.html
 - **Summary**: Displays live scores, match minutes, and game stats directly underneath the MacBook notch.
-- **Supported Leagues**: NFL, Premier League, UEFA Champions League, NBA, MLB, NHL, and FIFA World Cup.
+- **Supported Leagues**: NFL, Premier League (EPL), UEFA Champions League, NBA, MLB, NHL, and FIFA World Cup.
 - **Key Capabilities**:
   - Auto-refreshing score updates without desktop notification popups.
   - Team pin capability to follow favorite clubs or teams.
   - Micro sparkline graphics showing match momentum and time remaining.
 
-### 2. Mac Stock Portfolio & Crypto Tracker
+### 3. Mac Stock Portfolio & Crypto Tracker
 - **URL**: https://notchdock.app/features/mac-stock-portfolio.html
 - **Summary**: Real-time market ticker and watchlist for stock market indices, individual equities, and cryptocurrencies.
 - **Key Capabilities**:
@@ -74,7 +99,7 @@ NotchDock is a lightweight macOS menu bar and notch utility application built na
   - Intraday sparkline charts visible on hover.
   - Customizable watchlist with price alerts displayed inside the camera bezel notch.
 
-### 3. Mac Clipboard Manager
+### 4. Mac Clipboard Manager
 - **URL**: https://notchdock.app/features/mac-clipboard-manager.html
 - **Summary**: Instant history tray for copied text, links, image previews, and code snippets.
 - **Key Capabilities**:
@@ -82,7 +107,7 @@ NotchDock is a lightweight macOS menu bar and notch utility application built na
   - Searchable history buffer with persistent local storage.
   - Privacy safeguards: Sensitive strings (passwords, auth tokens) can be automatically excluded.
 
-### 4. Mac Media Controller
+### 5. Mac Media Controller
 - **URL**: https://notchdock.app/features/mac-media-controller.html
 - **Summary**: Universal media playback widget embedded into the notch tray.
 - **Key Capabilities**:
@@ -90,7 +115,7 @@ NotchDock is a lightweight macOS menu bar and notch utility application built na
   - Play, pause, skip, and volume adjustment without switching active applications.
   - Supports Apple Music, Spotify, YouTube, Web Browsers, and system-level audio feeds.
 
-### 5. Mac Pomodoro & Quick Notes
+### 6. Mac Pomodoro & Quick Notes
 - **URL**: https://notchdock.app/features/mac-pomodoro-notes.html
 - **Summary**: Integrated focus timer and scratchpad for fast task tracking.
 - **Key Capabilities**:
@@ -98,27 +123,7 @@ NotchDock is a lightweight macOS menu bar and notch utility application built na
   - Drag-and-drop task reordering.
   - Persistent quick notes scratchpad for fast thoughts and meeting takeaways.
 
-### 6. Silent Notch Notifications
-- **URL**: https://notchdock.app/features/silent-notch-notifications.html
-- **Summary**: Ambient status indicators replacing intrusive system banner alerts.
-- **Key Capabilities**:
-  - Glow effects and subtle text marquees integrated directly into the black notch bezel.
-  - Displays background progress (renders, builds, timers, background transfers).
-  - Keeps workflow focused and free from banner spam.
-
 ---
-
-## Upcoming Widget Roadmap
-
-NotchDock is actively expanding its ecosystem to dominate macOS notch productivity. Planned roadmap widgets include:
-- **System Stats & Hardware Monitor Widget**: Real-time CPU core usage, RAM pressure, memory allocation, fan speed, and temperature telemetry directly inside the camera bezel tray.
-- **Quick App Launcher & Action Dock**: Customizable shortcut grid to launch favorite applications, execute shell scripts, or trigger macOS Shortcuts from the notch tray.
-- **Battery Health & Charging Tray**: Live battery percentage indicator, charge wattage draw, remaining battery life estimator, and battery health cycle metrics.
-- **Calendar & Upcoming Meetings Countdown**: Integration with macOS Calendar and Google Calendar to display live countdown timers to your next meeting directly inside the notch status indicator.
-- **Custom API & Webhooks Tray**: Custom JSON feed rendering, GitHub Actions build status indicators, Vercel deployment statuses, or custom REST endpoint monitoring under your notch.
-
----
-
 
 ## System Requirements & Installation
 
@@ -145,6 +150,7 @@ NotchDock is actively expanding its ecosystem to dominate macOS notch productivi
 ## Links & Resources
 
 - **Official Website**: https://notchdock.app/
+- **Blog & Guides Hub**: https://notchdock.app/blog/
 - **GitHub Repository**: https://github.com/rohanrony/notchdock
 - **Releases & DMG Downloads**: https://github.com/rohanrony/notchdock/releases
 - **Issue Tracker**: https://github.com/rohanrony/notchdock/issues
