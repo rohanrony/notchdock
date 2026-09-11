@@ -58,7 +58,19 @@ NotchDock is a lightweight macOS desktop utility built natively for macOS (Monte
 
 ## Blog & Engineering Guides (Knowledge Hub)
 
-### 1. The Death of Intrusive Banners: Why Intelligent Notch Notifications & Live Activities are the Future of macOS
+### 1. How to Track Manchester City vs Manchester United Live on Your Mac Notch
+- **URL**: https://notchdock.app/blog/manchester-city-vs-manchester-united-live-score-tracker-mac.html
+- **Summary**: Complete guide to following the Manchester Derby live on macOS. Details how NotchDock renders real-time scorelines, match minutes, goal alerts, and hover-expanded match stats (possession, xG, shots, cards) inside the camera bezel without video streaming distractions.
+
+### 2. How to Track CPI Inflation, Crude Oil Prices, and S&P 500 Swings Live on Your Mac Notch
+- **URL**: https://notchdock.app/blog/track-cpi-oil-prices-sp500-market-indexes-live-mac.html
+- **Summary**: Comprehensive macro guide connecting energy commodities (WTI/Brent crude), CPI inflation prints, and S&P 500 equities. Shows how to set up multi-asset watchlist tickers and read ambient green/red sentiment cues in the notch.
+
+### 3. Upcoming CPI Inflation Data: How It Impacts the Stock Market and How to Track Live on Mac
+- **URL**: https://notchdock.app/blog/upcoming-cpi-inflation-data-market-impact-live-mac-tracker.html
+- **Summary**: Tactical economic playbook for the 8:30 AM ET CPI release. Breaks down headline vs core inflation, scenario pricing matrices for yields and tech equities, pre-market futures discovery, and real-time tracking in the MacBook notch.
+
+### 4. The Death of Intrusive Banners: Why Intelligent Notch Notifications & Live Activities are the Future of macOS
 - **URL**: https://notchdock.app/blog/intelligent-mac-notifications-live-updates.html
 - **Summary**: Deep dive into the cognitive cost of macOS notification banners, attention fragmentation, and why ambient notch live activities represent the future of desktop UI design.
 
