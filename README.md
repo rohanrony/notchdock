@@ -1,20 +1,35 @@
-# NotchDock: End-User & Usage Guide
+# NotchDock: macOS Dynamic Island & Productivity HUD
 
-NotchDock is a premium, modular productivity overlay for macOS designed to transform the hardware notch area of your MacBook Pro (or the top-center edge of any display) into a functional, glanceable "Dynamic Island." 
+<p align="center">
+  <a href="https://notchdock.app"><img src="https://img.shields.io/badge/Download-Free%20DMG-000000?style=for-the-badge&logo=apple&logoColor=white" alt="Download DMG"></a>
+  <img src="https://img.shields.io/badge/macOS-14.0%2B%20Sonoma%20%2F%20Sequoia-black?style=for-the-badge&logo=apple" alt="macOS 14+">
+  <img src="https://img.shields.io/badge/Swift-6.0-FA7343?style=for-the-badge&logo=swift&logoColor=white" alt="Swift 6">
+  <img src="https://img.shields.io/badge/CPU%20Usage-%3C0.5%25%20Idle-brightgreen?style=for-the-badge" alt="<0.5% CPU">
+  <img src="https://img.shields.io/badge/Privacy-100%25%20Local-blue?style=for-the-badge" alt="100% Local">
+</p>
 
-By turning a static design element into a hub of active workflows, NotchDock gives you instant, distraction-free access to your calendar, tasks, focus timers, music playback, snippets, sports scores, and stock portfolios—all without forcing you to switch focus from your active windows.
+**NotchDock** is a 100% native Swift 6 productivity overlay for macOS designed to transform the hardware notch cutout of your MacBook (or the top edge of any external monitor) into an ambient, interactive **Dynamic Island**.
 
-![Sports Widget Demo](notchdock/marketing.assets/SportsWidget.gif)
+Hover your cursor over the notch to reveal meeting countdowns with 1-click video call joiners, 2-way Apple Notes sync, live European football scores with 5-second goal alerts, glanceable stock sparklines, and Pomodoro focus timers—all with `<0.5%` idle CPU and zero telemetry.
 
-![NotchDock Demo](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
+🌐 **Website**: [https://notchdock.app](https://notchdock.app)  
+📦 **Direct Download**: [Download Latest DMG](https://notchdock.app)  
+🍺 **Install via Homebrew**:
+```bash
+brew tap rohanrony/notchdock
+brew install --cask notchdock
+```
 
 ---
 
-## 🎥 Video Demo & Overview
+![Sports Widget Demo](notchdock/marketing.assets/SportsWidget.gif)
 
-To see NotchDock in action, watch our short demonstration video:
+---
 
-[**Watch the NotchDock Demo Video**](https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997)
+## 🎥 Video Demo & Walkthrough
+
+Watch the official high-resolution 3-minute walkthrough:  
+[**▶️ Watch the NotchDock Walkthrough on YouTube (3m 22s)**](https://youtu.be/E7oUHyiP8iQ)
 
 ---
 
