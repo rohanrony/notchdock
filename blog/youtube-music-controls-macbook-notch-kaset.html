@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpg" href="/assets/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes with NotchDock and Kaset | NotchDock</title>
+    <meta name="title" content="How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes with NotchDock and Kaset | NotchDock" />
+    <meta name="description" content="Discover how to control YouTube Music directly from your MacBook notch. Real-time playback scrubbing, dynamic album art color glow, animated visualizer, and 1-click Like buttons using NotchDock and the open-source Kaset macOS client." />
+    <meta name="keywords" content="youtube music macbook notch, youtube music mac controls, youtube music mac mini player, kaset youtube music mac, mac notch dynamic island media player, macos youtube music like button, notchdock youtube music" />
+    <meta name="author" content="NotchDock Engineering Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html" />
+    <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html" />
+    <meta property="og:title" content="How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes" />
+    <meta property="og:description" content="Control YouTube Music directly from your MacBook notch with live seek scrubber, dynamic color theming, and 1-click song favoriting via NotchDock and Kaset." />
+    <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html" />
+    <meta property="twitter:title" content="How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes" />
+    <meta property="twitter:description" content="Control YouTube Music directly from your MacBook notch with live seek scrubber, dynamic color theming, and 1-click song favoriting via NotchDock and Kaset." />
+    <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TechArticle",
+          "@id": "https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html#article",
+          "headline": "How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes with NotchDock and Kaset",
+          "description": "An architectural and user guide on bridging YouTube Music into the macOS camera notch bezel with live track scrubbing, dominant-color artwork theming, and 1-click like syncing using NotchDock and the open-source Kaset client.",
+          "url": "https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html",
+          "datePublished": "2026-09-27T10:00:00Z",
+          "dateModified": "2026-09-27T10:00:00Z",
+          "author": {
+            "@type": "Organization",
+            "name": "NotchDock Engineering Team",
+            "url": "https://notchdock.app/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "NotchDock",
+            "url": "https://notchdock.app/",
+            "logo": "https://notchdock.app/assets/logo.jpg"
+          },
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".speakable-answer", ".aeo-answer-box p"]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://notchdock.app/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://notchdock.app/blog/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "YouTube Music MacBook Notch Controls",
+              "item": "https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- FontAwesome & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="logo-link">
+          <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" id="nav-logo-img" />
+          <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/#features" class="nav-item">Features</a>
+          <a href="/why-notchdock.html" class="nav-item">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html" class="nav-item">Compare</a>
+          <a href="/blog/" class="nav-item active" style="color: var(--accent-green); font-weight: 600;">Blog</a>
+          <a href="/#showcase" class="nav-item">Showcase</a>
+          <a href="/#faq" class="nav-item">FAQ</a>
+          <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
+          <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+      
+      <!-- Article Header -->
+      <header class="article-header">
+        <div class="article-breadcrumb">
+          <a href="/">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <a href="/blog/">Blog</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <span class="current">YouTube Music Notch Controls</span>
+        </div>
+
+        <div class="article-meta-row">
+          <span class="blog-category-badge" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border-color: rgba(239, 68, 68, 0.3);"><i class="fa-brands fa-youtube"></i> Native Mac Audio & Ecosystem</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published September 27, 2026</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• 6 min read</span>
+        </div>
+
+        <h1 class="article-title">How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes</h1>
+        <p class="article-lead speakable-answer">
+          YouTube Music listeners on macOS have long been stranded without an official native desktop app or Dynamic Island controls. Here is how pairing <strong>NotchDock</strong> with the open-source client <strong>Kaset</strong> delivers instant hover playback scrubbing, animated visualizers, dynamic album art theming, and 1-click Like buttons directly inside the MacBook camera notch bezel.
+        </p>
+      </header>
+
+      <!-- Article Body Container -->
+      <div class="article-body-container">
+        <article class="article-content">
+
+          <!-- AEO Direct Answer Box -->
+          <div class="aeo-answer-box">
+            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: Controlling YouTube Music from the MacBook Notch</h3>
+            <p>
+              To control YouTube Music from your MacBook notch, install <strong><a href="https://github.com/sozercan/kaset" target="_blank" rel="noopener" style="color: var(--accent-green); text-decoration: underline;">Kaset</a></strong> (the native Swift/SwiftUI YouTube Music macOS client by Sertaç Özercan) and <strong>NotchDock</strong>. NotchDock connects to Kaset via local AppleScript IPC (<code>com.sertacozercan.Kaset</code>) to display real-time song titles, album art with dominant color glows, an interactive seek slider with persistent pause timestamps, an animated 4-bar visualizer, and a dedicated <strong>Like (👍) button</strong> right on your notch—without running heavy browser tabs or sending data to the cloud.
+            </p>
+          </div>
+
+          <h2>1. The YouTube Music on macOS Dilemma</h2>
+          <p>
+            Apple Music and Spotify users on macOS have enjoyed native desktop applications, system-wide media keys, and NowPlaying widgets for years. But for the millions of users whose primary music library lives on <strong>YouTube Music</strong>, the Mac experience has always felt neglected:
+          </p>
+          <ul>
+            <li><strong>No Official Native App:</strong> Google has never shipped an official native desktop macOS client for YouTube Music. Users are forced to pin browser tabs in Google Chrome, Brave, or Safari.</li>
+            <li><strong>Memory & Battery Drain:</strong> Keeping complex WebKit or Chromium tabs constantly open consumes hundreds of megabytes of RAM and drains battery life during mobile work sessions.</li>
+            <li><strong>Lost in Tab Clutter:</strong> Pausing or skipping a track requires searching through 30 open browser tabs or jumping across macOS spaces.</li>
+            <li><strong>Zero Ambient Notch Integration:</strong> Browser audio cannot dynamically adapt the MacBook camera notch with live seek bars or album art color themes.</li>
+          </ul>
+
+          <p>
+            MacBook owners with M1, M2, M3, and M4 Apple Silicon displays have a physical camera notch that remains dormant dead space during media playback. Bridging YouTube Music into that notch creates a distraction-free, glanceable music hub.
+          </p>
+
+          <div class="article-callout" style="border-left: 3px solid #ef4444; background: rgba(239, 68, 68, 0.05);">
+            <h4><i class="fa-solid fa-tape" style="color: #ef4444;"></i> What is Kaset?</h4>
+            <p>
+              <strong>Kaset</strong> is an open-source, native macOS client for YouTube and YouTube Music built by <strong>Sertaç Özercan</strong> (<a href="https://github.com/sozercan/kaset" target="_blank" rel="noopener" style="color: var(--accent-green);">sozercan/kaset on GitHub</a>). Written purely in Swift and SwiftUI, it provides DRM playback for YouTube Music Premium, synced lyrics, WebKit lightweight isolation, a 6-band parametric equalizer, and crucial <strong>AppleScript IPC automation support</strong>.
+            </p>
+          </div>
+
+          <h2>2. How NotchDock Elevates Kaset into the Screen Notch</h2>
+          <p>
+            In the latest updates to NotchDock's Media Controller widget, we implemented first-class native integration with Kaset. Rather than relying on generic audio heuristics, NotchDock establishes a high-speed, local-first IPC bridge:
+          </p>
+
+          <h3>A. Real-Time Playback Scrubber with Persistent Pause State</h3>
+          <p>
+            Standard macOS media bars suffer from an annoying quirk: the moment you pause playback, the scrubber slider often resets to zero or disappears. NotchDock's custom slider continuously tracks the exact duration and elapsed seconds. When you pause a track on Kaset, the progress bar remains locked in position, allowing you to drag and seek with precision.
+          </p>
+
+          <h3>B. Dynamic Album Artwork Theming via Core Image</h3>
+          <p>
+            Every album has its own visual personality. When Kaset streams a new track, NotchDock extracts the high-resolution album artwork URL and passes it through an on-device <code>CIContext</code> and <code>CIAreaAverage</code> Core Image filter. The dominant hue is extracted in milliseconds and applied as an animated glowing shadow and slider accent across the notch interface.
+          </p>
+
+          <h3>C. Dedicated 1-Click Like (👍) Button</h3>
+          <p>
+            One of the greatest features of YouTube Music is the algorithmically curated "Liked Music" auto-playlist. When Kaset is active, NotchDock renders a dedicated thumbs-up button (<code>👍</code>) in the expanded notch view. Clicking it immediately executes the favoriting action inside Kaset, updating your YouTube Music library without ever opening the player window.
+          </p>
+
+          <h3>D. Compact 4-Bar Audio Visualizer</h3>
+          <p>
+            When collapsed, NotchDock seamlessly straddles the physical camera bezel with an animated 4-bar visualizer that bounces smoothly during playback and settles into a silent standby state when audio is paused. If paused for more than 2 minutes, the widget automatically yields its slot to keep your screen completely clean.
+          </p>
+
+          <h2>3. Feature Comparison: Web Tab vs. Menu Bar Apps vs. NotchDock + Kaset</h2>
+
+          <div style="overflow-x: auto; margin: 24px 0;">
+            <table style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); font-size: 0.92rem;">
+              <thead>
+                <tr style="background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border-color); text-align: left;">
+                  <th style="padding: 14px 16px; color: var(--text-white);">Feature</th>
+                  <th style="padding: 14px 16px; color: var(--text-muted);">Browser Tab</th>
+                  <th style="padding: 14px 16px; color: var(--text-muted);">Generic Menu Bar</th>
+                  <th style="padding: 14px 16px; color: var(--accent-green); font-weight: 600;">NotchDock + Kaset</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: 12px 16px; color: var(--text-white); font-weight: 500;">Display Location</td>
+                  <td style="padding: 12px 16px; color: var(--text-muted);">Buried in Browser</td>
+                  <td style="padding: 12px 16px; color: var(--text-muted);">Crowded Menu Bar</td>
+                  <td style="padding: 12px 16px; color: var(--text-white); font-weight: 600;">Hardware Camera Notch</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: 12px 16px; color: var(--text-white); font-weight: 500;">1-Click YouTube Like (👍)</td>
+                  <td style="padding: 12px 16px; color: #ef4444;"><i class="fa-solid fa-xmark"></i> Must Switch Tab</td>
+                  <td style="padding: 12px 16px; color: #ef4444;"><i class="fa-solid fa-xmark"></i> Not Supported</td>
+                  <td style="padding: 12px 16px; color: var(--accent-green);"><i class="fa-solid fa-check"></i> 1-Click Notch Button</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: 12px 16px; color: var(--text-white); font-weight: 500;">Dynamic Artwork Color Tinting</td>
+                  <td style="padding: 12px 16px; color: #ef4444;"><i class="fa-solid fa-xmark"></i> None</td>
+                  <td style="padding: 12px 16px; color: #ef4444;"><i class="fa-solid fa-xmark"></i> Static Gray</td>
+                  <td style="padding: 12px 16px; color: var(--accent-green);"><i class="fa-solid fa-check"></i> Real-Time CIContext Filter</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: 12px 16px; color: var(--text-white); font-weight: 500;">RAM & Battery Footprint</td>
+                  <td style="padding: 12px 16px; color: #ef4444;">High (400MB+ per tab)</td>
+                  <td style="padding: 12px 16px; color: var(--text-muted);">Moderate</td>
+                  <td style="padding: 12px 16px; color: var(--accent-green); font-weight: 600;">Ultra-low (&lt;45MB RAM, &lt;0.5% CPU)</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 16px; color: var(--text-white); font-weight: 500;">Data Privacy</td>
+                  <td style="padding: 12px 16px; color: var(--text-muted);">Browser Trackers</td>
+                  <td style="padding: 12px 16px; color: var(--text-muted);">Varies</td>
+                  <td style="padding: 12px 16px; color: var(--accent-green); font-weight: 600;">100% Local AppleScript IPC</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>4. Quick 2-Minute Setup Guide</h2>
+          <p>Getting your YouTube Music notch player running takes less than two minutes:</p>
+
+          <div class="steps-container" style="display: flex; flex-direction: column; gap: 16px; margin: 24px 0;">
+            <div style="background: var(--bg-card); padding: 18px 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; gap: 16px; align-items: flex-start;">
+              <span style="background: var(--accent-green); color: #000; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+              <div>
+                <h4 style="margin: 0 0 6px 0; color: var(--text-white);">Install Kaset</h4>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">
+                  Install Kaset via Homebrew in Terminal:
+                  <code style="display: block; background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 6px; margin-top: 8px; color: var(--accent-green);">brew install sozercan/repo/kaset</code>
+                  Or download the latest release DMG from the <a href="https://github.com/sozercan/kaset/releases/latest" target="_blank" rel="noopener" style="color: var(--accent-green);">sozercan/kaset GitHub repository</a>.
+                </p>
+              </div>
+            </div>
+
+            <div style="background: var(--bg-card); padding: 18px 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; gap: 16px; align-items: flex-start;">
+              <span style="background: var(--accent-green); color: #000; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
+              <div>
+                <h4 style="margin: 0 0 6px 0; color: var(--text-white);">Download & Launch NotchDock</h4>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">
+                  Grab the free installer from <a href="https://notchdock.app" style="color: var(--accent-green);">notchdock.app</a>, drag it to Applications, and launch it.
+                </p>
+              </div>
+            </div>
+
+            <div style="background: var(--bg-card); padding: 18px 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; gap: 16px; align-items: flex-start;">
+              <span style="background: var(--accent-green); color: #000; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>
+              <div>
+                <h4 style="margin: 0 0 6px 0; color: var(--text-white);">Grant macOS Automation Permission</h4>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">
+                  When prompted by macOS, allow NotchDock to control Kaset under <em>System Settings → Privacy & Security → Automation</em>. NotchDock uses dynamic permission handling, so this only needs to be granted once.
+                </p>
+              </div>
+            </div>
+
+            <div style="background: var(--bg-card); padding: 18px 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; gap: 16px; align-items: flex-start;">
+              <span style="background: var(--accent-green); color: #000; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</span>
+              <div>
+                <h4 style="margin: 0 0 6px 0; color: var(--text-white);">Enjoy Ambient Notch Music Controls</h4>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">
+                  Start playing music in Kaset. Glance at your notch to see the live visualizer, or hover your cursor to reveal full scrubber bars, playback toggles, and the Like button!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h2>5. Architectural Engineering & Zero-Cloud Privacy</h2>
+          <p>
+            Like all NotchDock widgets, our Kaset integration is engineered around strict local-first principles:
+          </p>
+          <ul>
+            <li><strong>No Cloud Intermediaries:</strong> NotchDock never queries external web APIs or relays song titles to an analytics backend. Communication occurs entirely over local macOS AppleScript pipes (<code>/usr/bin/osascript</code>).</li>
+            <li><strong>Background Thread Isolation:</strong> All IPC calls are scheduled asynchronously on background dispatch queues, guaranteeing that any slow player response will never freeze your macOS cursor or drop UI frame rates.</li>
+            <li><strong>Multi-Player Fallback:</strong> If you switch from Kaset to Spotify or Apple Music, NotchDock automatically detects the active player and adapts controls seamlessly.</li>
+          </ul>
+
+          <div class="article-cta-box" style="margin-top: 40px;">
+            <h3>Ready to Bring YouTube Music into Your Notch?</h3>
+            <p>Download NotchDock and experience distraction-free media scrubbing and live status updates on macOS.</p>
+            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 18px;">
+              <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock (DMG)</a>
+              <a href="https://github.com/sozercan/kaset" target="_blank" rel="noopener" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.08);"><i class="fa-brands fa-github"></i> View Kaset on GitHub</a>
+            </div>
+          </div>
+
+          <!-- Related Guides Section -->
+          <div class="related-guides-section">
+            <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
+            <div class="related-guides-grid">
+              <a href="/features/mac-media-controller.html" class="related-guide-card">
+                <span class="related-guide-tag"><i class="fa-solid fa-music"></i> Feature Tour</span>
+                <h4 class="related-guide-title">Universal Music & Podcast Controller for MacBook Notch</h4>
+                <p class="related-guide-excerpt">Deep dive into Spotify, Apple Music, and podcast scrubbers embedded directly inside the camera cutout.</p>
+                <span class="related-guide-link">Explore Feature <i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+              <a href="/blog/intelligent-mac-notifications-live-updates.html" class="related-guide-card">
+                <span class="related-guide-tag"><i class="fa-solid fa-bell-slash"></i> Deep Work</span>
+                <h4 class="related-guide-title">The Death of Intrusive Banners: Why Notch Notifications are the Future</h4>
+                <p class="related-guide-excerpt">Why ambient status updates in the screen bezel eliminate alert fatigue on Mac.</p>
+                <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <a href="/" class="footer-logo">
+            <img src="/assets/logo.jpg" alt="NotchDock Logo" />
+            <span><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+          </a>
+          <p>Reinventing the screen notch for ultimate macOS efficiency.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-group">
+            <h4>Product</h4>
+            <a href="/#features">Features</a>
+            <a href="/why-notchdock.html">Why NotchDock</a>
+            <a href="/compare/mac-notch-apps.html">Compare Apps</a>
+            <a href="/blog/">Engineering Blog</a>
+          </div>
+          <div class="footer-group">
+            <h4>Ecosystem</h4>
+            <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
+            <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
+            <a href="/features/mac-media-controller.html">Media Controller</a>
+            <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          </div>
+          <div class="footer-group">
+            <h4>Legal & Community</h4>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/rohanrony/notchdock/releases">Releases</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NotchDock. 100% Native Swift for macOS.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

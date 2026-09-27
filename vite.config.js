@@ -25,6 +25,7 @@ export default defineConfig({
         blogManCityManUtd: resolve(__dirname, 'blog/manchester-city-vs-manchester-united-live-score-tracker-mac.html'),
         blogTrackCpiOilSp500: resolve(__dirname, 'blog/track-cpi-oil-prices-sp500-market-indexes-live-mac.html'),
         blogUpcomingCpiImpact: resolve(__dirname, 'blog/upcoming-cpi-inflation-data-market-impact-live-mac-tracker.html'),
+        blogYoutubeMusicKaset: resolve(__dirname, 'blog/youtube-music-controls-macbook-notch-kaset.html'),
       },
     },
   },
