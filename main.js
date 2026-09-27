@@ -55,13 +55,38 @@ const showState = {
   music: {
     isPlaying: false,
     activeTrackIndex: 0,
-    progress: 0, // in percent
+    progress: 42, // in percent
     volume: 75,
     interval: null,
+    isLiked: true,
     tracks: [
-      { title: 'Midnight City', artist: 'M83', album: "Hurry Up, We're Dreaming", duration: 243 },
-      { title: 'Get Lucky', artist: 'Daft Punk', album: 'Random Access Memories', duration: 249 },
-      { title: 'Starboy', artist: 'The Weeknd', album: 'Starboy', duration: 230 }
+      { 
+        title: 'Starboy', 
+        artist: 'The Weeknd', 
+        album: 'Starboy', 
+        duration: 230, 
+        player: 'Kaset (YouTube Music)', 
+        color: 'linear-gradient(135deg, #ef4444, #991b1b)',
+        isKaset: true 
+      },
+      { 
+        title: 'Midnight City', 
+        artist: 'M83', 
+        album: "Hurry Up, We're Dreaming", 
+        duration: 243, 
+        player: 'Spotify', 
+        color: 'linear-gradient(135deg, #10b981, #047857)',
+        isKaset: false 
+      },
+      { 
+        title: 'Get Lucky', 
+        artist: 'Daft Punk', 
+        album: 'Random Access Memories', 
+        duration: 249, 
+        player: 'Apple Music', 
+        color: 'linear-gradient(135deg, #ec4899, #be185d)',
+        isKaset: false 
+      }
     ]
   },
   stocks: {
@@ -940,17 +965,22 @@ function renderMusicWidget() {
 
   const titleText = state.isPlaying ? track.title : 'Not Playing';
   const artistText = state.isPlaying ? `${track.artist} — ${track.album}` : 'No Media Detected';
+  const artBg = track.color || 'linear-gradient(135deg, #ef4444, #991b1b)';
 
   container.innerHTML = `
     <div class="nd-widget nd-music-widget">
       ${getWidgetHeaderHTML('music')}
       <div class="nd-music-player">
-        <div class="nd-music-art-container" style="background: linear-gradient(135deg, #d946ef, #a21caf);">
+        <div class="nd-music-art-container" style="background: ${artBg};">
           <div class="nd-music-art-disc ${state.isPlaying ? 'playing' : ''}">
-            <i class="fa-solid fa-music"></i>
+            <i class="fa-solid ${track.isKaset ? 'fa-tape' : 'fa-music'}"></i>
           </div>
         </div>
         <div class="nd-music-details">
+          <div class="nd-music-player-pill" style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 600; color: ${track.isKaset ? '#ef4444' : (track.player === 'Spotify' ? '#10b981' : '#ec4899')}; margin-bottom: 2px;">
+            <i class="${track.isKaset ? 'fa-brands fa-youtube' : (track.player === 'Spotify' ? 'fa-brands fa-spotify' : 'fa-solid fa-music')}"></i>
+            <span>${escapeHTML(track.player || 'Music Player')}</span>
+          </div>
           <div class="nd-music-title">${escapeHTML(titleText)}</div>
           <div class="nd-music-artist">${escapeHTML(artistText)}</div>
         </div>
@@ -966,15 +996,18 @@ function renderMusicWidget() {
           </div>
         </div>
         <div class="nd-music-btns">
-          <button class="nd-music-btn" id="nd-music-prev"><i class="fa-solid fa-backward-step"></i></button>
-          <button class="nd-music-btn play-toggle" id="nd-music-play">
+          <button class="nd-music-btn" id="nd-music-prev" title="Previous Track"><i class="fa-solid fa-backward-step"></i></button>
+          <button class="nd-music-btn play-toggle" id="nd-music-play" title="${state.isPlaying ? 'Pause' : 'Play'}">
             <i class="fa-solid ${state.isPlaying ? 'fa-pause' : 'fa-play'}"></i>
           </button>
-          <button class="nd-music-btn" id="nd-music-next"><i class="fa-solid fa-forward-step"></i></button>
+          <button class="nd-music-btn" id="nd-music-next" title="Next Track"><i class="fa-solid fa-forward-step"></i></button>
+          <button class="nd-music-btn like-btn ${state.isLiked ? 'liked' : ''}" id="nd-music-like" title="${track.isKaset ? 'Like track on YouTube Music (Kaset)' : 'Favorite track'}" style="color: ${state.isLiked ? 'var(--accent-green, #10b981)' : 'var(--text-muted)'}; margin-left: 8px;">
+            <i class="fa-solid fa-thumbs-up"></i>
+          </button>
         </div>
       </div>
       <div class="nd-music-footer">
-        No music sources authorized. Visit Settings.
+        Supported Players: Apple Music • Spotify • Kaset (YouTube Music)
       </div>
     </div>
   `;
@@ -1008,6 +1041,14 @@ function renderMusicWidget() {
         clearInterval(state.interval);
         state.interval = null;
       }
+      renderMusicWidget();
+    });
+  }
+
+  const likeBtn = container.querySelector('#nd-music-like');
+  if (likeBtn) {
+    likeBtn.addEventListener('click', () => {
+      state.isLiked = !state.isLiked;
       renderMusicWidget();
     });
   }
