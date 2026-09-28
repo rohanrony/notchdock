@@ -8,8 +8,8 @@
     <!-- Primary Meta Tags -->
     <title>NotchDock — Intelligent MacBook Notch Notifications & Live Updates for macOS</title>
     <meta name="title" content="NotchDock — Intelligent MacBook Notch Notifications & Live Updates for macOS" />
-    <meta name="description" content="Transform your MacBook notch into an intelligent live update hub & silent notification center for sports, stock watchlists, clipboard, media & tasks. 100% local macOS utility." />
-    <meta name="keywords" content="macbook notch live updates, intelligent mac notifications, mac notch dock, mac live sports score tracker, mac stock portfolio tracker, macOS dynamic island live activities, silent notch notifications, ambient mac status bar" />
+    <meta name="description" content="Transform your MacBook notch into an intelligent live update hub & silent notification center for sports, stock watchlists, clipboard, media (Spotify, Apple Music & YouTube Music via Kaset) & tasks. 100% local macOS utility." />
+    <meta name="keywords" content="macbook notch live updates, intelligent mac notifications, mac notch dock, mac live sports score tracker, mac stock portfolio tracker, macOS dynamic island live activities, silent notch notifications, ambient mac status bar, youtube music mac notch, kaset youtube music mac" />
     <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/" />
@@ -19,14 +19,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://notchdock.app/" />
     <meta property="og:title" content="NotchDock — Intelligent MacBook Notch Notifications & Live Updates for macOS" />
-    <meta property="og:description" content="Transform your MacBook notch into an intelligent live update hub and silent notification center for real-time sports, stock watchlists, clipboard history, and media controls — 100% private and on-device." />
+    <meta property="og:description" content="Transform your MacBook notch into an intelligent live update hub and silent notification center for real-time sports, stock watchlists, clipboard history, and media controls (Spotify, Apple Music, YouTube Music via Kaset) — 100% private and on-device." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/" />
     <meta property="twitter:title" content="NotchDock — Intelligent MacBook Notch Notifications & Live Updates for macOS" />
-    <meta property="twitter:description" content="Transform your MacBook notch into an intelligent live update hub and silent notification center for real-time sports, stock watchlists, clipboard history, and media controls — 100% private and on-device." />
+    <meta property="twitter:description" content="Transform your MacBook notch into an intelligent live update hub and silent notification center for real-time sports, stock watchlists, clipboard history, and media controls (Spotify, Apple Music, YouTube Music via Kaset) — 100% private and on-device." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) for Search Engines & LLMs -->
@@ -59,7 +59,7 @@
             "Live Sports Score Tracker (Premier League, NFL, NBA, MLB, Champions League)",
             "Real-Time Stock & Crypto Watchlist with Sparkline Charts",
             "Mac Clipboard History Manager & Text Snippets Tray",
-            "Universal Media Playback Scrubber for Spotify & Apple Music",
+            "Universal Media Playback Scrubber for Apple Music, Spotify & YouTube Music (via Kaset)",
             "Focus Pomodoro Timer & Drag-and-Drop Task Checklist",
             "100% Local and On-Device Execution (Zero Cloud Tracking)"
           ]
@@ -140,10 +140,10 @@
           <div class="notch-mini-widget music-widget" id="notch-music-widget">
             <div class="widget-header">
               <span class="widget-title"><i class="fa-solid fa-music text-green"></i> NOW PLAYING</span>
-              <span class="widget-status">LIVE SESSION</span>
+              <span class="widget-status"><i class="fa-brands fa-youtube" style="color: #ff0000; margin-right: 4px;"></i> YOUTUBE MUSIC</span>
             </div>
             <div class="music-details">
-              <div class="music-art-mock">
+              <div class="music-art-mock" style="background: linear-gradient(135deg, #ef4444, #991b1b);">
                 <i class="fa-solid fa-music"></i>
               </div>
               <div class="music-info">
@@ -161,9 +161,10 @@
               </div>
             </div>
             <div class="music-controls">
-              <button class="prev-btn"><i class="fa-solid fa-backward-step"></i></button>
-              <button class="play-btn"><i class="fa-solid fa-pause"></i></button>
-              <button class="next-btn"><i class="fa-solid fa-forward-step"></i></button>
+              <button class="prev-btn" title="Previous Track"><i class="fa-solid fa-backward-step"></i></button>
+              <button class="play-btn" title="Play/Pause"><i class="fa-solid fa-pause"></i></button>
+              <button class="next-btn" title="Next Track"><i class="fa-solid fa-forward-step"></i></button>
+              <button class="like-btn" id="notch-music-like-btn" title="Like track on YouTube Music (Kaset)" style="color: var(--accent-green);"><i class="fa-solid fa-thumbs-up"></i></button>
             </div>
           </div>
 
@@ -334,7 +335,7 @@
               <i class="fa-solid fa-music tab-icon"></i>
               <div class="tab-btn-text">
                 <h3>Media Controller</h3>
-                <p>Control music and audio feeds</p>
+                <p>Apple Music, Spotify & YouTube Music</p>
               </div>
             </button>
             <button class="tab-btn" data-tab="stocks" id="tab-stocks">
@@ -420,8 +421,8 @@
           </div>
           <div class="feature-card">
             <div class="feature-icon bg-red"><i class="fa-solid fa-compact-disc"></i></div>
-            <h3>Universal Music Control</h3>
-            <p>Play, pause, skip, and see live track progress for Spotify, Apple Music, and web feeds without switching active windows.</p>
+            <h3>Universal Music & YouTube Music Control</h3>
+            <p>Play, pause, skip, scrub tracks, and like songs for Apple Music, Spotify, and YouTube Music (via native Kaset client) with dynamic album art color theming.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon bg-purple"><i class="fa-solid fa-user-shield"></i></div>

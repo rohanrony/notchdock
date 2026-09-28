@@ -26,6 +26,7 @@ export default defineConfig({
         blogTrackCpiOilSp500: resolve(__dirname, 'blog/track-cpi-oil-prices-sp500-market-indexes-live-mac.html'),
         blogUpcomingCpiImpact: resolve(__dirname, 'blog/upcoming-cpi-inflation-data-market-impact-live-mac-tracker.html'),
         blogPomodoro: resolve(__dirname, 'blog/macbook-notch-pomodoro-timer-deep-work.html'),
+        blogYoutubeMusicKaset: resolve(__dirname, 'blog/youtube-music-controls-macbook-notch-kaset.html'),
       },
     },
   },

@@ -517,6 +517,29 @@ code {
   font-size: 1.1rem;
 }
 
+.music-controls button.like-btn {
+  color: var(--accent-green);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.15s ease;
+}
+
+.music-controls button.like-btn:hover {
+  transform: scale(1.25);
+  color: var(--accent-green);
+}
+
+.nd-music-btn.like-btn {
+  font-size: 0.95rem;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.15s ease;
+}
+
+.nd-music-btn.like-btn:hover {
+  transform: scale(1.25);
+}
+
+.nd-music-btn.like-btn.liked {
+  color: var(--accent-green, #10b981) !important;
+}
+
 /* Page Notch Premium Widgets - Sports & Stocks Expanded */
 .sports-scoreboard-expanded {
   display: flex;
