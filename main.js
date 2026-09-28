@@ -142,6 +142,21 @@ const showState = {
     timerSeconds: 1500,
     timerInterval: null
   },
+  timer: {
+    mode: 'pomodoro', // 'pomodoro' | 'timer'
+    pomodoroPhase: 'focus', // 'focus' | 'break'
+    pomodoroFocusMinutes: 25,
+    pomodoroBreakMinutes: 5,
+    pomodoroTotalCycles: 4,
+    currentCycle: 2,
+    timeRemaining: 1420, // 23:40
+    totalDuration: 1500, // 25:00
+    isRunning: false,
+    timerInterval: null,
+    isSessionCompleted: false,
+    standardDurationMinutes: 15,
+    standardPresets: [5, 10, 15, 25, 45, 60]
+  },
   notepad: {
     notes: (() => {
       try {
@@ -183,6 +198,7 @@ function getWidgetHeaderHTML(activeTab) {
         </span>
         <i class="fa-solid fa-list-check nd-hdr-icon ${activeTab === 'todo' ? 'active' : ''}" data-tab-nav="todo" title="To-Do List"></i>
         <i class="fa-regular fa-note-sticky nd-hdr-icon ${activeTab === 'notepad' ? 'active' : ''}" data-tab-nav="notepad" title="Notepad"></i>
+        <i class="fa-solid fa-stopwatch nd-hdr-icon ${activeTab === 'timer' ? 'active' : ''}" data-tab-nav="timer" title="Focus Timer & Pomodoro"></i>
         <i class="fa-solid fa-music nd-hdr-icon ${activeTab === 'music' ? 'active' : ''}" data-tab-nav="music" title="Media Player"></i>
         <i class="fa-solid fa-chart-line nd-hdr-icon ${activeTab === 'stocks' ? 'active' : ''}" data-tab-nav="stocks" title="Stocks"></i>
       </div>
@@ -946,6 +962,404 @@ function renderNotepadWidget() {
   }
 }
 
+// 4c. Focus Timer & Pomodoro Widget Renderer
+function formatTimerMinutesSeconds(secs) {
+  const m = Math.floor(secs / 60);
+  const s = Math.floor(secs % 60);
+  return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+}
+
+function renderTimerWidget() {
+  const container = document.getElementById('showcase-interactive-container');
+  if (!container) return;
+
+  const state = showState.timer;
+  const elapsed = Math.max(0, state.totalDuration - state.timeRemaining);
+  const progressPct = state.totalDuration > 0 
+    ? Math.min(100, Math.max(0, ((state.totalDuration - state.timeRemaining) / state.totalDuration) * 100)) 
+    : 0;
+
+  function renderCycleDots() {
+    let dots = '';
+    for (let i = 1; i <= state.pomodoroTotalCycles; i++) {
+      let cls = 'nd-cycle-dot';
+      if (state.isSessionCompleted || i < state.currentCycle) {
+        cls += ' completed';
+      } else if (i === state.currentCycle) {
+        cls += state.isRunning ? ' active' : ' active paused';
+      }
+      dots += `<span class="${cls}" title="Cycle ${i}"></span>`;
+    }
+    return dots;
+  }
+
+  container.innerHTML = `
+    <div class="nd-widget nd-timer-widget">
+      ${getWidgetHeaderHTML('timer')}
+      
+      <!-- Top Mode Switcher Bar -->
+      <div class="nd-timer-top-bar">
+        <div class="nd-timer-mode-switcher">
+          <button class="nd-timer-mode-btn ${state.mode === 'pomodoro' ? 'active' : ''}" data-timer-mode="pomodoro">
+            <i class="fa-solid fa-fire text-amber"></i> Pomodoro
+          </button>
+          <button class="nd-timer-mode-btn ${state.mode === 'timer' ? 'active' : ''}" data-timer-mode="timer">
+            <i class="fa-solid fa-stopwatch text-blue"></i> Countdown
+          </button>
+        </div>
+
+        <div class="nd-timer-header-status">
+          ${state.mode === 'pomodoro' ? `
+            <span class="nd-timer-phase-badge ${state.pomodoroPhase}">
+              <i class="fa-solid ${state.pomodoroPhase === 'focus' ? 'fa-brain' : 'fa-mug-hot'}"></i>
+              ${state.pomodoroPhase === 'focus' ? 'Focus Sprint' : 'Short Break'}
+            </span>
+            <span class="nd-timer-cycle-badge">
+              Cycle ${state.currentCycle} of ${state.pomodoroTotalCycles}
+            </span>
+          ` : `
+            <span class="nd-timer-phase-badge standard">
+              <i class="fa-solid fa-hourglass-half"></i> ${state.standardDurationMinutes}m Timer
+            </span>
+          `}
+        </div>
+      </div>
+
+      <!-- Hero Digits & Primary Controls -->
+      <div class="nd-timer-hero-row">
+        <div class="nd-timer-display-col">
+          <div class="nd-timer-digits ${state.timeRemaining < 60 && state.isRunning ? 'nd-timer-pulse-red' : ''}" id="nd-timer-display">
+            ${formatTimerMinutesSeconds(state.timeRemaining)}
+          </div>
+          <div class="nd-timer-sublabel" id="nd-timer-sublabel">
+            ${state.mode === 'pomodoro'
+              ? (state.pomodoroPhase === 'focus' 
+                  ? `Focus Interval • ${state.pomodoroFocusMinutes}m session` 
+                  : `Rest & Recharge • ${state.pomodoroBreakMinutes}m break`)
+              : `Countdown Timer • ${state.standardDurationMinutes}m preset`}
+          </div>
+        </div>
+
+        <div class="nd-timer-controls-col">
+          <button class="nd-timer-action-btn primary ${state.isRunning ? 'running' : ''}" id="nd-timer-toggle-btn" title="${state.isRunning ? 'Pause' : 'Start'}">
+            <i class="fa-solid ${state.isRunning ? 'fa-pause' : 'fa-play'}"></i>
+          </button>
+          ${state.mode === 'pomodoro' ? `
+            <button class="nd-timer-action-btn secondary" id="nd-timer-skip-btn" title="Skip to next phase">
+              <i class="fa-solid fa-forward-step"></i>
+            </button>
+          ` : ''}
+          <button class="nd-timer-action-btn secondary" id="nd-timer-reset-btn" title="Reset timer">
+            <i class="fa-solid fa-arrow-rotate-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mode-Specific Configuration Deck -->
+      ${state.mode === 'pomodoro' ? `
+        <div class="nd-pomodoro-config-deck">
+          <!-- Focus Stepper -->
+          <div class="nd-param-chip" title="Adjust Focus Duration">
+            <button class="nd-param-stepper minus" data-step="focus-minus" title="Decrease focus (-5m)"><i class="fa-solid fa-minus"></i></button>
+            <div class="nd-param-label">
+              <i class="fa-solid fa-brain text-green"></i>
+              <span>Focus: <strong>${state.pomodoroFocusMinutes}m</strong></span>
+            </div>
+            <button class="nd-param-stepper plus" data-step="focus-plus" title="Increase focus (+5m)"><i class="fa-solid fa-plus"></i></button>
+          </div>
+
+          <!-- Break Stepper -->
+          <div class="nd-param-chip" title="Adjust Break Duration">
+            <button class="nd-param-stepper minus" data-step="break-minus" title="Decrease break (-1m)"><i class="fa-solid fa-minus"></i></button>
+            <div class="nd-param-label">
+              <i class="fa-solid fa-mug-hot text-amber"></i>
+              <span>Break: <strong>${state.pomodoroBreakMinutes}m</strong></span>
+            </div>
+            <button class="nd-param-stepper plus" data-step="break-plus" title="Increase break (+1m)"><i class="fa-solid fa-plus"></i></button>
+          </div>
+
+          <!-- Cycles Stepper -->
+          <div class="nd-param-chip" title="Adjust Target Cycles">
+            <button class="nd-param-stepper minus" data-step="cycles-minus" title="Decrease cycles (-1)"><i class="fa-solid fa-minus"></i></button>
+            <div class="nd-param-label">
+              <i class="fa-solid fa-repeat text-blue"></i>
+              <span>Cycles: <strong>${state.pomodoroTotalCycles}</strong></span>
+            </div>
+            <button class="nd-param-stepper plus" data-step="cycles-plus" title="Increase cycles (+1)"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+
+        <!-- Cycle Progression Track -->
+        <div class="nd-pomodoro-cycle-row">
+          <span class="nd-cycle-status-text">
+            <i class="fa-solid fa-circle-notch ${state.isRunning ? 'fa-spin' : ''} text-green"></i>
+            ${state.isSessionCompleted 
+              ? 'All sprint cycles completed!' 
+              : `${state.pomodoroPhase === 'focus' ? 'Sprint' : 'Break'} • Cycle ${state.currentCycle} of ${state.pomodoroTotalCycles}`}
+          </span>
+          <div class="nd-cycle-dots">
+            ${renderCycleDots()}
+          </div>
+        </div>
+      ` : `
+        <!-- Standard Presets Row -->
+        <div class="nd-timer-presets-row">
+          <span class="nd-preset-label">Quick Presets:</span>
+          <div class="nd-preset-pills">
+            ${state.standardPresets.map(mins => `
+              <button class="nd-preset-btn ${state.standardDurationMinutes === mins ? 'active' : ''}" data-preset="${mins}">
+                ${mins}m
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `}
+
+      <!-- Fluid Progress Slider & Labels -->
+      <div class="nd-timer-progress-section">
+        <div class="nd-timer-progress-track" id="nd-timer-track" title="Click to scrub time">
+          <div class="nd-timer-progress-fill" id="nd-timer-progress-fill" style="width: ${progressPct}%;"></div>
+        </div>
+        <div class="nd-timer-progress-labels">
+          <span id="nd-timer-elapsed">${formatTimerMinutesSeconds(elapsed)}</span>
+          <span class="nd-timer-progress-center" id="nd-timer-progress-pct">${Math.round(progressPct)}% completed</span>
+          <span id="nd-timer-remaining">-${formatTimerMinutesSeconds(state.timeRemaining)}</span>
+        </div>
+      </div>
+    </div>
+  `;
+
+  bindTimerEventListeners();
+}
+
+function bindTimerEventListeners() {
+  const container = document.getElementById('showcase-interactive-container');
+  if (!container) return;
+  const state = showState.timer;
+
+  // Mode Switcher buttons
+  container.querySelectorAll('[data-timer-mode]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const mode = btn.getAttribute('data-timer-mode');
+      if (mode === state.mode) return;
+      
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
+      }
+      state.isRunning = false;
+      state.mode = mode;
+
+      if (mode === 'pomodoro') {
+        const targetMins = state.pomodoroPhase === 'focus' ? state.pomodoroFocusMinutes : state.pomodoroBreakMinutes;
+        state.timeRemaining = targetMins * 60;
+        state.totalDuration = targetMins * 60;
+      } else {
+        state.timeRemaining = state.standardDurationMinutes * 60;
+        state.totalDuration = state.standardDurationMinutes * 60;
+      }
+      renderTimerWidget();
+    });
+  });
+
+  // Toggle Play / Pause
+  const toggleBtn = container.querySelector('#nd-timer-toggle-btn');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      if (state.isRunning) {
+        state.isRunning = false;
+        if (state.timerInterval) {
+          clearInterval(state.timerInterval);
+          state.timerInterval = null;
+        }
+        renderTimerWidget();
+      } else {
+        state.isRunning = true;
+        if (state.timeRemaining <= 0) {
+          state.timeRemaining = state.totalDuration;
+        }
+        if (state.timerInterval) clearInterval(state.timerInterval);
+        state.timerInterval = setInterval(() => {
+          if (!state.isRunning) return;
+          if (state.timeRemaining > 0) {
+            state.timeRemaining--;
+            updateTimerDisplayFast();
+          } else {
+            handleTimerCycleTransition();
+          }
+        }, 1000);
+        renderTimerWidget();
+      }
+    });
+  }
+
+  // Skip Phase (Pomodoro)
+  const skipBtn = container.querySelector('#nd-timer-skip-btn');
+  if (skipBtn) {
+    skipBtn.addEventListener('click', () => {
+      handleTimerCycleTransition(true);
+    });
+  }
+
+  // Reset Button
+  const resetBtn = container.querySelector('#nd-timer-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
+      }
+      state.isRunning = false;
+      state.isSessionCompleted = false;
+
+      if (state.mode === 'pomodoro') {
+        state.pomodoroPhase = 'focus';
+        state.currentCycle = 1;
+        state.timeRemaining = state.pomodoroFocusMinutes * 60;
+        state.totalDuration = state.pomodoroFocusMinutes * 60;
+      } else {
+        state.timeRemaining = state.standardDurationMinutes * 60;
+        state.totalDuration = state.standardDurationMinutes * 60;
+      }
+      renderTimerWidget();
+    });
+  }
+
+  // Stepper buttons in Pomodoro mode
+  container.querySelectorAll('[data-step]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const step = btn.getAttribute('data-step');
+      if (step === 'focus-minus') {
+        state.pomodoroFocusMinutes = Math.max(5, state.pomodoroFocusMinutes - 5);
+        if (state.pomodoroPhase === 'focus' && !state.isRunning) {
+          state.timeRemaining = state.pomodoroFocusMinutes * 60;
+          state.totalDuration = state.timeRemaining;
+        }
+      } else if (step === 'focus-plus') {
+        state.pomodoroFocusMinutes = Math.min(60, state.pomodoroFocusMinutes + 5);
+        if (state.pomodoroPhase === 'focus' && !state.isRunning) {
+          state.timeRemaining = state.pomodoroFocusMinutes * 60;
+          state.totalDuration = state.timeRemaining;
+        }
+      } else if (step === 'break-minus') {
+        state.pomodoroBreakMinutes = Math.max(1, state.pomodoroBreakMinutes - 1);
+        if (state.pomodoroPhase === 'break' && !state.isRunning) {
+          state.timeRemaining = state.pomodoroBreakMinutes * 60;
+          state.totalDuration = state.timeRemaining;
+        }
+      } else if (step === 'break-plus') {
+        state.pomodoroBreakMinutes = Math.min(30, state.pomodoroBreakMinutes + 1);
+        if (state.pomodoroPhase === 'break' && !state.isRunning) {
+          state.timeRemaining = state.pomodoroBreakMinutes * 60;
+          state.totalDuration = state.timeRemaining;
+        }
+      } else if (step === 'cycles-minus') {
+        state.pomodoroTotalCycles = Math.max(1, state.pomodoroTotalCycles - 1);
+        if (state.currentCycle > state.pomodoroTotalCycles) {
+          state.currentCycle = state.pomodoroTotalCycles;
+        }
+      } else if (step === 'cycles-plus') {
+        state.pomodoroTotalCycles = Math.min(8, state.pomodoroTotalCycles + 1);
+      }
+      renderTimerWidget();
+    });
+  });
+
+  // Presets in standard timer mode
+  container.querySelectorAll('[data-preset]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const mins = parseInt(btn.getAttribute('data-preset'), 10);
+      if (mins) {
+        state.standardDurationMinutes = mins;
+        state.timeRemaining = mins * 60;
+        state.totalDuration = mins * 60;
+        if (state.timerInterval) {
+          clearInterval(state.timerInterval);
+          state.timerInterval = null;
+        }
+        state.isRunning = false;
+        renderTimerWidget();
+      }
+    });
+  });
+
+  // Scrubbing on progress track
+  const track = container.querySelector('#nd-timer-track');
+  if (track) {
+    track.addEventListener('click', (e) => {
+      const rect = track.getBoundingClientRect();
+      const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const newElapsed = Math.round(clickRatio * state.totalDuration);
+      state.timeRemaining = Math.max(0, state.totalDuration - newElapsed);
+      updateTimerDisplayFast();
+    });
+  }
+}
+
+function handleTimerCycleTransition(isManualSkip = false) {
+  const state = showState.timer;
+  if (state.mode === 'pomodoro') {
+    if (state.pomodoroPhase === 'focus') {
+      state.pomodoroPhase = 'break';
+      state.timeRemaining = state.pomodoroBreakMinutes * 60;
+      state.totalDuration = state.pomodoroBreakMinutes * 60;
+    } else {
+      if (state.currentCycle < state.pomodoroTotalCycles) {
+        state.currentCycle++;
+        state.pomodoroPhase = 'focus';
+        state.timeRemaining = state.pomodoroFocusMinutes * 60;
+        state.totalDuration = state.pomodoroFocusMinutes * 60;
+      } else {
+        state.isSessionCompleted = true;
+        state.isRunning = false;
+        if (state.timerInterval) {
+          clearInterval(state.timerInterval);
+          state.timerInterval = null;
+        }
+      }
+    }
+  } else {
+    state.isRunning = false;
+    if (state.timerInterval) {
+      clearInterval(state.timerInterval);
+      state.timerInterval = null;
+    }
+  }
+  renderTimerWidget();
+}
+
+function updateTimerDisplayFast() {
+  const state = showState.timer;
+  const displayEl = document.getElementById('nd-timer-display');
+  if (displayEl) {
+    displayEl.textContent = formatTimerMinutesSeconds(state.timeRemaining);
+    if (state.timeRemaining < 60 && state.isRunning) {
+      displayEl.classList.add('nd-timer-pulse-red');
+    } else {
+      displayEl.classList.remove('nd-timer-pulse-red');
+    }
+  }
+
+  const elapsed = Math.max(0, state.totalDuration - state.timeRemaining);
+  const elapsedEl = document.getElementById('nd-timer-elapsed');
+  if (elapsedEl) elapsedEl.textContent = formatTimerMinutesSeconds(elapsed);
+
+  const remainingEl = document.getElementById('nd-timer-remaining');
+  if (remainingEl) remainingEl.textContent = `-${formatTimerMinutesSeconds(state.timeRemaining)}`;
+
+  const pct = state.totalDuration > 0 
+    ? Math.min(100, Math.max(0, ((state.totalDuration - state.timeRemaining) / state.totalDuration) * 100)) 
+    : 0;
+  const fillEl = document.getElementById('nd-timer-progress-fill');
+  if (fillEl) fillEl.style.width = `${pct}%`;
+
+  const pctEl = document.getElementById('nd-timer-progress-pct');
+  if (pctEl) pctEl.textContent = `${Math.round(pct)}% completed`;
+}
+
 // 5. Music Widget Renderer
 function renderMusicWidget() {
   const container = document.getElementById('showcase-interactive-container');
@@ -1372,6 +1786,10 @@ function initShowcaseTabs() {
       title: 'Quick Notepad & Snippets',
       render: renderNotepadWidget
     },
+    timer: {
+      title: 'Focus & Pomodoro Timer',
+      render: renderTimerWidget
+    },
     music: {
       title: 'System Media Controller',
       render: renderMusicWidget
@@ -1451,6 +1869,11 @@ function initShowcaseTabs() {
             clearInterval(showState.notchbar.timerInterval);
             showState.notchbar.timerInterval = null;
             showState.notchbar.timerRunning = false;
+          }
+          if (tabId !== 'timer' && showState.timer && showState.timer.timerInterval) {
+            clearInterval(showState.timer.timerInterval);
+            showState.timer.timerInterval = null;
+            showState.timer.isRunning = false;
           }
 
           tabData[tabId].render();

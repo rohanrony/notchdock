@@ -113,6 +113,18 @@
               "item": "https://notchdock.app/"
             }
           ]
+        },
+        {
+          "@type": "VideoObject",
+          "name": "NotchDock Master Demo & Walkthrough (3m 22s)",
+          "description": "Watch how NotchDock transforms your MacBook screen notch into an ambient live activity center for real-time sports scores, intraday stock tickers, universal media controls (Spotify, Apple Music, YouTube Music via Kaset), and silent glanceable alerts.",
+          "thumbnailUrl": [
+            "https://notchdock.app/assets/logo.jpg"
+          ],
+          "uploadDate": "2026-09-17T00:00:00Z",
+          "duration": "PT3M22S",
+          "contentUrl": "https://youtu.be/E7oUHyiP8iQ",
+          "embedUrl": "https://www.youtube-nocookie.com/embed/E7oUHyiP8iQ"
         }
       ]
     }
@@ -229,6 +241,7 @@
         </a>
         <nav class="nav-menu">
           <a href="#features" class="nav-item">Features</a>
+          <a href="#walkthrough" class="nav-item">Video</a>
           <a href="/why-notchdock.html" class="nav-item">Why NotchDock</a>
           <a href="/compare/mac-notch-apps.html" class="nav-item">Compare</a>
           <a href="/blog/" class="nav-item">Blog</a>
@@ -252,7 +265,7 @@
             <p class="hero-desc speakable-answer">NotchDock transforms your MacBook screen notch into an ambient live activity center and silent notification tray. Stay effortlessly informed with live sports scores, real-time stock tickers, meeting countdowns, clipboard history, and media controls — without noisy popup banners or menu bar clutter. 100% on-device and private.</p>
             <div class="hero-actions">
               <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download Free Beta (DMG)</a>
-              <a href="#showcase" class="btn btn-outline btn-lg">See How It Works</a>
+              <a href="#walkthrough" class="btn btn-outline btn-lg"><i class="fa-solid fa-circle-play text-green" style="margin-right: 6px;"></i> Watch Walkthrough (3m)</a>
             </div>
             <div class="hero-meta">
               <span><i class="fa-brands fa-apple"></i> Requires macOS Monterey or newer</span>
@@ -331,6 +344,13 @@
                 <p>Jot down ideas & save snippets</p>
               </div>
             </button>
+            <button class="tab-btn" data-tab="timer" id="tab-timer">
+              <i class="fa-solid fa-stopwatch tab-icon"></i>
+              <div class="tab-btn-text">
+                <h3>Focus & Pomodoro Timer</h3>
+                <p>Interval sprints & break cycles</p>
+              </div>
+            </button>
             <button class="tab-btn" data-tab="music" id="tab-music">
               <i class="fa-solid fa-music tab-icon"></i>
               <div class="tab-btn-text">
@@ -380,54 +400,245 @@
         </div>
       </section>
 
-      <!-- Features Grid Section -->
+      <!-- Master Video Walkthrough Showcase Section -->
+      <section class="walkthrough-section" id="walkthrough">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-brands fa-youtube" style="color: #ef4444; margin-right: 6px;"></i> Video Walkthrough</span>
+          <h2>See NotchDock in Action</h2>
+          <p class="section-subtitle">Watch how NotchDock transforms the MacBook camera notch into an ambient live update hub and silent notification tray in under 3 minutes.</p>
+        </div>
+
+        <div class="walkthrough-container">
+          <div class="walkthrough-cinema-wrapper">
+            <!-- Sleek Studio Bezel -->
+            <div class="walkthrough-bezel">
+              <div class="walkthrough-notch-cutout">
+                <div class="walkthrough-camera-lens"></div>
+                <div class="walkthrough-mic-indicator"></div>
+              </div>
+              <div class="walkthrough-video-frame">
+                <iframe
+                  id="walkthrough-player"
+                  src="https://www.youtube-nocookie.com/embed/E7oUHyiP8iQ?rel=0&modestbranding=1&color=white"
+                  title="NotchDock Official Master Walkthrough"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+            <div class="walkthrough-ambient-glow"></div>
+          </div>
+
+          <!-- Video Chapters & Interactive Milestones -->
+          <div class="walkthrough-chapters-bar">
+            <a href="https://youtu.be/E7oUHyiP8iQ?t=0" target="_blank" rel="noopener" class="chapter-badge">
+              <span class="chapter-time">0:00</span>
+              <span class="chapter-text">Notch HUD & Architecture</span>
+            </a>
+            <a href="https://youtu.be/E7oUHyiP8iQ?t=42" target="_blank" rel="noopener" class="chapter-badge">
+              <span class="chapter-time">0:42</span>
+              <span class="chapter-text">Live Sports Scores</span>
+            </a>
+            <a href="https://youtu.be/E7oUHyiP8iQ?t=85" target="_blank" rel="noopener" class="chapter-badge">
+              <span class="chapter-time">1:25</span>
+              <span class="chapter-text">Intraday Stocks & Sparklines</span>
+            </a>
+            <a href="https://youtu.be/E7oUHyiP8iQ?t=130" target="_blank" rel="noopener" class="chapter-badge">
+              <span class="chapter-time">2:10</span>
+              <span class="chapter-text">Media & YouTube Music (Kaset)</span>
+            </a>
+            <a href="https://youtu.be/E7oUHyiP8iQ?t=168" target="_blank" rel="noopener" class="chapter-badge">
+              <span class="chapter-time">2:48</span>
+              <span class="chapter-text">Pomodoro Sprints & Clipboard</span>
+            </a>
+          </div>
+
+          <div class="walkthrough-cta-row">
+            <a href="https://youtu.be/E7oUHyiP8iQ" target="_blank" rel="noopener" class="btn btn-outline walkthrough-yt-btn">
+              <i class="fa-brands fa-youtube" style="color: #ef4444; font-size: 1.15rem; margin-right: 8px;"></i>
+              <span>Watch in 4K on YouTube</span>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 6px; opacity: 0.7;"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Grid Section (Overhauled Apple/Linear Bento Aesthetic) -->
       <section class="features-section" id="features">
         <div class="section-header">
           <span class="section-tag">Intelligent Capabilities</span>
           <h2>Engineered for Focus & Live Intelligence</h2>
-          <p class="section-subtitle">Real-time status updates that stay discreet until you need them.</p>
+          <p class="section-subtitle">Real-time status updates and productivity utilities that stay discreet until you need them.</p>
         </div>
 
         <div class="features-grid">
+          <!-- Card 1: Intelligent Live Updates & Silent HUD -->
           <div class="feature-card">
-            <div class="feature-icon bg-purple"><i class="fa-solid fa-bolt"></i></div>
-            <h3>Intelligent Live Updates</h3>
-            <p>Glanceable micro-updates for sports scores, stock price action, and meeting countdowns embedded directly into the MacBook notch bezel.</p>
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-solid fa-bolt text-green"></i> Live HUD</span>
+              <div class="feature-icon bg-purple"><i class="fa-solid fa-bell-slash"></i></div>
+            </div>
+            <h3>Intelligent Live Updates & Silent HUD</h3>
+            <p>Replaces intrusive banner popups and chime interruptions with ambient indicators in the black hardware bezel. Real-time scores, stocks, and timers stay glanceable without breaking flow.</p>
+            <div class="card-preview-box preview-notch-hud">
+              <div class="mini-notch-bar">
+                <div class="mini-notch-status"><span class="pulse-dot"></span> COD 0 - 0 COL 59'</div>
+                <div class="mini-notch-cutout"></div>
+                <div class="mini-notch-extra"><span class="text-green"><i class="fa-solid fa-chart-line"></i> +0.64%</span></div>
+              </div>
+            </div>
           </div>
+
+          <!-- Card 2: Live Match Scoreboards -->
           <div class="feature-card">
-            <div class="feature-icon bg-blue"><i class="fa-solid fa-bell-slash"></i></div>
-            <h3>Silent Notch Notifications</h3>
-            <p>Context-aware ambient indicators that eliminate noisy banner popups and screen-recording interruptions during deep work.</p>
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-solid fa-trophy text-green"></i> Sports Engine</span>
+              <div class="feature-icon bg-green"><i class="fa-solid fa-trophy"></i></div>
+            </div>
+            <h3>Live Match Scoreboards & Clocks</h3>
+            <p>Follow Premier League, NFL, NBA, MLB, and Champions League with real-time score feeds, goal alerts, and detailed match stats without opening browser tabs or streams.</p>
+            <div class="card-preview-box preview-match-card">
+              <div class="mini-match-row">
+                <div class="mini-team"><span class="mini-flag">🇨🇴</span> <strong>COL</strong></div>
+                <div class="mini-score">0 - 0</div>
+                <div class="mini-team right"><strong>COD</strong> <span class="mini-flag">🇨🇩</span></div>
+              </div>
+              <div class="mini-match-meta">
+                <span class="text-green"><span class="pulse-dot-sm"></span> 59' Live</span>
+                <span class="mini-stat-split">Possession 54% • 46%</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Card 3: Intraday Stocks & Crypto -->
           <div class="feature-card">
-            <div class="feature-icon bg-green"><i class="fa-solid fa-trophy"></i></div>
-            <h3>Live Match Scoreboards</h3>
-            <p>Follow Premier League, NFL, NBA, MLB, Champions League, and world tournaments with automated real-time ticker feeds.</p>
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-solid fa-chart-line text-green"></i> Market Pulse</span>
+              <div class="feature-icon bg-green"><i class="fa-solid fa-chart-line"></i></div>
+            </div>
+            <h3>Intraday Stocks, Indices & Sparklines</h3>
+            <p>Track equities, S&P 500, NASDAQ, commodities, and crypto with Yahoo Finance session sync, custom sparkline curves, and instant tick-by-tick gain indicators.</p>
+            <div class="card-preview-box preview-stocks-card">
+              <div class="mini-stocks-row">
+                <div class="mini-symbol-info">
+                  <strong>NASDAQ (^IXIC)</strong>
+                  <span class="mini-price">$25,750.10</span>
+                </div>
+                <span class="mini-stock-pill positive">+163.06 (+0.64%)</span>
+              </div>
+              <div class="mini-sparkline-wrap">
+                <svg viewBox="0 0 100 24" class="mini-sparkline-svg">
+                  <path d="M 0,20 Q 20,16 35,18 T 60,8 T 80,12 T 100,4" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" />
+                  <path d="M 0,20 Q 20,16 35,18 T 60,8 T 80,12 T 100,4 L 100,24 L 0,24 Z" fill="url(#sparkline-grad)" opacity="0.25" />
+                  <defs>
+                    <linearGradient id="sparkline-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#4ade80" />
+                      <stop offset="100%" stop-color="#4ade80" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
           </div>
+
+          <!-- Card 4: Pomodoro Focus Companion & Timers -->
           <div class="feature-card">
-            <div class="feature-icon bg-green"><i class="fa-solid fa-chart-line"></i></div>
-            <h3>Intraday Stocks & Crypto</h3>
-            <p>Track equities, global indices (S&P 500, NASDAQ), commodities, and crypto with custom sparkline charts and gain indicators.</p>
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-solid fa-stopwatch text-green"></i> Deep Work</span>
+              <div class="feature-icon bg-orange"><i class="fa-solid fa-business-time"></i></div>
+            </div>
+            <h3>Pomodoro Focus Companion & Sprints</h3>
+            <p>Stay locked into deep flow with customizable 15, 25, and 50-minute interval sprints, break prompts, cycle tracking, and calendar meeting countdown sync.</p>
+            <div class="card-preview-box preview-pomodoro-card">
+              <div class="mini-pomodoro-row">
+                <div class="mini-timer-display">
+                  <span class="mini-timer-digits">24:18</span>
+                  <span class="mini-timer-phase">Sprint 2 of 4</span>
+                </div>
+                <div class="mini-sprint-pills">
+                  <span class="mini-pill">15m</span>
+                  <span class="mini-pill active">25m</span>
+                  <span class="mini-pill">50m</span>
+                </div>
+              </div>
+              <div class="mini-progress-track">
+                <div class="mini-progress-bar" style="width: 65%;"></div>
+              </div>
+            </div>
           </div>
+
+          <!-- Card 5: Universal Music & YouTube Music Control -->
           <div class="feature-card">
-            <div class="feature-icon bg-orange"><i class="fa-solid fa-business-time"></i></div>
-            <h3>Meeting Agenda & Timers</h3>
-            <p>Syncs with macOS Calendars to highlight your next standup, meeting countdown, or Pomodoro focus session.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon bg-blue"><i class="fa-solid fa-copy"></i></div>
-            <h3>Quick Access Clipboard</h3>
-            <p>Store snippets, code snippets, SSH logins, and formatted text. One-click copy makes drafting emails and commands instant.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon bg-red"><i class="fa-solid fa-compact-disc"></i></div>
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-solid fa-compact-disc text-green"></i> Media Suite</span>
+              <div class="feature-icon bg-red"><i class="fa-solid fa-compact-disc"></i></div>
+            </div>
             <h3>Universal Music & YouTube Music Control</h3>
-            <p>Play, pause, skip, scrub tracks, and like songs for Apple Music, Spotify, and YouTube Music (via native Kaset client) with dynamic album art color theming.</p>
+            <p>Play, pause, skip, scrub progress, and 1-click Like songs across Apple Music, Spotify, and YouTube Music (via native Kaset client) with dynamic album art glow.</p>
+            <div class="card-preview-box preview-music-card">
+              <div class="mini-music-row">
+                <div class="mini-album-art"><i class="fa-solid fa-music"></i></div>
+                <div class="mini-music-meta">
+                  <strong>Midnight City</strong>
+                  <span>M83 • YouTube Music</span>
+                </div>
+                <span class="mini-like-badge"><i class="fa-solid fa-thumbs-up"></i></span>
+              </div>
+              <div class="mini-music-scrubber">
+                <div class="mini-scrub-bar"><div class="mini-scrub-fill" style="width: 48%;"></div></div>
+                <div class="mini-scrub-times"><span>1:42</span><span>3:43</span></div>
+              </div>
+            </div>
           </div>
+
+          <!-- Card 6: Quick Access Clipboard & Scratchpad -->
           <div class="feature-card">
-            <div class="feature-icon bg-purple"><i class="fa-solid fa-user-shield"></i></div>
-            <h3>100% Local & Zero Cloud</h3>
-            <p>Every widget runs strictly on your Mac. No cloud telemetry, no accounts required, and zero user data leaves your machine.</p>
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-solid fa-clipboard-list text-green"></i> Utility</span>
+              <div class="feature-icon bg-blue"><i class="fa-solid fa-copy"></i></div>
+            </div>
+            <h3>Quick Access Clipboard & Scratchpad</h3>
+            <p>Store snippets, bash commands, JSON payloads, and frequently used text. One-click instant copy keeps your terminal and coding flow completely uninterrupted.</p>
+            <div class="card-preview-box preview-clipboard-card">
+              <div class="mini-clip-item"><i class="fa-solid fa-terminal"></i> <code>ssh prod-cluster-us-east</code> <span class="mini-copy-tag">Copy</span></div>
+              <div class="mini-clip-item"><i class="fa-solid fa-code"></i> <code>const theme = 'apple-glass';</code></div>
+            </div>
+          </div>
+
+          <!-- Card 7: 100% Local & Zero Cloud Telemetry -->
+          <div class="feature-card">
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-solid fa-shield-halved text-green"></i> Privacy First</span>
+              <div class="feature-icon bg-purple"><i class="fa-solid fa-user-shield"></i></div>
+            </div>
+            <h3>100% Local & Zero Cloud Telemetry</h3>
+            <p>Every widget runs strictly on-device in the macOS App Sandbox. Zero telemetry, no analytics beacons, no user accounts, and zero data leaves your hardware.</p>
+            <div class="card-preview-box preview-privacy-card">
+              <div class="mini-security-badge"><i class="fa-solid fa-lock text-green"></i> <span>macOS App Sandbox Enforced</span></div>
+              <div class="mini-security-stats">
+                <span>0 KB Telemetry Sent</span>
+                <span class="sep">•</span>
+                <span>Keychain Encrypted</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8: Native macOS Architecture -->
+          <div class="feature-card">
+            <div class="card-header-row">
+              <span class="card-category-badge"><i class="fa-brands fa-apple text-green"></i> Native Swift</span>
+              <div class="feature-icon bg-teal"><i class="fa-solid fa-microchip"></i></div>
+            </div>
+            <h3>Swift 6 Architecture & 120Hz ProMotion</h3>
+            <p>Built with Swift 6 and SwiftUI. Runs as an ultra-lightweight background daemon idling at ~0.1% CPU with fluid 120Hz ProMotion animations and multi-display notch awareness.</p>
+            <div class="card-preview-box preview-perf-card">
+              <div class="mini-perf-metrics">
+                <div class="perf-metric-item"><strong>&lt; 0.1%</strong><span>CPU Idle</span></div>
+                <div class="perf-metric-item"><strong>~28 MB</strong><span>RAM Footprint</span></div>
+                <div class="perf-metric-item"><strong>120 Hz</strong><span>ProMotion</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -483,107 +694,338 @@
         </div>
       </section>
 
-      <!-- Comparison Summary Section (GEO / SEO & Intent Targeting) -->
+      <!-- Comparison Summary Section (Apple/Linear Grade Luxury Matrix) -->
       <section class="why-different-section" id="compare-summary" style="border-top: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.015);">
         <div class="section-header">
-          <span class="section-tag">Comparison</span>
+          <span class="section-tag"><i class="fa-solid fa-scale-balanced text-green"></i> Side-by-Side Analysis</span>
           <h2>NotchDock vs Other Mac Notch Apps</h2>
-          <p class="section-subtitle">How NotchDock compares to NotchNook, Boring Notch, Seam, and Alcove.</p>
+          <p class="section-subtitle">A transparent architectural breakdown comparing NotchDock to NotchNook, Boring Notch, Seam, and Alcove.</p>
         </div>
         <div class="comparison-table-wrapper">
           <table class="comparison-table">
             <thead>
               <tr>
-                <th>Capability / Feature</th>
+                <th class="th-features-col">Capability / Feature</th>
                 <th class="highlight-column">
                   <div class="col-brand-header">
                     <span class="winner-badge"><i class="fa-solid fa-crown"></i> Recommended</span>
-                    <span class="col-brand-title"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+                    <div class="col-brand-title">
+                      <img src="/assets/logo.jpg" alt="NotchDock" class="col-brand-logo" />
+                      <span>NotchDock</span>
+                    </div>
+                    <span class="col-brand-sub">Free Beta • macOS 12+</span>
+                    <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" class="col-quick-dl-btn">
+                      <i class="fa-solid fa-download"></i> Download Beta
+                    </a>
                   </div>
                 </th>
-                <th>NotchNook</th>
-                <th>Boring Notch</th>
-                <th>Seam / Alcove</th>
+                <th>
+                  <div class="comp-col-header">
+                    <span class="comp-col-name">NotchNook</span>
+                    <span class="comp-col-meta">$25 Paid License</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="comp-col-header">
+                    <span class="comp-col-name">Boring Notch</span>
+                    <span class="comp-col-meta">Free / Open Source</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="comp-col-header">
+                    <span class="comp-col-name">Seam / Alcove</span>
+                    <span class="comp-col-meta">Freemium / In-App</span>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="feature-label">
-                  Pricing & License
-                  <span class="feature-subtext">Access model & updates</span>
+              <!-- Category 1: Live Intelligence & Ambient Indicators -->
+              <tr class="table-category-row">
+                <td colspan="5">
+                  <div class="table-cat-label">
+                    <i class="fa-solid fa-bolt text-green"></i> Live Intelligence & Ambient Indicators
+                  </div>
                 </td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Freemium (Free Core)</span></td>
-                <td><span class="status-pill status-warning">$25 Paid License</span></td>
-                <td><span class="status-pill status-none">Free / Open Source</span></td>
-                <td><span class="status-pill status-warning">Freemium / Paid</span></td>
-              </tr>
-              <tr>
-                <td class="feature-label">
-                  Pomodoro Focus Companion
-                  <span class="feature-subtext">Interval sprints, break prompts & cycle HUD</span>
-                </td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Native HUD (1–60m Sprints)</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Basic Timer (Alcove only)</span></td>
-              </tr>
-              <tr>
-                <td class="feature-label">
-                  Live Sports & Market Tickers
-                  <span class="feature-subtext">EPL, NFL, NBA, MLB, S&P 500 & Crypto</span>
-                </td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Real-Time Feeds + Sparklines</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
               </tr>
               <tr>
                 <td class="feature-label">
                   Silent Ambient Notch Alerts
-                  <span class="feature-subtext">Glanceable status without banner fatigue</span>
+                  <span class="feature-subtext">Glanceable status indicators without noisy banner fatigue</span>
                 </td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> 100% Non-Intrusive HUD</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">100% Non-Intrusive HUD</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td class="feature-label">
-                  Mac Clipboard History & Scratchpad
-                  <span class="feature-subtext">Instant multi-clip history and quick notes</span>
+                  Live Sports Match Scoreboards
+                  <span class="feature-subtext">Premier League, NFL, NBA, MLB, Champions League</span>
                 </td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Full History & Snippets</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> File Shelf Only</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Real-Time ESPN Feeds</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td class="feature-label">
-                  Universal Media Scrubber
-                  <span class="feature-subtext">Apple Music, Spotify & YouTube Music</span>
+                  Intraday Stocks, Indices & Crypto
+                  <span class="feature-subtext">S&P 500, NASDAQ, Equities with Sparkline Curves</span>
                 </td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Gesture Scrubber & Lyrics</span></td>
-                <td><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Media Player</span></td>
-                <td><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Audio Visualizer</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Basic Controls</span></td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Live Yahoo Finance Tickers</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Category 2: Productivity & Media Suite -->
+              <tr class="table-category-row">
+                <td colspan="5">
+                  <div class="table-cat-label">
+                    <i class="fa-solid fa-briefcase text-blue"></i> Productivity & Deep Work Utilities
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="feature-label">
+                  Pomodoro Focus Companion
+                  <span class="feature-subtext">Interval sprints (15/25/50m), break prompts & cycle HUD</span>
+                </td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Native HUD (1–60m Sprints)</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item warn">
+                    <span class="comp-warn"><i class="fa-solid fa-circle-exclamation"></i></span>
+                    <span class="comp-txt">Basic Timer (Alcove only)</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="feature-label">
+                  Universal Media & YouTube Music
+                  <span class="feature-subtext">Apple Music, Spotify & YouTube Music (via native Kaset)</span>
+                </td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Full Scrub, Art & Like Sync</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item ok">
+                    <span class="comp-ok"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Media Player</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item ok">
+                    <span class="comp-ok"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Audio Visualizer</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item warn">
+                    <span class="comp-warn"><i class="fa-solid fa-circle-exclamation"></i></span>
+                    <span class="comp-txt">Basic Controls</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="feature-label">
+                  Mac Clipboard History & Snippets
+                  <span class="feature-subtext">Instant multi-clip history and terminal scratchpad</span>
+                </td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Full History & Snippets</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item warn">
+                    <span class="comp-warn"><i class="fa-solid fa-circle-exclamation"></i></span>
+                    <span class="comp-txt">File Shelf Only</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+                <td class="dim-cell">
+                  <div class="comp-item none">
+                    <span class="comp-dash"><i class="fa-solid fa-minus"></i></span>
+                    <span class="comp-txt">Not Available</span>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Category 3: Architecture, Privacy & Pricing -->
+              <tr class="table-category-row">
+                <td colspan="5">
+                  <div class="table-cat-label">
+                    <i class="fa-solid fa-shield-halved text-purple"></i> Architecture, Privacy & Value
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td class="feature-label">
                   100% On-Device Privacy
-                  <span class="feature-subtext">Telemetry & data isolation</span>
+                  <span class="feature-subtext">Data isolation, zero telemetry, local Keychain</span>
                 </td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-shield-halved"></i> 0 Cloud Telemetry</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Online License Check</span></td>
-                <td><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Local</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Cloud Analytics</span></td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-shield-halved"></i></span>
+                    <span class="comp-txt">0 KB Cloud Telemetry</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item warn">
+                    <span class="comp-warn"><i class="fa-solid fa-circle-exclamation"></i></span>
+                    <span class="comp-txt">Online License Check</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item ok">
+                    <span class="comp-ok"><i class="fa-solid fa-check"></i></span>
+                    <span class="comp-txt">Local</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item warn">
+                    <span class="comp-warn"><i class="fa-solid fa-circle-exclamation"></i></span>
+                    <span class="comp-txt">Cloud Analytics</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="feature-label">
+                  Pricing & License
+                  <span class="feature-subtext">Access model, free core & updates</span>
+                </td>
+                <td class="highlight-cell">
+                  <div class="comp-item win">
+                    <span class="comp-chk"><i class="fa-solid fa-gift"></i></span>
+                    <span class="comp-txt">Freemium (Free Core Beta)</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item warn">
+                    <span class="comp-warn"><i class="fa-solid fa-tag"></i></span>
+                    <span class="comp-txt">$25 Paid License</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item ok">
+                    <span class="comp-ok"><i class="fa-solid fa-code"></i></span>
+                    <span class="comp-txt">Free / Open Source</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="comp-item warn">
+                    <span class="comp-warn"><i class="fa-solid fa-tag"></i></span>
+                    <span class="comp-txt">Freemium / Paid</span>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
-          <div style="text-align: center; margin-top: 2rem;">
-            <a href="/compare/mac-notch-apps.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.5rem; border-radius: 9999px;">
-              <span>Read Full Side-by-Side Notch App Comparison</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+
+          <!-- Executive Summary Callout Box -->
+          <div class="comparison-summary-card">
+            <div class="summary-card-glow"></div>
+            <div class="summary-card-content">
+              <div class="summary-badge"><i class="fa-solid fa-medal text-green"></i> The Power-User Choice</div>
+              <h3>Why Power Users Choose NotchDock Over Static Notch Utilities</h3>
+              <p>While NotchNook charges a $25 upfront license for file shelves and Boring Notch offers basic visualizers, NotchDock transforms hardware dead space into an active live intelligence HUD with automated sports feeds, Yahoo Finance tickers, Pomodoro intervals, and 100% on-device privacy.</p>
+              <div class="summary-actions">
+                <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" class="btn btn-primary btn-lg">
+                  <i class="fa-solid fa-download"></i> Download Free Beta (DMG)
+                </a>
+                <a href="/compare/mac-notch-apps.html" class="btn btn-outline btn-lg">
+                  <span>Read Full 5-App Breakdown</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
