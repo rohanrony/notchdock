@@ -1,5 +1,6 @@
 """
-Cluster 7: Developer Workflows, Privacy & Terminal Tools (10 Articles)
+Cluster 7: Developer Workflows, Privacy & Terminal Tools (8 Pillar Articles)
+Authoritative guides on local-first security, Swift 6 concurrency, and terminal workflows.
 """
 
 CLUSTER_7_ARTICLES = [
@@ -144,7 +145,7 @@ CLUSTER_7_ARTICLES = [
         ],
         "related_slugs": [
             "zero-telemetry-privacy-architecture-notchdock",
-            "open-source-mac-productivity-auditing-codebases"
+            "securing-clipboard-history-api-keys-tokens-mac"
         ]
     },
     {
@@ -214,7 +215,7 @@ CLUSTER_7_ARTICLES = [
         ],
         "related_slugs": [
             "macos-accessibility-api-cursor-hover-tracking",
-            "open-source-mac-productivity-auditing-codebases"
+            "sandboxing-hardened-runtime-apple-notarization"
         ]
     },
     {
@@ -249,42 +250,7 @@ CLUSTER_7_ARTICLES = [
         ],
         "related_slugs": [
             "developer-scratchpad-git-commits-regex-notch",
-            "automating-macos-workspace-setup-dotfiles-notchdock"
-        ]
-    },
-    {
-        "slug": "open-source-mac-productivity-auditing-codebases",
-        "cluster": "developer",
-        "badge_text": "Open Source Trust",
-        "badge_icon": "fa-brands fa-github",
-        "title": "Why Transparent & Open Codebases Build Trust in Desktop macOS Utilities",
-        "meta_desc": "Why security-conscious engineers demand open-source desktop utilities. Auditing network requests, memory safety, and clipboard permissions in NotchDock.",
-        "keywords": "open source mac utilities, audit mac app security, github notchdock source code, transparent mac software, safe mac clipboard tools",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "When you grant an application Accessibility or Clipboard permissions, you are placing enormous trust in the developer. Here is why open codebases are the only acceptable standard.",
-        "aeo_q": "Why is it important that NotchDock has an open codebase?",
-        "aeo_a": "Because desktop productivity utilities have access to cursor positions, clipboard buffers, and media controls, proprietary closed-source apps present security risks. <strong>NotchDock's transparent codebase on GitHub</strong> allows security engineers to audit network endpoints, verify the complete absence of telemetry, and compile from source independently.",
-        "sections": [
-            {
-                "h2": "1. Complete Transparency Over System Permissions",
-                "content": "<p>You should never have to wonder if a clipboard utility is uploading passwords to an overseas cloud server. NotchDock's open implementation proves total data localization.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Visit the NotchDock GitHub repository.",
-            "Inspect the Swift codebase and release workflows.",
-            "Build locally with Xcode or download the signed DMG."
-        ],
-        "faqs": [
-            {
-                "q": "Can I contribute new sports leagues or features?",
-                "a": "Yes! Community pull requests and feature contributions are warmly welcomed."
-            }
-        ],
-        "related_slugs": [
-            "zero-telemetry-privacy-architecture-notchdock",
-            "sandboxing-hardened-runtime-apple-notarization"
+            "securing-clipboard-history-api-keys-tokens-mac"
         ]
     },
     {
@@ -318,43 +284,8 @@ CLUSTER_7_ARTICLES = [
             }
         ],
         "related_slugs": [
-            "open-source-mac-productivity-auditing-codebases",
-            "automating-macos-workspace-setup-dotfiles-notchdock"
-        ]
-    },
-    {
-        "slug": "automating-macos-workspace-setup-dotfiles-notchdock",
-        "cluster": "developer",
-        "badge_text": "Dotfiles & Automation",
-        "badge_icon": "fa-solid fa-gears",
-        "title": "Automating macOS Workspaces: Adding NotchDock to Your Dotfiles and Homebrew",
-        "meta_desc": "Learn how to script and automate your macOS workstation provisioning by adding NotchDock to your Brewfile, dotfiles, and automated setup scripts.",
-        "keywords": "homebrew cask notchdock, dotfiles macos setup, automated mac provisioning brewfile, developer mac setup script, notchdock automation",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Setting up a new Mac should be as simple as running a single dotfiles script. Here is how to script NotchDock installation and preference provisioning automatically.",
-        "aeo_q": "How do you automate NotchDock installation via Homebrew or dotfiles?",
-        "aeo_a": "You can automate NotchDock installation in your <code>Brewfile</code> by adding the cask release or downloading the DMG via <code>curl</code> in your setup shell script. User configurations stored in <code>~/Library/Preferences/com.rohanrony.notchdock.plist</code> can be version-controlled in your dotfiles repository for instant machine replication.",
-        "sections": [
-            {
-                "h2": "1. Simple Shell Provisioning",
-                "content": "<p>Add a simple script to your dotfiles repo that pulls the latest release DMG directly from GitHub releases and mounts it silently in seconds.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Add NotchDock to your setup.sh script.",
-            "Symlink your preferences plist into ~/Library/Preferences.",
-            "Spin up fresh developer MacBooks in minutes."
-        ],
-        "faqs": [
-            {
-                "q": "Can I export my configured watchlists to dotfiles?",
-                "a": "Yes! NotchDock's plist contains your pinned leagues and stocks in standard Apple XML format."
-            }
-        ],
-        "related_slugs": [
-            "terminal-hotkeys-command-line-flow-with-notchdock",
-            "developer-scratchpad-git-commits-regex-notch"
+            "zero-telemetry-privacy-architecture-notchdock",
+            "macos-accessibility-api-cursor-hover-tracking"
         ]
     }
 ]

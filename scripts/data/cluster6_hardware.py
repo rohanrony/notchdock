@@ -1,5 +1,6 @@
 """
-Cluster 6: Hardware, Display & Multi-Monitor Engineering (12 Articles)
+Cluster 6: Hardware, Display & Multi-Monitor Engineering (10 Pillar Articles)
+Authoritative engineering references on Apple Silicon, Liquid Retina, and AppKit rendering.
 """
 
 CLUSTER_6_ARTICLES = [
@@ -118,7 +119,7 @@ CLUSTER_6_ARTICLES = [
         ],
         "related_slugs": [
             "multi-monitor-macos-spaces-notchdock-engineering",
-            "macbook-clamshell-mode-notch-utilities-behavior"
+            "promotion-120hz-fluid-animations-macbook-notch"
         ]
     },
     {
@@ -236,41 +237,6 @@ CLUSTER_6_ARTICLES = [
         ]
     },
     {
-        "slug": "macbook-clamshell-mode-notch-utilities-behavior",
-        "cluster": "hardware",
-        "badge_text": "Clamshell Mode",
-        "badge_icon": "fa-solid fa-laptop-file",
-        "title": "MacBook Clamshell Mode: How NotchDock Adapts When Your Laptop is Closed",
-        "meta_desc": "Discover how NotchDock manages clamshell mode when your MacBook lid is closed. Automatic migration of live activities to external monitors on macOS.",
-        "keywords": "macbook clamshell mode notch, closed display mode macos, external monitor clamshell dynamic island, notchdock clamshell, macbook docked setup",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Many professionals use their MacBook in closed-display clamshell mode connected to external monitors. Here is how NotchDock transitions seamlessly when your lid closes.",
-        "aeo_q": "What happens to NotchDock when your MacBook is in clamshell mode?",
-        "aeo_a": "When you close your MacBook lid into <strong>clamshell mode</strong>, macOS shuts down the internal display. <strong>NotchDock</strong> instantly receives the display topology change event and migrates all active sports scores, stock watchlists, and focus timers to your primary external display as a floating Dynamic Island pill, resuming without a hitch.",
-        "sections": [
-            {
-                "h2": "1. Zero-Disruption Transition",
-                "content": "<p>Closing your laptop during an active sports match or Pomodoro sprint should never cancel your session. NotchDock preserves state seamlessly across all hardware transitions.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Connect an external monitor, keyboard, and mouse.",
-            "Close your MacBook lid.",
-            "Continue tracking your metrics on your external display."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock remember my window position on external screens?",
-                "a": "Yes, screen geometries and user preferences are saved per display serial number."
-            }
-        ],
-        "related_slugs": [
-            "how-notchdock-renders-on-external-monitors-studio-display",
-            "multi-monitor-macos-spaces-notchdock-engineering"
-        ]
-    },
-    {
         "slug": "mac-menu-bar-crowding-notch-clipping-fix",
         "cluster": "hardware",
         "badge_text": "Menu Bar Solutions",
@@ -302,42 +268,7 @@ CLUSTER_6_ARTICLES = [
         ],
         "related_slugs": [
             "macbook-pro-camera-notch-exact-pixel-dimensions",
-            "retina-display-subpixel-rendering-notch-hud"
-        ]
-    },
-    {
-        "slug": "retina-display-subpixel-rendering-notch-hud",
-        "cluster": "hardware",
-        "badge_text": "Typography & Rendering",
-        "badge_icon": "fa-solid fa-font",
-        "title": "Retina Display Subpixel Rendering: Crisp Font Geometries in the Camera Bezel",
-        "meta_desc": "How NotchDock renders ultra-sharp text and numeric glyphs on Liquid Retina XDR displays. Subpixel antialiasing, SF Pro typography, and high-DPI clarity.",
-        "keywords": "retina display subpixel rendering mac, sf pro typography macbook notch, crisp text rendering macos, high dpi font clarity macbook, notchdock typography",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Tiny text inside a dark bezel easily turns blurry or suffers from color fringing if subpixel rendering isn't tuned. Here is how NotchDock achieves print-quality font rendering on Retina displays.",
-        "aeo_q": "How does NotchDock achieve ultra-crisp typography in the camera notch?",
-        "aeo_a": "<strong>NotchDock</strong> utilizes Apple's proprietary <strong>San Francisco (SF Pro) font family</strong> with optical sizing and tabular lining figures (<code>.monospacedDigitSystemFont</code>). Rendered through native <strong>Core Text and Metal shaders</strong>, numbers in countdown timers and stock tickers never shift horizontal width or suffer from chromatic aberration.",
-        "sections": [
-            {
-                "h2": "1. Tabular Lining Figures for Stable Tickers",
-                "content": "<p>When a countdown timer ticks from 19 to 18, standard proportional fonts cause characters to jitter horizontally. NotchDock enforces monospaced tabular digits for rock-solid stability.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Observe the countdown timer in NotchDock.",
-            "Notice zero horizontal character jitter.",
-            "Appreciate pixel-perfect Apple typography."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock support Dynamic Type?",
-                "a": "Yes! Text sizing adapts gracefully to system accessibility font scaling."
-            }
-        ],
-        "related_slugs": [
-            "macbook-pro-camera-notch-exact-pixel-dimensions",
-            "promotion-120hz-fluid-animations-macbook-notch"
+            "how-notchdock-renders-on-external-monitors-studio-display"
         ]
     },
     {

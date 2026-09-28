@@ -1,5 +1,6 @@
 """
-Cluster 3: Deep Work, Pomodoro & Focus Protocols (16 Articles)
+Cluster 3: Deep Work, Pomodoro & Focus Protocols (11 Pillar Articles)
+Authoritative, research-backed cognitive ergonomics and deep work workflows.
 """
 
 CLUSTER_3_ARTICLES = [
@@ -290,41 +291,6 @@ CLUSTER_3_ARTICLES = [
         ]
     },
     {
-        "slug": "pomodoro-technique-for-writers-editors-mac",
-        "cluster": "focus",
-        "badge_text": "Writing & Publishing",
-        "badge_icon": "fa-solid fa-pen-nib",
-        "title": "The Pomodoro Technique for Writers & Editors: Beating Blank Page Paralysis",
-        "meta_desc": "Learn how writers, journalists, and editors use 25-minute notch Pomodoro sprints to beat writer's block, conquer perfection paralysis, and double daily output on Mac.",
-        "keywords": "pomodoro for writers mac, beat writers block macos, writing productivity macbook notch, distraction free writing mac, notchdock focus writing",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Facing a blank screen invites procrastination and endless tab refreshing. Here is how writers and editors use ambient 25-minute Pomodoro sprints in the MacBook notch to ignite flow.",
-        "aeo_q": "How does a notch Pomodoro timer help writers overcome writer's block?",
-        "aeo_a": "Writer's block is usually perfection paralysis in disguise. By committing to just a single 25-minute <strong>NotchDock Pomodoro sprint</strong> anchored in the MacBook camera notch, the emotional burden of drafting an entire book or essay disappears. The ticking ambient clock creates positive forward momentum, helping authors produce 800+ words per sprint.",
-        "sections": [
-            {
-                "h2": "1. Lowering the Activation Energy of Writing",
-                "content": "<p>Telling yourself to 'write an article' is daunting. Telling yourself to 'type continuously for 25 minutes until the notch chime rings' is effortless. NotchDock makes starting painless.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Open your writing app (Ulysses, iA Writer, or Google Docs).",
-            "Hover over the notch and start a 25-minute sprint.",
-            "Draft without editing until the sprint completes."
-        ],
-        "faqs": [
-            {
-                "q": "Can I use word count goals with NotchDock?",
-                "a": "You can record sprint word counts directly in NotchDock's Quick Notes."
-            }
-        ],
-        "related_slugs": [
-            "timeboxing-vs-pomodoro-technique-mac-guide",
-            "deep-work-rituals-remote-engineers-mac"
-        ]
-    },
-    {
         "slug": "timeboxing-vs-pomodoro-technique-mac-guide",
         "cluster": "focus",
         "badge_text": "Productivity Frameworks",
@@ -393,146 +359,6 @@ CLUSTER_3_ARTICLES = [
         "related_slugs": [
             "pomodoro-50-10-protocol-engineering-deep-work-mac",
             "cal-newport-deep-work-principles-mac-setup"
-        ]
-    },
-    {
-        "slug": "silent-haptic-audio-cues-flow-preservation-mac",
-        "cluster": "focus",
-        "badge_text": "Sensory Design",
-        "badge_icon": "fa-solid fa-volume-xmark",
-        "title": "Silent Acoustic Chimes: Why Soft Audio Cues Protect Cognitive Momentum",
-        "meta_desc": "Why loud alarm buzzers trigger cortisol spikes while subtle acoustic chimes preserve momentum. Sensory design and audio engineering in macOS productivity apps.",
-        "keywords": "soft audio chimes mac, sensory design productivity macos, gentle timer alarm macbook, acoustic cues focus, notchdock audio design",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Standard timer alarms sound like kitchen microwaves or smoke detectors. When your timer concludes, you shouldn't feel like you are being reprimanded. Here is the science of gentle acoustic cues.",
-        "aeo_q": "Why are gentle acoustic chimes better than standard timer alarms?",
-        "aeo_a": "High-decibel, abrupt square-wave buzzer alarms abruptly tear you out of flow, jarring the central nervous system. <strong>NotchDock</strong> uses professionally mastered acoustic double chimes with smooth exponential decay. The chime informs your subconscious that the sprint is complete without breaking your internal monologue or jarring your nerves.",
-        "sections": [
-            {
-                "h2": "1. Acoustic Frequency and Attention",
-                "content": "<p>NotchDock's notification chimes are tuned to natural overtone scales that sound pleasant on MacBook Pro spatial audio speakers, ensuring a mindful and restorative transition.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Open NotchDock Settings.",
-            "Preview the acoustic audio cues.",
-            "Experience soothing session completions."
-        ],
-        "faqs": [
-            {
-                "q": "Can I use haptic feedback instead of audio?",
-                "a": "Yes, on supported MacBook trackpads, NotchDock can trigger a subtle haptic click."
-            }
-        ],
-        "related_slugs": [
-            "stop-notification-cortisol-spikes-mac-deep-work",
-            "pomodoro-50-10-protocol-engineering-deep-work-mac"
-        ]
-    },
-    {
-        "slug": "sprint-retrospectives-tracking-completed-focus-cycles",
-        "cluster": "focus",
-        "badge_text": "Habit Architecture",
-        "badge_icon": "fa-solid fa-chart-pie",
-        "title": "Tracking Completed Focus Cycles: Building Continuous Momentum on Mac",
-        "meta_desc": "How tracking completed Pomodoro cycles creates psychological momentum. Daily visual dot counters and session retrospectives in your MacBook notch.",
-        "keywords": "track pomodoro cycles mac, daily focus statistics macos, completed sprints counter macbook, visual momentum productivity, notchdock habits",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Knowledge work often feels invisible: you write code or review documents for 8 hours and wonder where the day went. Here is how visual cycle tracking creates tangible daily pride.",
-        "aeo_q": "How does tracking completed Pomodoro cycles build work momentum?",
-        "aeo_a": "<strong>NotchDock</strong> tracks completed focus sprints using dynamic visual cycle dots (e.g. <code>● ● ● ○</code>) right inside your MacBook notch. Each completed cycle fills a dot, giving your brain an immediate dopamine reward. Looking up at the end of the day to see 6 solid focus dots provides indisputable evidence of deep work accomplishment.",
-        "sections": [
-            {
-                "h2": "1. The Power of Tangible Progress Cues",
-                "content": "<p>Just as Jerry Seinfeld's 'Don't Break the Chain' method built comedy discipline, filling daily focus dots in your hardware notch builds relentless professional execution.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Set your daily target cycles (e.g. 6 rounds) in NotchDock.",
-            "Complete each sprint to fill your visual dots.",
-            "Celebrate your daily output with zero guesswork."
-        ],
-        "faqs": [
-            {
-                "q": "Do cycle statistics reset at midnight?",
-                "a": "Yes, daily counters reset automatically at midnight while preserving historical logs."
-            }
-        ],
-        "related_slugs": [
-            "pomodoro-50-10-protocol-engineering-deep-work-mac",
-            "ultradian-rhythm-90-minute-focus-cycle-mac"
-        ]
-    },
-    {
-        "slug": "ultradian-rhythm-90-minute-focus-cycle-mac",
-        "cluster": "focus",
-        "badge_text": "Chronobiology",
-        "badge_icon": "fa-solid fa-wave-square",
-        "title": "Mastering the 90-Minute Ultradian Rhythm with Ambient macOS Micro-Intervals",
-        "meta_desc": "Learn how the human body's 90-minute ultradian rhythm dictates peak alertness. Structure your macOS workday around biological energy waves with NotchDock.",
-        "keywords": "ultradian rhythm productivity mac, 90 minute focus cycle macos, chronobiology deep work macbook, energy management mac, notchdock focus cycles",
-        "read_time": "7 min read",
-        "date": "2026-09-28",
-        "lead": "Human physiology operates in 90-to-120 minute ultradian cycles of alertness followed by physiological fatigue. Here is how to align your Mac workday with your body's natural rhythms.",
-        "aeo_q": "What is an Ultradian Rhythm and how can you track it on Mac?",
-        "aeo_a": "Discovered by sleep researcher Nathaniel Kleitman, <strong>Ultradian Rhythms</strong> are 90-minute biological cycles wherein the human brain moves from low alertness to peak focus and down to fatigue. Using <strong>NotchDock</strong>, knowledge workers configure 90-minute macro-blocks or two 45-minute micro-sprints to surf biological energy peaks without pushing into exhaustion.",
-        "sections": [
-            {
-                "h2": "1. Managing Energy, Not Just Time",
-                "content": "<p>Time management without energy management leads straight to burnout. By syncing your deep work with natural 90-minute ultradian crests, you produce higher quality work in fewer total hours.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Configure NotchDock for 90-minute deep work sessions.",
-            "Pair each session with a 20-minute physical walk or disconnect break.",
-            "Feel sustained mental clarity all day."
-        ],
-        "faqs": [
-            {
-                "q": "Can NotchDock run 90-minute timers?",
-                "a": "Yes! Timer durations can be adjusted up to 120 minutes."
-            }
-        ],
-        "related_slugs": [
-            "pomodoro-50-10-protocol-engineering-deep-work-mac",
-            "cal-newport-deep-work-principles-mac-setup"
-        ]
-    },
-    {
-        "slug": "elimination-of-floating-desktop-widgets-mac",
-        "cluster": "focus",
-        "badge_text": "Interface Design",
-        "badge_icon": "fa-solid fa-border-none",
-        "title": "Why Floating Desktop Widgets Cause Visual Friction (And Notch Anchoring Wins)",
-        "meta_desc": "Explore the cognitive ergonomics of floating desktop widgets vs hardware-anchored notch utilities. Why anchoring tools to the MacBook camera bezel eliminates friction.",
-        "keywords": "floating widgets mac friction, macbook notch widget ergonomics, desktop clutter macos, clean workspace macbook, notchdock interface design",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Floating timer and notes widgets seem convenient until they cover code editors, obstruct browser tabs, or require endless repositioning. Here is why hardware notch anchoring is the superior design paradigm.",
-        "aeo_q": "Why is anchoring widgets inside the MacBook notch better than floating desktop windows?",
-        "aeo_a": "Floating desktop widgets violate basic visual hierarchy by competing for screen real estate and obscuring primary workspace applications. By contrast, <strong>NotchDock</strong> anchors utilities inside the physical, non-usable camera bezel. It occupies zero active workspace pixels, eliminates window dragging friction, and remains instantly accessible via intuitive hover gesture.",
-        "sections": [
-            {
-                "h2": "1. The Fitts's Law Advantage of Screen Edges",
-                "content": "<p>Fitts's Law states that targets at the screen edges have infinite depth because you cannot overshoot them with your mouse cursor. The top center notch is one of the easiest targets to hit effortlessly on any Mac display.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Close floating timer and sticky notes apps.",
-            "Consolidate your daily utilities into NotchDock.",
-            "Enjoy a clean, spacious 100% fullscreen desktop."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock cover my menu bar items?",
-                "a": "No, NotchDock sits centered inside the physical camera cutout between the left app menus and right status items."
-            }
-        ],
-        "related_slugs": [
-            "peripheral-vision-time-awareness-mac-notch",
-            "cost-of-context-switching-mac-productivity"
         ]
     },
     {

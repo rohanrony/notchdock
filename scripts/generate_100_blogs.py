@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-NotchDock 100 SEO & GEO Blog Posts Generator
-Compiles 100 high-quality blog posts across 7 clusters, updates blog/index.html,
+NotchDock SEO & GEO Pillar Blog Generator
+Compiles 65 high-authority, high-intent pillar blog posts across 7 core clusters,
+cleans up low-quality/redundant/cannibalizing posts, and updates blog/index.html,
 sitemap.xml, and public/llms.txt.
 """
 
@@ -9,6 +10,7 @@ import os
 import sys
 import json
 import re
+import subprocess
 
 # Add scripts directory to path to import data modules
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "data"))
@@ -34,6 +36,65 @@ ALL_NEW_ARTICLES = (
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BLOG_DIR = os.path.join(BASE_DIR, "blog")
 PUBLIC_DIR = os.path.join(BASE_DIR, "public")
+
+ORIGINAL_ARTICLES = [
+    {
+        "slug": "macbook-notch-pomodoro-timer-deep-work",
+        "title": "How to Master Deep Work with a MacBook Notch Pomodoro Timer: Distraction-Free Focus on macOS",
+        "url": "https://notchdock.app/blog/macbook-notch-pomodoro-timer-deep-work.html",
+        "date": "2026-09-28",
+        "desc": "How an ambient Pomodoro focus timer inside the MacBook camera notch eliminates window clutter, prevents alarm fatigue, and protects flow state during deep work."
+    },
+    {
+        "slug": "youtube-music-controls-macbook-notch-kaset",
+        "title": "How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes with NotchDock and Kaset",
+        "url": "https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html",
+        "date": "2026-09-27",
+        "desc": "How to control YouTube Music from your MacBook notch with live seek scrubber, dynamic album art color glow, and 1-click Like button using NotchDock and Kaset."
+    },
+    {
+        "slug": "manchester-city-vs-manchester-united-live-score-tracker-mac",
+        "title": "How to Track Manchester City vs Manchester United Live on Your Mac Notch: Score Summary, Real-Time Stats & Silent Alerts",
+        "url": "https://notchdock.app/blog/manchester-city-vs-manchester-united-live-score-tracker-mac.html",
+        "date": "2026-09-12",
+        "desc": "How to follow the Manchester Derby (Man City vs Man United) live on macOS using NotchDock's ambient camera notch widget without screen distraction."
+    },
+    {
+        "slug": "track-cpi-oil-prices-sp500-market-indexes-live-mac",
+        "title": "How to Track CPI Inflation, Crude Oil Prices, and S&P 500 Swings Live on Your Mac Notch",
+        "url": "https://notchdock.app/blog/track-cpi-oil-prices-sp500-market-indexes-live-mac.html",
+        "date": "2026-09-12",
+        "desc": "How energy commodities, CPI inflation reports, and S&P 500 equities move together, and how to track live market reactions in the MacBook notch."
+    },
+    {
+        "slug": "upcoming-cpi-inflation-data-market-impact-live-mac-tracker",
+        "title": "Upcoming CPI Inflation Data: How It Impacts the Stock Market and How to Track the Live Reaction on Your Mac",
+        "url": "https://notchdock.app/blog/upcoming-cpi-inflation-data-market-impact-live-mac-tracker.html",
+        "date": "2026-09-12",
+        "desc": "Macroeconomic playbook for upcoming US CPI releases, the 8:30 AM ET algorithmic market reaction, and live pre-market futures tracking in the Mac notch."
+    },
+    {
+        "slug": "intelligent-mac-notifications-live-updates",
+        "title": "The Death of Intrusive Banners: Why Intelligent Notch Notifications & Live Activities are the Future of macOS",
+        "url": "https://notchdock.app/blog/intelligent-mac-notifications-live-updates.html",
+        "date": "2026-08-20",
+        "desc": "Why traditional top-right notification banners disrupt deep work and how intelligent, ambient notch live updates solve alert fatigue on Mac."
+    },
+    {
+        "slug": "macbook-notch-dynamic-island-live-sports-stocks",
+        "title": "How to Turn Your MacBook Notch Into an Always-On Live Activity Center for Sports, Stocks & Tasks",
+        "url": "https://notchdock.app/blog/macbook-notch-dynamic-island-live-sports-stocks.html",
+        "date": "2026-08-18",
+        "desc": "A comprehensive guide to configuring real-time sports tickers, intraday stock watchlists, and task widgets directly inside your MacBook camera bezel."
+    },
+    {
+        "slug": "how-to-fix-mac-notification-fatigue",
+        "title": "How to Fix macOS Notification Fatigue: The Power of Silent, Glanceable Notch Tickers",
+        "url": "https://notchdock.app/blog/how-to-fix-mac-notification-fatigue.html",
+        "date": "2026-08-15",
+        "desc": "A 3-tier notification triage framework to eliminate alert overload while keeping critical live updates glanceable."
+    }
+]
 
 def sanitize_html(text):
     if not text:
@@ -198,9 +259,7 @@ def render_article_html(article):
     related_html = ""
     if related_slugs:
         cards_html = ""
-        # Look up related articles
         for r_slug in related_slugs:
-            # Match in ALL_NEW_ARTICLES or default
             target = next((a for a in ALL_NEW_ARTICLES if a["slug"] == r_slug), None)
             if target:
                 r_title = target["title"]
@@ -385,12 +444,28 @@ def render_article_html(article):
 """
     return full_html
 
+def cleanup_orphan_articles():
+    original_slugs = {a["slug"] for a in ORIGINAL_ARTICLES}
+    curated_slugs = {a["slug"] for a in ALL_NEW_ARTICLES}
+    keep_files = {"index.html"} | {f"{s}.html" for s in original_slugs} | {f"{s}.html" for s in curated_slugs}
+
+    deleted_count = 0
+    for filename in os.listdir(BLOG_DIR):
+        if filename.endswith(".html") and filename not in keep_files:
+            file_path = os.path.join(BLOG_DIR, filename)
+            os.remove(file_path)
+            deleted_count += 1
+            print(f"Deleted low-quality/redundant post: {filename}")
+    print(f"Cleaned up {deleted_count} low-quality/redundant articles from blog/.")
+
 def update_blog_index():
     index_path = os.path.join(BLOG_DIR, "index.html")
-    with open(index_path, "r", encoding="utf-8") as f:
-        content = f.read()
+    
+    # Read the clean baseline with the 8 original articles
+    cmd = ["git", "show", "f8e3ed4:blog/index.html"]
+    base_content = subprocess.check_output(cmd, env={"GIT_CONFIG_GLOBAL": "/dev/null"}).decode("utf-8")
 
-    # Create cards for all 100 new articles
+    # Create cards for the 65 curated articles
     cards_html = ""
     json_ld_posts = []
 
@@ -404,8 +479,6 @@ def update_blog_index():
         meta_desc = art["meta_desc"]
         date = art["date"]
 
-        # Category tags for client-side filter
-        # e.g. sports-stocks, focus, media, notifications, alternatives, hardware, developer
         cat_tag = f"{cluster} live-activities"
 
         card = f"""
@@ -441,10 +514,11 @@ def update_blog_index():
             "description": meta_desc
         })
 
-    # Update filter pills if needed to ensure all 7 clusters exist
-    updated_filter_pills = """<!-- Topic Filter Pills -->
+    # Total articles = 8 original + 65 curated = 73
+    total_articles = len(ORIGINAL_ARTICLES) + len(ALL_NEW_ARTICLES)
+    updated_filter_pills = f"""<!-- Topic Filter Pills -->
         <div class="blog-tags-bar" id="blog-filters">
-          <span class="blog-tag-pill active" data-filter="all"><i class="fa-solid fa-layer-group"></i> All Articles (108)</span>
+          <span class="blog-tag-pill active" data-filter="all"><i class="fa-solid fa-layer-group"></i> All Articles ({total_articles})</span>
           <span class="blog-tag-pill" data-filter="sports-stocks"><i class="fa-solid fa-trophy"></i> Sports & Market Tickers</span>
           <span class="blog-tag-pill" data-filter="focus"><i class="fa-solid fa-brain"></i> Deep Work & Focus</span>
           <span class="blog-tag-pill" data-filter="media"><i class="fa-solid fa-music"></i> Media & YouTube Music</span>
@@ -453,19 +527,17 @@ def update_blog_index():
           <span class="blog-tag-pill" data-filter="developer"><i class="fa-solid fa-shield-halved"></i> Developer & Privacy</span>
         </div>"""
 
-    content = re.sub(r'<!-- Topic Filter Pills -->\s*<div class="blog-tags-bar" id="blog-filters">.*?</div>', updated_filter_pills, content, flags=re.DOTALL)
+    content = re.sub(r'<!-- Topic Filter Pills -->\s*<div class="blog-tags-bar" id="blog-filters">.*?</div>', updated_filter_pills, base_content, flags=re.DOTALL)
 
     # Insert cards at end of existing grid (right before </div>\s*<!-- Call to Action Banner -->)
     insertion_marker = '<!-- Call to Action Banner -->'
     parts = content.split(insertion_marker)
     if len(parts) == 2:
-        # Find the last </div> before insertion_marker
         last_div_idx = parts[0].rfind('</div>')
         new_first_part = parts[0][:last_div_idx] + cards_html + "\n        </div>\n\n        "
         content = new_first_part + insertion_marker + parts[1]
 
     # Update JSON-LD
-    # Find blogPost array and extend
     try:
         match = re.search(r'"blogPost":\s*\[(.*?)\]\s*\},', content, re.DOTALL)
         if match:
@@ -478,12 +550,24 @@ def update_blog_index():
 
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(content)
-    print("Updated blog/index.html with 100 new cards and updated filter pills.")
+    print(f"Updated blog/index.html with {total_articles} total cards ({len(ORIGINAL_ARTICLES)} original + {len(ALL_NEW_ARTICLES)} curated).")
 
 def update_sitemap():
     sitemap_path = os.path.join(PUBLIC_DIR, "sitemap.xml")
-    with open(sitemap_path, "r", encoding="utf-8") as f:
-        content = f.read()
+    cmd = ["git", "show", "f8e3ed4:public/sitemap.xml"]
+    base_sitemap = subprocess.check_output(cmd, env={"GIT_CONFIG_GLOBAL": "/dev/null"}).decode("utf-8")
+
+    # Ensure Pomodoro article is included
+    pomodoro_url = "https://notchdock.app/blog/macbook-notch-pomodoro-timer-deep-work.html"
+    if pomodoro_url not in base_sitemap:
+        pomo_entry = f"""  <url>
+    <loc>{pomodoro_url}</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+"""
+        base_sitemap = base_sitemap.replace("</urlset>", pomo_entry + "</urlset>")
 
     new_urls = ""
     for art in ALL_NEW_ARTICLES:
@@ -496,22 +580,29 @@ def update_sitemap():
     <priority>0.8</priority>
   </url>
 """
-        # Ensure not already in sitemap
-        if f"https://notchdock.app/blog/{slug}.html" not in content:
+        if f"https://notchdock.app/blog/{slug}.html" not in base_sitemap:
             new_urls += url_entry
 
-    if new_urls:
-        content = content.replace("</urlset>", new_urls + "</urlset>")
-        with open(sitemap_path, "w", encoding="utf-8") as f:
-            f.write(content)
-        print("Updated public/sitemap.xml with 100 new blog URLs.")
+    full_sitemap = base_sitemap.replace("</urlset>", new_urls + "</urlset>")
+    with open(sitemap_path, "w", encoding="utf-8") as f:
+        f.write(full_sitemap)
+    loc_count = len(re.findall(r'<loc>', full_sitemap))
+    print(f"Updated public/sitemap.xml with {loc_count} total URLs (24 base + {len(ALL_NEW_ARTICLES)} curated).")
 
 def update_llms_txt():
     llms_path = os.path.join(PUBLIC_DIR, "llms.txt")
-    with open(llms_path, "r", encoding="utf-8") as f:
-        content = f.read()
+    cmd = ["git", "show", "f8e3ed4:public/llms.txt"]
+    base_llms = subprocess.check_output(cmd, env={"GIT_CONFIG_GLOBAL": "/dev/null"}).decode("utf-8")
 
-    # Organize entries by cluster
+    # Ensure Pomodoro article is in base knowledge hub
+    pomo_entry = "- [How to Master Deep Work with a MacBook Notch Pomodoro Timer](https://notchdock.app/blog/macbook-notch-pomodoro-timer-deep-work.html): Complete guide to deep work, flow state protection, and ambient Pomodoro tracking inside the MacBook camera notch.\n"
+    if "macbook-notch-pomodoro-timer-deep-work.html" not in base_llms:
+        base_llms = base_llms.replace(
+            "## Blog & Engineering Guides (Knowledge Hub)\n\n",
+            "## Blog & Engineering Guides (Knowledge Hub)\n\n" + pomo_entry
+        )
+
+    # Organize curated entries by cluster
     cluster_names = {
         "sports-stocks": "Live Sports, Matchday & Financial Markets",
         "focus": "Deep Work, Pomodoro & Focus Protocols",
@@ -530,30 +621,33 @@ def update_llms_txt():
             f"- [{art['title']}](https://notchdock.app/blog/{art['slug']}.html): {art['meta_desc']}"
         )
 
-    all_markdown_sections = "\n\n### Comprehensive Knowledge Hub & Engineering Guides (100 Articles)\n"
+    all_markdown_sections = f"\n\n### Comprehensive Knowledge Hub & Engineering Guides ({len(ALL_NEW_ARTICLES)} Pillar Guides)\n"
     for cl_key, cl_name in cluster_names.items():
         entries = categorized_entries.get(cl_key, [])
         if entries:
             all_markdown_sections += f"\n#### {cl_name}\n\n" + "\n".join(entries) + "\n"
 
     # Insert right before ## Feature & Use-Case Pages
-    if "## Feature & Use-Case Pages" in content:
-        parts = content.split("## Feature & Use-Case Pages")
+    if "## Feature & Use-Case Pages" in base_llms:
+        parts = base_llms.split("## Feature & Use-Case Pages")
         content = parts[0] + all_markdown_sections + "\n## Feature & Use-Case Pages" + parts[1]
     else:
-        content += "\n" + all_markdown_sections
+        content = base_llms + "\n" + all_markdown_sections
 
     with open(llms_path, "w", encoding="utf-8") as f:
         f.write(content)
-    print("Updated public/llms.txt with all 100 new categorized guides.")
+    print(f"Updated public/llms.txt with all {len(ALL_NEW_ARTICLES)} curated pillar guides.")
 
 def main():
-    print(f"Total new articles loaded: {len(ALL_NEW_ARTICLES)}")
-    assert len(ALL_NEW_ARTICLES) == 100, f"Expected 100 articles, got {len(ALL_NEW_ARTICLES)}"
+    print(f"Total curated pillar articles loaded: {len(ALL_NEW_ARTICLES)}")
+    assert len(ALL_NEW_ARTICLES) == 65, f"Expected 65 articles, got {len(ALL_NEW_ARTICLES)}"
 
     # Check for duplicate slugs
     slugs = [a["slug"] for a in ALL_NEW_ARTICLES]
     assert len(slugs) == len(set(slugs)), "Duplicate slug detected in article dataset!"
+
+    # Clean up orphan articles
+    cleanup_orphan_articles()
 
     # Render each article to blog/<slug>.html
     for idx, art in enumerate(ALL_NEW_ARTICLES):
@@ -563,14 +657,19 @@ def main():
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(html_content)
         if (idx + 1) % 20 == 0 or idx == len(ALL_NEW_ARTICLES) - 1:
-            print(f"Rendered {idx + 1}/100 articles: {slug}.html")
+            print(f"Rendered {idx + 1}/{len(ALL_NEW_ARTICLES)} articles: {slug}.html")
 
     # Update index, sitemap, llms.txt
     update_blog_index()
     update_sitemap()
     update_llms_txt()
 
-    print("Successfully generated all 100 SEO & GEO blog articles!")
+    # Verification checks
+    html_files = [f for f in os.listdir(BLOG_DIR) if f.endswith(".html")]
+    print(f"Verification: Total HTML files in blog/: {len(html_files)} (Expected: 74)")
+    assert len(html_files) == 74, f"Expected 74 HTML files in blog/, found {len(html_files)}"
+
+    print("Successfully generated and synchronized all 65 curated SEO & GEO pillar blog articles!")
 
 if __name__ == "__main__":
     main()

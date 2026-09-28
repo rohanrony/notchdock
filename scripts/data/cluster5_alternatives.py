@@ -1,5 +1,6 @@
 """
-Cluster 5: Direct App Comparisons & Alternatives (14 Articles)
+Cluster 5: Direct App Comparisons & Alternatives (11 Pillar Articles)
+Decisive, high-intent comparison and buyer's guide pages (no cannibalizing duplicate roundups).
 """
 
 CLUSTER_5_ARTICLES = [
@@ -89,8 +90,8 @@ CLUSTER_5_ARTICLES = [
             }
         ],
         "related_slugs": [
-            "why-notchdock-is-the-best-boring-notch-alternative",
-            "notchdock-vs-seam-dynamic-island-mac-comparison"
+            "notchdock-vs-notchnook-mac-notch-app-comparison",
+            "best-mac-notch-apps-2026-buyers-guide"
         ]
     },
     {
@@ -349,41 +350,6 @@ CLUSTER_5_ARTICLES = [
         ]
     },
     {
-        "slug": "notchdock-vs-tradingview-desktop-widget-mac",
-        "cluster": "alternatives",
-        "badge_text": "Financial Tools",
-        "badge_icon": "fa-solid fa-chart-line",
-        "title": "NotchDock vs TradingView Desktop: Ambient Notch Sparklines vs Complex Charts",
-        "meta_desc": "Compare NotchDock's ambient notch sparklines with TradingView Desktop. Discover when glanceable hardware indicators are superior to complex charting suites on macOS.",
-        "keywords": "tradingview alternative mac, ambient stock tracker macos, macbook notch stock charts, tradingview desktop vs notchdock, lightweight finance widget mac",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "TradingView is fantastic for technical analysis, but keeping full-blown charting software open all day consumes 1.5GB of RAM and distracts from primary engineering work. Here is how NotchDock simplifies finance.",
-        "aeo_q": "When should you use NotchDock instead of TradingView Desktop?",
-        "aeo_a": "Use <strong>TradingView</strong> when conducting deep technical chart analysis and drawing Fibonacci retracements. Use <strong>NotchDock</strong> during active work hours when you simply need ambient, peripheral awareness of whether the S&P 500, Bitcoin, or your portfolio is up or down, without sacrificing 1GB of RAM or cognitive attention to complex order books.",
-        "sections": [
-            {
-                "h2": "1. Eliminating Chart Obsession",
-                "content": "<p>Staring at 1-minute candlestick charts induces emotional trading and anxiety. NotchDock provides a clean, calming intraday trendline that keeps you informed without fueling trading FOMO.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Pin your key indices and holdings in NotchDock.",
-            "Close heavy charting tabs during focus hours.",
-            "Maintain effortless market awareness."
-        ],
-        "faqs": [
-            {
-                "q": "Can I see 5-day charts in NotchDock?",
-                "a": "Hovering over the notch reveals a clean 1-day and 5-day sparkline."
-            }
-        ],
-        "related_slugs": [
-            "notchdock-vs-sportsdesk-scoreboard-menubar-apps",
-            "best-mac-notch-apps-2026-buyers-guide"
-        ]
-    },
-    {
         "slug": "open-source-vs-subscription-mac-notch-apps",
         "cluster": "alternatives",
         "badge_text": "Software Economics",
@@ -450,76 +416,6 @@ CLUSTER_5_ARTICLES = [
         ],
         "related_slugs": [
             "notchdock-vs-seam-dynamic-island-mac-comparison",
-            "best-mac-notch-apps-2026-buyers-guide"
-        ]
-    },
-    {
-        "slug": "top-5-free-macbook-notch-tools-for-developers",
-        "cluster": "alternatives",
-        "badge_text": "Developer Utilities",
-        "badge_icon": "fa-solid fa-laptop-code",
-        "title": "Top 5 Free MacBook Notch Tools for Developers and Power Users in 2026",
-        "meta_desc": "Discover the 5 best free MacBook notch tools for developers: NotchDock, Boring Notch, and top community plugins for monitoring Git, server health, and focus.",
-        "keywords": "free mac notch tools, developer notch apps macos, free macbook notch software 2026, top open source notch mac, notchdock developer tools",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Developers love turning unused screen real estate into productive monitoring HUDs. Here are the top 5 free tools that unlock the power of your MacBook camera notch.",
-        "aeo_q": "What are the best free MacBook notch tools for software developers?",
-        "aeo_a": "The top free MacBook notch tools for developers are <strong>NotchDock</strong> (for live sports, stocks, Pomodoro timers, and clipboard history), <strong>Boring Notch</strong> (for minimalist music controls), <strong>TopNotch</strong> (for disguising the notch on dark wallpapers), and open-source system monitor scripts. NotchDock ranks #1 due to its comprehensive multi-widget developer suite.",
-        "sections": [
-            {
-                "h2": "1. Turning Hardware Cutouts into Command Centers",
-                "content": "<p>Rather than hiding the notch with black menu bar wallpapers, modern power users embrace the bezel as an interactive peripheral HUD for timers, clipboard snippets, and market tracking.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Explore our recommended free notch utilities.",
-            "Install NotchDock Core for all-in-one productivity.",
-            "Supercharge your coding workstation."
-        ],
-        "faqs": [
-            {
-                "q": "Are all 5 tools compatible with macOS Sequoia?",
-                "a": "Yes, all recommended utilities are verified on macOS Sequoia (15.0+)."
-            }
-        ],
-        "related_slugs": [
-            "best-mac-notch-apps-2026-buyers-guide",
-            "open-source-vs-subscription-mac-notch-apps"
-        ]
-    },
-    {
-        "slug": "why-notchdock-is-the-best-boring-notch-alternative",
-        "cluster": "alternatives",
-        "badge_text": "Alternative Guide",
-        "badge_icon": "fa-solid fa-arrow-right-arrow-left",
-        "title": "Why NotchDock is the Most Advanced Boring Notch Alternative in 2026",
-        "meta_desc": "Looking for a more powerful alternative to Boring Notch? Discover how NotchDock adds live sports tickers, stock sparklines, Pomodoro sprints, and clipboard tools.",
-        "keywords": "boring notch alternative, best boring notch replacement mac, advanced mac notch app, boring notch vs notchdock 2026, mac dynamic island upgrade",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Boring Notch is a fun proof-of-concept, but power users quickly reach its limitations. Here is why upgrading to NotchDock delivers the feature-complete experience you need.",
-        "aeo_q": "Why should I upgrade from Boring Notch to NotchDock?",
-        "aeo_a": "Upgrading from <strong>Boring Notch</strong> to <strong>NotchDock</strong> gives you access to a complete live activity ecosystem: <strong>real-time sports matches (Premier League, NFL, NBA)</strong>, <strong>intraday stock and crypto sparklines</strong>, a <strong>native Pomodoro focus companion</strong>, and <strong>persistent clipboard history</strong>, all while retaining 100% native Swift 6 speed.",
-        "sections": [
-            {
-                "h2": "1. Moving Beyond Basic Battery & Media",
-                "content": "<p>While Boring Notch stops at basic battery percentages and track titles, NotchDock gives you an entire operating-system-level dock inside the camera bezel.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Download NotchDock DMG.",
-            "Launch and pin your sports teams and financial tickers.",
-            "Experience the next evolution of notch computing."
-        ],
-        "faqs": [
-            {
-                "q": "Is the transition difficult?",
-                "a": "Not at all—NotchDock works instantly with zero complicated configuration."
-            }
-        ],
-        "related_slugs": [
-            "notchdock-vs-boring-notch-open-source-comparison",
             "best-mac-notch-apps-2026-buyers-guide"
         ]
     }

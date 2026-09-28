@@ -1,168 +1,9 @@
 """
-Cluster 1: Live Sports & Matchday Tracking (20 Articles)
+Cluster 1: Live Sports & Matchday Tracking (10 Pillar Articles)
+Curated high-intent, high-authority tournament & league guides (no thin derby variants).
 """
 
 CLUSTER_1_ARTICLES = [
-    {
-        "slug": "real-madrid-vs-barcelona-el-clasico-live-score-tracker-mac",
-        "cluster": "sports-stocks",
-        "badge_text": "Live Matchday & La Liga",
-        "badge_icon": "fa-solid fa-futbol",
-        "title": "El Clásico on Mac: How to Track Real Madrid vs Barcelona Live in the MacBook Notch",
-        "meta_desc": "Follow Real Madrid vs Barcelona (El Clásico) live on your Mac. Ambient score tickers, goal alerts, and pitch stats in your MacBook notch without screen distraction.",
-        "keywords": "real madrid vs barcelona live score mac, el clasico mac score tracker, macbook notch soccer tracker, la liga live scores macos, watch el clasico mac notch",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "El Clásico is soccer's fiercest rivalry, but keeping up during working hours usually means messy browser tabs and noisy stream lag. Here is how to follow Real Madrid vs Barcelona live with silent, ambient notch tickers on macOS.",
-        "aeo_q": "How do you track Real Madrid vs Barcelona (El Clásico) live in the MacBook notch?",
-        "aeo_a": "Using <strong>NotchDock</strong> on macOS, you can follow Real Madrid vs Barcelona live directly in your MacBook camera notch. NotchDock connects to low-latency sports feeds to render real-time scores (e.g. <code>RMA 2 - 1 FCB • 74'</code>) inside the black bezel. Hovering over the notch reveals live goal scorers, shot totals, possession percentages, and yellow cards without opening browser tabs or interrupting your workflow.",
-        "sections": [
-            {
-                "h2": "1. The High Stakes of El Clásico During Mac Work Hours",
-                "content": "<p>When Real Madrid faces FC Barcelona in La Liga, Copa del Rey, or the UEFA Champions League, millions of fans worldwide tune in. However, kickoff often coincides with European late-afternoon working hours or US mid-morning sprints. Running a full video stream in picture-in-picture (PiP) consumes 25% CPU, burns battery, and constantly pulls focus away from code, documents, or client presentations.</p><p>NotchDock solves this with ambient live activities anchored directly in your MacBook hardware camera notch. You get instant match awareness without visual interruption.</p>"
-            },
-            {
-                "h2": "2. Silent Peripheral Awareness vs. Loud Push Notifications",
-                "content": "<p>Traditional sports tracking apps rely on intrusive macOS notification banners that pop up in the top-right corner of your screen. In a high-stakes El Clásico, frequent fouls, VAR reviews, and card alerts can trigger dozens of interruptions per half.</p><p>NotchDock introduces silent glanceable awareness:</p><ul><li><strong>Ambient Status Ticker:</strong> The match state stays neatly condensed next to the camera sensor (e.g., <code>RMA 1 - 0 BAR (34')</code>).</li><li><strong>Gentle Goal Pulses:</strong> When Vinícius Jr., Bellingham, or Yamal scores, the notch gently expands for 5 seconds with the goal scorer's name before contracting back.</li><li><strong>Zero Sound Disruption:</strong> No microwave chimes or ping noises that interrupt Zoom calls or screen shares.</li></ul>"
-            },
-            {
-                "h2": "3. Real-Time Pitch Stats on Hover",
-                "content": "<p>When you want deeper tactical context, move your cursor over the notch. The panel smoothly glides downward to display:</p><ul><li><strong>Shot Counts & On-Target Ratios:</strong> Compare attacking momentum between both giants.</li><li><strong>Possession Heat:</strong> Monitor midfield control in real-time.</li><li><strong>Disciplinary Record:</strong> Track cautions and red cards in tense derby moments.</li><li><strong>Substitutions & Stoppage Time:</strong> Know precisely when extra time starts.</li></ul>"
-            },
-            {
-                "h2": "4. Performance Benchmark: Native AppKit vs Web Stream",
-                "content": "<p>Unlike web scrapers or Electron wrapper apps that drain battery, NotchDock is written in 100% native Swift 6 and AppKit:</p>",
-                "table": {
-                    "headers": ["Metric", "NotchDock Live Notch Ticker", "Browser Tab (ESPN / FlashScore)", "Video Stream in PiP"],
-                    "rows": [
-                        ["CPU Usage", "< 0.4% idle", "8% - 15% CPU", "25% - 40% CPU"],
-                        ["Memory Footprint", "< 42 MB RAM", "450 MB - 1.2 GB RAM", "800 MB - 2.5 GB RAM"],
-                        ["Battery Impact", "Negligible (< 1% over 90 min)", "Heavy (~12% per match)", "Severe (~35% per match)"],
-                        ["Screen Real Estate", "0 active pixels (uses bezel)", "Consumes window space", "Blocks 25% of monitor"]
-                    ]
-                }
-            }
-        ],
-        "setup_steps": [
-            "Download and install NotchDock for macOS (Free DMG).",
-            "Grant Accessibility permissions in System Settings -> Privacy & Security.",
-            "Hover your cursor over the MacBook notch to open the widget dock.",
-            "Select the Sports module and search for 'Real Madrid' or 'Barcelona' under La Liga.",
-            "Pin the match. The live score will sit discreetly in the camera notch throughout the 90 minutes."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock require a paid subscription to follow El Clásico?",
-                "a": "No. NotchDock's live sports tracking module uses public sports API feeds and is completely free to download and use in NotchDock Core."
-            },
-            {
-                "q": "What happens if my Mac does not have a physical camera notch?",
-                "a": "On Macs without a physical notch (Mac mini, Mac Studio, or external 4K monitors), NotchDock renders an elegant, floating Apple Dynamic Island pill at the top-center of your screen."
-            },
-            {
-                "q": "How fast are goal notifications updated?",
-                "a": "NotchDock polls official live sport data feeds every 10–15 seconds during active play, ensuring you see goals almost as quickly as cable broadcasts."
-            }
-        ],
-        "related_slugs": [
-            "arsenal-vs-tottenham-north-london-derby-live-mac-notch",
-            "champions-league-knockout-live-scores-macbook-notch"
-        ]
-    },
-    {
-        "slug": "arsenal-vs-tottenham-north-london-derby-live-mac-notch",
-        "cluster": "sports-stocks",
-        "badge_text": "Premier League Matchday",
-        "badge_icon": "fa-solid fa-futbol",
-        "title": "Arsenal vs Tottenham: Follow the North London Derby Live in Your Mac Notch",
-        "meta_desc": "Track Arsenal vs Tottenham (North London Derby) live in your MacBook notch. Real-time EPL scores, goal highlights, and match clocks without breaking focus.",
-        "keywords": "arsenal vs tottenham live score mac, north london derby mac tracker, premier league mac notch widget, epl live scores macbook, notchdock epl tracker",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "The North London Derby is always chaotic, fast-paced, and unpredictable. Here is how to keep an eye on Arsenal vs Spurs from your MacBook camera bezel while crushing your daily tasks.",
-        "aeo_q": "How do you track the North London Derby live on macOS without switching windows?",
-        "aeo_a": "With <strong>NotchDock</strong>, you can monitor Arsenal vs Tottenham live directly in the MacBook notch. NotchDock sits in the camera cutout, rendering minute-by-minute scores, goal alerts, and red cards in high-contrast Apple typography. Hovering reveals xG stats, corners, and lineups without interrupting your active code editor or browser tabs.",
-        "sections": [
-            {
-                "h2": "1. Why the North London Derby Demands Real-Time Awareness",
-                "content": "<p>Few fixtures deliver as much drama as Arsenal versus Tottenham Hotspur. Whether it's a controversial penalty at the Emirates or a stoppage-time equalizer at Tottenham Hotspur Stadium, missing a goal while knee-deep in an engineering sprint is heartbreaking for supporters.</p><p>Yet checking live scores on your phone or refreshing sports tabs introduces heavy context switching. NotchDock anchors the score directly in your hardware bezel so you never miss a goal.</p>"
-            },
-            {
-                "h2": "2. Designed for English Premier League Intensity",
-                "content": "<p>EPL matches move at a blistering pace. NotchDock's native sports module is built specifically for football fans:</p><ul><li><strong>Instant Half-Time & Extra Time Clocks:</strong> See exactly how many stoppage minutes have been awarded.</li><li><strong>Silent Goal Ticker:</strong> See the scorer and assist in a discreet pill animation.</li><li><strong>Form & Head-to-Head Context:</strong> Hover over the notch to see past meeting records and live Premier League standings impact.</li></ul>"
-            },
-            {
-                "h2": "3. Never Worry About Meeting Screen Shares",
-                "content": "<p>When sharing your screen during a Slack huddle or Zoom presentation, traditional sports notifications can embarrassingly flash across your display. NotchDock automatically suppresses notification popups and keeps the ticker tucked away in the hardware bezel, ensuring total privacy during professional calls.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Install NotchDock on macOS 12 Monterey or newer.",
-            "Move your cursor to the top center of your display.",
-            "Click on the Sports tab in the NotchDock tray.",
-            "Select Premier League -> Arsenal vs Tottenham Hotspur.",
-            "Pin the match for seamless ambient updates."
-        ],
-        "faqs": [
-            {
-                "q": "Can I track multiple Premier League games simultaneously?",
-                "a": "Yes! NotchDock allows you to pin multiple live matches and rotate between them automatically or via mouse swipe."
-            },
-            {
-                "q": "Does NotchDock track English domestic cups (FA Cup, Carabao Cup)?",
-                "a": "Yes, NotchDock covers all major English competitions including the Premier League, FA Cup, and League Cup."
-            }
-        ],
-        "related_slugs": [
-            "liverpool-vs-everton-merseyside-derby-live-score-mac",
-            "champions-league-knockout-live-scores-macbook-notch"
-        ]
-    },
-    {
-        "slug": "liverpool-vs-everton-merseyside-derby-live-score-mac",
-        "cluster": "sports-stocks",
-        "badge_text": "Premier League Matchday",
-        "badge_icon": "fa-solid fa-futbol",
-        "title": "Liverpool vs Everton: Track the Merseyside Derby Live in the Mac Notch",
-        "meta_desc": "Follow Liverpool vs Everton live on Mac. Get real-time Merseyside Derby scores, disciplinary stats, and goal flashes right in your MacBook camera bezel.",
-        "keywords": "liverpool vs everton live score mac, merseyside derby mac score tracker, epl macbook notch, liverpool live score macos, ambient sports ticker mac",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "The Merseyside Derby between Liverpool and Everton is famous for physical intensity, late goals, and fierce local passion. Here is how to follow every tackle and goal directly from your MacBook notch.",
-        "aeo_q": "How can I follow Liverpool vs Everton live on my Mac without opening a sports website?",
-        "aeo_a": "You can follow Liverpool vs Everton live using <strong>NotchDock</strong> on macOS. NotchDock embeds a lightweight, real-time Premier League scoreboard directly inside your MacBook camera bezel. It displays scorelines, match minutes, and goalscorers with zero battery drain, expanding on hover to reveal complete derby statistics.",
-        "sections": [
-            {
-                "h2": "1. The Most Disciplinary Fixture in Premier League History",
-                "content": "<p>With more red cards than any other fixture in Premier League history, the Merseyside Derby requires continuous awareness. A single dismissal in the 30th minute transforms the entire tactical dynamic.</p><p>NotchDock displays live yellow and red card counters right next to the score so you know instantly when either side goes down to 10 men.</p>"
-            },
-            {
-                "h2": "2. The Zero-Friction Desktop Experience",
-                "content": "<p>Working on a laptop display means every pixel is valuable. Opening a separate browser window for live text commentary steals 50% of your viewable code or document area. NotchDock resides in the dead physical area of your MacBook's camera notch, leaving 100% of your workspace free.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Download NotchDock DMG and drag to Applications.",
-            "Open the app and grant Accessibility access.",
-            "Hover over the notch and click the Sports module.",
-            "Pick Liverpool vs Everton under Premier League.",
-            "Enjoy real-time derby updates without desktop clutter."
-        ],
-        "faqs": [
-            {
-                "q": "Will NotchDock keep scores updated if my Mac goes to sleep?",
-                "a": "When your Mac wakes up from sleep, NotchDock instantly synchronizes with the live feed in less than 500 milliseconds."
-            },
-            {
-                "q": "Can I mute goal celebrations?",
-                "a": "Yes, NotchDock is 100% silent by default—no unexpected chimes or alarms will ring."
-            }
-        ],
-        "related_slugs": [
-            "arsenal-vs-tottenham-north-london-derby-live-mac-notch",
-            "champions-league-knockout-live-scores-macbook-notch"
-        ]
-    },
     {
         "slug": "champions-league-knockout-live-scores-macbook-notch",
         "cluster": "sports-stocks",
@@ -208,8 +49,8 @@ CLUSTER_1_ARTICLES = [
             }
         ],
         "related_slugs": [
-            "real-madrid-vs-barcelona-el-clasico-live-score-tracker-mac",
-            "bayern-munich-vs-borussia-dortmund-der-klassiker-mac"
+            "nfl-sunday-ticket-live-scores-mac-notch",
+            "discreet-live-sports-tracking-at-work-mac"
         ]
     },
     {
@@ -253,7 +94,7 @@ CLUSTER_1_ARTICLES = [
         ],
         "related_slugs": [
             "super-bowl-live-score-tracker-commercials-mac",
-            "march-madness-ncaa-tournament-live-scores-mac"
+            "nba-finals-live-score-tracker-macbook-notch"
         ]
     },
     {
@@ -322,7 +163,7 @@ CLUSTER_1_ARTICLES = [
         "setup_steps": [
             "Install NotchDock and move your mouse cursor over the notch.",
             "Select the Sports module and navigate to NBA.",
-            "Pin the tonight's playoff matchup.",
+            "Pin tonight's playoff matchup.",
             "Enjoy discreet, instant updates throughout all 4 quarters."
         ],
         "faqs": [
@@ -332,48 +173,8 @@ CLUSTER_1_ARTICLES = [
             }
         ],
         "related_slugs": [
-            "golden-state-warriors-vs-la-lakers-live-score-mac",
-            "march-madness-ncaa-tournament-live-scores-mac"
-        ]
-    },
-    {
-        "slug": "golden-state-warriors-vs-la-lakers-live-score-mac",
-        "cluster": "sports-stocks",
-        "badge_text": "NBA Matchday",
-        "badge_icon": "fa-solid fa-basketball",
-        "title": "Warriors vs Lakers Live on Mac: Scoreline, 3-Pointers & Lead Changes",
-        "meta_desc": "Follow Golden State Warriors vs Los Angeles Lakers live in the MacBook notch. Real-time scores, Curry 3-pointers, LeBron points, and clutch quarter tracking on macOS.",
-        "keywords": "warriors vs lakers live score mac, gsw vs lal mac tracker, stephen curry 3pt tracker mac, lebron james points live mac, nba notch dock",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Stephen Curry versus LeBron James is the defining NBA rivalry of this generation. Here is how to follow every 3-pointer and dunk live right from your MacBook notch.",
-        "aeo_q": "How do you track the Warriors vs Lakers game live in the MacBook notch?",
-        "aeo_a": "<strong>NotchDock</strong> embeds a real-time NBA scoreboard for Warriors vs Lakers directly in your MacBook camera bezel. It shows live scores, quarter clocks, and timeouts. Hovering over the notch reveals Curry's and LeBron's live shooting lines, team 3-point percentages, and fast-break points.",
-        "sections": [
-            {
-                "h2": "1. California's Premier Basketball Showdown",
-                "content": "<p>When the Warriors clash with the Lakers, games are filled with scoring runs and electrifying highlights. For fans on the East Coast or overseas, games often run late or during work hours. NotchDock keeps you informed without disturbing your workspace.</p>"
-            },
-            {
-                "h2": "2. Live 3-Pointer & Scoring Burst Badges",
-                "content": "<p>NotchDock's basketball engine tracks scoring runs (e.g. <code>12-2 Run</code>) and displays them in the hover panel, so you know immediately when a momentum shift is occurring.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Download NotchDock Core for macOS.",
-            "Hover over the camera notch to reveal the dock.",
-            "Open the Sports tab and find Warriors vs Lakers.",
-            "Pin the game and follow the action seamlessly."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock track overtime?",
-                "a": "Yes, NotchDock seamlessly transitions into OT1, OT2, and beyond with updated clock countdowns."
-            }
-        ],
-        "related_slugs": [
-            "nba-finals-live-score-tracker-macbook-notch",
-            "march-madness-ncaa-tournament-live-scores-mac"
+            "nfl-sunday-ticket-live-scores-mac-notch",
+            "mlb-world-series-live-score-pitch-tracker-mac"
         ]
     },
     {
@@ -412,44 +213,8 @@ CLUSTER_1_ARTICLES = [
             }
         ],
         "related_slugs": [
-            "yankees-vs-red-sox-live-score-tracker-macbook-notch",
-            "f1-grand-prix-live-timing-leaderboard-mac-notch"
-        ]
-    },
-    {
-        "slug": "yankees-vs-red-sox-live-score-tracker-macbook-notch",
-        "cluster": "sports-stocks",
-        "badge_text": "MLB Matchday",
-        "badge_icon": "fa-solid fa-baseball-bat-ball",
-        "title": "Yankees vs Red Sox Live on Mac: Inning-by-Inning Notch Tracker",
-        "meta_desc": "Follow New York Yankees vs Boston Red Sox live on Mac. Ambient scores, home run alerts, and base runner updates in your MacBook camera notch.",
-        "keywords": "yankees vs red sox live score mac, nyy vs bos mac tracker, mlb rivalry mac notch, baseball score tracker macbook, notchdock mlb",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "The Yankees-Red Sox rivalry is baseball's most storied feud. Here is how to keep an eye on every strikeout and home run live from your Mac notch without disrupting your day.",
-        "aeo_q": "How do you track Yankees vs Red Sox live in the Mac notch?",
-        "aeo_a": "With <strong>NotchDock</strong>, Yankees vs Red Sox scores sit right in your MacBook camera notch. The compact ticker displays the score, inning, and outs (e.g. <code>NYY 4 - 3 BOS • ▼ 8th</code>). Hovering displays pitcher duel stats, home run distance data, and strikeout totals.",
-        "sections": [
-            {
-                "h2": "1. Rivalry Action Without Desktop Clutter",
-                "content": "<p>A 4-hour baseball battle at Fenway Park or Yankee Stadium doesn't mean your productivity has to halt. NotchDock lets you follow the game peripheral-style while drafting code or analyzing spreadsheets.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Install NotchDock on macOS.",
-            "Hover over your camera bezel and select Sports -> MLB.",
-            "Select Yankees vs Red Sox and hit Pin.",
-            "Track the historic rivalry in real-time."
-        ],
-        "faqs": [
-            {
-                "q": "Does it show home run exit velocity?",
-                "a": "Hovering over the game card reveals exit velocity and estimated distance for recent home runs."
-            }
-        ],
-        "related_slugs": [
-            "mlb-world-series-live-score-pitch-tracker-mac",
-            "f1-grand-prix-live-timing-leaderboard-mac-notch"
+            "f1-grand-prix-live-timing-leaderboard-mac-notch",
+            "nba-finals-live-score-tracker-macbook-notch"
         ]
     },
     {
@@ -600,187 +365,7 @@ CLUSTER_1_ARTICLES = [
             }
         ],
         "related_slugs": [
-            "six-nations-rugby-live-score-tracker-mac-notch",
-            "champions-league-knockout-live-scores-macbook-notch"
-        ]
-    },
-    {
-        "slug": "six-nations-rugby-live-score-tracker-mac-notch",
-        "cluster": "sports-stocks",
-        "badge_text": "International Rugby",
-        "badge_icon": "fa-solid fa-football",
-        "title": "Six Nations Rugby Live on Mac: Tries, Penalties & Live Match Clock",
-        "meta_desc": "Follow Six Nations Rugby Championship live on Mac. Real-time tries, penalty kicks, sin-bin yellow cards, and 80-minute clocks in the MacBook camera notch.",
-        "keywords": "six nations live score mac, rugby score tracker macos, macbook notch rugby widget, six nations tries live mac, rugby sin bin tracker mac",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "The Six Nations is international rugby at its most brutal and poetic. Here is how to follow England, France, Ireland, Scotland, Wales, and Italy live in your MacBook camera notch.",
-        "aeo_q": "How can I track Six Nations rugby scores and sin bins live on macOS?",
-        "aeo_a": "With <strong>NotchDock</strong>, live rugby matchlines sit right in your MacBook camera bezel. It displays scores, match half, and running clocks (e.g. <code>IRE 21 - 17 FRA • 62'</code>). Yellow card sin-bin countdowns (10-minute player suspensions) are rendered dynamically so you track player advantages.",
-        "sections": [
-            {
-                "h2": "1. Rugby's Unique Scoring System Supported",
-                "content": "<p>With 5 points for a try, 2 for a conversion, and 3 for penalties or drop goals, rugby scorelines fluctuate quickly. NotchDock updates immediately on the referee's whistle.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Download NotchDock and open the app.",
-            "Hover over the notch and click Sports -> Rugby Union.",
-            "Select the Six Nations fixture.",
-            "Follow the tournament live from your desk."
-        ],
-        "faqs": [
-            {
-                "q": "Does it track bonus point standings?",
-                "a": "Hovering reveals the live Six Nations tournament table with try and losing bonus points."
-            }
-        ],
-        "related_slugs": [
-            "ipl-cricket-live-score-ball-by-ball-tracker-mac",
-            "champions-league-knockout-live-scores-macbook-notch"
-        ]
-    },
-    {
-        "slug": "inter-miami-messi-mls-live-score-mac-notch",
-        "cluster": "sports-stocks",
-        "badge_text": "Major League Soccer",
-        "badge_icon": "fa-solid fa-futbol",
-        "title": "Lionel Messi & Inter Miami MLS Matches Live in the MacBook Notch",
-        "meta_desc": "Follow Lionel Messi and Inter Miami live in Major League Soccer on Mac. Real-time scores, free kick goals, assists, and Leagues Cup tracking on macOS.",
-        "keywords": "messi live score mac, inter miami live mac tracker, mls scores macbook notch, lionel messi goals live mac, notchdock mls",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Lionel Messi's arrival in MLS has made every Inter Miami fixture must-watch soccer. Here is how to track his magic moments and match scores right from your Mac notch.",
-        "aeo_q": "How do you follow Inter Miami and Lionel Messi games live in the Mac notch?",
-        "aeo_a": "Using <strong>NotchDock</strong> on macOS, you can pin Inter Miami MLS games directly to your camera notch. The scoreline updates in real-time with goal notifications (e.g. <code>MIA 3 - 1 NSH • Messi 68'</code>). Hovering displays match highlights, assist details, and shot statistics.",
-        "sections": [
-            {
-                "h2": "1. Never Miss a Messi Free Kick",
-                "content": "<p>Messi's game-winning free kicks and playmaking genius are highlights of modern sports. If you can't stream every MLS match live, NotchDock gives you the next best thing: silent, instantaneous score updates right on your screen.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Launch NotchDock on your Mac.",
-            "Hover over the notch and choose Sports -> MLS.",
-            "Pin Inter Miami CF.",
-            "Enjoy live soccer updates without browser tabs."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock cover Leagues Cup and US Open Cup?",
-                "a": "Yes, all Inter Miami matches across MLS, Leagues Cup, and domestic tournaments are supported."
-            }
-        ],
-        "related_slugs": [
-            "real-madrid-vs-barcelona-el-clasico-live-score-tracker-mac",
-            "discreet-live-sports-tracking-at-work-mac"
-        ]
-    },
-    {
-        "slug": "bayern-munich-vs-borussia-dortmund-der-klassiker-mac",
-        "cluster": "sports-stocks",
-        "badge_text": "Bundesliga Matchday",
-        "badge_icon": "fa-solid fa-futbol",
-        "title": "Der Klassiker: Bayern Munich vs Dortmund Live in the Mac Notch",
-        "meta_desc": "Track Bayern Munich vs Borussia Dortmund (Der Klassiker) live on Mac. Real-time Bundesliga scores, goals, and tactical match stats in your MacBook notch.",
-        "keywords": "bayern vs dortmund live score mac, der klassiker mac tracker, bundesliga live scores macbook, bayern dortmund score notch, notchdock bundesliga",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "Der Klassiker is Germany's biggest football spectacle, featuring relentless attacking soccer and electric atmospheres. Here is how to follow Bayern vs Dortmund live on macOS.",
-        "aeo_q": "How can I follow Bayern Munich vs Borussia Dortmund live on my Mac?",
-        "aeo_a": "<strong>NotchDock</strong> embeds a live German Bundesliga tracker inside your MacBook notch. The compact ticker displays scores and match minutes (e.g. <code>FCB 3 - 2 BVB • 81'</code>). Hovering displays xG stats, shot maps, and substitution timelines.",
-        "sections": [
-            {
-                "h2": "1. High-Scoring German Football in the Notch",
-                "content": "<p>Der Klassiker is historically one of the highest-scoring derbies in world football. NotchDock delivers immediate goal alerts so you can keep working without missing the action.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Download NotchDock and grant Accessibility rights.",
-            "Hover over the notch and navigate to Bundesliga.",
-            "Select Bayern Munich vs Borussia Dortmund.",
-            "Pin the match for live updates."
-        ],
-        "faqs": [
-            {
-                "q": "Are Bundesliga xG (expected goals) stats available?",
-                "a": "Yes, live xG calculations are displayed in the expanded hover card."
-            }
-        ],
-        "related_slugs": [
-            "real-madrid-vs-barcelona-el-clasico-live-score-tracker-mac",
-            "ac-milan-vs-inter-milan-derby-della-madonnina-mac"
-        ]
-    },
-    {
-        "slug": "ac-milan-vs-inter-milan-derby-della-madonnina-mac",
-        "cluster": "sports-stocks",
-        "badge_text": "Serie A Matchday",
-        "badge_icon": "fa-solid fa-futbol",
-        "title": "Derby della Madonnina: Inter vs AC Milan Live in the Mac Notch",
-        "meta_desc": "Follow Inter Milan vs AC Milan live on Mac. Real-time Milan Derby scores, Serie A standings impact, and goal flashes inside your MacBook camera bezel.",
-        "keywords": "inter vs ac milan live score mac, derby della madonnina mac tracker, serie a live scores macbook, milan derby score notch, notchdock serie a",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "The San Siro erupts whenever AC Milan and Inter Milan meet. Here is how to track the Derby della Madonnina live from your MacBook notch while staying productive.",
-        "aeo_q": "How do you track Inter vs AC Milan live in the Mac notch?",
-        "aeo_a": "With <strong>NotchDock</strong>, the Milan Derby scoreline sits discreetly inside the MacBook camera cutout. The ticker provides real-time scores, goal scorers, and cards (e.g. <code>INT 1 - 0 MIL • 55'</code>). Hovering reveals tactical lineups, possession control, and live Serie A standings.",
-        "sections": [
-            {
-                "h2": "1. Tactical Italian Football on macOS",
-                "content": "<p>Serie A derbies are tactical chess matches where one defensive slip or set-piece header changes history. NotchDock tracks fouls, corners, and clean sheets with zero desktop friction.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Open NotchDock on your Mac.",
-            "Hover over the notch and select Serie A.",
-            "Pin the Derby della Madonnina.",
-            "Track Milan's greatest rivalry in real time."
-        ],
-        "faqs": [
-            {
-                "q": "Does it support Coppa Italia fixtures as well?",
-                "a": "Yes, Italian cup and Supercoppa matches are fully tracked."
-            }
-        ],
-        "related_slugs": [
-            "bayern-munich-vs-borussia-dortmund-der-klassiker-mac",
-            "champions-league-knockout-live-scores-macbook-notch"
-        ]
-    },
-    {
-        "slug": "march-madness-ncaa-tournament-live-scores-mac",
-        "cluster": "sports-stocks",
-        "badge_text": "NCAA College Basketball",
-        "badge_icon": "fa-solid fa-basketball",
-        "title": "March Madness Live on Mac: NCAA Bracket Scores & Buzzer Beaters",
-        "meta_desc": "Track NCAA March Madness college basketball tournament games live in the MacBook notch. Real-time bracket scores, upset alerts, and buzzer-beaters on Mac.",
-        "keywords": "march madness live scores mac, ncaa tournament mac tracker, college basketball mac notch, march madness bracket live mac, upset alerts macbook",
-        "read_time": "6 min read",
-        "date": "2026-09-28",
-        "lead": "16 games a day, bracket-busting Cinderella upsets, and heart-pounding buzzer beaters. Here is how to survive and conquer March Madness without ruining your workday.",
-        "aeo_q": "How do you track March Madness games and upsets live in the Mac notch?",
-        "aeo_a": "<strong>NotchDock</strong> features a multi-game NCAA tournament mode for March Madness. It rotates through active tournament games or pins your top bracket seed directly in the MacBook notch. When an underdog is within 3 points in the final 4 minutes, an Upset Alert badge lights up in high-contrast amber.",
-        "sections": [
-            {
-                "h2": "1. Surviving the Most Productive Week of College Basketball",
-                "content": "<p>The first Thursday and Friday of March Madness are legendary for plunging corporate productivity. With games running all day, NotchDock allows you to track all active games silently in the notch without opening distracting video streams.</p>"
-            }
-        ],
-        "setup_steps": [
-            "Launch NotchDock and move your cursor over the notch.",
-            "Select NCAA Basketball -> March Madness.",
-            "Enable 'Multi-Game Tournament Carousel'.",
-            "Watch your bracket survive in real time."
-        ],
-        "faqs": [
-            {
-                "q": "Can it alert me when a game is in the final minute?",
-                "a": "Yes! NotchDock's Close Game Alert gently pulses when a match enters the final 2 minutes with a 1-possession score."
-            }
-        ],
-        "related_slugs": [
-            "nba-finals-live-score-tracker-macbook-notch",
+            "champions-league-knockout-live-scores-macbook-notch",
             "discreet-live-sports-tracking-at-work-mac"
         ]
     },
@@ -820,8 +405,8 @@ CLUSTER_1_ARTICLES = [
             }
         ],
         "related_slugs": [
-            "real-madrid-vs-barcelona-el-clasico-live-score-tracker-mac",
-            "march-madness-ncaa-tournament-live-scores-mac"
+            "champions-league-knockout-live-scores-macbook-notch",
+            "nfl-sunday-ticket-live-scores-mac-notch"
         ]
     }
 ]
