@@ -205,6 +205,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://notchdock.app/blog/esports-live-score-tracker-macbook-notch-cs2-lol.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://notchdock.app/blog/fomc-fed-interest-rate-decision-live-mac-tracker.html</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -261,6 +267,12 @@
   <url>
     <loc>https://notchdock.app/blog/portfolio-pnl-glanceable-tracking-macos.html</loc>
     <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/day-trading-macbook-single-screen-workspace-setup.html</loc>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -327,6 +339,24 @@
   <url>
     <loc>https://notchdock.app/blog/cal-newport-deep-work-principles-mac-setup.html</loc>
     <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/macos-sequoia-iphone-mirroring-notification-clutter-fix.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/mac-next-meeting-countdown-timer-prevent-tardiness.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/ultradian-rhythm-vs-pomodoro-technique-deep-work-mac.html</loc>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -427,6 +457,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://notchdock.app/blog/why-apple-dynamic-island-is-not-on-macbook-macos.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://notchdock.app/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -487,6 +529,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://notchdock.app/blog/macbook-battery-life-long-flights-native-swift-vs-electron.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/surviving-16gb-ram-macbook-apple-silicon-developer.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/mac-notch-multi-monitor-studio-display-dual-screen-setup.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -531,6 +591,18 @@
   <url>
     <loc>https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html</loc>
     <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/minimalist-mac-developer-setup-terminal-tiling-notch.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html</loc>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

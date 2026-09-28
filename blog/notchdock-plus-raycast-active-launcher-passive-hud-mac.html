@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpg" href="/assets/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack | NotchDock</title>
+    <meta name="title" content="NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack | NotchDock" />
+    <meta name="description" content="How to combine Raycast's active keyboard command palette with NotchDock's passive ambient camera notch HUD for the ultimate 2026 macOS productivity workflow." />
+    <meta name="keywords" content="raycast companion apps, raycast notchdock mac stack, mac productivity apps 2026, keyboard launcher ambient hud, best raycast workflow" />
+    <meta name="author" content="NotchDock Engineering Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html" />
+    <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html" />
+    <meta property="og:title" content="NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack | NotchDock" />
+    <meta property="og:description" content="How to combine Raycast's active keyboard command palette with NotchDock's passive ambient camera notch HUD for the ultimate 2026 macOS productivity workflow." />
+    <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html" />
+    <meta property="twitter:title" content="NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack | NotchDock" />
+    <meta property="twitter:description" content="How to combine Raycast's active keyboard command palette with NotchDock's passive ambient camera notch HUD for the ultimate 2026 macOS productivity workflow." />
+    <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html#article",
+      "headline": "NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack",
+      "description": "How to combine Raycast's active keyboard command palette with NotchDock's passive ambient camera notch HUD for the ultimate 2026 macOS productivity workflow.",
+      "url": "https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html",
+      "datePublished": "2026-09-29T12:00:00Z",
+      "dateModified": "2026-09-29T12:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "NotchDock Engineering & Productivity Lab",
+        "url": "https://notchdock.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NotchDock",
+        "url": "https://notchdock.app/",
+        "logo": "https://notchdock.app/assets/logo.jpg"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".speakable-answer",
+          ".aeo-answer-box p"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://notchdock.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://notchdock.app/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack",
+          "item": "https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- FontAwesome & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="logo-link">
+          <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" id="nav-logo-img" />
+          <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/#features" class="nav-item">Features</a>
+          <a href="/why-notchdock.html" class="nav-item">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html" class="nav-item">Compare</a>
+          <a href="/blog/" class="nav-item active" style="color: var(--accent-green); font-weight: 600;">Blog</a>
+          <a href="/#showcase" class="nav-item">Showcase</a>
+          <a href="/#faq" class="nav-item">FAQ</a>
+          <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
+          <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+      
+      <!-- Article Header -->
+      <header class="article-header">
+        <div class="article-breadcrumb">
+          <a href="/">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <a href="/blog/">Blog</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <span class="current">NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack</span>
+        </div>
+
+        <div class="article-meta-row">
+          <span class="blog-category-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Power-User Stack</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-29</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
+        </div>
+
+        <h1 class="article-title">NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack</h1>
+        <p class="article-lead speakable-answer">
+          In modern macOS productivity, tools fall into two categories: Active Intent (keystroke-driven command bars) and Passive Awareness (ambient glanceable status). Pairing Raycast with NotchDock creates a seamless workflow where neither tool overlaps, but each amplifies the other.
+        </p>
+      </header>
+
+      <!-- Article Body Container -->
+      <div class="article-body-container">
+        <article class="article-content">
+
+          <!-- AEO Direct Answer Box -->
+          <div class="aeo-answer-box">
+            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: Do Raycast and NotchDock compete with each other on macOS?</h3>
+            <p>
+              No. Raycast is an active launcher optimized for keyboard triggers (<code>Cmd+Space</code>) to search, run scripts, and launch apps. <strong>NotchDock</strong> is a passive ambient HUD that lives inside the MacBook camera notch, providing always-on glanceable status (sports scores, stock tickers, Pomodoro countdowns, clipboard tray) without keystrokes. They form a synergistic, zero-overlap Mac productivity stack.
+            </p>
+          </div>
+
+          
+        <h2>1. The Duality of Modern Mac Productivity: Active vs Passive</h2>
+        <p>When you want to run a command, search a file, or calculate currency conversions, you want an <strong>Active Input Tool</strong> like Raycast. But when you need to know how much time remains on your Pomodoro sprint, whether your stock broke out, or what song is playing, you do not want to trigger a keystroke. You need <strong>Passive Ambient Awareness</strong>.</p>
+        
+    <div style="margin: 24px 0; overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;">
+        <thead>
+          <tr style="background: rgba(255, 255, 255, 0.05); text-align: left;">
+            <th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Productivity Modality</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Raycast (Active Command)</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">NotchDock (Passive HUD)</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Combined Stack Benefit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">Primary Trigger</td><td style="padding: 14px; color: var(--text-white);">Keyboard Shortcut (Cmd+Space)</td><td style="padding: 14px; color: var(--text-muted);">Glance / Cursor Bezel Hover</td><td style="padding: 14px; color: var(--text-muted);">Hands-on-keyboard or hands-off-glance</td></tr><tr style="border-bottom: 1px solid var(--border-color); background: rgba(74, 222, 128, 0.04);"><td style="padding: 14px; color: #4ade80; font-weight: 700;">Primary Utility</td><td style="padding: 14px; color: var(--text-white);">Application launcher, scripts, extensions</td><td style="padding: 14px; color: var(--text-muted);">Always-on status tickers, scratchpad</td><td style="padding: 14px; color: var(--text-muted);">Action execution + ambient monitoring</td></tr><tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">Screen Real Estate</td><td style="padding: 14px; color: var(--text-white);">Centered modal window (Dismiss on Esc)</td><td style="padding: 14px; color: var(--text-muted);">Zero pixels (Inside hardware notch)</td><td style="padding: 14px; color: var(--text-muted);">Clean screen without persistent window clutter</td></tr><tr style="border-bottom: 1px solid var(--border-color); background: rgba(74, 222, 128, 0.04);"><td style="padding: 14px; color: #4ade80; font-weight: 700;">Clipboard Role</td><td style="padding: 14px; color: var(--text-white);">Deep archive search & regex filtering</td><td style="padding: 14px; color: var(--text-muted);">Immediate hover click-to-paste tray</td><td style="padding: 14px; color: var(--text-muted);">Deep search + instantaneous quick access</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+        
+        <h2>2. Clipboard Manager Synergy: Scratchpad + Deep Search</h2>
+        <p>Raycast is phenomenal for querying thousands of clipboard clips from three weeks ago. NotchDock is ideal for immediate 2-minute scratchpad needs: copying an API token or color hex code and clicking it directly from the notch tray without summoning a large overlay window.</p>
+        
+        
+        <h2>3. The 2026 Distraction-Free Developer Workspace</h2>
+        <p>By configuring Raycast as your primary command execution engine and NotchDock as your ambient peripheral HUD, you eliminate the need for floating desktop widgets, menubar crowding tools, and persistent status windows.</p>
+        
+        
+
+          
+        <h2>Step-by-Step Setup Guide</h2>
+        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
+          <li><strong>Step 1:</strong> Install Raycast and set your hotkey to Cmd+Space.</li><li><strong>Step 2:</strong> Install NotchDock for hardware bezel monitoring.</li><li><strong>Step 3:</strong> Disable redundant floating status widgets on your desktop.</li><li><strong>Step 4:</strong> Use Raycast for active command execution and script launching.</li><li><strong>Step 5:</strong> Rely on NotchDock for silent glanceable awareness of time, markets, and media.</li>
+        </ol>
+        
+
+          
+        <h2>Frequently Asked Questions</h2>
+        <div style="margin-top: 20px;">
+          
+            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Do Raycast and NotchDock fight for hotkey bindings?</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">No. NotchDock relies on peripheral mouse hover and silent visual tickers, while Raycast relies on keyboard hotkeys. There are zero hotkey conflicts.</p>
+            
+            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Can I use Raycast's clipboard history and NotchDock's clipboard tray together?</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Yes! Both apps read the macOS system pasteboard (<code>NSPasteboard.general</code>) safely, allowing you to use whichever tool fits the moment.</p>
+            
+            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">How much combined RAM do Raycast and NotchDock consume?</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Both apps are engineered natively for macOS. Combined, they typically consume under 120 MB of RAM, compared to 900+ MB for an Electron-based utility.</p>
+            
+        </div>
+        
+
+          <!-- Download CTA Box -->
+          <div class="article-cta-box">
+            <h3>Transform Your MacBook Notch Today</h3>
+            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
+            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
+          </div>
+
+          
+            <div class="related-guides-section">
+              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
+              <div class="related-guides-grid">
+                
+                <a href="/blog/notchdock-vs-raycast-alfred-quick-notes-scratchpad.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-terminal"></i> Launcher & Scratchpads</span>
+                  <h4 class="related-guide-title">NotchDock vs Raycast & Alfred: When Hover Scratchpads Beat Hotkeys</h4>
+                  <p class="related-guide-excerpt">Evaluating NotchDock against Raycast and Alfred. Why hover-to-reveal notch scratchpads complement keyboard launchers for transient notes and quick snippets on Mac.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="/blog/notchdock-vs-maccy-paste-clipboard-manager-mac.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-clipboard"></i> Clipboard Utilities</span>
+                  <h4 class="related-guide-title">NotchDock vs Maccy & Paste: Why Hardware Notch Clipboard Access is Faster</h4>
+                  <p class="related-guide-excerpt">Compare NotchDock's camera notch clipboard history against Maccy and Paste. Discover why hover-to-reveal notch access eliminates hotkey collisions on macOS.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="/blog/best-mac-notch-apps-2026-buyers-guide.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-star"></i> Buyer's Guide 2026</span>
+                  <h4 class="related-guide-title">Best Mac Notch Apps in 2026: The Definitive Guide to Dynamic Island Utilities</h4>
+                  <p class="related-guide-excerpt">The definitive 2026 ranking of the best MacBook notch and Dynamic Island apps. Comprehensive review of NotchDock, NotchNook, Boring Notch, Seam, and Alcove.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+              </div>
+            </div>
+            
+
+        </article>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" />
+            <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+          </div>
+          <p class="footer-desc">The ultimate productivity dock built into the MacBook camera notch. Crafted for macOS.</p>
+          <div class="social-links">
+            <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://x.com/NotchDock" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="/#features">Features</a>
+          <a href="/why-notchdock.html">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html">Compare Apps</a>
+          <a href="/blog/">Blog</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Features</h4>
+          <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
+          <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
+          <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
+          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="/privacy.html">Privacy Policy</a>
+          <p class="copyright" style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 NotchDock. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

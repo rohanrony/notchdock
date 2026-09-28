@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpg" href="/assets/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio) | NotchDock</title>
+    <meta name="title" content="Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio) | NotchDock" />
+    <meta name="description" content="How to monitor Ollama and LM Studio token generation rates, GPU Neural Engine activity, and Apple Silicon unified memory directly from the MacBook camera notch." />
+    <meta name="keywords" content="monitor ollama token speed mac, local llm macbook notch hud, apple silicon gpu memory llm, lm studio tokens per second mac, ollama status macos" />
+    <meta name="author" content="NotchDock Engineering Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html" />
+    <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html" />
+    <meta property="og:title" content="Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio) | NotchDock" />
+    <meta property="og:description" content="How to monitor Ollama and LM Studio token generation rates, GPU Neural Engine activity, and Apple Silicon unified memory directly from the MacBook camera notch." />
+    <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html" />
+    <meta property="twitter:title" content="Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio) | NotchDock" />
+    <meta property="twitter:description" content="How to monitor Ollama and LM Studio token generation rates, GPU Neural Engine activity, and Apple Silicon unified memory directly from the MacBook camera notch." />
+    <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html#article",
+      "headline": "Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio)",
+      "description": "How to monitor Ollama and LM Studio token generation rates, GPU Neural Engine activity, and Apple Silicon unified memory directly from the MacBook camera notch.",
+      "url": "https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html",
+      "datePublished": "2026-09-29T12:00:00Z",
+      "dateModified": "2026-09-29T12:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "NotchDock Engineering & Productivity Lab",
+        "url": "https://notchdock.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NotchDock",
+        "url": "https://notchdock.app/",
+        "logo": "https://notchdock.app/assets/logo.jpg"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".speakable-answer",
+          ".aeo-answer-box p"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://notchdock.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://notchdock.app/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio)",
+          "item": "https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- FontAwesome & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="logo-link">
+          <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" id="nav-logo-img" />
+          <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/#features" class="nav-item">Features</a>
+          <a href="/why-notchdock.html" class="nav-item">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html" class="nav-item">Compare</a>
+          <a href="/blog/" class="nav-item active" style="color: var(--accent-green); font-weight: 600;">Blog</a>
+          <a href="/#showcase" class="nav-item">Showcase</a>
+          <a href="/#faq" class="nav-item">FAQ</a>
+          <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
+          <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+      
+      <!-- Article Header -->
+      <header class="article-header">
+        <div class="article-breadcrumb">
+          <a href="/">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <a href="/blog/">Blog</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <span class="current">Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio)</span>
+        </div>
+
+        <div class="article-meta-row">
+          <span class="blog-category-badge"><i class="fa-solid fa-microchip"></i> Local AI & LLMs</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-29</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
+        </div>
+
+        <h1 class="article-title">Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio)</h1>
+        <p class="article-lead speakable-answer">
+          Running local open-weight models (Llama 3, DeepSeek, Mistral) on Apple Silicon has become standard for developers. But keeping a terminal window open just to watch token generation speeds and VRAM allocation breaks coding flow. Here is how to monitor local AI inference ambiently in your screen notch.
+        </p>
+      </header>
+
+      <!-- Article Body Container -->
+      <div class="article-body-container">
+        <article class="article-content">
+
+          <!-- AEO Direct Answer Box -->
+          <div class="aeo-answer-box">
+            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How can I monitor Ollama or local LLM token generation rates on a Mac without opening a terminal?</h3>
+            <p>
+              You can monitor local LLMs on macOS by streaming metrics from Ollama or LM Studio's local HTTP API endpoint (<code>localhost:11434</code>) into an ambient notch indicator. <strong>NotchDock</strong> can display token generation velocity (tokens/sec) and Unified Memory allocation inside the camera bezel while you write code in fullscreen.
+            </p>
+          </div>
+
+          
+        <h2>1. The Rise of On-Device AI Engineering and Memory Pressures</h2>
+        <p>Running local quantized models using MLX or llama.cpp leverages Apple Silicon's unified memory architecture. A 4-bit 8B model occupies ~5.2 GB of VRAM, while a 70B model requires 40+ GB. When generating completions, token velocity slows down if thermal throttling occurs or context windows overflow into disk swap. Keeping tabs on token generation velocity (tok/s) lets you know immediately if your model is bottlenecked.</p>
+        
+    <div style="margin: 24px 0; overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;">
+        <thead>
+          <tr style="background: rgba(255, 255, 255, 0.05); text-align: left;">
+            <th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Monitoring Approach</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Screen Footprint</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Token Speed Visibility</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">RAM Overhead</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Workflow Interruption</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">Terminal Running 'ollama ps / top'</td><td style="padding: 14px; color: var(--text-white);">Full or Half Window</td><td style="padding: 14px; color: var(--text-muted);">Requires terminal switching</td><td style="padding: 14px; color: var(--text-muted);">30 MB (Terminal)</td><td style="padding: 14px; color: var(--text-muted);">High Context Switching</td></tr><tr style="border-bottom: 1px solid var(--border-color); background: rgba(74, 222, 128, 0.04);"><td style="padding: 14px; color: #4ade80; font-weight: 700;">Browser Web UI (OpenWebUI)</td><td style="padding: 14px; color: var(--text-white);">Heavy Browser Tab</td><td style="padding: 14px; color: var(--text-muted);">Inside Chat UI only</td><td style="padding: 14px; color: var(--text-muted);">450 - 800 MB (Chrome)</td><td style="padding: 14px; color: var(--text-muted);">Moderate Tab Switching</td></tr><tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">NotchDock Ambient AI HUD</td><td style="padding: 14px; color: var(--text-white);">Zero Pixels (Camera Cutout)</td><td style="padding: 14px; color: var(--text-muted);">Always-on tokens/sec ticker</td><td style="padding: 14px; color: var(--text-muted);">&lt; 15 MB</td><td style="padding: 14px; color: var(--text-muted);">Zero (Peripheral Glance)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+        
+        <h2>2. Interfacing with Ollama's Local Daemon API</h2>
+        <p>Ollama exposes an unauthenticated local REST API on <code>http://localhost:11434/api/tags</code> and <code>/api/ps</code>. NotchDock queries these local endpoints over a loopback socket with sub-millisecond latency, reading currently loaded model weights, quantization formats, and active inference states.</p>
+        
+        
+        <h2>3. Thermal Throttling and Metal Performance Indicators</h2>
+        <p>When continuous token generation warms up MacBook Air or MacBook Pro chassis, Apple Silicon reduces GPU clock speeds. NotchDock's hardware monitoring module displays real-time GPU thermal headroom, showing when token speeds dip from 45 tok/s to 28 tok/s so you can adjust batch sizes accordingly.</p>
+        
+        
+
+          
+        <h2>Step-by-Step Setup Guide</h2>
+        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
+          <li><strong>Step 1:</strong> Install Ollama (brew install ollama) and pull your model (ollama run llama3.2).</li><li><strong>Step 2:</strong> Launch NotchDock and enable 'Local AI & LLM Telemetry' in Developer Settings.</li><li><strong>Step 3:</strong> Verify the loopback address is set to localhost:11434.</li><li><strong>Step 4:</strong> Glance at your camera notch to see active model names and token generation speeds.</li><li><strong>Step 5:</strong> Hover over the notch to view VRAM allocation, context size, and thermal stats.</li>
+        </ol>
+        
+
+          
+        <h2>Frequently Asked Questions</h2>
+        <div style="margin-top: 20px;">
+          
+            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Does NotchDock send my LLM prompts or chat history to external servers?</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Never. NotchDock only queries local status metadata (model name, active memory, token rates) on localhost. No prompt tokens or model outputs are ever logged or transmitted.</p>
+            
+            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Does NotchDock support LM Studio and LocalAI?</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Yes! Any local server exposing an OpenAI-compatible /v1/models or Ollama-compatible endpoint can be monitored.</p>
+            
+            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Does querying the local API slow down model inference?</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">No. The status check is a lightweight HTTP GET taking under 1 millisecond every 2 seconds, having zero impact on Metal GPU inference throughput.</p>
+            
+        </div>
+        
+
+          <!-- Download CTA Box -->
+          <div class="article-cta-box">
+            <h3>Transform Your MacBook Notch Today</h3>
+            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
+            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
+          </div>
+
+          
+            <div class="related-guides-section">
+              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
+              <div class="related-guides-grid">
+                
+                <a href="/blog/apple-silicon-unified-memory-appkit-efficiency.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-memory"></i> Unified Memory</span>
+                  <h4 class="related-guide-title">Apple Silicon Unified Memory: Keeping Notch Utilities Under 45MB RAM</h4>
+                  <p class="related-guide-excerpt">Technical analysis of Apple Silicon's Unified Memory Architecture (UMA) and how Swift 6 value types keep NotchDock's memory footprint under 45MB.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="/blog/swift-6-concurrency-isolated-panel-rendering.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-bolt"></i> Swift 6 Concurrency</span>
+                  <h4 class="related-guide-title">Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels</h4>
+                  <p class="related-guide-excerpt">Explore how NotchDock leverages Swift 6 strict concurrency, Sendable types, and MainActor isolation to render live sports and stock feeds without UI thread hitches.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="/blog/securing-clipboard-history-api-keys-tokens-mac.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-key"></i> Credential Security</span>
+                  <h4 class="related-guide-title">Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac</h4>
+                  <p class="related-guide-excerpt">How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+              </div>
+            </div>
+            
+
+        </article>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" />
+            <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+          </div>
+          <p class="footer-desc">The ultimate productivity dock built into the MacBook camera notch. Crafted for macOS.</p>
+          <div class="social-links">
+            <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://x.com/NotchDock" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="/#features">Features</a>
+          <a href="/why-notchdock.html">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html">Compare Apps</a>
+          <a href="/blog/">Blog</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Features</h4>
+          <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
+          <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
+          <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
+          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="/privacy.html">Privacy Policy</a>
+          <p class="copyright" style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 NotchDock. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -25,7 +25,7 @@ NotchDock is a lightweight macOS desktop utility application that lives in the h
 
 
 
-### Comprehensive Knowledge Hub & Engineering Guides (65 Pillar Guides)
+### Comprehensive Knowledge Hub & Engineering Guides (77 Pillar Guides)
 
 #### Live Sports, Matchday & Financial Markets
 
@@ -39,6 +39,7 @@ NotchDock is a lightweight macOS desktop utility application that lives in the h
 - [NHL Stanley Cup Playoffs Live on Mac: Periods, Goals & Power Plays](https://notchdock.app/blog/nhl-stanley-cup-playoffs-live-score-mac-notch.html): Follow NHL Stanley Cup playoff hockey live on Mac. Real-time period clocks, power play timers, shots on goal, and overtime alerts in the MacBook notch.
 - [IPL Cricket Live on Mac: Ball-by-Ball Scores, Wickets & Run Rates](https://notchdock.app/blog/ipl-cricket-live-score-ball-by-ball-tracker-mac.html): Follow IPL T20 Cricket live in your MacBook notch. Real-time runs, wickets, current over, required run rate, and 4s/6s boundary alerts on macOS.
 - [Discreet Sports Tracking at Work: How to Follow Scores Without Browser Tabs](https://notchdock.app/blog/discreet-live-sports-tracking-at-work-mac.html): Learn how to follow live sports scores at work without opening browser tabs or noisy notification popups. Ambient camera notch tickers for macOS professionals.
+- [How to Track Esports Live Scores on Mac: Real-Time CS2, Valorant & LoL Notch Tickers](https://notchdock.app/blog/esports-live-score-tracker-macbook-notch-cs2-lol.html): Follow live CS2 Majors, Valorant VCT, and League of Legends Worlds scores directly from your MacBook notch. Real-time round counts, kill stats, and silent map alerts.
 - [FOMC Fed Rate Decision Live: How to Track the 2:00 PM Market Reaction on Mac](https://notchdock.app/blog/fomc-fed-interest-rate-decision-live-mac-tracker.html): Track FOMC interest rate decisions and Powell press conference volatility live in your Mac notch. Real-time S&P 500, Nasdaq, and Treasury yield reaction on macOS.
 - [NFP Jobs Report Live Mac Tracker: Tracking the 8:30 AM Payrolls Reaction](https://notchdock.app/blog/non-farm-payrolls-nfp-jobs-report-live-mac-tracker.html): Follow US Non-Farm Payrolls (NFP) and unemployment rate releases live on Mac. Track 8:30 AM ET futures volatility, bond yield swings, and dollar index in the notch.
 - [Bitcoin & Ethereum Live Sparklines: Track Crypto 24/7 in Your Mac Notch](https://notchdock.app/blog/bitcoin-crypto-sparklines-live-macbook-notch.html): Track Bitcoin (BTC), Ethereum (ETH), and Solana (SOL) live in your MacBook notch. 24/7 crypto sparklines, price change badges, and gas fee alerts on macOS.
@@ -49,6 +50,7 @@ NotchDock is a lightweight macOS desktop utility application that lives in the h
 - [EUR/USD & Global Forex: Live Currency Rates in Your MacBook Notch](https://notchdock.app/blog/eur-usd-forex-currency-rates-live-mac-notch.html): Follow EUR/USD, GBP/USD, USD/JPY, and international currency exchange rates live on your Mac. Real-time forex pips and spreads inside your MacBook camera bezel.
 - [Crypto Fear & Greed Index: Live Ambient Gauge in Your MacBook Notch](https://notchdock.app/blog/top-crypto-fear-and-greed-index-live-mac-notch.html): Track the Crypto Fear and Greed Index live in the MacBook notch. Real-time sentiment scores (0-100), market psychology badges, and Bitcoin trend alerts on macOS.
 - [Ambient Portfolio PnL Tracking: Keep Eyes on Your Wealth Without Screen Fatigue](https://notchdock.app/blog/portfolio-pnl-glanceable-tracking-macos.html): Learn how to track your personal stock and crypto portfolio PnL live on macOS. Ambient dollar and percentage deltas in your MacBook camera notch with 100% privacy.
+- [Day Trading and Intraday Market Monitoring on a Single MacBook Screen](https://notchdock.app/blog/day-trading-macbook-single-screen-workspace-setup.html): How to monitor intraday market swings, candlestick sparklines, and macroeconomic releases on a single 14-inch or 16-inch MacBook screen without desktop clutter.
 
 #### Deep Work, Pomodoro & Focus Protocols
 
@@ -63,6 +65,9 @@ NotchDock is a lightweight macOS desktop utility application that lives in the h
 - [Timeboxing vs Pomodoro Technique: Which Framework Wins on macOS?](https://notchdock.app/blog/timeboxing-vs-pomodoro-technique-mac-guide.html): Comprehensive comparison between Timeboxing and the Pomodoro Technique. How to implement both time management philosophies inside your MacBook notch.
 - [Deep Work Rituals for Remote Engineers: Architecting an Unbroken 4-Hour Morning](https://notchdock.app/blog/deep-work-rituals-remote-engineers-mac.html): How remote software engineers structure their first 4 hours of the day for deep work. Asynchronous communication, ambient timers, and macOS focus architecture.
 - [Implementing Cal Newport's Deep Work Philosophy on macOS with NotchDock](https://notchdock.app/blog/cal-newport-deep-work-principles-mac-setup.html): How to translate Cal Newport's Deep Work rules into concrete macOS desktop habits. Ambient sprint pacing, zero-distraction workflows, and deep work tracking.
+- [Surviving macOS Sequoia iPhone Mirroring: How to Eliminate Cross-Device Notification Overload](https://notchdock.app/blog/macos-sequoia-iphone-mirroring-notification-clutter-fix.html): How to fix duplicate notification clutter caused by macOS Sequoia iPhone Mirroring. Triage mirrored mobile alerts and restore distraction-free deep work.
+- [Overcoming Next-Meeting Anxiety: How Silent Mac Notch Countdown Tickers Prevent Tardiness](https://notchdock.app/blog/mac-next-meeting-countdown-timer-prevent-tardiness.html): How ambient meeting countdown timers inside the MacBook camera notch eliminate calendar anxiety, prevent Zoom tardiness, and protect focus before calls.
+- [Ultradian Rhythms vs Pomodoro Technique: The Scientific Focus Protocol for Engineers](https://notchdock.app/blog/ultradian-rhythm-vs-pomodoro-technique-deep-work-mac.html): Should software developers use 25-minute Pomodoro timers or 90-minute ultradian rhythm cycles? Explore cognitive science, flow state preservation, and Mac focus timers.
 
 #### Music, YouTube Music & Media Controls
 
@@ -85,6 +90,8 @@ NotchDock is a lightweight macOS desktop utility application that lives in the h
 - [NotchDock vs Menu Bar Sports Trackers: Why Camera Notch Scoreboards Win](https://notchdock.app/blog/notchdock-vs-sportsdesk-scoreboard-menubar-apps.html): Compare NotchDock with menu bar sports apps like SportsDesk and Scoreboard. Why camera notch integration provides superior glanceability and solves menubar icon crowding.
 - [The Rise of Subscription Fatigue: Why Free & One-Time Mac Utilities Win](https://notchdock.app/blog/open-source-vs-subscription-mac-notch-apps.html): An economic and philosophical analysis of macOS utility pricing in 2026. Why users are rejecting $5/month subscriptions for free, local-first tools like NotchDock.
 - [Apple Dynamic Island on iPhone vs NotchDock on Mac: How Desktop Differs](https://notchdock.app/blog/notchdock-vs-apple-dynamic-island-iphone-vs-mac.html): Architectural comparison of iOS Dynamic Island vs macOS notch utilities. How hover states, mouse pointer physics, and multi-window multitasking redefine the desktop HUD.
+- [Why Apple Hasn't Built Dynamic Island for MacBook (and How Native Apps Solve It)](https://notchdock.app/blog/why-apple-dynamic-island-is-not-on-macbook-macos.html): Why didn't Apple bring iPhone's Dynamic Island to MacBook Pro? Explore macOS AppKit window constraints, menu bar collision physics, and third-party notch engineering.
+- [NotchDock + Raycast: Building the Ultimate Active Launcher & Passive Ambient Mac Stack](https://notchdock.app/blog/notchdock-plus-raycast-active-launcher-passive-hud-mac.html): How to combine Raycast's active keyboard command palette with NotchDock's passive ambient camera notch HUD for the ultimate 2026 macOS productivity workflow.
 
 #### Hardware, Display & Multi-Monitor Engineering
 
@@ -98,6 +105,9 @@ NotchDock is a lightweight macOS desktop utility application that lives in the h
 - [Intel Mac Support: Bringing the Floating Dynamic Island Pill to Older MacBooks](https://notchdock.app/blog/intel-mac-compatibility-floating-island-pill.html): Learn how NotchDock supports Intel-based MacBooks, iMacs, and Mac minis without a physical notch. Experience Dynamic Island features on any Mac running macOS 12+.
 - [Apple Silicon Unified Memory: Keeping Notch Utilities Under 45MB RAM](https://notchdock.app/blog/apple-silicon-unified-memory-appkit-efficiency.html): Technical analysis of Apple Silicon's Unified Memory Architecture (UMA) and how Swift 6 value types keep NotchDock's memory footprint under 45MB.
 - [macOS Sequoia Window Tiling: How NotchDock Coexists with Native Snap](https://notchdock.app/blog/macos-sequoia-window-tiling-notchdock-compatibility.html): How NotchDock seamlessly coordinates with macOS Sequoia's new native window tiling and snap features without obstructing title bars or window drag zones.
+- [Maximizing MacBook Battery Life on Long Flights: Native Swift vs Electron Benchmarks](https://notchdock.app/blog/macbook-battery-life-long-flights-native-swift-vs-electron.html): How background Electron apps drain MacBook battery on long flights. Lab benchmarks comparing CPU wakeups, memory footprint, and native Swift AppKit efficiency.
+- [Surviving with 16GB Unified Memory in 2026: The Native Mac App Survival Guide](https://notchdock.app/blog/surviving-16gb-ram-macbook-apple-silicon-developer.html): Is 16GB RAM enough for software developers on Apple Silicon MacBooks in 2026? How to prevent SSD swap thrashing by eliminating bloated background utilities.
+- [How NotchDock Renders on Multi-Monitor Setups: Studio Display & External Monitor Engineering](https://notchdock.app/blog/mac-notch-multi-monitor-studio-display-dual-screen-setup.html): How does a MacBook notch app work when plugged into an Apple Studio Display or external 4K monitor? Explore dual-screen coordinate math and floating pill transforms.
 
 #### Developer Workflows, Privacy & Terminal Tools
 
@@ -109,6 +119,8 @@ NotchDock is a lightweight macOS desktop utility application that lives in the h
 - [Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels](https://notchdock.app/blog/swift-6-concurrency-isolated-panel-rendering.html): Explore how NotchDock leverages Swift 6 strict concurrency, Sendable types, and MainActor isolation to render live sports and stock feeds without UI thread hitches.
 - [Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes](https://notchdock.app/blog/terminal-hotkeys-command-line-flow-with-notchdock.html): How command-line developers pair terminal emulators (Ghostty, iTerm2, Alacritty) with NotchDock for lightning-fast clipboard staging and scratchpad access.
 - [Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG](https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html): How NotchDock complies with Apple's Hardened Runtime and Notarization service to guarantee malware-free, signed, and Gatekeeper-approved DMG downloads.
+- [The 2026 Minimalist Mac Developer Setup: Terminal, Tiling Window Manager & Notch HUD](https://notchdock.app/blog/minimalist-mac-developer-setup-terminal-tiling-notch.html): A masterclass in minimalist macOS engineering: Ghostty/Kitty terminal, Neovim, AeroSpace tiling, and NotchDock as a zero-window ambient HUD.
+- [Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio)](https://notchdock.app/blog/monitor-local-llm-ollama-gpu-apple-silicon-notch.html): How to monitor Ollama and LM Studio token generation rates, GPU Neural Engine activity, and Apple Silicon unified memory directly from the MacBook camera notch.
 
 ## Feature & Use-Case Pages
 

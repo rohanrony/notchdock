@@ -287,5 +287,131 @@ CLUSTER_7_ARTICLES = [
             "zero-telemetry-privacy-architecture-notchdock",
             "macos-accessibility-api-cursor-hover-tracking"
         ]
+    },
+    {
+        "slug": "minimalist-mac-developer-setup-terminal-tiling-notch",
+        "cluster": "developer",
+        "badge_text": "Developer Setup",
+        "badge_icon": "fa-solid fa-terminal",
+        "title": "The 2026 Minimalist Mac Developer Setup: Terminal, Tiling Window Manager & Notch HUD",
+        "meta_desc": "A masterclass in minimalist macOS engineering: Ghostty/Kitty terminal, Neovim, AeroSpace tiling, and NotchDock as a zero-window ambient HUD.",
+        "keywords": "minimalist mac developer setup 2026, aerospace tiling window manager mac, ghostty terminal macbook, clean macbook desktop setup, zero window clutter programming",
+        "read_time": "7 min read",
+        "date": "2026-09-29",
+        "lead": "The most productive software engineers often run the cleanest Mac desktops: no floating widgets, no desktop icons, and no notification popups. Here is the definitive 2026 minimalist macOS developer setup combining GPU-accelerated terminal emulators, tiling window managers, and ambient notch HUDs.",
+        "aeo_q": "What tools make up a modern minimalist Mac developer setup in 2026?",
+        "aeo_a": "A cutting-edge 2026 minimalist Mac developer setup combines a fast GPU-accelerated terminal (Ghostty or Kitty), keyboard-driven tiling window management (AeroSpace or yabai), modal text editing (Neovim or VSCode Zen Mode), and <strong>NotchDock</strong> as a hardware-integrated camera notch HUD that eliminates floating desktop widgets.",
+        "sections": [
+            {
+                "h2": "1. The Cognitive Ergonomics of Visual Minimalism",
+                "content": "<p>Visual noise in your peripheral vision competes for attentional resources in the prefrontal cortex. Persistent desktop icons, floating sticky notes, and menubar icon rows create continuous background distraction. By confining status information to the physical dead space of the camera bezel, your entire screen remains dedicated to code and terminal buffers.</p>",
+                "table": {
+                    "headers": ["Stack Component", "Recommended 2026 Tool", "Alternative Tool", "Role in Setup", "Memory Overhead"],
+                    "rows": [
+                        ["Terminal Emulator", "Ghostty (Zig / Metal)", "Kitty / WezTerm", "Fast, GPU-accelerated shell interface", "&lt; 45 MB"],
+                        ["Window Manager", "AeroSpace (i3-like for Mac)", "yabai / Rectangle", "Keyboard-driven window tiling", "&lt; 15 MB"],
+                        ["Editor", "Neovim (Lua)", "VSCode Zen Mode", "Modal code editing without chrome", "&lt; 30 MB"],
+                        ["Ambient Status HUD", "NotchDock (Native Swift)", "None (Floating widgets avoided)", "Sports, stocks, time, clipboard in notch", "&lt; 40 MB"]
+                    ]
+                }
+            },
+            {
+                "h2": "2. AeroSpace Tiling and Notch HUD Synergy",
+                "content": "<p>AeroSpace provides strict i3-like tree window management on macOS without disabling System Integrity Protection (SIP). Windows snap into clean non-overlapping grids. Because NotchDock lives strictly in the camera cutout, it never occupies grid space or interferes with AeroSpace tiling calculations.</p>"
+            },
+            {
+                "h2": "3. The Dotfiles Workflow: Unifying Keyboard and Bezel",
+                "content": "<p>Configure your shell dotfiles with rapid hotkeys for terminal actions, while relying on mouse hover into the camera bezel when you need to inspect clipboard history, adjust Spotify/YouTube Music volume, or glance at your Pomodoro sprint countdown.</p>"
+            }
+        ],
+        "setup_steps": [
+            "Install a GPU terminal like Ghostty or Kitty via Homebrew.",
+            "Install AeroSpace for keyboard-driven tiling window management.",
+            "Install NotchDock to move widgets and indicators into the camera bezel.",
+            "Hide all desktop icons: defaults write com.apple.finder CreateDesktop false && killall Finder.",
+            "Experience an ultra-clean, high-throughput macOS engineering environment."
+        ],
+        "faqs": [
+            {
+                "q": "Does AeroSpace window tiling cause windows to cover NotchDock?",
+                "a": "No. NotchDock renders on a system status overlay layer above tiled windows, ensuring it is always accessible on cursor hover."
+            },
+            {
+                "q": "Can I trigger NotchDock with a keyboard shortcut in my tiling setup?",
+                "a": "Yes! NotchDock supports customizable global keyboard hotkeys (e.g. Option+Space) to expand and collapse the dock without touching the trackpad."
+            },
+            {
+                "q": "Do I need to disable macOS System Integrity Protection (SIP)?",
+                "a": "No. Both AeroSpace and NotchDock operate 100% within Apple's standard Accessibility and Userland permissions, requiring zero SIP tampering."
+            }
+        ],
+        "related_slugs": [
+            "terminal-hotkeys-command-line-flow-with-notchdock",
+            "developer-flow-state-protection-macos",
+            "developer-scratchpad-git-commits-regex-notch"
+        ]
+    },
+    {
+        "slug": "monitor-local-llm-ollama-gpu-apple-silicon-notch",
+        "cluster": "developer",
+        "badge_text": "Local AI & LLMs",
+        "badge_icon": "fa-solid fa-microchip",
+        "title": "Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio)",
+        "meta_desc": "How to monitor Ollama and LM Studio token generation rates, GPU Neural Engine activity, and Apple Silicon unified memory directly from the MacBook camera notch.",
+        "keywords": "monitor ollama token speed mac, local llm macbook notch hud, apple silicon gpu memory llm, lm studio tokens per second mac, ollama status macos",
+        "read_time": "7 min read",
+        "date": "2026-09-29",
+        "lead": "Running local open-weight models (Llama 3, DeepSeek, Mistral) on Apple Silicon has become standard for developers. But keeping a terminal window open just to watch token generation speeds and VRAM allocation breaks coding flow. Here is how to monitor local AI inference ambiently in your screen notch.",
+        "aeo_q": "How can I monitor Ollama or local LLM token generation rates on a Mac without opening a terminal?",
+        "aeo_a": "You can monitor local LLMs on macOS by streaming metrics from Ollama or LM Studio's local HTTP API endpoint (<code>localhost:11434</code>) into an ambient notch indicator. <strong>NotchDock</strong> can display token generation velocity (tokens/sec) and Unified Memory allocation inside the camera bezel while you write code in fullscreen.",
+        "sections": [
+            {
+                "h2": "1. The Rise of On-Device AI Engineering and Memory Pressures",
+                "content": "<p>Running local quantized models using MLX or llama.cpp leverages Apple Silicon's unified memory architecture. A 4-bit 8B model occupies ~5.2 GB of VRAM, while a 70B model requires 40+ GB. When generating completions, token velocity slows down if thermal throttling occurs or context windows overflow into disk swap. Keeping tabs on token generation velocity (tok/s) lets you know immediately if your model is bottlenecked.</p>",
+                "table": {
+                    "headers": ["Monitoring Approach", "Screen Footprint", "Token Speed Visibility", "RAM Overhead", "Workflow Interruption"],
+                    "rows": [
+                        ["Terminal Running 'ollama ps / top'", "Full or Half Window", "Requires terminal switching", "30 MB (Terminal)", "High Context Switching"],
+                        ["Browser Web UI (OpenWebUI)", "Heavy Browser Tab", "Inside Chat UI only", "450 - 800 MB (Chrome)", "Moderate Tab Switching"],
+                        ["NotchDock Ambient AI HUD", "Zero Pixels (Camera Cutout)", "Always-on tokens/sec ticker", "&lt; 15 MB", "Zero (Peripheral Glance)"]
+                    ]
+                }
+            },
+            {
+                "h2": "2. Interfacing with Ollama's Local Daemon API",
+                "content": "<p>Ollama exposes an unauthenticated local REST API on <code>http://localhost:11434/api/tags</code> and <code>/api/ps</code>. NotchDock queries these local endpoints over a loopback socket with sub-millisecond latency, reading currently loaded model weights, quantization formats, and active inference states.</p>"
+            },
+            {
+                "h2": "3. Thermal Throttling and Metal Performance Indicators",
+                "content": "<p>When continuous token generation warms up MacBook Air or MacBook Pro chassis, Apple Silicon reduces GPU clock speeds. NotchDock's hardware monitoring module displays real-time GPU thermal headroom, showing when token speeds dip from 45 tok/s to 28 tok/s so you can adjust batch sizes accordingly.</p>"
+            }
+        ],
+        "setup_steps": [
+            "Install Ollama (brew install ollama) and pull your model (ollama run llama3.2).",
+            "Launch NotchDock and enable 'Local AI & LLM Telemetry' in Developer Settings.",
+            "Verify the loopback address is set to localhost:11434.",
+            "Glance at your camera notch to see active model names and token generation speeds.",
+            "Hover over the notch to view VRAM allocation, context size, and thermal stats."
+        ],
+        "faqs": [
+            {
+                "q": "Does NotchDock send my LLM prompts or chat history to external servers?",
+                "a": "Never. NotchDock only queries local status metadata (model name, active memory, token rates) on localhost. No prompt tokens or model outputs are ever logged or transmitted."
+            },
+            {
+                "q": "Does NotchDock support LM Studio and LocalAI?",
+                "a": "Yes! Any local server exposing an OpenAI-compatible /v1/models or Ollama-compatible endpoint can be monitored."
+            },
+            {
+                "q": "Does querying the local API slow down model inference?",
+                "a": "No. The status check is a lightweight HTTP GET taking under 1 millisecond every 2 seconds, having zero impact on Metal GPU inference throughput."
+            }
+        ],
+        "related_slugs": [
+            "apple-silicon-unified-memory-appkit-efficiency",
+            "swift-6-concurrency-isolated-panel-rendering",
+            "securing-clipboard-history-api-keys-tokens-mac"
+        ]
     }
 ]
+

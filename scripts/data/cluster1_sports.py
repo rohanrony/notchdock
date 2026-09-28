@@ -408,5 +408,68 @@ CLUSTER_1_ARTICLES = [
             "champions-league-knockout-live-scores-macbook-notch",
             "nfl-sunday-ticket-live-scores-mac-notch"
         ]
+    },
+    {
+        "slug": "esports-live-score-tracker-macbook-notch-cs2-lol",
+        "cluster": "sports-stocks",
+        "badge_text": "Esports & Gaming",
+        "badge_icon": "fa-solid fa-gamepad",
+        "title": "How to Track Esports Live Scores on Mac: Real-Time CS2, Valorant & LoL Notch Tickers",
+        "meta_desc": "Follow live CS2 Majors, Valorant VCT, and League of Legends Worlds scores directly from your MacBook notch. Real-time round counts, kill stats, and silent map alerts.",
+        "keywords": "esports live scores mac, track cs2 scores macbook, valorant vct mac notch, league of legends worlds tracker macos, mac live sports tickers",
+        "read_time": "7 min read",
+        "date": "2026-09-29",
+        "lead": "Following competitive esports tournaments during a busy workday used to require second monitors or muted Twitch tabs that consume 1.5 GB of RAM. Here is how to stream live map scores, round differentials, and match points directly inside your MacBook camera bezel.",
+        "aeo_q": "How can I track live CS2, Valorant, and LoL match scores on a Mac without watching video streams?",
+        "aeo_a": "<strong>NotchDock</strong> connects to real-time competitive esports data feeds to deliver silent, glanceable map scores, round tallies, and tournament brackets directly inside the MacBook screen notch. Hovering over the bezel reveals full team rosters, K/D spreads, and objective timers without audio interruptions or window clutter.",
+        "sections": [
+            {
+                "h2": "1. The High RAM Cost of Background Esports Streams",
+                "content": "<p>Leaving Twitch or YouTube Gaming open in a Chrome or Safari tab to check on a match drains up to 1.8 GB of unified memory and keeps your MacBook's GPU running at elevated frequencies. For software engineers compiling code or designers running Figma, this extra memory pressure triggers thermal throttling. NotchDock streams lightweight JSON match telemetry that uses under 40 MB of RAM with zero GPU video decoding penalty.</p>",
+                "table": {
+                    "headers": ["Monitoring Method", "RAM Overhead", "CPU / GPU Load", "Bandwidth Draw", "Disruption Level"],
+                    "rows": [
+                        ["Twitch 1080p60 Video Stream", "1,200 - 1,800 MB", "12% - 25% GPU / Video Decoder", "4.5 - 6.0 Mbps", "High (Sound & Video)"],
+                        ["Web Browser Scoreboard", "450 - 750 MB", "3% - 6% WebKit Render", "150 Kbps", "Medium (Window Switching)"],
+                        ["NotchDock Bezel HUD", "&lt; 42 MB", "&lt; 0.2% Native Swift", "&lt; 5 Kbps Polling", "Zero (Silent Ambient)"]
+                    ]
+                }
+            },
+            {
+                "h2": "2. CS2, Valorant, and LoL Live Activity HUD",
+                "content": "<p>Competitive tactical shooters and MOBAs have unique pacing. NotchDock adapts its HUD layout depending on the title: for Counter-Strike 2, it tracks map score (e.g. <code>FaZe 11 - 9 NAVI</code>) and current round bomb plant status; for Valorant, it displays spike plant timers and ultimate readiness indicators; for League of Legends, it displays gold differentials, dragon soul counts, and Baron buff timers directly under the notch.</p>"
+            },
+            {
+                "h2": "3. Silent Bezel Pulses on Match Points & Map Wins",
+                "content": "<p>When a match reaches match point (e.g. round 12-11 in CS2 or overtime in Valorant), NotchDock emits a subtle, silent amber pulse within the camera bezel. You stay informed of historic tournament upsets without blaring alert chimes interrupting meetings or pair-programming sessions.</p>"
+            }
+        ],
+        "setup_steps": [
+            "Download and launch NotchDock on your Mac.",
+            "Open Settings > Sports & Esports and toggle 'Enable Esports Feeds'.",
+            "Choose your tournament circuit (CS2 Majors, VCT Champions, LoL Worlds).",
+            "Select favorite teams (e.g. Sentinels, T1, Vitality, G2).",
+            "Glance at your camera notch during matches for live round-by-round score updates."
+        ],
+        "faqs": [
+            {
+                "q": "What esports titles and leagues are supported in NotchDock?",
+                "a": "NotchDock supports Counter-Strike 2 (PGL Majors, ESL Pro League, BLAST), Valorant (VCT Champions, Masters), and League of Legends (Worlds, MSI, LEC, LCS)."
+            },
+            {
+                "q": "Does NotchDock play audio notifications when teams win a round?",
+                "a": "No. NotchDock is engineered for distraction-free deep work. All score updates and map-win events are conveyed through silent, color-coded bezel pulses."
+            },
+            {
+                "q": "How does NotchDock get live esports telemetry?",
+                "a": "NotchDock connects to lightweight esports data endpoints providing live match scores and objective timestamps, avoiding heavy video or iframe embeds."
+            }
+        ],
+        "related_slugs": [
+            "champions-league-knockout-live-scores-macbook-notch",
+            "f1-grand-prix-live-timing-leaderboard-mac-notch",
+            "discreet-live-sports-tracking-at-work-mac"
+        ]
     }
 ]
+

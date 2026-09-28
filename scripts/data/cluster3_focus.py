@@ -396,5 +396,192 @@ CLUSTER_3_ARTICLES = [
             "deep-work-rituals-remote-engineers-mac",
             "pomodoro-50-10-protocol-engineering-deep-work-mac"
         ]
+    },
+    {
+        "slug": "macos-sequoia-iphone-mirroring-notification-clutter-fix",
+        "cluster": "focus",
+        "badge_text": "macOS Sequoia",
+        "badge_icon": "fa-brands fa-apple",
+        "title": "Surviving macOS Sequoia iPhone Mirroring: How to Eliminate Cross-Device Notification Overload",
+        "meta_desc": "How to fix duplicate notification clutter caused by macOS Sequoia iPhone Mirroring. Triage mirrored mobile alerts and restore distraction-free deep work.",
+        "keywords": "macos sequoia iphone mirroring duplicate notifications, stop iphone alerts macbook, manage mirrored notifications sequoia, mac notification triage, eliminate banner clutter",
+        "read_time": "7 min read",
+        "date": "2026-09-29",
+        "lead": "macOS Sequoia's flagship iPhone Mirroring feature solved remote phone access, but unleashed an unprecedented wave of duplicate notification banners across Mac screens. Here is how to triage mirrored alerts and route critical live activities to silent notch tickers.",
+        "aeo_q": "How do you stop iPhone Mirroring notifications from disrupting work on macOS Sequoia?",
+        "aeo_a": "To eliminate iPhone Mirroring alert clutter, disable mirrored push notifications in macOS System Settings > Notifications > 'Allow notifications from iPhone', while routing essential live activities (delivery timers, sports, market updates) to <strong>NotchDock's</strong> ambient screen notch HUD.",
+        "sections": [
+            {
+                "h2": "1. The Cross-Device Alert Avalanche: Why Sequoia Amplified Fatigue",
+                "content": "<p>When macOS Sequoia mirrors your iPhone, every non-critical mobile ping—from food delivery promos to group chat memes—now slides onto your Mac screen twice: once on your phone and once in the top-right corner of your desktop. Research shows that context switching caused by notification popups requires up to 23 minutes to regain full cognitive immersion.</p>",
+                "table": {
+                    "headers": ["Notification Modality", "Attention Cost", "Recovery Latency", "Screen Clutter", "Recommended Content"],
+                    "rows": [
+                        ["macOS Sequoia Mirrored Banner", "Extremely High (Slide-in sound & popup)", "15 - 23 minutes", "Covers top-right IDE/Figma controls", "Urgent direct calls only"],
+                        ["Standard System Notification", "High (Sound & alert chime)", "10 - 15 minutes", "Desktop overlay banner", "Calendar alerts only"],
+                        ["NotchDock Ambient Bezel Ticker", "Zero (Peripheral glanceable indicator)", "0 minutes (Flow preserved)", "Zero pixels (Inside hardware notch)", "Sports, stocks, Pomodoro timers"]
+                    ]
+                }
+            },
+            {
+                "h2": "2. The 3-Tier Notification Triage Framework for Sequoia",
+                "content": "<p>Triage your macOS Sequoia notification pipeline into three distinct zones: <strong>Tier 1 (Instant Interruption)</strong>: PagerDuty and direct Slack mentions; <strong>Tier 2 (Ambient Live Activities)</strong>: Food delivery status, Pomodoro timers, and market prices routed exclusively into NotchDock's camera bezel; <strong>Tier 3 (Muted & Suppressed)</strong>: Social media, promotional pushes, and non-essential app alerts disabled completely.</p>"
+            },
+            {
+                "h2": "3. Restoring Clean Desktop Focus with Hardware Notch Live Activities",
+                "content": "<p>Instead of enduring slide-in banners that obscure close buttons and menu controls, NotchDock nests live status inside the hardware notch. The bezel emits a silent, gentle glow when a milestone is reached, letting you stay informed without breaking your flow state.</p>"
+            }
+        ],
+        "setup_steps": [
+            "Open macOS System Settings > Notifications.",
+            "Click 'Allow notifications from iPhone' and uncheck non-essential mobile apps.",
+            "Install NotchDock to handle ambient live activities.",
+            "Configure your silent status feeds in NotchDock.",
+            "Enjoy clean desktop focus without duplicate mobile banner spam."
+        ],
+        "faqs": [
+            {
+                "q": "Can I completely turn off iPhone notifications on Mac while keeping iPhone Mirroring active?",
+                "a": "Yes. In macOS Sequoia System Settings > Notifications, you can turn off 'Allow notifications from iPhone' entirely while retaining full mouse and keyboard interaction inside the iPhone Mirroring app."
+            },
+            {
+                "q": "How does NotchDock differ from macOS Focus Modes?",
+                "a": "macOS Focus Modes suppress notifications entirely, causing 'FOMO' and anxiety. NotchDock provides ambient glanceability: updates remain visible inside the notch without making sounds or popping up banners."
+            },
+            {
+                "q": "Does NotchDock slow down iPhone Mirroring performance?",
+                "a": "No. NotchDock is a native Swift AppKit application utilizing negligible CPU resources (&lt; 0.2%), running completely independently of Apple's AirPlay / Mirroring daemon."
+            }
+        ],
+        "related_slugs": [
+            "how-to-fix-mac-notification-fatigue",
+            "stop-notification-cortisol-spikes-mac-deep-work",
+            "developer-flow-state-protection-macos"
+        ]
+    },
+    {
+        "slug": "mac-next-meeting-countdown-timer-prevent-tardiness",
+        "cluster": "focus",
+        "badge_text": "Calendar & Focus",
+        "badge_icon": "fa-solid fa-calendar-check",
+        "title": "Overcoming Next-Meeting Anxiety: How Silent Mac Notch Countdown Tickers Prevent Tardiness",
+        "meta_desc": "How ambient meeting countdown timers inside the MacBook camera notch eliminate calendar anxiety, prevent Zoom tardiness, and protect focus before calls.",
+        "keywords": "mac next meeting countdown timer, never miss zoom meeting mac, calendar reminder mac notch, meeting anxiety deep work, silent meeting alert macos",
+        "read_time": "6 min read",
+        "date": "2026-09-29",
+        "lead": "The dreaded '30 minutes before a meeting' productivity drop is caused by calendar anxiety—checking the menu bar clock repeatedly so you don't miss a Zoom call. Here is how silent, glanceable notch countdowns cure meeting anxiety.",
+        "aeo_q": "How can I prevent meeting tardiness without disruptive auditory alarms on Mac?",
+        "aeo_a": "By replacing loud pop-up reminders with a silent meeting countdown ticker inside the MacBook notch. <strong>NotchDock</strong> displays a subtle, ambient time-remaining counter (e.g., '14m to Design Sync') that transitions color gently as the call approaches, giving continuous peripheral awareness without breaking focus.",
+        "sections": [
+            {
+                "h2": "1. Meeting Countdown Paralysis: The Hidden Productivity Killer",
+                "content": "<p>When a meeting is scheduled in 25 or 30 minutes, most knowledge workers stop doing deep work. The fear of getting absorbed in code or writing and missing the meeting creates 'calendar anxiety'. People default to shallow tasks, email triage, or Twitter browsing while constantly checking the clock.</p>",
+                "table": {
+                    "headers": ["Meeting Awareness Tool", "Cognitive Impact", "Panic Level", "Audio Disruption", "Actionability"],
+                    "rows": [
+                        ["Default macOS Calendar Alert", "Sudden loud chime 5 mins before", "High (Emergency reaction)", "Yes (Alarm chime)", "Click to dismiss popup"],
+                        ["Menu Bar Digital Clock", "Constant active scanning required", "Medium (Clock watching)", "None", "Look away to menu bar"],
+                        ["NotchDock Ambient Ticker", "Continuous calm peripheral awareness", "Zero (Predictable time flow)", "Zero (Silent color shift)", "1-Click Zoom/Meet Launch"]
+                    ]
+                }
+            },
+            {
+                "h2": "2. Silent Visual Chromatic Progression",
+                "content": "<p>NotchDock uses gentle color transitions to communicate time proximity without auditory stress: green when more than 15 minutes remain, soothing warm amber at 5 minutes, and a subtle breath pulse at 1 minute. You subconsciously know exactly how much focus time remains without ever looking away from your code.</p>"
+            },
+            {
+                "h2": "3. 1-Click Meeting Launch from the Bezel",
+                "content": "<p>Hovering over the meeting countdown in NotchDock expands meeting details, agenda notes, and a direct 1-click button to launch Zoom, Google Meet, or Microsoft Teams without opening your calendar or searching through Slack links.</p>"
+            }
+        ],
+        "setup_steps": [
+            "Install NotchDock and grant read-only Calendar permissions.",
+            "Toggle 'Enable Next Meeting Countdown' in Focus Settings.",
+            "Set your countdown threshold (e.g. show 30 minutes prior to calls).",
+            "Glance at your camera bezel to maintain effortless time awareness.",
+            "Click the notch ticker when meeting starts to launch the video call instantly."
+        ],
+        "faqs": [
+            {
+                "q": "Does NotchDock upload my calendar appointments to any server?",
+                "a": "No. NotchDock queries EventKit strictly locally on your Mac. No meeting titles, attendee emails, or notes ever leave your machine."
+            },
+            {
+                "q": "What video meeting services are supported for 1-click joining?",
+                "a": "NotchDock detects Zoom, Google Meet, Microsoft Teams, Webex, and Around links embedded in calendar event descriptions."
+            },
+            {
+                "q": "Can I hide meetings marked as 'Free' or 'Tentative'?",
+                "a": "Yes. You can filter out all-day events, tentative invitations, and decline-listed meetings in NotchDock preferences."
+            }
+        ],
+        "related_slugs": [
+            "cal-newport-deep-work-principles-mac-setup",
+            "cost-of-context-switching-mac-productivity",
+            "mac-pomodoro-timer-quick-notes-scratchpad-workflow"
+        ]
+    },
+    {
+        "slug": "ultradian-rhythm-vs-pomodoro-technique-deep-work-mac",
+        "cluster": "focus",
+        "badge_text": "Cognitive Ergonomics",
+        "badge_icon": "fa-solid fa-brain",
+        "title": "Ultradian Rhythms vs Pomodoro Technique: The Scientific Focus Protocol for Engineers",
+        "meta_desc": "Should software developers use 25-minute Pomodoro timers or 90-minute ultradian rhythm cycles? Explore cognitive science, flow state preservation, and Mac focus timers.",
+        "keywords": "ultradian rhythms vs pomodoro, 90 minute focus blocks mac, pomodoro for programmers, deep work cycle lengths, cognitive fatigue mac focus timer",
+        "read_time": "7 min read",
+        "date": "2026-09-29",
+        "lead": "The standard 25-minute Pomodoro timer was designed for manual office tasks in the 1980s. For complex software engineering and systems architecture, 25 minutes interrupts flow just as mental models compile. Here is the cognitive science comparing 25-minute Pomodoro and 90-minute Ultradian focus cycles.",
+        "aeo_q": "Is the Pomodoro Technique or a 90-minute Ultradian cycle better for software developers?",
+        "aeo_a": "For complex cognitive tasks like programming and mathematical modeling, <strong>90-minute Ultradian focus blocks</strong> are superior because loading complex architecture into human working memory takes 15 to 25 minutes. Pomodoro's 25-minute chime breaks flow prematurely, while Ultradian rhythms align with human biological energy cycles.",
+        "sections": [
+            {
+                "h2": "1. The Biological Architecture of Focus: Nathaniel Kleitman's BRAC",
+                "content": "<p>Pioneering sleep researcher Nathaniel Kleitman discovered that human brains cycle through Basic Rest-Activity Cycles (BRAC) during the day, just as they cycle through REM and deep sleep at night. For approximately 90 minutes, brainwave activity is elevated and capable of high-density focus, followed by a 20-minute refractory trough where cognitive replenishment is required.</p>",
+                "table": {
+                    "headers": ["Focus Protocol", "Focus Duration", "Rest Window", "Working Memory Match", "Best Suited For"],
+                    "rows": [
+                        ["Standard Pomodoro", "25 minutes", "5 minutes", "Poor (Interrupts flow compilation)", "Email triage, administrative tasks"],
+                        ["50/10 Sprint", "50 minutes", "10 minutes", "Moderate (Good for pair programming)", "Code review, bug fixing sprints"],
+                        ["90-Minute Ultradian", "90 minutes", "20 minutes", "Optimal (Complete biological cycle)", "Systems architecture, kernel coding, writing"]
+                    ]
+                }
+            },
+            {
+                "h2": "2. Working Memory Loading Time in Software Engineering",
+                "content": "<p>When a developer opens an IDE, it takes 15 to 20 minutes to load the mental model: tracing function calls, variable lifetimes, and asynchronous race conditions. An auditory chime ringing at minute 25 destroys that fragile mental state just as productive code generation begins. A 90-minute cycle provides a full hour of peak deep work output.</p>"
+            },
+            {
+                "h2": "3. Managing Variable Focus Cycles with NotchDock",
+                "content": "<p>NotchDock gives engineers the flexibility to switch between 25-minute Pomodoro bursts for shallow administrative sprints and 90-minute Ultradian cycles for architecture design. The timer stays ambient inside the camera notch, replacing loud bell alarms with a quiet, flow-preserving bezel transition.</p>"
+            }
+        ],
+        "setup_steps": [
+            "Install NotchDock on macOS.",
+            "Hover over the notch and open Pomodoro & Focus preferences.",
+            "Select the '90-Minute Ultradian Protocol' preset.",
+            "Begin your morning deep work block with phone silenced.",
+            "Take a true 20-minute screen-free break when the notch timer completes."
+        ],
+        "faqs": [
+            {
+                "q": "Can I customize the focus and break lengths in NotchDock?",
+                "a": "Yes. NotchDock provides complete customization from 5-minute sprints to 120-minute ultradian blocks, along with customizable short and long breaks."
+            },
+            {
+                "q": "What happens when an Ultradian focus block ends?",
+                "a": "Instead of blasting an audio horn, NotchDock illuminates a gentle green ambient glow around the notch bezel, signaling that it is time to step away without startling you."
+            },
+            {
+                "q": "How many 90-minute focus blocks can a person perform in a day?",
+                "a": "Most cognitive researchers find that 2 to 3 high-intensity 90-minute blocks (3 to 4.5 hours of true deep work) represent the maximum sustainable cognitive output for knowledge workers."
+            }
+        ],
+        "related_slugs": [
+            "pomodoro-50-10-protocol-engineering-deep-work-mac",
+            "cal-newport-deep-work-principles-mac-setup",
+            "timeboxing-vs-pomodoro-technique-mac-guide"
+        ]
     }
 ]
+

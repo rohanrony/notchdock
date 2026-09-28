@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 NotchDock SEO & GEO Pillar Blog Generator
-Compiles 65 high-authority, high-intent pillar blog posts across 7 core clusters,
+Compiles 77 high-authority, high-intent pillar blog posts across 7 core clusters,
 cleans up low-quality/redundant/cannibalizing posts, and updates blog/index.html,
 sitemap.xml, and public/llms.txt.
 """
@@ -43,58 +43,76 @@ ORIGINAL_ARTICLES = [
         "title": "How to Master Deep Work with a MacBook Notch Pomodoro Timer: Distraction-Free Focus on macOS",
         "url": "https://notchdock.app/blog/macbook-notch-pomodoro-timer-deep-work.html",
         "date": "2026-09-28",
-        "desc": "How an ambient Pomodoro focus timer inside the MacBook camera notch eliminates window clutter, prevents alarm fatigue, and protects flow state during deep work."
+        "meta_desc": "How an ambient Pomodoro focus timer inside the MacBook camera notch eliminates window clutter, prevents alarm fatigue, and protects flow state during deep work.",
+        "badge_text": "Deep Work & Focus",
+        "badge_icon": "fa-solid fa-brain"
     },
     {
         "slug": "youtube-music-controls-macbook-notch-kaset",
         "title": "How to Control YouTube Music Directly from Your MacBook Notch: Real-Time Playback, Artwork & Likes with NotchDock and Kaset",
         "url": "https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html",
         "date": "2026-09-27",
-        "desc": "How to control YouTube Music from your MacBook notch with live seek scrubber, dynamic album art color glow, and 1-click Like button using NotchDock and Kaset."
+        "meta_desc": "How to control YouTube Music from your MacBook notch with live seek scrubber, dynamic album art color glow, and 1-click Like button using NotchDock and Kaset.",
+        "badge_text": "Native Audio & Kaset",
+        "badge_icon": "fa-brands fa-youtube"
     },
     {
         "slug": "manchester-city-vs-manchester-united-live-score-tracker-mac",
         "title": "How to Track Manchester City vs Manchester United Live on Your Mac Notch: Score Summary, Real-Time Stats & Silent Alerts",
         "url": "https://notchdock.app/blog/manchester-city-vs-manchester-united-live-score-tracker-mac.html",
         "date": "2026-09-12",
-        "desc": "How to follow the Manchester Derby (Man City vs Man United) live on macOS using NotchDock's ambient camera notch widget without screen distraction."
+        "meta_desc": "How to follow the Manchester Derby (Man City vs Man United) live on macOS using NotchDock's ambient camera notch widget without screen distraction.",
+        "badge_text": "Sports & Live Scores",
+        "badge_icon": "fa-solid fa-futbol"
     },
     {
         "slug": "track-cpi-oil-prices-sp500-market-indexes-live-mac",
         "title": "How to Track CPI Inflation, Crude Oil Prices, and S&P 500 Swings Live on Your Mac Notch",
         "url": "https://notchdock.app/blog/track-cpi-oil-prices-sp500-market-indexes-live-mac.html",
         "date": "2026-09-12",
-        "desc": "How energy commodities, CPI inflation reports, and S&P 500 equities move together, and how to track live market reactions in the MacBook notch."
+        "meta_desc": "How energy commodities, CPI inflation reports, and S&P 500 equities move together, and how to track live market reactions in the MacBook notch.",
+        "badge_text": "Macro Economics",
+        "badge_icon": "fa-solid fa-chart-line"
     },
     {
         "slug": "upcoming-cpi-inflation-data-market-impact-live-mac-tracker",
         "title": "Upcoming CPI Inflation Data: How It Impacts the Stock Market and How to Track the Live Reaction on Your Mac",
         "url": "https://notchdock.app/blog/upcoming-cpi-inflation-data-market-impact-live-mac-tracker.html",
         "date": "2026-09-12",
-        "desc": "Macroeconomic playbook for upcoming US CPI releases, the 8:30 AM ET algorithmic market reaction, and live pre-market futures tracking in the Mac notch."
+        "meta_desc": "Macroeconomic playbook for upcoming US CPI releases, the 8:30 AM ET algorithmic market reaction, and live pre-market futures tracking in the Mac notch.",
+        "badge_text": "Economic Playbook",
+        "badge_icon": "fa-solid fa-scale-balanced"
     },
     {
         "slug": "intelligent-mac-notifications-live-updates",
         "title": "The Death of Intrusive Banners: Why Intelligent Notch Notifications & Live Activities are the Future of macOS",
         "url": "https://notchdock.app/blog/intelligent-mac-notifications-live-updates.html",
         "date": "2026-08-20",
-        "desc": "Why traditional top-right notification banners disrupt deep work and how intelligent, ambient notch live updates solve alert fatigue on Mac."
+        "meta_desc": "Why traditional top-right notification banners disrupt deep work and how intelligent, ambient notch live updates solve alert fatigue on Mac.",
+        "badge_text": "Architecture & UX",
+        "badge_icon": "fa-solid fa-bell-slash"
     },
     {
         "slug": "macbook-notch-dynamic-island-live-sports-stocks",
         "title": "How to Turn Your MacBook Notch Into an Always-On Live Activity Center for Sports, Stocks & Tasks",
         "url": "https://notchdock.app/blog/macbook-notch-dynamic-island-live-sports-stocks.html",
         "date": "2026-08-18",
-        "desc": "A comprehensive guide to configuring real-time sports tickers, intraday stock watchlists, and task widgets directly inside your MacBook camera bezel."
+        "meta_desc": "A comprehensive guide to configuring real-time sports tickers, intraday stock watchlists, and task widgets directly inside your MacBook camera bezel.",
+        "badge_text": "Use Cases",
+        "badge_icon": "fa-solid fa-bolt"
     },
     {
         "slug": "how-to-fix-mac-notification-fatigue",
         "title": "How to Fix macOS Notification Fatigue: The Power of Silent, Glanceable Notch Tickers",
         "url": "https://notchdock.app/blog/how-to-fix-mac-notification-fatigue.html",
         "date": "2026-08-15",
-        "desc": "A 3-tier notification triage framework to eliminate alert overload while keeping critical live updates glanceable."
+        "meta_desc": "A 3-tier notification triage framework to eliminate alert overload while keeping critical live updates glanceable.",
+        "badge_text": "Deep Work & Focus",
+        "badge_icon": "fa-solid fa-brain"
     }
 ]
+
+ALL_AVAILABLE_ARTICLES = ORIGINAL_ARTICLES + ALL_NEW_ARTICLES
 
 def sanitize_html(text):
     if not text:
@@ -260,7 +278,7 @@ def render_article_html(article):
     if related_slugs:
         cards_html = ""
         for r_slug in related_slugs:
-            target = next((a for a in ALL_NEW_ARTICLES if a["slug"] == r_slug), None)
+            target = next((a for a in ALL_AVAILABLE_ARTICLES if a["slug"] == r_slug), None)
             if target:
                 r_title = target["title"]
                 r_badge = target["badge_text"]
@@ -465,7 +483,7 @@ def update_blog_index():
     cmd = ["git", "show", "f8e3ed4:blog/index.html"]
     base_content = subprocess.check_output(cmd, env={"GIT_CONFIG_GLOBAL": "/dev/null"}).decode("utf-8")
 
-    # Create cards for the 65 curated articles
+    # Create cards for the curated articles
     cards_html = ""
     json_ld_posts = []
 
@@ -514,7 +532,7 @@ def update_blog_index():
             "description": meta_desc
         })
 
-    # Total articles = 8 original + 65 curated = 73
+    # Total articles = 8 original + 77 curated = 85
     total_articles = len(ORIGINAL_ARTICLES) + len(ALL_NEW_ARTICLES)
     updated_filter_pills = f"""<!-- Topic Filter Pills -->
         <div class="blog-tags-bar" id="blog-filters">
@@ -640,7 +658,7 @@ def update_llms_txt():
 
 def main():
     print(f"Total curated pillar articles loaded: {len(ALL_NEW_ARTICLES)}")
-    assert len(ALL_NEW_ARTICLES) == 65, f"Expected 65 articles, got {len(ALL_NEW_ARTICLES)}"
+    assert len(ALL_NEW_ARTICLES) == 77, f"Expected 77 articles, got {len(ALL_NEW_ARTICLES)}"
 
     # Check for duplicate slugs
     slugs = [a["slug"] for a in ALL_NEW_ARTICLES]
@@ -666,10 +684,10 @@ def main():
 
     # Verification checks
     html_files = [f for f in os.listdir(BLOG_DIR) if f.endswith(".html")]
-    print(f"Verification: Total HTML files in blog/: {len(html_files)} (Expected: 74)")
-    assert len(html_files) == 74, f"Expected 74 HTML files in blog/, found {len(html_files)}"
+    print(f"Verification: Total HTML files in blog/: {len(html_files)} (Expected: 86)")
+    assert len(html_files) == 86, f"Expected 86 HTML files in blog/, found {len(html_files)}"
 
-    print("Successfully generated and synchronized all 65 curated SEO & GEO pillar blog articles!")
+    print("Successfully generated and synchronized all 77 curated SEO & GEO pillar blog articles!")
 
 if __name__ == "__main__":
     main()
