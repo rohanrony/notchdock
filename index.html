@@ -493,8 +493,13 @@
           <table class="comparison-table">
             <thead>
               <tr>
-                <th>Capability</th>
-                <th class="highlight-column"><i class="fa-solid fa-crown"></i> NotchDock</th>
+                <th>Capability / Feature</th>
+                <th class="highlight-column">
+                  <div class="col-brand-header">
+                    <span class="winner-badge"><i class="fa-solid fa-crown"></i> Recommended</span>
+                    <span class="col-brand-title"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+                  </div>
+                </th>
                 <th>NotchNook</th>
                 <th>Boring Notch</th>
                 <th>Seam / Alcove</th>
@@ -502,45 +507,80 @@
             </thead>
             <tbody>
               <tr>
-                <td class="feature-label">Pricing & License</td>
-                <td class="highlight-cell"><span class="status-pill status-success">Freemium</span></td>
-                <td>$25 (Paid License)</td>
-                <td>Free / Open Source</td>
-                <td>Freemium / Paid</td>
+                <td class="feature-label">
+                  Pricing & License
+                  <span class="feature-subtext">Access model & updates</span>
+                </td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Freemium (Free Core)</span></td>
+                <td><span class="status-pill status-warning">$25 Paid License</span></td>
+                <td><span class="status-pill status-none">Free / Open Source</span></td>
+                <td><span class="status-pill status-warning">Freemium / Paid</span></td>
               </tr>
               <tr>
-                <td class="feature-label">Intelligent Live Updates (Sports & Stocks)</td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Real-time Tickers + Sparklines</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="feature-label">
+                  Pomodoro Focus Companion
+                  <span class="feature-subtext">Interval sprints, break prompts & cycle HUD</span>
+                </td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Native HUD (1–60m Sprints)</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Basic Timer (Alcove only)</span></td>
               </tr>
               <tr>
-                <td class="feature-label">Silent Ambient Notch Notifications</td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Built-in (No Banner Fatigue)</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="feature-label">
+                  Live Sports & Market Tickers
+                  <span class="feature-subtext">EPL, NFL, NBA, MLB, S&P 500 & Crypto</span>
+                </td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Real-Time Feeds + Sparklines</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
               </tr>
               <tr>
-                <td class="feature-label">Mac Clipboard Manager</td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Full History & Snippets</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-triangle-exclamation"></i> File Shelf Only</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
-                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-xmark"></i> None</span></td>
+                <td class="feature-label">
+                  Silent Ambient Notch Alerts
+                  <span class="feature-subtext">Glanceable status without banner fatigue</span>
+                </td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> 100% Non-Intrusive HUD</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
               </tr>
               <tr>
-                <td class="feature-label">100% Local & Privacy-First</td>
-                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-check"></i> 0 Cloud Telemetry</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-triangle-exclamation"></i> Online auth check</span></td>
-                <td><span class="status-pill status-success"><i class="fa-solid fa-check"></i> Local</span></td>
-                <td><span class="status-pill status-warning"><i class="fa-solid fa-triangle-exclamation"></i> Cloud metrics</span></td>
+                <td class="feature-label">
+                  Mac Clipboard History & Scratchpad
+                  <span class="feature-subtext">Instant multi-clip history and quick notes</span>
+                </td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Full History & Snippets</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> File Shelf Only</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+                <td class="dim-cell"><span class="status-pill status-none"><i class="fa-solid fa-circle-xmark"></i> Not Available</span></td>
+              </tr>
+              <tr>
+                <td class="feature-label">
+                  Universal Media Scrubber
+                  <span class="feature-subtext">Apple Music, Spotify & YouTube Music</span>
+                </td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Gesture Scrubber & Lyrics</span></td>
+                <td><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Media Player</span></td>
+                <td><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Audio Visualizer</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Basic Controls</span></td>
+              </tr>
+              <tr>
+                <td class="feature-label">
+                  100% On-Device Privacy
+                  <span class="feature-subtext">Telemetry & data isolation</span>
+                </td>
+                <td class="highlight-cell"><span class="status-pill status-success"><i class="fa-solid fa-shield-halved"></i> 0 Cloud Telemetry</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Online License Check</span></td>
+                <td><span class="status-pill status-success"><i class="fa-solid fa-circle-check"></i> Local</span></td>
+                <td><span class="status-pill status-warning"><i class="fa-solid fa-circle-exclamation"></i> Cloud Analytics</span></td>
               </tr>
             </tbody>
           </table>
-          <div style="text-align: center; margin-top: 1.5rem;">
-            <a href="/compare/mac-notch-apps.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-              <span>Read Full Notch App Comparison Matrix</span>
+          <div style="text-align: center; margin-top: 2rem;">
+            <a href="/compare/mac-notch-apps.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.5rem; border-radius: 9999px;">
+              <span>Read Full Side-by-Side Notch App Comparison</span>
               <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
