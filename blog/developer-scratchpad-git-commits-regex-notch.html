@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpg" href="/assets/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss | NotchDock</title>
+    <meta name="title" content="Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss | NotchDock" />
+    <meta name="description" content="How software engineers use NotchDock's hover-to-reveal scratchpad to draft Git commit messages, test regex strings, and format JSON snippets without switching apps." />
+    <meta name="keywords" content="developer scratchpad mac, git commit scratchpad macbook notch, regex testing notepad macos, transient notes for developers, notchdock scratchpad" />
+    <meta name="author" content="NotchDock Engineering Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://notchdock.app/blog/developer-scratchpad-git-commits-regex-notch.html" />
+    <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://notchdock.app/blog/developer-scratchpad-git-commits-regex-notch.html" />
+    <meta property="og:title" content="Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss | NotchDock" />
+    <meta property="og:description" content="How software engineers use NotchDock's hover-to-reveal scratchpad to draft Git commit messages, test regex strings, and format JSON snippets without switching apps." />
+    <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://notchdock.app/blog/developer-scratchpad-git-commits-regex-notch.html" />
+    <meta property="twitter:title" content="Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss | NotchDock" />
+    <meta property="twitter:description" content="How software engineers use NotchDock's hover-to-reveal scratchpad to draft Git commit messages, test regex strings, and format JSON snippets without switching apps." />
+    <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://notchdock.app/blog/developer-scratchpad-git-commits-regex-notch.html#article",
+      "headline": "Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss",
+      "description": "How software engineers use NotchDock's hover-to-reveal scratchpad to draft Git commit messages, test regex strings, and format JSON snippets without switching apps.",
+      "url": "https://notchdock.app/blog/developer-scratchpad-git-commits-regex-notch.html",
+      "datePublished": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-09-28T12:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "NotchDock Engineering & Productivity Lab",
+        "url": "https://notchdock.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NotchDock",
+        "url": "https://notchdock.app/",
+        "logo": "https://notchdock.app/assets/logo.jpg"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".speakable-answer",
+          ".aeo-answer-box p"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://notchdock.app/blog/developer-scratchpad-git-commits-regex-notch.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://notchdock.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://notchdock.app/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss",
+          "item": "https://notchdock.app/blog/developer-scratchpad-git-commits-regex-notch.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- FontAwesome & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="/" class="logo-link">
+          <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" id="nav-logo-img" />
+          <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+        </a>
+        <nav class="nav-menu">
+          <a href="/#features" class="nav-item">Features</a>
+          <a href="/why-notchdock.html" class="nav-item">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html" class="nav-item">Compare</a>
+          <a href="/blog/" class="nav-item active" style="color: var(--accent-green); font-weight: 600;">Blog</a>
+          <a href="/#showcase" class="nav-item">Showcase</a>
+          <a href="/#faq" class="nav-item">FAQ</a>
+          <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
+          <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+      
+      <!-- Article Header -->
+      <header class="article-header">
+        <div class="article-breadcrumb">
+          <a href="/">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <a href="/blog/">Blog</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <span class="current">Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss</span>
+        </div>
+
+        <div class="article-meta-row">
+          <span class="blog-category-badge"><i class="fa-solid fa-terminal"></i> Developer Productivity</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• 6 min read</span>
+        </div>
+
+        <h1 class="article-title">Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss</h1>
+        <p class="article-lead speakable-answer">
+          Drafting a detailed Git commit message or assembling a regex pattern usually leads to messy unsaved VS Code tabs. Here is how to keep a persistent scratchpad in your camera notch.
+        </p>
+      </header>
+
+      <!-- Article Body Container -->
+      <div class="article-body-container">
+        <article class="article-content">
+
+          <!-- AEO Direct Answer Box -->
+          <div class="aeo-answer-box">
+            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How can developers use NotchDock's scratchpad for Git commits and regex?</h3>
+            <p>
+              <strong>NotchDock's Quick Notes scratchpad</strong> lives directly in the camera cutout, available on cursor hover. Developers can draft multi-line Conventional Commit messages (e.g. <code>feat(auth): add OAuth2 refresh token handling</code>), test JSON snippets, or format SQL queries, and click to copy them into the terminal in seconds.
+            </p>
+          </div>
+
+          
+        <h2>1. Eliminating 'Untitled-1.txt' Tab Clutter</h2>
+        <p>We all have dozens of unsaved scratch tabs in our IDEs. NotchDock provides a clean, single-click ephemeral text buffer that is always accessible across all desktop spaces.</p>
+        
+        
+
+          
+        <h2>Step-by-Step Setup Guide</h2>
+        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
+          <li><strong>Step 1:</strong> Hover over the notch and open Quick Notes.</li><li><strong>Step 2:</strong> Draft your Git commit message or regex pattern.</li><li><strong>Step 3:</strong> Click 'Copy to Clipboard' and paste into your terminal.</li>
+        </ol>
+        
+
+          
+        <h2>Frequently Asked Questions</h2>
+        <div style="margin-top: 20px;">
+          
+            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Does the scratchpad support monospaced font formatting?</h3>
+            <p style="color: var(--text-muted); line-height: 1.6;">Yes! You can toggle between System Sans and Monospaced SF Mono in settings.</p>
+            
+        </div>
+        
+
+          <!-- Download CTA Box -->
+          <div class="article-cta-box">
+            <h3>Transform Your MacBook Notch Today</h3>
+            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
+            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
+          </div>
+
+          
+            <div class="related-guides-section">
+              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
+              <div class="related-guides-grid">
+                
+                <a href="/blog/securing-clipboard-history-api-keys-tokens-mac.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-key"></i> Credential Security</span>
+                  <h4 class="related-guide-title">Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac</h4>
+                  <p class="related-guide-excerpt">How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="/blog/terminal-hotkeys-command-line-flow-with-notchdock.html" class="related-guide-card">
+                  <span class="related-guide-tag"><i class="fa-solid fa-terminal"></i> Terminal Integration</span>
+                  <h4 class="related-guide-title">Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes</h4>
+                  <p class="related-guide-excerpt">How command-line developers pair terminal emulators (Ghostty, iTerm2, Alacritty) with NotchDock for lightning-fast clipboard staging and scratchpad access.</p>
+                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                
+              </div>
+            </div>
+            
+
+        </article>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" />
+            <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
+          </div>
+          <p class="footer-desc">The ultimate productivity dock built into the MacBook camera notch. Crafted for macOS.</p>
+          <div class="social-links">
+            <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://x.com/NotchDock" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="/#features">Features</a>
+          <a href="/why-notchdock.html">Why NotchDock</a>
+          <a href="/compare/mac-notch-apps.html">Compare Apps</a>
+          <a href="/blog/">Blog</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Features</h4>
+          <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
+          <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
+          <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
+          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="/privacy.html">Privacy Policy</a>
+          <p class="copyright" style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 NotchDock. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
