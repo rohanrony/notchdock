@@ -11,29 +11,164 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Global Download Click & Event Tracking
- * Automatically captures clicks on any DMG download link across all pages.
- * Audits locally in localStorage and forwards to GA4/Plausible if present.
+ * Global Attribution & Download Telemetry Engine
+ * Detects visitor channel (Reddit, Twitter, Google, GitHub, Direct, AI Search, etc.)
+ * via URL parameters (?ref=, ?utm_source=) and HTTP document.referrer.
+ * Persists attribution across pageviews and logs channel-attributed download events.
  */
+
+function parseTrafficAttribution() {
+  const params = new URLSearchParams(window.location.search);
+  const refParam = params.get('ref') || params.get('source') || '';
+  const utmSource = params.get('utm_source') || '';
+  const utmMedium = params.get('utm_medium') || '';
+  const utmCampaign = params.get('utm_campaign') || '';
+  const rawReferrer = document.referrer || '';
+
+  let channel = 'direct';
+  let source = 'direct';
+
+  // 1. Explicit Query / UTM parameters take highest priority
+  if (refParam || utmSource) {
+    source = (refParam || utmSource).toLowerCase();
+    if (source.includes('reddit')) channel = 'reddit';
+    else if (source.includes('twitter') || source === 'x') channel = 'twitter';
+    else if (source.includes('hn') || source.includes('hackernews')) channel = 'hackernews';
+    else if (source.includes('producthunt') || source === 'ph') channel = 'producthunt';
+    else if (source.includes('macmenubar')) channel = 'macmenubar';
+    else if (source.includes('macnative')) channel = 'macnative';
+    else if (source.includes('alternativeto')) channel = 'alternativeto';
+    else if (source.includes('github')) channel = 'github';
+    else channel = 'campaign';
+  } 
+  // 2. Parse document.referrer if present
+  else if (rawReferrer) {
+    try {
+      const refUrl = new URL(rawReferrer);
+      const host = refUrl.hostname.toLowerCase();
+      if (host.includes('reddit.com') || host.includes('reddit.app') || rawReferrer.includes('com.reddit.frontpage')) {
+        channel = 'reddit';
+        source = 'reddit';
+      } else if (host === 't.co' || host.includes('twitter.com') || host.includes('x.com')) {
+        channel = 'twitter';
+        source = 'twitter';
+      } else if (host.includes('news.ycombinator.com')) {
+        channel = 'hackernews';
+        source = 'hacker_news';
+      } else if (host.includes('producthunt.com')) {
+        channel = 'producthunt';
+        source = 'product_hunt';
+      } else if (host.includes('google.') || host.includes('google.com')) {
+        channel = 'google_organic';
+        source = 'google';
+      } else if (host.includes('bing.com') || host.includes('duckduckgo.com') || host.includes('search.brave.com') || host.includes('ecosia.org')) {
+        channel = 'search_organic';
+        source = host;
+      } else if (host.includes('chatgpt.com') || host.includes('openai.com') || host.includes('claude.ai') || host.includes('perplexity.ai')) {
+        channel = 'ai_search';
+        source = host;
+      } else if (host.includes('github.com')) {
+        channel = 'github';
+        source = 'github';
+      } else if (host.includes('macmenubar.com')) {
+        channel = 'macmenubar';
+        source = 'macmenubar';
+      } else if (host.includes('alternativeto.net')) {
+        channel = 'alternativeto';
+        source = 'alternativeto';
+      } else if (host.includes('macnative.io')) {
+        channel = 'macnative';
+        source = 'macnative';
+      } else if (!host.includes(window.location.hostname)) {
+        channel = 'referral';
+        source = host;
+      }
+    } catch (e) {
+      if (rawReferrer.includes('reddit')) { channel = 'reddit'; source = 'reddit'; }
+      else if (rawReferrer.includes('t.co')) { channel = 'twitter'; source = 'twitter'; }
+    }
+  }
+
+  return {
+    channel,
+    source,
+    medium: utmMedium,
+    campaign: utmCampaign,
+    rawReferrer,
+    landingPage: window.location.pathname || '/',
+    timestamp: new Date().toISOString()
+  };
+}
+
+function getStoredAttribution() {
+  try {
+    let firstTouch = JSON.parse(sessionStorage.getItem('notchdock_first_touch') || 'null');
+    const current = parseTrafficAttribution();
+
+    // If first touch doesn't exist or was direct and now we have an explicit campaign/referrer
+    if (!firstTouch || (firstTouch.channel === 'direct' && current.channel !== 'direct')) {
+      firstTouch = current;
+      sessionStorage.setItem('notchdock_first_touch', JSON.stringify(firstTouch));
+    }
+
+    if (!localStorage.getItem('notchdock_initial_attribution')) {
+      localStorage.setItem('notchdock_initial_attribution', JSON.stringify(firstTouch));
+    }
+    return firstTouch;
+  } catch (e) {
+    return parseTrafficAttribution();
+  }
+}
+
 function initDownloadTracking() {
+  // Initialize attribution on load
+  const attribution = getStoredAttribution();
+
   document.addEventListener('click', (event) => {
-    const targetLink = event.target.closest('a[href*="notchdock.dmg"], a[id*="download"], .btn-dmg-download');
+    const targetLink = event.target.closest('a[href*="notchdock.dmg"], a[href*=".dmg"], a[id*="download"], .btn-dmg-download, a[data-download-source]');
     if (!targetLink) return;
+
+    // Filter out internal nav anchors unless they point to a DMG or download intent
+    const href = targetLink.getAttribute('href') || '';
+    const hasDownloadIntent = href.includes('.dmg') || 
+                              targetLink.hasAttribute('data-download-source') || 
+                              targetLink.id === 'btn-dmg-download' || 
+                              targetLink.classList.contains('btn-dmg-download');
+    if (!hasDownloadIntent && !href.includes('releases')) return;
 
     const sourcePage = window.location.pathname || '/';
     const buttonText = targetLink.innerText.trim() || targetLink.getAttribute('aria-label') || 'Download DMG';
     const sourceIdentifier = targetLink.getAttribute('data-download-source') || buttonText;
     const timestamp = new Date().toISOString();
 
+    const downloadRecord = {
+      timestamp,
+      channel: attribution.channel,
+      source: attribution.source,
+      medium: attribution.medium,
+      campaign: attribution.campaign,
+      rawReferrer: attribution.rawReferrer,
+      landingPage: attribution.landingPage,
+      downloadPage: sourcePage,
+      sourceIdentifier,
+      href: targetLink.href
+    };
+
     // 1. Audit log in localStorage for client-side auditing & diagnostics
     try {
       const existing = JSON.parse(localStorage.getItem('notchdock_downloads_audit') || '[]');
-      existing.push({ timestamp, sourcePage, sourceIdentifier, href: targetLink.href });
-      if (existing.length > 100) existing.shift();
+      existing.push(downloadRecord);
+      if (existing.length > 200) existing.shift();
       localStorage.setItem('notchdock_downloads_audit', JSON.stringify(existing));
 
+      // Increment grand total
       const totalCount = parseInt(localStorage.getItem('notchdock_total_downloads_clicked') || '0', 10) + 1;
       localStorage.setItem('notchdock_total_downloads_clicked', totalCount.toString());
+
+      // Increment channel scorecard
+      const byChannel = JSON.parse(localStorage.getItem('notchdock_downloads_by_channel') || '{}');
+      byChannel[attribution.channel] = (byChannel[attribution.channel] || 0) + 1;
+      localStorage.setItem('notchdock_downloads_by_channel', JSON.stringify(byChannel));
     } catch (e) {
       // localStorage disabled / private browsing
     }
@@ -43,6 +178,10 @@ function initDownloadTracking() {
       window.gtag('event', 'file_download', {
         file_name: 'notchdock.dmg',
         file_extension: 'dmg',
+        traffic_channel: attribution.channel,
+        traffic_source: attribution.source,
+        traffic_campaign: attribution.campaign,
+        initial_referrer: attribution.rawReferrer,
         link_text: sourceIdentifier,
         link_url: targetLink.href,
         page_location: window.location.href,
@@ -54,14 +193,31 @@ function initDownloadTracking() {
     if (typeof window.plausible === 'function') {
       window.plausible('Download', {
         props: {
+          channel: attribution.channel,
+          source: attribution.source,
           page: sourcePage,
-          source: sourceIdentifier
+          identifier: sourceIdentifier
         }
       });
     }
 
-    console.log(`[NotchDock Analytics] Download triggered from "${sourcePage}" via "${sourceIdentifier}" at ${timestamp}`);
+    console.log(`[NotchDock Analytics] DMG Download Triggered! Channel: "${attribution.channel}" (Source: "${attribution.source}") from "${sourcePage}" via "${sourceIdentifier}" at ${timestamp}`);
   }, { capture: true });
+
+  // Expose global debug helper
+  window.getNotchDockAnalytics = function() {
+    try {
+      return {
+        totalDownloadsClicked: parseInt(localStorage.getItem('notchdock_total_downloads_clicked') || '0', 10),
+        downloadsByChannel: JSON.parse(localStorage.getItem('notchdock_downloads_by_channel') || '{}'),
+        activeAttribution: JSON.parse(sessionStorage.getItem('notchdock_first_touch') || '{}'),
+        initialAttribution: JSON.parse(localStorage.getItem('notchdock_initial_attribution') || '{}'),
+        recentEvents: JSON.parse(localStorage.getItem('notchdock_downloads_audit') || '[]')
+      };
+    } catch (e) {
+      return { error: e.message };
+    }
+  };
 }
 
 /**
