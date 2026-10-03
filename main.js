@@ -1,6 +1,7 @@
 // CSS is linked in index.html directly
 
 document.addEventListener('DOMContentLoaded', () => {
+  initDownloadTracking();
   initShowcaseTabs();
   initInteractiveNotch();
   initScrollEffects();
@@ -8,6 +9,60 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonials();
   initUnifiedAutoRotation();
 });
+
+/**
+ * Global Download Click & Event Tracking
+ * Automatically captures clicks on any DMG download link across all pages.
+ * Audits locally in localStorage and forwards to GA4/Plausible if present.
+ */
+function initDownloadTracking() {
+  document.addEventListener('click', (event) => {
+    const targetLink = event.target.closest('a[href*="notchdock.dmg"], a[id*="download"], .btn-dmg-download');
+    if (!targetLink) return;
+
+    const sourcePage = window.location.pathname || '/';
+    const buttonText = targetLink.innerText.trim() || targetLink.getAttribute('aria-label') || 'Download DMG';
+    const sourceIdentifier = targetLink.getAttribute('data-download-source') || buttonText;
+    const timestamp = new Date().toISOString();
+
+    // 1. Audit log in localStorage for client-side auditing & diagnostics
+    try {
+      const existing = JSON.parse(localStorage.getItem('notchdock_downloads_audit') || '[]');
+      existing.push({ timestamp, sourcePage, sourceIdentifier, href: targetLink.href });
+      if (existing.length > 100) existing.shift();
+      localStorage.setItem('notchdock_downloads_audit', JSON.stringify(existing));
+
+      const totalCount = parseInt(localStorage.getItem('notchdock_total_downloads_clicked') || '0', 10) + 1;
+      localStorage.setItem('notchdock_total_downloads_clicked', totalCount.toString());
+    } catch (e) {
+      // localStorage disabled / private browsing
+    }
+
+    // 2. Google Analytics 4 (gtag) dispatch if initialized
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'file_download', {
+        file_name: 'notchdock.dmg',
+        file_extension: 'dmg',
+        link_text: sourceIdentifier,
+        link_url: targetLink.href,
+        page_location: window.location.href,
+        page_path: sourcePage
+      });
+    }
+
+    // 3. Plausible Analytics custom event if initialized
+    if (typeof window.plausible === 'function') {
+      window.plausible('Download', {
+        props: {
+          page: sourcePage,
+          source: sourceIdentifier
+        }
+      });
+    }
+
+    console.log(`[NotchDock Analytics] Download triggered from "${sourcePage}" via "${sourceIdentifier}" at ${timestamp}`);
+  }, { capture: true });
+}
 
 /**
  * 1. Interactive Showcase Tabs
