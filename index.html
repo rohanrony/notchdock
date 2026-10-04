@@ -250,6 +250,7 @@
           <a href="/blog/" class="nav-item">Blog</a>
           <a href="#showcase" class="nav-item">Showcase</a>
           <a href="#faq" class="nav-item">FAQ</a>
+          <a href="#support" class="nav-item tip-nav-link" title="Support NotchDock Development"><i class="fa-solid fa-mug-hot text-heart"></i> Tip Jar</a>
           <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
           <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn" data-download-source="navbar">Download</a>
         </nav>
@@ -1111,6 +1112,115 @@
       </div>
     </section>
 
+    <!-- Support & Tip Jar Section -->
+    <section class="support-section" id="support">
+      <div class="support-container">
+        <div class="section-header support-header">
+          <div class="badge support-badge"><i class="fa-solid fa-heart text-heart"></i> Independent macOS Utility • Free Beta</div>
+          <h2>Support <span class="text-accent">NotchDock</span> Development</h2>
+          <p class="section-subtitle">
+            NotchDock is 100% free, private, and local with zero ads or tracking. If it saves you time or enhances your daily Mac workflow, consider dropping a tip in the jar. Every contribution directly powers ongoing feature updates, Apple Silicon performance tuning, and new notch widgets!
+          </p>
+        </div>
+
+        <!-- Primary 1-time Tip Tiers: $5, $10, $20 -->
+        <div class="tip-tiers-grid">
+          <!-- Tier 1: $5 Coffee -->
+          <div class="tip-card" data-tier="coffee">
+            <div class="tip-icon-box">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="tip-amount-row">
+              <span class="tip-currency">$</span><span class="tip-price">5</span>
+            </div>
+            <h3 class="tip-tier-title">Coffee</h3>
+            <p class="tip-tier-desc">Fuel a quick caffeine rush to keep the Swift code flowing smoothly.</p>
+            <a href="https://ko-fi.com/builderpms/?input=5" target="_blank" rel="noopener" class="btn btn-tip" id="tip-btn-5">
+              <span>Tip $5</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <!-- Tier 2: $10 Lunch (Popular / Highlighted) -->
+          <div class="tip-card tip-card-featured" data-tier="lunch">
+            <div class="tip-popular-pill">Most Popular</div>
+            <div class="tip-icon-box tip-icon-featured">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <div class="tip-amount-row">
+              <span class="tip-currency">$</span><span class="tip-price">10</span>
+            </div>
+            <h3 class="tip-tier-title">Lunch</h3>
+            <p class="tip-tier-desc">Buy developer lunch to power an afternoon of feature polish and bug fixes.</p>
+            <a href="https://ko-fi.com/builderpms/?input=10" target="_blank" rel="noopener" class="btn btn-tip btn-tip-primary" id="tip-btn-10">
+              <span>Tip $10</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <!-- Tier 3: $20 Dev Boost -->
+          <div class="tip-card" data-tier="devboost">
+            <div class="tip-icon-box">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="tip-amount-row">
+              <span class="tip-currency">$</span><span class="tip-price">20</span>
+            </div>
+            <h3 class="tip-tier-title">Dev Boost</h3>
+            <p class="tip-tier-desc">Supercharge development of upcoming notch modules and integrations.</p>
+            <a href="https://ko-fi.com/builderpms/?input=20" target="_blank" rel="noopener" class="btn btn-tip" id="tip-btn-20">
+              <span>Tip $20</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Extended Options: Custom Amount & Monthly Backer -->
+        <div class="tip-extended-grid">
+          <!-- Custom Amount -->
+          <div class="tip-extended-card">
+            <div class="tip-extended-left">
+              <div class="tip-icon-box-sm">
+                <i class="fa-solid fa-sliders"></i>
+              </div>
+              <div>
+                <h4 class="tip-extended-title">Custom Tip Amount</h4>
+                <p class="tip-extended-desc">Choose your own one-time amount on Ko-fi to support the project.</p>
+              </div>
+            </div>
+            <a href="https://ko-fi.com/builderpms" target="_blank" rel="noopener" class="btn btn-secondary tip-extended-btn" id="tip-btn-custom">
+              <span>Choose Amount</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Monthly Backer -->
+          <div class="tip-extended-card tip-monthly-card">
+            <div class="tip-extended-left">
+              <div class="tip-icon-box-sm tip-icon-purple">
+                <i class="fa-solid fa-repeat"></i>
+              </div>
+              <div>
+                <div class="tip-monthly-badge-wrap">
+                  <h4 class="tip-extended-title">Monthly Supporter</h4>
+                  <span class="tip-recurring-badge">Ongoing Support</span>
+                </div>
+                <p class="tip-extended-desc">Become a recurring supporter to champion continuous macOS development.</p>
+              </div>
+            </div>
+            <a href="https://ko-fi.com/builderpms" target="_blank" rel="noopener" class="btn btn-purple tip-extended-btn" id="tip-btn-monthly">
+              <span>Support Monthly</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="tip-guarantee">
+          <span><i class="fa-solid fa-shield-halved text-accent"></i> Secure payments processed directly via Ko-fi • No accounts or tracking required</span>
+        </div>
+      </div>
+    </section>
+
     <!-- Download / CTA Section -->
     <section class="cta-section" id="download">
       <div class="cta-card">
@@ -1119,6 +1229,7 @@
         <p>Download NotchDock today and turn your MacBook notch into your intelligent live status dock.</p>
         <div class="cta-buttons">
           <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" class="btn btn-white btn-lg" id="btn-dmg-download" data-download-source="bottom-cta"><i class="fa-solid fa-download"></i> Download for macOS (DMG)</a>
+          <a href="#support" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-mug-hot"></i> Tip the Dev</a>
           <a href="mailto:notchdock@gmail.com" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-envelope"></i> Contact Support</a>
         </div>
         <p class="cta-sub">Free for personal use. Built with security and sandbox standards on macOS.</p>
@@ -1159,6 +1270,7 @@
           <div class="footer-col">
             <h4>Resources & Contact</h4>
             <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" data-download-source="footer">Download Release (DMG)</a>
+            <a href="https://ko-fi.com/builderpms" target="_blank" rel="noopener"><i class="fa-solid fa-heart text-heart"></i> Tip Jar / Support Dev</a>
             <a href="/privacy.html">Privacy Policy</a>
             <a href="mailto:notchdock@gmail.com">Email Support</a>
             <a href="https://github.com/rohanrony/notchdock/issues" target="_blank" rel="noopener"><i class="fa-solid fa-bug"></i> Report Bug / Feedback</a>

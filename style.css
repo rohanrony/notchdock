@@ -5453,8 +5453,373 @@ code {
   gap: 6px;
 }
 
+/* ----------------------------------------------------
+   11. Support & Tip Jar Section
+---------------------------------------------------- */
+.support-section {
+  padding: 80px 24px 70px 24px;
+  position: relative;
+  z-index: 10;
+}
 
+.support-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
+.support-header {
+  max-width: 720px;
+  margin: 0 auto 52px auto;
+  text-align: center;
+}
 
+.support-badge {
+  background: rgba(255, 94, 98, 0.1);
+  border-color: rgba(255, 94, 98, 0.25);
+  color: #ff7b7f;
+  margin-bottom: 16px;
+}
 
+.text-heart {
+  color: #ff5e62;
+}
+
+/* Primary 3-tier tip cards: 5, 10, 20 */
+.tip-tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.tip-card {
+  position: relative;
+  background: var(--bg-card-element);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 36px 28px 30px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.tip-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.tip-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-color-hover);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+/* Featured Lunch Tier */
+.tip-card-featured {
+  border-color: rgba(48, 209, 88, 0.35);
+  background: linear-gradient(180deg, rgba(48, 209, 88, 0.05) 0%, rgba(18, 18, 22, 0.85) 100%);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(48, 209, 88, 0.08);
+}
+
+.tip-card-featured::before {
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+}
+
+.tip-card-featured:hover {
+  border-color: var(--accent-green);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(48, 209, 88, 0.2);
+}
+
+.tip-popular-pill {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: rgba(48, 209, 88, 0.15);
+  border: 1px solid rgba(48, 209, 88, 0.4);
+  color: var(--accent-green);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+.tip-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  color: var(--text-white);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.tip-card:hover .tip-icon-box {
+  transform: scale(1.08);
+}
+
+.tip-icon-featured {
+  background: rgba(48, 209, 88, 0.12);
+  border-color: rgba(48, 209, 88, 0.3);
+  color: var(--accent-green);
+}
+
+.tip-amount-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.tip-currency {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+.tip-price {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-white);
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.tip-tier-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+
+.tip-tier-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.btn-tip {
+  width: 100%;
+  justify-content: center;
+  padding: 13px 20px;
+  font-size: 0.95rem;
+  background: var(--translucent-op-6);
+  border: 1px solid var(--border-color);
+  color: var(--text-white);
+  border-radius: 14px;
+}
+
+.btn-tip:hover {
+  background: var(--translucent-op-12);
+  border-color: var(--border-color-hover);
+  color: var(--text-white);
+  transform: translateY(-2px);
+}
+
+.btn-tip-primary {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  color: #051408;
+  font-weight: 700;
+}
+
+.btn-tip-primary:hover {
+  background: #39e365;
+  border-color: #39e365;
+  color: #031006;
+  box-shadow: 0 8px 20px rgba(48, 209, 88, 0.3);
+}
+
+/* Extended row: Custom Amount & Monthly Backer */
+.tip-extended-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.tip-extended-card {
+  background: var(--bg-card-element);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  backdrop-filter: blur(16px);
+  transition: all 0.3s ease;
+}
+
+.tip-extended-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-color-hover);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.tip-extended-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.tip-icon-box-sm {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--text-white);
+  flex-shrink: 0;
+}
+
+.tip-icon-purple {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: var(--accent-purple);
+}
+
+.tip-extended-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 4px;
+}
+
+.tip-extended-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.tip-extended-btn {
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+
+/* Monthly backer special styling */
+.tip-monthly-card {
+  border-color: rgba(168, 85, 247, 0.25);
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.05) 0%, rgba(18, 18, 22, 0.85) 100%);
+}
+
+.tip-monthly-card:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(168, 85, 247, 0.12);
+}
+
+.tip-monthly-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.tip-monthly-badge-wrap .tip-extended-title {
+  margin-bottom: 0;
+}
+
+.tip-recurring-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #c084fc;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.btn-purple {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #e9d5ff;
+}
+
+.btn-purple:hover {
+  background: #a855f7;
+  border-color: #a855f7;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.35);
+}
+
+.tip-guarantee {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Tip jar nav link subtle highlight */
+.tip-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--ease-fast);
+}
+
+.tip-nav-link:hover {
+  color: #ff7b7f !important;
+}
+
+/* Responsive queries */
+@media (max-width: 900px) {
+  .tip-tiers-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tip-extended-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .tip-extended-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tip-extended-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
 

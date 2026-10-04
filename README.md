@@ -91,6 +91,15 @@ To package NotchDock as a styled distribution disk image (`NotchDock.dmg`):
 
 *(Note: Under macOS, processes spawned programmatically by IDEs or IDE agents run under sandboxing constraints that block disk volume mounting. If you encounter sandbox permission errors, run `./package.sh` from a native macOS Terminal or iTerm2 application).*
 
+## ☕ Support Development
+
+NotchDock is 100% free and open during public beta. If NotchDock brings delight to your screen or saves time in your workflow, tips help support continuous updates, Apple Silicon optimizations, and new widgets!
+
+- ☕ [Tip $5 (Coffee)](https://ko-fi.com/builderpms/?input=5)
+- 🍱 [Tip $10 (Lunch)](https://ko-fi.com/builderpms/?input=10)
+- ⚡ [Tip $20 (Dev Boost)](https://ko-fi.com/builderpms/?input=20)
+- 🎯 [Custom Amount or Monthly Backer](https://ko-fi.com/builderpms)
+
 ## Documentation
 
 Full architectural decisions, design system tokens, and monetization roadmaps can be found in the `notchdock/docs/` directory.
