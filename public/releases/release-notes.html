@@ -172,6 +172,44 @@
             </div>
         </header>
 
+        <!-- Version 0.18.0 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.18.0</h2>
+                <span class="date">October 04, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>ToDo Widget Apple Reminders Sync & Urgency Grouping</strong>: Integrated two-way macOS Reminders synchronization and sports-style relative accordion grouping (`ToDoWidget.swift`, `ToDoRemindersSync.swift`, `SharedEventStore.swift`).</li>
+                <li><strong>Added seamless</strong>: two-way integration with Apple Reminders via `EventKit` (`EKEventStore`), mapping ToDo folders to native Reminders lists.</li>
+                <li><strong>Implemented 100%</strong>: backward-compatible decoding with zero data loss for existing users, smoothly preserving local Keychain tasks and optionally syncing them to Reminders.</li>
+                <li><strong>Fully automated two-way synchronization</strong>: automatic pull on widget expand, app active lifecycle observation, and 30-second periodic background timer for seamless cross-device iCloud synchronization without manual triggers.</li>
+                <li><strong>Added support</strong>: for due dates and times with relative badges (`Overdue`, `Today`, `Tomorrow`, `This Week`, `Later`), and an imminent countdown timer badge (`⏱ in 35m`) for tasks due within 2 hours.</li>
+                <li><strong>Added a</strong>: sort switcher allowing users to toggle between Urgency sort (due date priority) and classic manual drag-and-drop order.</li>
+                <li><strong>Designed Sports-style</strong>: accordion day & week groups (`Due`, `Today`, `Tomorrow`, `This Week`, `Later`, `Completed`) with rotating chevrons, count badges, and cross-day drag-and-drop rescheduling.</li>
+                <li><strong>Integrated Apple</strong>: Reminders connection into the first-launch Setup Assistant (Onboarding flow) alongside Keychain authorization.</li>
+                <li><strong>Added Apple Reminders Sync status in `ToDoSettingsView` with live activity indicator (`Automatic</strong>: Live`).</li>
+                <li><strong>Comprehensive unit</strong>: test coverage in `notchdockTests.swift` (`testToDoLegacyDecoding`, `testToDoRelativeGrouping`, `testToDoUrgencySorting`, `testToDoDragPermissionsInUrgencyMode`, `testToDoRemindersPureMerge`, `testToDoRemindersAutomaticSyncProperties`).</li>
+                <li><strong>Timer Widget Pomodoro & Standard Quick Presets</strong>: Added intuitive 1-click rhythm preset pills directly into the expanded notch panel and Settings view (`TimerWidget.swift`).</li>
+                <li><strong>Added Pomodoro</strong>: preset pills (`[ 15/3 ] [ 25/5 ] [ 50/10 ] [ 90/20 ]`) positioned right beside the time display in `TimerExpandedView` when Pomodoro mode is active.</li>
+                <li><strong>Supported four standard focus workflows</strong>: Sprint (`15m` focus, `3m` break), Classic Pomodoro (`25m` focus, `5m` break), Deep Work (`50m` focus, `10m` break), and Ultradian Flow (`90m` focus, `20m` break).</li>
+                <li><strong>Tapping a</strong>: preset pill dynamically highlights the active rhythm with `ThemeTokens.accentColor` border stroke and immediately updates focus, break, and cycle settings in idle, running, and paused/completed states.</li>
+                <li><strong>Expanded focus</strong>: duration upper bounds from 60m to 90m across Pomodoro view model, direct input text editors, stepper controls, and `AppleTimerSlider` progress dragging to smoothly support full 90-minute ultradian deep work blocks.</li>
+                <li><strong>Added Quick</strong>: Presets card and pill selectors in `TimerSettingsView` allowing users to quickly configure default standard durations (`[ 1m ] [ 5m ] [ 15m ] [ 25m ] [ 50m ]`) and default Pomodoro intervals.</li>
+                <li><strong>Comprehensive unit</strong>: test coverage in `notchdockTests.swift` (`testPomodoroPresetsApplicationAndCustomRhythms`) testing idle and active state switching, duration clamping, break adjustments, and custom cycle overrides.</li>
+                <li><strong>Updated widget</strong>: documentation in `notchdock/docs/apps/timer-widget.md`.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>ToDo Reminders Lists Are Hide-Only</strong>: Folders synced with Apple Reminders can no longer be deleted (they were re-imported on the next sync). Delete buttons are removed from the Folders Manager and the tab context menu for Reminders-linked folders; use Shown/Hidden instead. Local-only folders can still be deleted (`ToDoWidget.swift`).</li>
+                <li><strong>`ToDoViewModel.deleteFolder` now</strong>: refuses to remove Reminders-linked folders.</li>
+                <li><strong>`ToDoRemindersSync` adds</strong>: a persisted excluded-list set that `linkLists` honors.</li>
+                <li><strong>Added unit</strong>: test `testToDoRemindersLinkedFolderCannotBeDeleted`.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.17.2 -->
         <div class="release-card">
             <div class="release-header">
