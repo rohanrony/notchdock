@@ -70,6 +70,30 @@
             margin: 0;
         }
 
+        .support-banner {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 16px;
+            margin-top: 16px;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .support-banner a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .support-banner a:hover {
+            text-decoration: underline;
+        }
+
         .release-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -143,6 +167,9 @@
         <header>
             <h1>What's New in NotchDock</h1>
             <p class="subtitle">Official Release Notes</p>
+            <div class="support-banner">
+                <span>☕ <strong>Enjoying NotchDock?</strong> If this update helps you, consider <a href="https://ko-fi.com/builderpms" target="_blank" rel="noopener">supporting me on Ko-fi</a>.</span>
+            </div>
         </header>
 
         <!-- Version 0.17.2 -->
@@ -154,13 +181,33 @@
 
             <div class="section-title added">Added</div>
             <ul>
-                <li><strong>Pomodoro Focus Companion</strong>: Seamlessly toggle between countdown timers and structured Pomodoro focus sprints in the Timer widget, featuring customizable interval chips, humane Option B rest transitions, and notch island HUD progress dots.</li>
-                <li><strong>Stocks Not Found &amp; Timeout Handling</strong>: Gracefully handles invalid or delisted tickers in the Stocks widget with a 6-second timeout safeguard, warning badge, inline retry, and one-click removal.</li>
+                <li><strong>Timer Widget Pomodoro Focus Companion</strong>: Integrated a native, minimalist Pomodoro focus sprint mode into the Timer widget (`TimerWidget.swift`).</li>
+                <li><strong>Added an</strong>: inline mode switch (`[ Timer | 🍅 Pomodoro ]`) allowing seamless toggling between basic countdown timers and structured interval sessions.</li>
+                <li><strong>Implemented an interactive setup tray with 3 configurable parameter chips</strong>: Focus sprint duration (1–60m), Break duration (1–30m), and Cycle count (1–8 cycles), adjustable via inline `− / +` micro-steppers, direct numeric input, or custom Apple-style slider dragging.</li>
+                <li><strong>Built an</strong>: ambient running session HUD with phase indication (`🎯 Focus • Cycle X of Y` vs `☕ Break • Cycle X of Y`), dynamic cycle progress dots (`● ● ○`), and color-coded progress track (Sage Green for work sprints, calming Sky Blue for rest breaks).</li>
+                <li><strong>Implemented Option B phase transitions</strong>: plays a double chime on focus completion and automatically pauses at break duration with an auto-expanding notch prompt, allowing users to manually begin breaks when ready (with configurable "Auto-Start Breaks" toggle in Settings).</li>
+                <li><strong>Added explicit</strong>: minimal outline action buttons (`[ ▶ Start Break ]`, `[ ▶ Start Focus ]`, and `[ ✓ Done ]`) with 1px accent outline, transparent background, and no glow or gradients.</li>
+                <li><strong>Eliminated trailing breaks</strong>: $N$ cycles execute exactly $N$ focus sprints and $N - 1$ breaks, concluding the session immediately upon completing the final focus block.</li>
+                <li><strong>Implemented two-way connected manual time editing</strong>: minutes-only editing in Pomodoro mode with seconds locked to `:00`, real-time bidirectional synchronization with setup chips and slider, unambiguous parameter binding (`editingParameter`), and automatic commit on blur or loss of focus.</li>
+                <li><strong>Added a</strong>: dedicated Skip button (`forward.end.circle.fill`) to conclude focus or break blocks early without resetting session state.</li>
+                <li><strong>Enhanced the compact notch island with phase-specific glyphs (`brain.head.profile` vs `cup.and.saucer.fill`) and live cycle countdowns (`1/3 • 24</strong>: 50`).</li>
+                <li><strong>Anchored timer countdowns to wall-clock `targetEndTime</strong>: Date?` with `NSWorkspace.didWakeNotification` listeners, ensuring complete accuracy across macOS system sleep and screen locks.</li>
+                <li><strong>Added unit</strong>: test suite in `notchdockTests.swift` covering mode switching, cycle transitions, Option B manual pausing, skip actions, session completions, and manual time edit consistency (`testPomodoroModeAndDefaults`, `testPomodoroCycleProgressionAndOptionB`, `testPomodoroCompletionAndSessionReset`, `testPomodoroSkipAndReset`, `testPomodoroManualTimeEditConsistency`).</li>
+                <li><strong>Updated widget</strong>: documentation in `notchdock/docs/apps/timer-widget.md` and Setup Assistant directory in `WidgetGuide.swift`.</li>
+                <li><strong>Stocks Widget Ticker Not Found & Timeout Handling</strong>: Added graceful failure handling for invalid, delisted, or unfound stock tickers in the Stocks expanded panel.</li>
+                <li><strong>Replaced indefinite</strong>: spinner searching with a 6-second timeout safeguard and immediate error detection on Yahoo Finance 404 or empty chart responses.</li>
+                <li><strong>Implemented `StockNotFoundRow`</strong>: displaying a soft-red ticker badge, a clear `"Symbol not found"` warning indicator, an inline Retry (`arrow.clockwise`) action, and a prominent 1-click Delete button (`trash.fill` + `"Delete"`) to easily remove invalid symbols from the watchlist.</li>
+                <li><strong>Implemented `StockLoadingRow`</strong>: with an active `"Searching quote..."` indicator and a hover `"Cancel"` button to discard a mistyped symbol immediately without waiting.</li>
+                <li><strong>Added `Not</strong>: Found` status labeling in the Settings window's Tickers list and automated test coverage in `notchdockTests.swift` (`testStocksTickerNotFoundAndTimeoutHandling`).</li>
             </ul>
 
             <div class="section-title fixed">Fixed</div>
             <ul>
-                <li><strong>Pomodoro Stepper &amp; Parameter Isolation</strong>: Fixed micro-steppers occasionally failing to reduce duration and isolated time parameters so manual text edits never leak across focus and break intervals.</li>
+                <li><strong>Pomodoro Stepper Time Reduction & Parameter Isolation</strong>: Resolved an issue where clicking `−` or `+` steppers occasionally failed to reduce time or reverted immediately due to stale `applyChanges()` re-evaluations during state changes.</li>
+                <li><strong>Eliminated rogue `onChange(of</strong>: isEditing)` watcher and guarded `applyChanges()` strictly with `guard isEditing else { return }`, ensuring micro-stepper decrements/increments and direct numeric modifications never get overwritten by uncommitted stale string state.</li>
+                <li><strong>Fixed focus</strong>: time leaking into break time (and vice-versa) when manually editing text and tapping another parameter chip or stepper by committing active edits to the originating parameter before transitioning, resetting `editingParameter = nil`, and immediately populating `editMinutes` with the target parameter's own duration.</li>
+                <li><strong>Expanded hit-box</strong>: targets for `PomodoroParameterChip` micro-steppers (24×27pt) with tactile scale animation (`0.88`), crisp hover tinting, and reliable click response.</li>
+                <li><strong>Added unit</strong>: test verification (`testPomodoroIndependentParameterSteppingAndIsolation`) in `notchdockTests.swift` validating independent stepping down of focus, break, and cycle values without cross-parameter pollution.</li>
             </ul>
         </div>
 

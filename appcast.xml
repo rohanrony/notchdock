@@ -6,6 +6,21 @@
         <description>Most recent updates for NotchDock.</description>
         <language>en</language>
         <item>
+            <title>0.18.0</title>
+            <pubDate>Sun, 04 Oct 2026 23:31:31 -0400</pubDate>
+            <sparkle:version>40</sparkle:version>
+            <sparkle:shortVersionString>0.18.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/rohanrony/notchdock/releases/download/v0.18.0/NotchDock-0.18.0.dmg" length="24141208" type="application/octet-stream" sparkle:edSignature="sRoaB6bCKSklRC7mA4VKZzWLckbyZo9PIMr9nh5gpsSnlBhbWbYlpGizz+TTYy7Q6UiOLyuLBJLBtvDglP6mAQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://notchdock.app/NotchDock40-35.delta" sparkle:deltaFrom="35" length="917642" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="t0WeHywQq/1Y4dOqF3OdsIIYoJlOK62m05t5u+X4QQx//mlOYelZ7nrx5gth2GooLZ5Osnx3l4BNvF1oLydLCg=="/>
+                <enclosure url="https://notchdock.app/NotchDock40-30.delta" sparkle:deltaFrom="30" length="1066318" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="AbH++nI+P9x6REDfrne6PzYjvfN4HItmJ9tKqkgOOKNFQDVtA2wSIdrk+EntALZ6sAEeg2dn2hOhK7XC5oU8AQ=="/>
+                <enclosure url="https://notchdock.app/NotchDock40-26.delta" sparkle:deltaFrom="26" length="5041682" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="cKpJbYNJIqvzwB4ug7n037NPJiB8yGDxIYAU6mnG4hxPNJmjTTumKfwdHqZMyCBQ/9GVhuELua+7KFXnbJbGCw=="/>
+                <enclosure url="https://notchdock.app/NotchDock40-25.delta" sparkle:deltaFrom="25" length="5051518" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="gzxr+ttgJinVCSBwZCIjtwHJEyozYMI/0SVSk0wXCGjpCNA+X9ouhsjvn9hCMLrp/S0CTt5fdVqpA7vSdDz9Dg=="/>
+                <enclosure url="https://notchdock.app/NotchDock40-24.delta" sparkle:deltaFrom="24" length="5048770" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="JPA0HMdGyM5czxJY79AYx8IbmOdAqIagVbs5neY+kMhFxQ613vcbYBRxPI4d1sKqKXpL9yjYqEmX7y365sawCA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.17.2</title>
             <pubDate>Mon, 28 Sep 2026 16:48:22 -0400</pubDate>
             <sparkle:version>35</sparkle:version>
@@ -33,21 +48,6 @@
                 <enclosure url="https://notchdock.app/NotchDock30-24.delta" sparkle:deltaFrom="24" length="4488442" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="NdOj4/XyiM3XNrd1TAH8IXsdvJ/PZ/7nLmiZ/jjz0xAKPMKo3IFkGon7EkrBM5jQgCjNtd857IJiCUiD1L7TCg=="/>
                 <enclosure url="https://notchdock.app/NotchDock30-18.delta" sparkle:deltaFrom="18" length="4903930" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="zPWfKW6SazjHWunUuiVBJ4n9qYFOrgFb16dPuxKY5PqbbnIMFzBdDk0egLfbjpYbhVcQxpxTyOoI0XuQ/wgvCQ=="/>
                 <enclosure url="https://notchdock.app/NotchDock30-14.delta" sparkle:deltaFrom="14" length="4918398" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="q4So5ZJ402Ds/puzcTYACLnRn4CwBVRZtpSvlESBJkYVnXZAivob96tyhP40YgcqXyjoV/ayNPj1Nx0Pi+MWDw=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.16.0</title>
-            <pubDate>Mon, 24 Aug 2026 13:14:48 -0400</pubDate>
-            <sparkle:version>26</sparkle:version>
-            <sparkle:shortVersionString>0.16.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/rohanrony/notchdock/releases/download/v0.16.0/NotchDock-0.16.0.dmg" length="12978175" type="application/octet-stream" sparkle:edSignature="s20ESXYvlqkyvCQ3gBrocgZBlBR+O0W+13nR4UK4hVW+c1xw+PLnz50RglLMpcplXBwPQ5ITzGmm7THDc9glBA=="/>
-            <sparkle:deltas>
-                <enclosure url="https://notchdock.app/NotchDock26-25.delta" sparkle:deltaFrom="25" length="173134" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="NuDy1ay5MBuqaLvoLDWLIdmEMVoqddyx5eedw9pB3htvBwrqxm4i0fIuNpwxIl9Wp+r9IMPwkqfAwpWJZjkKCw=="/>
-                <enclosure url="https://notchdock.app/NotchDock26-24.delta" sparkle:deltaFrom="24" length="261630" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="3Ne4f3BEUb3uEaddDYhP9t1//BsWnzmhDfigVL0sluYZdYDIqjQZxseYjFP6hxF13PBkfduK1XmGHhuy+E4sDA=="/>
-                <enclosure url="https://notchdock.app/NotchDock26-18.delta" sparkle:deltaFrom="18" length="1073610" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="fRSPIY5tNbYQicV2YWIXmY653nYaeND389xNJGCKDTwfzYcJ9bA4q2B9/8gztDUTxS/VT9/886D95bsgJSVvAA=="/>
-                <enclosure url="https://notchdock.app/NotchDock26-14.delta" sparkle:deltaFrom="14" length="1123446" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="M/GRhhP245jsDI4Cw5R7O6LaSrIHEPZk/r8LHJydAzJq3elsf2VFvrcgvYWz92BQT15VB6vA5Daft+CIhP2YBQ=="/>
-                <enclosure url="https://notchdock.app/NotchDock26-13.delta" sparkle:deltaFrom="13" length="1197682" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="dDfjcdmTy2ZbFHN/Qf/7onys+87bBiKpwkkb493nFrIQpecKY0KWBt+9KT3o2kgTJBqBHpBHYd9+fmPQ69pQAA=="/>
             </sparkle:deltas>
         </item>
         <item>
