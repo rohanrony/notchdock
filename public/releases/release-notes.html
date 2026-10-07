@@ -172,15 +172,39 @@
             </div>
         </header>
 
-        <!-- Version 0.18.0 -->
+        <!-- Version 0.18.1 -->
         <div class="release-card">
             <div class="release-header">
-                <h2 class="version">Version 0.18.0</h2>
-                <span class="date">October 04, 2026</span>
+                <h2 class="version">Version 0.18.1</h2>
+                <span class="date">October 07, 2026</span>
             </div>
 
             <div class="section-title added">Added</div>
             <ul>
+                <li><strong>Stocks Widget International Currency & Time-Aligned Sparklines</strong>: Added localized multi-currency support and horizontal timeline alignment across stock sparklines.</li>
+                <li><strong>Global Currency Formatting</strong>: Dynamic local currency symbols for USD ($), EUR (€), GBP (£), JPY (¥), INR (₹), CAD (CA$), AUD (A$), HKD (HK$), CHF, BRL (R$), CNY (¥), KRW (₩), SEK (kr), and SGD (S$).</li>
+                <li><strong>LSE Pence & Financial Conventions</strong>: London Stock Exchange pence quotes (<code>GBp</code>) display with trailing <code>p</code>, zero decimals for JPY/KRW, and 4-decimal precision for crypto and sub-dollar penny equities.</li>
+                <li><strong>Expanded Timeframes</strong>: Added <code>10Y</code> and <code>20Y</code> alongside 1D, 5D, 1M, 3M, 6M, 1Y, 5Y, and Max ranges.</li>
+                <li><strong>Time-Aligned Horizontal Sparklines</strong>: Synchronized horizontal timeline axes across all watchlist cards with Option A earliest-inception anchoring for the Max horizon.</li>
+                <li><strong>Pre-IPO Baseline Indicators</strong>: Unlisted dashed baseline tracks and IPO onset dots for newly listed equities, eliminating edge-to-edge stretching for shorter trading histories.</li>
+                <li><strong>Interactive Date-Aware Scrubbing</strong>: Hover scrub tooltips display <code>Price • Date</code> on active curves and <code>Pre-IPO • Listed [Date]</code> on unlisted tracks.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.18.0 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.18.0</h2>
+                <span class="date">October 05, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Delete NotchDock-Created Reminders Lists</strong>: Folders created in NotchDock can now be deleted directly from NotchDock, which also deletes the corresponding list in Apple Reminders via EventKit (`EKEventStore.removeCalendar`) without re-import loops (`ToDoWidget.swift`, `ToDoRemindersSync.swift`).</li>
+                <li><strong>Added `isNotchDockCreated`</strong>: tracking on `ToDoFolder` to distinguish folders created in NotchDock from external lists imported from macOS Reminders.</li>
+                <li><strong>Deleting a</strong>: NotchDock-created folder automatically pushes calendar removal to Apple Reminders via `pushDeleteList`.</li>
+                <li><strong>External lists</strong>: imported from macOS Reminders remain protected from accidental deletion in NotchDock (providing Shown/Hidden visibility controls instead).</li>
+                <li><strong>Added unit</strong>: tests `testToDoNotchDockCreatedLinkedFolderCanBeDeleted` and `testToDoFolderCanDeleteProperty`.</li>
                 <li><strong>ToDo Widget Apple Reminders Sync & Urgency Grouping</strong>: Integrated two-way macOS Reminders synchronization and sports-style relative accordion grouping (`ToDoWidget.swift`, `ToDoRemindersSync.swift`, `SharedEventStore.swift`).</li>
                 <li><strong>Added seamless</strong>: two-way integration with Apple Reminders via `EventKit` (`EKEventStore`), mapping ToDo folders to native Reminders lists.</li>
                 <li><strong>Implemented 100%</strong>: backward-compatible decoding with zero data loss for existing users, smoothly preserving local Keychain tasks and optionally syncing them to Reminders.</li>
@@ -203,10 +227,7 @@
 
             <div class="section-title improved">Improvements</div>
             <ul>
-                <li><strong>ToDo Reminders Lists Are Hide-Only</strong>: Folders synced with Apple Reminders can no longer be deleted (they were re-imported on the next sync). Delete buttons are removed from the Folders Manager and the tab context menu for Reminders-linked folders; use Shown/Hidden instead. Local-only folders can still be deleted (`ToDoWidget.swift`).</li>
-                <li><strong>`ToDoViewModel.deleteFolder` now</strong>: refuses to remove Reminders-linked folders.</li>
-                <li><strong>`ToDoRemindersSync` adds</strong>: a persisted excluded-list set that `linkLists` honors.</li>
-                <li><strong>Added unit</strong>: test `testToDoRemindersLinkedFolderCannotBeDeleted`.</li>
+                <li><strong>ToDo Reminders List Protection</strong>: Folders imported from macOS Reminders are protected from accidental deletion within NotchDock (providing Shown/Hidden visibility controls instead), preventing accidental data loss outside the app and avoiding re-import loops (`ToDoWidget.swift`).</li>
             </ul>
         </div>
 
