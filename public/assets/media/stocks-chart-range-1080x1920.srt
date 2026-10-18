@@ -1,0 +1,12 @@
+1
+00:00:00,000 --> 00:00:04,167
+One watchlist.
+A wider view.
+
+2
+00:00:04,167 --> 00:00:08,333
+Switch chart ranges without opening a tab.
+
+3
+00:00:08,333 --> 00:00:12,500
+notchdock.app

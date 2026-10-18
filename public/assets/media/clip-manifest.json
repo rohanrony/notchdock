@@ -1,0 +1,102 @@
+[
+  {
+    "file": "sports-match-details-1080x1080.mp4",
+    "poster": "sports-match-details-1080x1080.jpg",
+    "captions": "sports-match-details-1080x1080.srt",
+    "duration_seconds": 11.5,
+    "width": 1080,
+    "height": 1080,
+    "sha256": "ba97b574f4ae8f5162ce62c7537ad4f7bc49a462292d2957f290031c17d06509",
+    "disclosure": "Recorded demo \u00b7 scores are historical"
+  },
+  {
+    "file": "timer-start-1080x1080.mp4",
+    "poster": "timer-start-1080x1080.jpg",
+    "captions": "timer-start-1080x1080.srt",
+    "duration_seconds": 12.0,
+    "width": 1080,
+    "height": 1080,
+    "sha256": "01d7041adf43649145974609b337a605d64f69bf172d069b7ab67deb2c1e84bd",
+    "disclosure": "Recorded demo \u00b7 timer start and progress"
+  },
+  {
+    "file": "task-completion-1080x1080.mp4",
+    "poster": "task-completion-1080x1080.jpg",
+    "captions": "task-completion-1080x1080.srt",
+    "duration_seconds": 10.0,
+    "width": 1080,
+    "height": 1080,
+    "sha256": "f716b2abbe7b35d76445008faa48f4833a61833345d362f606ed9eddf180746e",
+    "disclosure": "Recorded demo \u00b7 sample tasks"
+  },
+  {
+    "file": "three-useful-moments-1080x1080.mp4",
+    "poster": "three-useful-moments-1080x1080.jpg",
+    "captions": "three-useful-moments-1080x1080.srt",
+    "duration_seconds": 22.0,
+    "width": 1080,
+    "height": 1080,
+    "sha256": "3339de2fce36897a58c228db278a65575eb706fce95462bae29ae8dd10aebae9",
+    "disclosure": "Recorded demo \u00b7 edited sequence \u00b7 historical scores"
+  },
+  {
+    "file": "sports-match-details-1080x1920.mp4",
+    "poster": "sports-match-details-1080x1920.jpg",
+    "captions": "sports-match-details-1080x1920.srt",
+    "duration_seconds": 11.5,
+    "width": 1080,
+    "height": 1920,
+    "sha256": "8eda3e031d0b412059fbbe877277de67696949e0f3902be9108123feceb5ca86",
+    "disclosure": "Recorded demo \u00b7 scores are historical"
+  },
+  {
+    "file": "timer-start-1080x1920.mp4",
+    "poster": "timer-start-1080x1920.jpg",
+    "captions": "timer-start-1080x1920.srt",
+    "duration_seconds": 12.0,
+    "width": 1080,
+    "height": 1920,
+    "sha256": "5685df286f5bb4b1e829e398b312e0af9cf5c317a5684c5eadb90f7a3e42de4d",
+    "disclosure": "Recorded demo \u00b7 timer start and progress"
+  },
+  {
+    "file": "task-completion-1080x1920.mp4",
+    "poster": "task-completion-1080x1920.jpg",
+    "captions": "task-completion-1080x1920.srt",
+    "duration_seconds": 10.0,
+    "width": 1080,
+    "height": 1920,
+    "sha256": "228bf9877e7d981c8fbf77709e3cd618e1fba805453ad998fac64881f7c28dd9",
+    "disclosure": "Recorded demo \u00b7 sample tasks"
+  },
+  {
+    "file": "three-useful-moments-1080x1920.mp4",
+    "poster": "three-useful-moments-1080x1920.jpg",
+    "captions": "three-useful-moments-1080x1920.srt",
+    "duration_seconds": 22.0,
+    "width": 1080,
+    "height": 1920,
+    "sha256": "41fcac4991eb622a712494ccd8637f8da69f7ee5e2d238432146889069552814",
+    "disclosure": "Recorded demo \u00b7 edited sequence \u00b7 historical scores"
+  },
+  {
+    "file": "stocks-chart-range-1080x1080.mp4",
+    "poster": "stocks-chart-range-1080x1080.jpg",
+    "captions": "stocks-chart-range-1080x1080.srt",
+    "duration_seconds": 12.5,
+    "width": 1080,
+    "height": 1080,
+    "sha256": "5afdd210e628513f4ec55c653ba7cc810818fe0340628902344ea2a95de88e2b",
+    "disclosure": "Recorded demo \u00b7 prices are historical"
+  },
+  {
+    "file": "stocks-chart-range-1080x1920.mp4",
+    "poster": "stocks-chart-range-1080x1920.jpg",
+    "captions": "stocks-chart-range-1080x1920.srt",
+    "duration_seconds": 12.5,
+    "width": 1080,
+    "height": 1920,
+    "sha256": "ed7cd402e0241fb5511bfee995aebfd865c8d0cc7a8594d787877276898aea46",
+    "disclosure": "Recorded demo \u00b7 prices are historical"
+  }
+]

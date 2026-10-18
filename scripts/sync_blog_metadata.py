@@ -156,6 +156,7 @@ def llms_text(articles, full=False):
         "", "App permissions and macOS synchronization depend on the features enabled. Website session and download-CTA reporting is separate from app data; see the privacy policy for scope and opt-out details.",
         "", "## Start here", "",
         "- [Official website](https://notchdock.app/)",
+        "- [Demo clips and media kit](https://notchdock.app/media/)",
         "- [Supported sports workflow](https://notchdock.app/features/mac-sports-tracker.html)",
         "- [Focus workflow](https://notchdock.app/features/mac-pomodoro-notes.html)",
         "- [Download and release notes](https://github.com/rohanrony/notchdock/releases)",

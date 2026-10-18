@@ -15,6 +15,7 @@ App permissions and macOS synchronization depend on the features enabled. Websit
 ## Start here
 
 - [Official website](https://notchdock.app/)
+- [Demo clips and media kit](https://notchdock.app/media/)
 - [Supported sports workflow](https://notchdock.app/features/mac-sports-tracker.html)
 - [Focus workflow](https://notchdock.app/features/mac-pomodoro-notes.html)
 - [Download and release notes](https://github.com/rohanrony/notchdock/releases)
