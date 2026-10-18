@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities | NotchDock</title>
-    <meta name="title" content="Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities | NotchDock" />
-    <meta name="description" content="Architectural breakdown of NotchDock's zero-telemetry, local-first design. Why clipboard history, notes, and watchlist data must never leave your MacBook." />
-    <meta name="keywords" content="zero telemetry mac apps, local first mac utilities, private clipboard manager macos, notchdock privacy architecture, secure mac productivity software" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>NotchDock privacy boundaries: local data and external feeds | NotchDock</title>
+    <meta name="title" content="NotchDock privacy boundaries: local data and external feeds | NotchDock" />
+    <meta name="description" content="Separate NotchDock’s local preferences and Keychain snippets from EventKit access, Apple Notes automation, external data feeds, and website measurement." />
+    <meta name="keywords" content="NotchDock privacy data map, local settings external APIs, EventKit Keychain Notes automation" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html" />
-    <meta property="og:title" content="Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities | NotchDock" />
-    <meta property="og:description" content="Architectural breakdown of NotchDock's zero-telemetry, local-first design. Why clipboard history, notes, and watchlist data must never leave your MacBook." />
+    <meta property="og:title" content="NotchDock privacy boundaries: local data and external feeds | NotchDock" />
+    <meta property="og:description" content="Separate NotchDock’s local preferences and Keychain snippets from EventKit access, Apple Notes automation, external data feeds, and website measurement." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html" />
-    <meta property="twitter:title" content="Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities | NotchDock" />
-    <meta property="twitter:description" content="Architectural breakdown of NotchDock's zero-telemetry, local-first design. Why clipboard history, notes, and watchlist data must never leave your MacBook." />
+    <meta property="twitter:title" content="NotchDock privacy boundaries: local data and external feeds | NotchDock" />
+    <meta property="twitter:description" content="Separate NotchDock’s local preferences and Keychain snippets from EventKit access, Apple Notes automation, external data feeds, and website measurement." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html#article",
-      "headline": "Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities",
-      "description": "Architectural breakdown of NotchDock's zero-telemetry, local-first design. Why clipboard history, notes, and watchlist data must never leave your MacBook.",
+      "headline": "NotchDock privacy boundaries: local data and external feeds",
+      "description": "Separate NotchDock’s local preferences and Keychain snippets from EventKit access, Apple Notes automation, external data feeds, and website measurement.",
       "url": "https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities",
+          "name": "NotchDock privacy boundaries: local data and external feeds",
           "item": "https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,90 +118,31 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities</span>
+          <span class="current">NotchDock privacy boundaries: local data and external feeds</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-shield-halved"></i> Privacy & Security</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-shield-halved"></i> Privacy & Data Flows</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
         </div>
 
-        <h1 class="article-title">Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities</h1>
-        <p class="article-lead speakable-answer">
-          Too many modern utility apps quietly bundle analytics trackers, crash reporters, and cloud syncing daemons that transmit personal data off your machine. Here is why NotchDock is built strictly local-first.
-        </p>
+        <h1 class="article-title">NotchDock privacy boundaries: local data and external feeds</h1>
+        <p class="article-lead">A useful privacy review distinguishes local app storage, macOS services, external feeds, and website measurement. This page describes those boundaries without claiming that NotchDock makes no network requests or is suitable for every organization.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: What is NotchDock's privacy and telemetry architecture?</h3>
-            <p>
-              <strong>NotchDock enforces an absolute zero-telemetry architecture</strong>. There are no tracking SDKs (no Google Analytics, Mixpanel, or PostHog), no user accounts, and zero cloud databases. All clipboard history snippets, personal quick notes, and stock watchlist holdings are stored exclusively on your Mac in sandboxed local storage.
-            </p>
-          </div>
-
-          
-        <h2>1. The Infiltration of Telemetry into Desktop Utilities</h2>
-        <p>When a clipboard utility or scratchpad logs analytics, sensitive corporate IP, credentials, and passwords can accidentally leak into remote logs. NotchDock removes this vector entirely by design.</p>
-        
-        
-        <h2>2. Verifying with Network Packet Analysis</h2>
-        <p>Using Little Snitch or Wireshark, you can observe that NotchDock only contacts public, unauthenticated data endpoints (Yahoo Finance for stock prices, ESPN for sports scores) with zero identifiers or device tokens attached.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Download NotchDock Core from official GitHub releases.</li><li><strong>Step 2:</strong> Verify network logs using macOS Console or Little Snitch.</li><li><strong>Step 3:</strong> Enjoy enterprise-grade on-device security.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Can NotchDock be used in strict corporate enterprise environments?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Yes! NotchDock complies with enterprise zero-exfiltration security guidelines.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/securing-clipboard-history-api-keys-tokens-mac.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-key"></i> Credential Security</span>
-                  <h4 class="related-guide-title">Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac</h4>
-                  <p class="related-guide-excerpt">How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/local-sqlite-userdefaults-vs-cloud-sync-mac.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-database"></i> Data Architecture</span>
-                  <h4 class="related-guide-title">Local UserDefaults vs Cloud Sync: Why Utilities Shouldn't Require an Account</h4>
-                  <p class="related-guide-excerpt">Why desktop utilities should store configuration in local UserDefaults and SQLite rather than requiring cloud logins, subscriptions, and remote sync databases.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Local app data and macOS services</h2>
+<p>The reviewed source stores widget preferences in <code>UserDefaults</code>. Quick Access snippets and ToDo folder data use Keychain APIs. Quick Notes keeps a cache and can interact with the user’s Apple Notes app through macOS Automation. Calendar and Reminders widgets use EventKit with the corresponding macOS permission. Review the <a href="/privacy.html">NotchDock privacy policy</a> for the current user-facing description.</p>
+<h2>Data that needs a network</h2>
+<p>Sports and market widgets request public data from external providers. Those requests leave the Mac and are governed in part by the providers’ terms and service availability. A locally saved team or ticker choice is different from the score or price returned by the provider. Network data can be delayed, unavailable, or inconsistent with a live broadcast.</p>
+<h2>App data is separate from website measurement</h2>
+<p>The privacy policy describes website visit and download-button measurement separately from the app’s workspace. A download-button event does not prove a completed download or installation. App diagnostics are user-shared only when the user exports them for support, according to the published policy.</p>
+<h2>Review fit for your environment</h2>
+<ol><li>Check the privacy policy and release notes for the version you install.</li><li>Review granted Calendar, Reminders, Automation, and other macOS permissions.</li><li>For organizational use, compare those data flows with your own rules and test with non-sensitive data before enabling a widget.</li></ol>
+<p>This page makes no zero-telemetry, no-identifier, no-cloud, or enterprise-compliance guarantee. Use the policy and your own release review as the basis for a decision.</p>
         </article>
       </div>
 
@@ -241,7 +175,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

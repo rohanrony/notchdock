@@ -642,7 +642,7 @@ function renderClipboardWidget() {
 
   let listHTML = '';
   if (filtered.length === 0) {
-    listHTML = `<div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 20px;">No clipboard items found</div>`;
+    listHTML = `<div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 20px;">No saved snippets found</div>`;
   } else {
     filtered.forEach(item => {
       listHTML += `
@@ -660,7 +660,7 @@ function renderClipboardWidget() {
       <div class="nd-clipboard-toast" id="nd-clip-toast">Copied to Clipboard!</div>
       <div class="nd-clipboard-search-wrapper">
         <i class="fa-solid fa-magnifying-glass nd-clipboard-search-icon"></i>
-        <input type="text" placeholder="Search clipboard history..." class="nd-clipboard-search" id="nd-clip-search-input" value="${escapeHTML(state.search)}" />
+        <input type="text" placeholder="Search saved snippets..." class="nd-clipboard-search" id="nd-clip-search-input" value="${escapeHTML(state.search)}" />
       </div>
       <div class="nd-clipboard-list">
         ${listHTML}
@@ -1415,7 +1415,7 @@ function renderMusicWidget() {
       <div class="nd-music-controls-container">
         <div class="nd-music-timeline-box">
           <div class="nd-music-slider-wrapper">
-            <input type="range" class="nd-music-slider" min="0" max="100" value="${state.progress}" id="nd-music-progress-slider" />
+            <input type="range" class="nd-music-slider" min="0" max="100" value="${state.progress}" id="nd-music-progress-slider" ${track.isKaset ? 'disabled title="Seeking is unavailable for Kaset"' : ''} />
           </div>
           <div class="nd-music-time-labels">
             <span class="nd-music-time-current">${formatTime(currentSecs)}</span>
@@ -1428,9 +1428,9 @@ function renderMusicWidget() {
             <i class="fa-solid ${state.isPlaying ? 'fa-pause' : 'fa-play'}"></i>
           </button>
           <button class="nd-music-btn" id="nd-music-next" title="Next Track"><i class="fa-solid fa-forward-step"></i></button>
-          <button class="nd-music-btn like-btn ${state.isLiked ? 'liked' : ''}" id="nd-music-like" title="${track.isKaset ? 'Like track on YouTube Music (Kaset)' : 'Favorite track'}" style="color: ${state.isLiked ? 'var(--accent-green, #10b981)' : 'var(--text-muted)'}; margin-left: 8px;">
+${track.isKaset ? `          <button class="nd-music-btn like-btn ${state.isLiked ? 'liked' : ''}" id="nd-music-like" title="Like track on YouTube Music (Kaset)" style="color: ${state.isLiked ? 'var(--accent-green, #10b981)' : 'var(--text-muted)'}; margin-left: 8px;">
             <i class="fa-solid fa-thumbs-up"></i>
-          </button>
+          </button>` : ''}
         </div>
       </div>
       <div class="nd-music-footer">
@@ -1788,7 +1788,7 @@ function initShowcaseTabs() {
       render: renderCalendarWidget
     },
     clipboard: {
-      title: 'Clipboard Manager',
+      title: 'Quick Access Snippets',
       render: renderClipboardWidget
     },
     todo: {
@@ -2310,204 +2310,3 @@ function initUnifiedAutoRotation() {
     }
   }, 5000); // 5 seconds
 }
-
-/**
- * 6. Customer Testimonials & Review Simulator
- * Handles displaying reviews, interactive privacy toggles, compact views,
- * and a live review builder with real-time card previews.
- */
-function initTestimonials() {
-  const testimonialsGrid = document.getElementById('testimonials-grid');
-  if (!testimonialsGrid) return;
-
-  // 1. Initial State Data (Hardcoded as requested)
-  // Some users may not have a favorite widget (empty or omitted 'favorite' field)
-  const testimonials = [
-    {
-      name: "reddit/Easy-Cobbler-1631",
-      title: "Reddit User",
-      feedback: "Quick notes please;",
-      favorite: "", // No favorite widget
-      rating: 5,
-      date: "1 day ago",
-      initials: "EC"
-    },
-    {
-      name: "reddit/valiantay",
-      title: "Reddit User",
-      feedback: "Need in Windows!",
-      favorite: "", // No favorite widget
-      rating: 5,
-      date: "3 days ago",
-      initials: "V"
-    },
-    {
-      name: "reddit/chainsawJaguar",
-      title: "Reddit User",
-      feedback: "I'm super excited to be able to get sports scores in the notch. :)",
-      favorite: "⚽ Sports Tracker",
-      rating: 5,
-      date: "5 days ago",
-      initials: "CJ"
-    },
-    {
-      name: "reddit/AceReviewer",
-      title: "Reddit User",
-      feedback: "This is amazing. More people need to try this.",
-      favorite: "", // No favorite widget
-      rating: 5,
-      date: "1 week ago",
-      initials: "AR"
-    },
-    {
-      name: "reddit/YgrekMartinovsky",
-      title: "Reddit User",
-      feedback: `Overall, it's very good. I've used several similar apps, Atoll for the longest time, and this one is one of the best. A plus.
-
-Great design and fluidity: Visually, the app looks very "Apple-esque." Animations to expand the dock when hovering over a stock are smooth and natural.
-
-Widgets: Integrating the music controller, clipboard history, and calendar view in one place is a hit. The live sports score view is especially impressive and super convenient when you don't want to take your mind off work.
-
-Usability: Instead of installing several separate tools in the menu bar, I have an aesthetically pleasing, hidden command center under the notch that doesn't take up valuable screen space.
-
-Slight improvement needed.
-
-Hover sensitivity: Sometimes the app activates too easily when I simply move the cursor to the top of the screen, for example, to switch tabs in the browser or click something in the system menu. It can be irritating when the dock suddenly obscures what I'm aiming for. It would be helpful to have the option to set a delay before the panel slides out, or to define a "dead zone."
-
-Resource Usage (Beta): I've noticed that with active widgets that refresh data in real time (like the stock market or live scores), power and CPU usage can increase significantly. It would be worth optimizing the background refresh rate to save battery life on my MacBook.
-
-Widget Customization: Currently, I'm missing a bit more flexibility – I'd like to be able to more easily rearrange widgets or completely hide ones I'm not using (like the stock market) to minimize the entire panel.
-
-I'd also appreciate if you could add a notepad.`,
-      favorite: "⚽ Sports Tracker",
-      rating: 5,
-      date: "2 days ago",
-      initials: "YM"
-    }
-  ];
-
-  // Render Grid Function
-  testimonialsGrid.innerHTML = '';
-
-  testimonials.forEach(t => {
-    const card = document.createElement('div');
-    card.className = 'testimonial-card';
-    
-    // Ratings HTML
-    let starsHTML = '';
-    for (let i = 0; i < t.rating; i++) {
-      starsHTML += '<i class="fa-solid fa-star"></i>';
-    }
-
-    // Only render favorite badge if it's set
-    const badgeHTML = t.favorite 
-      ? `<span class="testimonial-badge">${escapeHTML(t.favorite)}</span>`
-      : '';
-
-    const needsReadMore = t.feedback.length > 180;
-    const displayFeedback = needsReadMore ? t.feedback.substring(0, 180) + '...' : t.feedback;
-
-    card.innerHTML = `
-      <div class="card-header">
-        <div class="card-header-info">
-          <div class="testimonial-avatar">
-            <span>${escapeHTML(t.initials)}</span>
-          </div>
-          <div class="testimonial-user-details">
-            <span class="testimonial-name">${escapeHTML(t.name)}</span>
-            <span class="testimonial-title">${escapeHTML(t.title)}</span>
-          </div>
-        </div>
-        <div class="testimonial-rating">
-          ${starsHTML}
-        </div>
-      </div>
-      <div class="testimonial-body">
-        ${escapeHTML(displayFeedback)}
-      </div>
-      ${needsReadMore ? `<button class="testimonial-read-more-btn" style="z-index: 10;">Read More <i class="fa-solid fa-arrow-right" style="font-size: 0.7rem;"></i></button>` : ''}
-      <div class="testimonial-footer">
-        ${badgeHTML}
-        <span class="testimonial-date">${escapeHTML(t.date)}</span>
-      </div>
-    `;
-
-    if (needsReadMore) {
-      const readMoreBtn = card.querySelector('.testimonial-read-more-btn');
-      readMoreBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        openTestimonialPopup(t);
-      });
-    }
-
-    testimonialsGrid.appendChild(card);
-  });
-}
-
-function openTestimonialPopup(t) {
-  const overlay = document.createElement('div');
-  overlay.className = 'testimonial-popup-overlay';
-  
-  let starsHTML = '';
-  for (let i = 0; i < t.rating; i++) {
-    starsHTML += '<i class="fa-solid fa-star"></i>';
-  }
-  
-  const badgeHTML = t.favorite 
-    ? `<span class="testimonial-badge">${escapeHTML(t.favorite)}</span>`
-    : '';
-
-  overlay.innerHTML = `
-    <div class="testimonial-popup-card">
-      <button class="testimonial-popup-close" title="Close"><i class="fa-solid fa-xmark"></i></button>
-      <div class="card-header" style="border: none; padding: 0; margin: 0; display: flex; justify-content: space-between; align-items: center; background: transparent; width: 100%;">
-        <div class="card-header-info" style="margin-bottom: 0; display: flex; align-items: center; gap: 12px;">
-          <div class="testimonial-avatar">
-            <span>${escapeHTML(t.initials)}</span>
-          </div>
-          <div class="testimonial-user-details" style="display: flex; flex-direction: column;">
-            <span class="testimonial-name" style="font-weight: 600;">${escapeHTML(t.name)}</span>
-            <span class="testimonial-title" style="font-size: 0.75rem; color: var(--text-muted);">${escapeHTML(t.title)}</span>
-          </div>
-        </div>
-        <div class="testimonial-rating" style="margin-bottom: 0; display: flex; gap: 3px; color: #ff9f0a;">
-          ${starsHTML}
-        </div>
-      </div>
-      <div class="testimonial-popup-body">
-        ${escapeHTML(t.feedback)}
-      </div>
-      <div class="testimonial-footer" style="margin-top: 0; padding-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--translucent-op-3);">
-        ${badgeHTML}
-        <span class="testimonial-date" style="font-size: 0.7rem; color: var(--text-muted);">${escapeHTML(t.date)}</span>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
-
-  setTimeout(() => {
-    overlay.classList.add('active');
-  }, 10);
-
-  const closePopup = () => {
-    overlay.classList.remove('active');
-    setTimeout(() => {
-      overlay.remove();
-    }, 300);
-  };
-
-  overlay.querySelector('.testimonial-popup-close').addEventListener('click', closePopup);
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closePopup();
-  });
-  
-  const escHandler = (e) => {
-    if (e.key === 'Escape') {
-      closePopup();
-      document.removeEventListener('keydown', escHandler);
-    }
-  };
-  document.addEventListener('keydown', escHandler);
-}
-

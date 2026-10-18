@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch | NotchDock</title>
-    <meta name="title" content="macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch | NotchDock" />
-    <meta name="description" content="Technical deep dive into macOS Accessibility APIs, CGEventTap, and NSEvent tracking used to detect mouse cursor proximity to the MacBook camera notch." />
-    <meta name="keywords" content="macos accessibility api cursor tracking, cgeventtap hover detection mac, nsevent mouse moved appkit, macbook notch hover detection, notchdock engineering" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>Review NotchDock permissions in macOS | NotchDock</title>
+    <meta name="title" content="Review NotchDock permissions in macOS | NotchDock" />
+    <meta name="description" content="See which macOS privacy controls are relevant to NotchDock’s calendar, reminders, notes automation, and Keychain workflows. An Accessibility cursor-monitor claim is not supported." />
+    <meta name="keywords" content="NotchDock macOS permissions, Calendar Reminders privacy settings, Automation permission Mac" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/macos-accessibility-api-cursor-hover-tracking.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/macos-accessibility-api-cursor-hover-tracking.html" />
-    <meta property="og:title" content="macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch | NotchDock" />
-    <meta property="og:description" content="Technical deep dive into macOS Accessibility APIs, CGEventTap, and NSEvent tracking used to detect mouse cursor proximity to the MacBook camera notch." />
+    <meta property="og:title" content="Review NotchDock permissions in macOS | NotchDock" />
+    <meta property="og:description" content="See which macOS privacy controls are relevant to NotchDock’s calendar, reminders, notes automation, and Keychain workflows. An Accessibility cursor-monitor claim is not supported." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/macos-accessibility-api-cursor-hover-tracking.html" />
-    <meta property="twitter:title" content="macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch | NotchDock" />
-    <meta property="twitter:description" content="Technical deep dive into macOS Accessibility APIs, CGEventTap, and NSEvent tracking used to detect mouse cursor proximity to the MacBook camera notch." />
+    <meta property="twitter:title" content="Review NotchDock permissions in macOS | NotchDock" />
+    <meta property="twitter:description" content="See which macOS privacy controls are relevant to NotchDock’s calendar, reminders, notes automation, and Keychain workflows. An Accessibility cursor-monitor claim is not supported." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/macos-accessibility-api-cursor-hover-tracking.html#article",
-      "headline": "macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch",
-      "description": "Technical deep dive into macOS Accessibility APIs, CGEventTap, and NSEvent tracking used to detect mouse cursor proximity to the MacBook camera notch.",
+      "headline": "Review NotchDock permissions in macOS",
+      "description": "See which macOS privacy controls are relevant to NotchDock’s calendar, reminders, notes automation, and Keychain workflows. An Accessibility cursor-monitor claim is not supported.",
       "url": "https://notchdock.app/blog/macos-accessibility-api-cursor-hover-tracking.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch",
+          "name": "Review NotchDock permissions in macOS",
           "item": "https://notchdock.app/blog/macos-accessibility-api-cursor-hover-tracking.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +118,29 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch</span>
+          <span class="current">Review NotchDock permissions in macOS</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-code"></i> macOS Internals</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-code"></i> macOS Permissions</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
         </div>
 
-        <h1 class="article-title">macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch</h1>
-        <p class="article-lead speakable-answer">
-          Detecting when a cursor glides into the camera notch without burning 10% CPU in a polling loop requires sophisticated event tap engineering. Here is how NotchDock does it.
-        </p>
+        <h1 class="article-title">Review NotchDock permissions in macOS</h1>
+        <p class="article-lead">NotchDock’s earlier claim that it needs Accessibility access for global cursor tracking was not verified. This guide describes the permission areas present in the reviewed app and how to review access in macOS.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How does NotchDock detect cursor hover around the MacBook notch?</h3>
-            <p>
-              <strong>NotchDock</strong> uses a non-intrusive <strong>global NSEvent monitor paired with passive CoreGraphics event taps</strong>. Rather than polling cursor coordinates in a continuous loop, it listens to system cursor movement events lazily. When coordinates intersect the computed bounding box of the notch with inward velocity, the hover expansion sequence triggers smoothly.
-            </p>
-          </div>
-
-          
-        <h2>1. Event-Driven vs. Polling Architectures</h2>
-        <p>A naive implementation polling <code>NSEvent.mouseLocation</code> 60 times a second burns CPU and battery. NotchDock's passive event listener sleeps until the OS delivers a genuine mouse move event.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Grant Accessibility permissions in macOS System Settings.</li><li><strong>Step 2:</strong> Move cursor smoothly toward the camera notch.</li><li><strong>Step 3:</strong> Observe instant, zero-latency dock reveal.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Why is Accessibility permission required?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">macOS sandboxing requires Accessibility authorization to track global cursor position outside the application's active window bounds.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/swift-6-concurrency-isolated-panel-rendering.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-bolt"></i> Swift 6 Concurrency</span>
-                  <h4 class="related-guide-title">Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels</h4>
-                  <p class="related-guide-excerpt">Explore how NotchDock leverages Swift 6 strict concurrency, Sendable types, and MainActor isolation to render live sports and stock feeds without UI thread hitches.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/sandboxing-hardened-runtime-apple-notarization.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-lock"></i> Apple Security & Notarization</span>
-                  <h4 class="related-guide-title">Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG</h4>
-                  <p class="related-guide-excerpt">How NotchDock complies with Apple's Hardened Runtime and Notarization service to guarantee malware-free, signed, and Gatekeeper-approved DMG downloads.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Accessibility permission is not established here</h2>
+<p>The reviewed Swift source handles notch entry with AppKit tracking areas and SwiftUI hover events. A bounded search found no <code>CGEventTap</code>, global <code>NSEvent</code> monitor, or Accessibility API cursor tracker. Do not grant Accessibility access just because an old NotchDock guide asked for it.</p>
+<h2>Review the permission the widget actually needs</h2>
+<p>Calendar and Reminders widgets use Apple’s EventKit store and request the corresponding access when connected. Quick Notes automation interacts with Apple Notes and can trigger macOS Automation consent. Keychain-backed Quick Access and ToDo data use Keychain APIs. Check the prompt and the relevant list under <strong>System Settings &gt; Privacy &amp; Security</strong>; disable access if you no longer use the feature.</p>
+<p>Apple explains how to <a href="https://support.apple.com/en-euro/guide/mac-help/mh43710/27/mac/27">control calendar access</a>, how to <a href="https://support.apple.com/en-my/guide/mac-help/mchl211c911f/mac">review Privacy &amp; Security settings</a>, and how to <a href="https://support.apple.com/en-nz/guide/mac-help/mchl108e1718/mac">manage app automation access</a>.</p>
+<h2>Use the prompt and privacy policy as your source</h2>
+<p>Permission requirements can differ by widget and macOS version. Read the text macOS presents, check the installed release’s settings, and consult the <a href="/privacy.html">NotchDock privacy policy</a>. This page does not claim that the app uses a system-wide cursor event tap or needs the broad Accessibility grant.</p>
         </article>
       </div>
 
@@ -237,7 +173,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

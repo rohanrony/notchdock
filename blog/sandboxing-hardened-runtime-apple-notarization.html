@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG | NotchDock</title>
-    <meta name="title" content="Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG | NotchDock" />
-    <meta name="description" content="How NotchDock complies with Apple's Hardened Runtime and Notarization service to guarantee malware-free, signed, and Gatekeeper-approved DMG downloads." />
-    <meta name="keywords" content="apple notarization mac dmg, hardened runtime macos security, gatekeeper approved mac app, notchdock security verification, safe mac software download" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>Check a Mac app signature and Gatekeeper assessment | NotchDock</title>
+    <meta name="title" content="Check a Mac app signature and Gatekeeper assessment | NotchDock" />
+    <meta name="description" content="Use codesign and spctl to inspect one downloaded app bundle on your Mac. The result does not certify every NotchDock release or prove an app is malware-free." />
+    <meta name="keywords" content="verify Mac app code signature, spctl assess app, codesign verify macOS app, Gatekeeper notarization" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html" />
-    <meta property="og:title" content="Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG | NotchDock" />
-    <meta property="og:description" content="How NotchDock complies with Apple's Hardened Runtime and Notarization service to guarantee malware-free, signed, and Gatekeeper-approved DMG downloads." />
+    <meta property="og:title" content="Check a Mac app signature and Gatekeeper assessment | NotchDock" />
+    <meta property="og:description" content="Use codesign and spctl to inspect one downloaded app bundle on your Mac. The result does not certify every NotchDock release or prove an app is malware-free." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html" />
-    <meta property="twitter:title" content="Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG | NotchDock" />
-    <meta property="twitter:description" content="How NotchDock complies with Apple's Hardened Runtime and Notarization service to guarantee malware-free, signed, and Gatekeeper-approved DMG downloads." />
+    <meta property="twitter:title" content="Check a Mac app signature and Gatekeeper assessment | NotchDock" />
+    <meta property="twitter:description" content="Use codesign and spctl to inspect one downloaded app bundle on your Mac. The result does not certify every NotchDock release or prove an app is malware-free." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html#article",
-      "headline": "Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG",
-      "description": "How NotchDock complies with Apple's Hardened Runtime and Notarization service to guarantee malware-free, signed, and Gatekeeper-approved DMG downloads.",
+      "headline": "Check a Mac app signature and Gatekeeper assessment",
+      "description": "Use codesign and spctl to inspect one downloaded app bundle on your Mac. The result does not certify every NotchDock release or prove an app is malware-free.",
       "url": "https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG",
+          "name": "Check a Mac app signature and Gatekeeper assessment",
           "item": "https://notchdock.app/blog/sandboxing-hardened-runtime-apple-notarization.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +118,33 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG</span>
+          <span class="current">Check a Mac app signature and Gatekeeper assessment</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-lock"></i> Apple Security & Notarization</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-lock"></i> Code Signature Checks</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 6 min read</span>
         </div>
 
-        <h1 class="article-title">Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG</h1>
-        <p class="article-lead speakable-answer">
-          Downloading apps from the internet can be nerve-wracking on macOS. Here is how NotchDock uses Apple's Hardened Runtime and automated Notarization tickets to guarantee security.
-        </p>
+        <h1 class="article-title">Check a Mac app signature and Gatekeeper assessment</h1>
+        <p class="article-lead">A signature check is about the exact app bundle you downloaded and the local system policy at the time of the check. It is not a blanket safety guarantee. These steps do not bypass Gatekeeper.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: Is the NotchDock DMG safe and notarized by Apple?</h3>
-            <p>
-              Yes! Every official <strong>NotchDock DMG</strong> release is code-signed with a valid Apple Developer ID, built with <strong>Hardened Runtime enabled</strong>, and submitted to Apple's automated Notarization Ticket service. Gatekeeper verifies the cryptographic staple on download, ensuring the application is malware-free and uncompromised.
-            </p>
-          </div>
-
-          
-        <h2>1. Gatekeeper Confidence on Modern macOS</h2>
-        <p>When you double-click NotchDock.dmg on macOS Monterey through Sequoia, Gatekeeper validates the signature instantly without scary 'unidentified developer' security warnings.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Download NotchDock.dmg from the official repository.</li><li><strong>Step 2:</strong> Open the installer and drag NotchDock to Applications.</li><li><strong>Step 3:</strong> Launch with 100% Gatekeeper validation.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">How can I verify the signature via terminal?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Run `spctl -a -vvv /Applications/NotchDock.app` in Terminal to verify Apple notarization.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/zero-telemetry-privacy-architecture-notchdock.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-shield-halved"></i> Privacy & Security</span>
-                  <h4 class="related-guide-title">Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities</h4>
-                  <p class="related-guide-excerpt">Architectural breakdown of NotchDock's zero-telemetry, local-first design. Why clipboard history, notes, and watchlist data must never leave your MacBook.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/macos-accessibility-api-cursor-hover-tracking.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-code"></i> macOS Internals</span>
-                  <h4 class="related-guide-title">macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch</h4>
-                  <p class="related-guide-excerpt">Technical deep dive into macOS Accessibility APIs, CGEventTap, and NSEvent tracking used to detect mouse cursor proximity to the MacBook camera notch.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Check the exact app in Applications</h2>
+<p>After downloading the official release and moving the app into Applications, open Terminal. Replace the path below if your app is elsewhere:</p>
+<pre><code>APP="/Applications/NotchDock.app"
+codesign --verify --verbose=4 "$APP"
+spctl --verbose=3 --assess --type execute "$APP"</code></pre>
+<p>Apple documents <code>spctl -vvv --assess --type exec /path/to/application</code> as a way to assess whether the current system policy allows the software to run. Its <a href="https://developer.apple.com/documentation/security/resolving-common-notarization-issues">notarization troubleshooting guide</a> also documents <code>codesign -dvv</code> for inspecting signature details.</p>
+<h2>Interpret each result narrowly</h2>
+<p><code>codesign --verify</code> checks the code signature for the bundle you named. <code>spctl --assess</code> asks the current local security policy to assess that app. Save the command output with the release version, download URL, macOS version, and date. A successful check does not prove that the software is free of malware, nor does it establish the state of other releases.</p>
+<h2>If Gatekeeper rejects the app</h2>
+<p>Stop and verify that you downloaded the intended artifact from the official release page. Check the published release notes and contact the developer if the result is unexpected. Do not remove quarantine attributes, disable Gatekeeper, or use an override merely to make a warning disappear.</p>
+<p>Apple explains <a href="https://developer.apple.com/documentation/security/code-signing-services">code signing</a> and the separate <a href="https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution">notarization process</a>. Notarization is an automated check by Apple’s notary service; it is not App Review and is not proof of no malicious behavior. This page does not claim that every NotchDock DMG has been verified.</p>
         </article>
       </div>
 
@@ -237,7 +177,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

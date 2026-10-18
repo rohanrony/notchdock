@@ -220,46 +220,24 @@ CLUSTER_1_ARTICLES = [
     {
         "slug": "f1-grand-prix-live-timing-leaderboard-mac-notch",
         "cluster": "sports-stocks",
-        "badge_text": "Motorsport & F1",
+        "badge_text": "Sports Support",
         "badge_icon": "fa-solid fa-flag-checkered",
-        "title": "Formula 1 Live Timing in the Mac Notch: Leaderboard & Lap Times",
-        "meta_desc": "Track Formula 1 Grand Prix races live on your Mac. P1-P3 leaderboard, pit stop deltas, fastest laps, and safety car alerts right in your MacBook notch.",
-        "keywords": "f1 live timing mac, formula 1 mac notch tracker, grand prix live leaderboard macos, f1 safety car alert mac, f1 lap times macbook",
-        "read_time": "7 min read",
+        "title": "Can NotchDock Track Formula 1? Supported Sports on Mac",
+        "meta_desc": "Formula 1 is not listed among NotchDock’s currently supported sports. See the leagues the app does support and where to follow F1 timing.",
+        "keywords": "NotchDock Formula 1 support, supported sports NotchDock, F1 live timing official",
+        "read_time": "3 min read",
         "date": "2026-09-28",
-        "lead": "Formula 1 races are decided in fractions of a second and pit strategy windows. Here is how to track live race positions, interval gaps, and safety car alerts in your MacBook camera bezel.",
-        "aeo_q": "How can I follow F1 live timing and leaderboards on macOS?",
-        "aeo_a": "Using <strong>NotchDock</strong>, you can track Formula 1 Grand Prix sessions live from the MacBook camera notch. The ambient ticker shows race laps, current leader, and podium positions (e.g. <code>L34/57 • VER - NOR (+1.4s) - LEC</code>). Hovering expands a full 20-driver timing tower with tire compounds, pit stop counts, and yellow/safety car flags.",
+        "lead": "Formula 1 is not among the leagues in NotchDock’s current sports list. This page shows what is supported today and points F1 fans to a dedicated timing source.",
+        "aeo_q": "",
+        "aeo_a": "",
         "sections": [
-            {
-                "h2": "1. Why F1 Fans Love Live Timing Over Video Feeds",
-                "content": "<p>True motorsport enthusiasts know that the timing tower tells the real story of an F1 Grand Prix: undercut strategies, tire degradation deltas, and DRS intervals. Having live timing in your notch gives you the engineer's view of the race.</p>"
-            },
-            {
-                "h2": "2. Safety Car & Flag Alerts in Hardware",
-                "content": "<p>When a Virtual Safety Car (VSC), full Safety Car (SC), or Red Flag is deployed, NotchDock lights up the notch with an authentic yellow or red hazard accent, instantly alerting you to race-altering drama.</p>"
-            }
+            {"h2": "Is Formula 1 available in NotchDock?", "content": "<p>No. Formula 1 is not in the current supported league list. The app’s sports widget lists NBA, NFL, MLB, NHL, EPL, MLS, LaLiga, Bundesliga, FIFA World Cup 2026, and UEFA Champions League. The project roadmap lists Formula 1 as future work; that is not a release feature or a delivery commitment.</p><p>For a supported matchup, open the <a href=/features/mac-sports-tracker.html>NotchDock sports tracker page</a> for product details. Available games and data depend on the feed and current schedule.</p>"},
+            {"h2": "Where to follow F1 timing", "content": "<p>Use Formula 1’s own <a href=https://www.formula1.com/en/timing/f1-live>Live Timing</a> for official session timing. NotchDock does not display that timing tower, tire data, pit information, or race-control alerts.</p>"},
+            {"h2": "How this page was checked", "content": "<p>The supported leagues listed above were checked against the current sports widget source on 2026-10-18. Formula 1 is not in that list. Recheck the current release before relying on any future feature changes.</p>"}
         ],
-        "setup_steps": [
-            "Download NotchDock and grant Accessibility access.",
-            "Hover over the notch and click the Motorsport flag icon.",
-            "Select the active Grand Prix weekend (Practice, Qualifying, or Race).",
-            "Pin the live session to your camera notch."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock track tire compounds (Soft, Medium, Hard)?",
-                "a": "Yes! The expanded hover panel displays color-coded tire badges and lap ages for each driver."
-            },
-            {
-                "q": "Can I follow Qualifying knockout sessions (Q1, Q2, Q3)?",
-                "a": "Yes, elimination zone positions and drop-zone cutoffs are fully supported."
-            }
-        ],
-        "related_slugs": [
-            "wimbledon-tennis-live-scores-points-tracker-mac",
-            "nhl-stanley-cup-playoffs-live-score-mac-notch"
-        ]
+        "setup_steps": [],
+        "faqs": [],
+        "related_slugs": ["nba-finals-live-score-tracker-macbook-notch", "mlb-world-series-live-score-pitch-tracker-mac"]
     },
     {
         "slug": "wimbledon-tennis-live-scores-points-tracker-mac",

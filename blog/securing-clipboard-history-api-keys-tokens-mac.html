@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac | NotchDock</title>
-    <meta name="title" content="Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac | NotchDock" />
-    <meta name="description" content="How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS." />
-    <meta name="keywords" content="secure clipboard manager mac, exclude passwords clipboard history macos, developer api key clipboard security, notchdock clipboard protection, 1password mac clipboard" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>Handle API keys carefully around Mac clipboard tools | NotchDock</title>
+    <meta name="title" content="Handle API keys carefully around Mac clipboard tools | NotchDock" />
+    <meta name="description" content="Practical ways to reduce secret exposure while copying text on macOS. NotchDock Quick Access is a user-managed Keychain snippet list, not automatic clipboard capture or a secret scanner." />
+    <meta name="keywords" content="Mac clipboard API key safety, NSPasteboard shared clipboard, NotchDock Quick Access Keychain" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/securing-clipboard-history-api-keys-tokens-mac.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/securing-clipboard-history-api-keys-tokens-mac.html" />
-    <meta property="og:title" content="Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac | NotchDock" />
-    <meta property="og:description" content="How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS." />
+    <meta property="og:title" content="Handle API keys carefully around Mac clipboard tools | NotchDock" />
+    <meta property="og:description" content="Practical ways to reduce secret exposure while copying text on macOS. NotchDock Quick Access is a user-managed Keychain snippet list, not automatic clipboard capture or a secret scanner." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/securing-clipboard-history-api-keys-tokens-mac.html" />
-    <meta property="twitter:title" content="Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac | NotchDock" />
-    <meta property="twitter:description" content="How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS." />
+    <meta property="twitter:title" content="Handle API keys carefully around Mac clipboard tools | NotchDock" />
+    <meta property="twitter:description" content="Practical ways to reduce secret exposure while copying text on macOS. NotchDock Quick Access is a user-managed Keychain snippet list, not automatic clipboard capture or a secret scanner." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/securing-clipboard-history-api-keys-tokens-mac.html#article",
-      "headline": "Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac",
-      "description": "How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS.",
+      "headline": "Handle API keys carefully around Mac clipboard tools",
+      "description": "Practical ways to reduce secret exposure while copying text on macOS. NotchDock Quick Access is a user-managed Keychain snippet list, not automatic clipboard capture or a secret scanner.",
       "url": "https://notchdock.app/blog/securing-clipboard-history-api-keys-tokens-mac.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac",
+          "name": "Handle API keys carefully around Mac clipboard tools",
           "item": "https://notchdock.app/blog/securing-clipboard-history-api-keys-tokens-mac.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +118,30 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac</span>
+          <span class="current">Handle API keys carefully around Mac clipboard tools</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-key"></i> Credential Security</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-key"></i> Clipboard Safety</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 6 min read</span>
         </div>
 
-        <h1 class="article-title">Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac</h1>
-        <p class="article-lead speakable-answer">
-          Copying an AWS secret key or database connection string into a clipboard history tool can be dangerous. Here is how NotchDock automatically filters and purges sensitive tokens.
-        </p>
+        <h1 class="article-title">Handle API keys carefully around Mac clipboard tools</h1>
+        <p class="article-lead">Treat the general pasteboard as shared data. NotchDock’s Quick Access list is manually managed and stored through the app’s Keychain helper; it is not an automatic clipboard history or a credential filter.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How does NotchDock prevent sensitive API keys and passwords from being saved in clipboard history?</h3>
-            <p>
-              <strong>NotchDock</strong> integrates with the macOS Pasteboard Concealed Types specification (<code>org.nspasteboard.ConcealedType</code>). When you copy credentials from 1Password, Bitwarden, or Keychain, NotchDock automatically excludes them from history. Furthermore, heuristic regex detectors flag potential AWS, GitHub, and OpenAI API tokens for instant manual purging.
-            </p>
-          </div>
-
-          
-        <h2>1. Concealed Pasteboard Types in AppKit</h2>
-        <p>Password managers tag copied strings with special concealment markers. NotchDock respects these markers strictly, ensuring master passwords never enter searchable history.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Enable 'Concealed Type Filtering' in NotchDock Settings.</li><li><strong>Step 2:</strong> Copy credentials safely from your password manager.</li><li><strong>Step 3:</strong> Rest assured your sensitive secrets remain protected.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Can I manually clear my clipboard history with one click?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Yes! A prominent 'Clear All History' trash icon instantly erases all local snippets.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/zero-telemetry-privacy-architecture-notchdock.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-shield-halved"></i> Privacy & Security</span>
-                  <h4 class="related-guide-title">Zero Telemetry by Design: Why Local-First Architecture Matters in Mac Utilities</h4>
-                  <p class="related-guide-excerpt">Architectural breakdown of NotchDock's zero-telemetry, local-first design. Why clipboard history, notes, and watchlist data must never leave your MacBook.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/developer-scratchpad-git-commits-regex-notch.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-terminal"></i> Developer Productivity</span>
-                  <h4 class="related-guide-title">Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss</h4>
-                  <p class="related-guide-excerpt">How software engineers use NotchDock's hover-to-reveal scratchpad to draft Git commit messages, test regex strings, and format JSON snippets without switching apps.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Know which feature is handling the text</h2>
+<p>Apple describes <code>NSPasteboard.general</code> as the shared pasteboard used to transfer copied data between apps. NotchDock’s Quick Access widget is a separate, user-managed list of snippets that the reviewed source saves through Keychain APIs. It does not automatically capture every copy action, scan API keys, or promise to recognize password-manager markers.</p>
+<p>See Apple’s <a href="https://developer.apple.com/documentation/appkit/nspasteboard">NSPasteboard documentation</a>. For NotchDock’s local data handling, consult the <a href="/privacy.html">privacy policy</a>.</p>
+<h2>Use a low-risk test before trusting a clipboard workflow</h2>
+<ol><li>Test with a fake token such as <code>test_key_DO_NOT_USE</code>, never a live credential.</li><li>Copy and paste it through the exact apps you plan to use. Check whether a clipboard utility or password manager retains it.</li><li>Use only controls documented in that app to delete or clear stored snippets; do not assume “clear clipboard” also removes another app’s history.</li><li>If a real credential was copied into an unintended tool, revoke or rotate it at the issuing service.</li></ol>
+<h2>Reduce exposure for real secrets</h2>
+<p>Prefer your password manager’s autofill or direct integration when available. Avoid putting credentials into shell commands, logs, screenshots, or saved Quick Access snippets. If your workflow requires copying, paste it only into the intended field and follow your organization’s credential-handling policy.</p>
+<p>This guide makes no claim that NotchDock filters passwords or provides a one-click clipboard-history purge.</p>
         </article>
       </div>
 
@@ -237,7 +174,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

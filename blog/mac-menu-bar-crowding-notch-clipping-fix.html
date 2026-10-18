@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons | NotchDock</title>
-    <meta name="title" content="The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons | NotchDock" />
-    <meta name="description" content="Fix hidden menu bar icons clipped behind the MacBook camera notch. How moving secondary utilities into the notch restores complete menubar visibility on macOS." />
+    <title>Mac menu bar space: what a notch app can and cannot change | NotchDock</title>
+    <meta name="title" content="Mac menu bar space: what a notch app can and cannot change | NotchDock" />
+    <meta name="description" content="NotchDock does not move macOS menu bar status items or guarantee that it frees a fixed number of icon slots." />
     <meta name="keywords" content="mac menu bar icons hidden notch, bartender alternative macbook notch, fix menu bar crowding macos, icons hidden behind notch, notchdock menubar fix" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/mac-menu-bar-crowding-notch-clipping-fix.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/mac-menu-bar-crowding-notch-clipping-fix.html" />
-    <meta property="og:title" content="The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons | NotchDock" />
-    <meta property="og:description" content="Fix hidden menu bar icons clipped behind the MacBook camera notch. How moving secondary utilities into the notch restores complete menubar visibility on macOS." />
+    <meta property="og:title" content="Mac menu bar space: what a notch app can and cannot change | NotchDock" />
+    <meta property="og:description" content="NotchDock does not move macOS menu bar status items or guarantee that it frees a fixed number of icon slots." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/mac-menu-bar-crowding-notch-clipping-fix.html" />
-    <meta property="twitter:title" content="The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons | NotchDock" />
-    <meta property="twitter:description" content="Fix hidden menu bar icons clipped behind the MacBook camera notch. How moving secondary utilities into the notch restores complete menubar visibility on macOS." />
+    <meta property="twitter:title" content="Mac menu bar space: what a notch app can and cannot change | NotchDock" />
+    <meta property="twitter:description" content="NotchDock does not move macOS menu bar status items or guarantee that it frees a fixed number of icon slots." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/mac-menu-bar-crowding-notch-clipping-fix.html#article",
-      "headline": "The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons",
-      "description": "Fix hidden menu bar icons clipped behind the MacBook camera notch. How moving secondary utilities into the notch restores complete menubar visibility on macOS.",
+      "headline": "Mac menu bar space: what a notch app can and cannot change",
+      "description": "NotchDock does not move macOS menu bar status items or guarantee that it frees a fixed number of icon slots.",
       "url": "https://notchdock.app/blog/mac-menu-bar-crowding-notch-clipping-fix.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T00:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -80,14 +80,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons",
+          "name": "Mac menu bar space: what a notch app can and cannot change",
           "item": "https://notchdock.app/blog/mac-menu-bar-crowding-notch-clipping-fix.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +125,28 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons</span>
+          <span class="current">Mac menu bar space: what a notch app can and cannot change</span>
         </div>
 
         <div class="article-meta-row">
           <span class="blog-category-badge"><i class="fa-solid fa-compress"></i> Menu Bar Solutions</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• 6 min read</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
+
         </div>
 
-        <h1 class="article-title">The Mac Menu Bar Crowding Problem: How NotchDock Solves Hidden Status Icons</h1>
-        <p class="article-lead speakable-answer">
-          On notched MacBooks, opening an app with extensive menus (like Photoshop or Xcode) pushes right-side status icons behind the physical camera notch, making them inaccessible. Here is the permanent fix.
-        </p>
+        <h1 class="article-title">Mac menu bar space: what a notch app can and cannot change</h1>
+        <p class="article-lead speakable-answer">The earlier claim that NotchDock relocates background menu bar items into the camera cutout is not supported by the current feature evidence.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How does NotchDock solve the MacBook menu bar notch clipping issue?</h3>
-            <p>
-              Instead of letting menu bar status icons compete for limited horizontal space and disappear behind the hardware notch, <strong>NotchDock</strong> moves background status items (sports, stocks, music, timers, and clipboard) directly <strong>inside the camera cutout area</strong>. This clears up to 10 icon slots on your menu bar, preventing icon clipping entirely.
-            </p>
-          </div>
-
-          
-        <h2>1. The Anatomy of Notch Clipping</h2>
-        <p>Apple's macOS hides menu bar extras that collide with the camera cutout. Moving secondary utilities into the notch tray reclaims valuable menubar horizontal real estate for essential system icons.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Audit your menu bar for hidden icons.</li><li><strong>Step 2:</strong> Consolidate audio, sports, and timer icons into NotchDock.</li><li><strong>Step 3:</strong> Enjoy a pristine, unclipped menu bar.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Can NotchDock replace menu bar hider apps like Bartender?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">NotchDock complements or replaces menubar hiders by relocating status widgets into the dead space of the notch itself.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-ruler-combined"></i> Hardware Engineering</span>
-                  <h4 class="related-guide-title">MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown</h4>
-                  <p class="related-guide-excerpt">Technical breakdown of the physical camera notch pixel dimensions on 14-inch and 16-inch MacBook Pro (M1-M4). Safe areas, menu bar heights, and AppKit coordinates.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/how-notchdock-renders-on-external-monitors-studio-display.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-desktop"></i> External Displays</span>
-                  <h4 class="related-guide-title">How NotchDock Renders on External Monitors and Apple Studio Display</h4>
-                  <p class="related-guide-excerpt">How NotchDock adapts when connected to Apple Studio Display, Pro Display XDR, or 4K monitors. Seamless floating Dynamic Island pill rendering on non-notched screens.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Mac menu bar space: what a notch app can and cannot change</h2>
+          <p>A Mac notch app may provide its own widgets near the display notch, but that does not mean it replaces, hides, or reorganizes other apps’ menu bar items.</p>
+          <p>Check the current product guide for the displays and interactions NotchDock supports.</p>
+          <p>For current product details, see <a href="/features/mac-sports-tracker.html">the NotchDock sports feature guide</a>.</p>
+          <p>NotchDock is currently free during beta and requires macOS 14 or newer.</p>
+          <div class="article-cta-box"><h3>Explore NotchDock</h3><p>Review the current feature guide and product requirements before installing.</p><a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Download NotchDock</a></div>
         </article>
       </div>
 
@@ -237,7 +179,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

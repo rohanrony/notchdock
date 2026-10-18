@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown | NotchDock</title>
-    <meta name="title" content="MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown | NotchDock" />
-    <meta name="description" content="Technical breakdown of the physical camera notch pixel dimensions on 14-inch and 16-inch MacBook Pro (M1-M4). Safe areas, menu bar heights, and AppKit coordinates." />
-    <meta name="keywords" content="macbook pro notch pixel dimensions, 14 inch vs 16 inch mac notch size, macbook camera notch safe area, appkit notch coordinates macos, notchdock hardware" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>How macOS exposes MacBook notch safe areas | NotchDock</title>
+    <meta name="title" content="How macOS exposes MacBook notch safe areas | NotchDock" />
+    <meta name="description" content="Use AppKit screen safe-area geometry to reason about a MacBook notch. Safe-area values are display coordinates, not a model-by-model physical measurement table." />
+    <meta name="keywords" content="NSScreen safeAreaInsets, MacBook notch safe area, AppKit auxiliaryTopLeftArea" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html" />
-    <meta property="og:title" content="MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown | NotchDock" />
-    <meta property="og:description" content="Technical breakdown of the physical camera notch pixel dimensions on 14-inch and 16-inch MacBook Pro (M1-M4). Safe areas, menu bar heights, and AppKit coordinates." />
+    <meta property="og:title" content="How macOS exposes MacBook notch safe areas | NotchDock" />
+    <meta property="og:description" content="Use AppKit screen safe-area geometry to reason about a MacBook notch. Safe-area values are display coordinates, not a model-by-model physical measurement table." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html" />
-    <meta property="twitter:title" content="MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown | NotchDock" />
-    <meta property="twitter:description" content="Technical breakdown of the physical camera notch pixel dimensions on 14-inch and 16-inch MacBook Pro (M1-M4). Safe areas, menu bar heights, and AppKit coordinates." />
+    <meta property="twitter:title" content="How macOS exposes MacBook notch safe areas | NotchDock" />
+    <meta property="twitter:description" content="Use AppKit screen safe-area geometry to reason about a MacBook notch. Safe-area values are display coordinates, not a model-by-model physical measurement table." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html#article",
-      "headline": "MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown",
-      "description": "Technical breakdown of the physical camera notch pixel dimensions on 14-inch and 16-inch MacBook Pro (M1-M4). Safe areas, menu bar heights, and AppKit coordinates.",
+      "headline": "How macOS exposes MacBook notch safe areas",
+      "description": "Use AppKit screen safe-area geometry to reason about a MacBook notch. Safe-area values are display coordinates, not a model-by-model physical measurement table.",
       "url": "https://notchdock.app/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown",
+          "name": "How macOS exposes MacBook notch safe areas",
           "item": "https://notchdock.app/blog/macbook-pro-camera-notch-exact-pixel-dimensions.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,103 +118,36 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown</span>
+          <span class="current">How macOS exposes MacBook notch safe areas</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-ruler-combined"></i> Hardware Engineering</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-ruler-combined"></i> AppKit Display Geometry</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
         </div>
 
-        <h1 class="article-title">MacBook Pro Camera Notch Exact Pixel Dimensions: 14-inch vs 16-inch Breakdown</h1>
-        <p class="article-lead speakable-answer">
-          Designing software that seamlessly integrates into the MacBook camera bezel requires exact mathematical geometry. Here is the definitive engineering reference for 14-inch and 16-inch notch dimensions.
-        </p>
+        <h1 class="article-title">How macOS exposes MacBook notch safe areas</h1>
+        <p class="article-lead">MacBook display scaling makes a single pixel table easy to misuse. AppKit exposes the usable screen area and the top-corner regions; query those values on the target screen instead of assuming one physical notch width fits every mode.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: What are the exact pixel dimensions of the MacBook Pro camera notch?</h3>
-            <p>
-              On the <strong>14-inch MacBook Pro</strong> (3024×1964 native resolution), the notch measures exactly <strong>204 logical points wide by 34 logical points high</strong> (or 408×68 physical pixels at 2x Retina scale). On the <strong>16-inch MacBook Pro</strong> (3456×2234 native), it measures <strong>214 points wide by 34 points high</strong>. <strong>NotchDock</strong> uses these exact coordinates via <code>NSScreen.safeAreaInsets</code> to align its bezel HUD pixel-perfectly.
-            </p>
-          </div>
-
-          
-        <h2>1. Exact Geometry by MacBook Model</h2>
-        <p>A reference table for macOS developers and interface designers:</p>
-        
-    <div style="margin: 24px 0; overflow-x: auto;">
-      <table style="width: 100%; border-collapse: collapse; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;">
-        <thead>
-          <tr style="background: rgba(255, 255, 255, 0.05); text-align: left;">
-            <th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">MacBook Model</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Native Display Resolution</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Notch Width (Logical Points)</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Notch Height (Points)</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Physical Retina Pixels</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">MacBook Pro 14" (M1/M2/M3/M4)</td><td style="padding: 14px; color: var(--text-white);">3024 × 1964 @ 254 ppi</td><td style="padding: 14px; color: var(--text-muted);">204 pt</td><td style="padding: 14px; color: var(--text-muted);">34 pt (Menu Bar: 74 pt total)</td><td style="padding: 14px; color: var(--text-muted);">408 × 68 px</td></tr><tr style="border-bottom: 1px solid var(--border-color); background: rgba(74, 222, 128, 0.04);"><td style="padding: 14px; color: #4ade80; font-weight: 700;">MacBook Pro 16" (M1/M2/M3/M4)</td><td style="padding: 14px; color: var(--text-white);">3456 × 2234 @ 254 ppi</td><td style="padding: 14px; color: var(--text-muted);">214 pt</td><td style="padding: 14px; color: var(--text-muted);">34 pt (Menu Bar: 74 pt total)</td><td style="padding: 14px; color: var(--text-muted);">428 × 68 px</td></tr><tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">MacBook Air 13.6" (M2/M3)</td><td style="padding: 14px; color: var(--text-white);">2560 × 1664 @ 224 ppi</td><td style="padding: 14px; color: var(--text-muted);">190 pt</td><td style="padding: 14px; color: var(--text-muted);">32 pt (Menu Bar: 64 pt total)</td><td style="padding: 14px; color: var(--text-muted);">380 × 64 px</td></tr><tr style="border-bottom: 1px solid var(--border-color); background: rgba(74, 222, 128, 0.04);"><td style="padding: 14px; color: #4ade80; font-weight: 700;">MacBook Air 15.3" (M2/M3)</td><td style="padding: 14px; color: var(--text-white);">2880 × 1864 @ 224 ppi</td><td style="padding: 14px; color: var(--text-muted);">200 pt</td><td style="padding: 14px; color: var(--text-muted);">32 pt (Menu Bar: 64 pt total)</td><td style="padding: 14px; color: var(--text-muted);">400 × 64 px</td></tr>
-        </tbody>
-      </table>
-    </div>
-    
-        
-        <h2>2. Querying Safe Areas in Swift & AppKit</h2>
-        <p>Modern macOS provides <code>NSScreen.auxiliaryTopLeftArea</code> and <code>NSScreen.auxiliaryTopRightArea</code>. NotchDock calculates the center gap dynamically, ensuring exact alignment across display scaling modes.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Download NotchDock on any Apple Silicon MacBook.</li><li><strong>Step 2:</strong> Observe the pixel-perfect alignment against your screen's physical cutout.</li><li><strong>Step 3:</strong> Enjoy true hardware-software harmony.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">What happens when display scaling is set to 'More Space'?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">NotchDock dynamically queries the display scaling factor and recalculates point metrics so the bezel HUD remains perfectly centered.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/macbook-air-m2-m3-liquid-retina-notch-architecture.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-laptop"></i> Liquid Retina Architecture</span>
-                  <h4 class="related-guide-title">MacBook Air M2 & M3 Liquid Retina Notch Architecture: Pixel-Perfect Utility Design</h4>
-                  <p class="related-guide-excerpt">How NotchDock adapts to the slightly smaller camera notch on the 13.6-inch and 15.3-inch MacBook Air Liquid Retina displays. Precision AppKit engineering.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/promotion-120hz-fluid-animations-macbook-notch.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-gauge"></i> ProMotion & Display</span>
-                  <h4 class="related-guide-title">ProMotion 120Hz Fluid Animations: Engineering Zero-Jitter Notch Expansion</h4>
-                  <p class="related-guide-excerpt">How NotchDock achieves locked 120 frames-per-second hover animations on MacBook Pro ProMotion displays using Core Animation and Spring Physics on macOS.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>What the safe-area APIs describe</h2>
+<p><code>NSScreen.safeAreaInsets</code> describes distances from the display edges where content would be obscured. Apple notes that, on some Macs, the top inset reflects the camera housing. <code>auxiliaryTopLeftArea</code> and <code>auxiliaryTopRightArea</code> describe unobscured regions around that top area. These are useful layout coordinates; they are not a specification of the physical camera cutout’s manufacturing dimensions. See Apple’s <a href="https://developer.apple.com/documentation/appkit/nsscreen/safeareainsets">safe-area documentation</a> and the <a href="https://developer.apple.com/documentation/appkit/nsscreen">NSScreen reference</a>.</p>
+<h2>Inspect the screen used by your app</h2>
+<p>For a macOS diagnostic, log the selected <code>NSScreen</code>’s <code>frame</code>, <code>safeAreaInsets</code>, and optional auxiliary-area widths. Keep the values in points and record the active display scaling setting. Convert a rectangle to backing pixels only when a pixel-space comparison is actually needed; do not label that conversion as the plastic or glass notch size.</p>
+<pre><code>if let screen = NSScreen.main {
+    let left = screen.auxiliaryTopLeftArea?.width ?? 0
+    let right = screen.auxiliaryTopRightArea?.width ?? 0
+    print("frame:", screen.frame)
+    print("safe area:", screen.safeAreaInsets)
+    print("top auxiliary widths:", left, right)
+}</code></pre>
+<h2>How NotchDock uses these values</h2>
+<p>In the reviewed source, NotchDock reads <code>NSScreen.main</code>, derives a center width from the screen frame and the two auxiliary widths, and uses the top safe-area inset for its menu-bar height. If no notch areas are reported, it uses a configured fallback width. That approach does not justify a fixed 14-inch or 16-inch physical dimension table, and this page does not publish one.</p>
+<p>When comparing a display, record the Mac model, macOS version, resolution/scaling choice, and the queried screen values together. A change in logical points is not itself a change in the physical cutout.</p>
         </article>
       </div>
 
@@ -254,7 +180,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

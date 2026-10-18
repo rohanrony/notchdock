@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes | NotchDock</title>
-    <meta name="title" content="Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes | NotchDock" />
-    <meta name="description" content="How command-line developers pair terminal emulators (Ghostty, iTerm2, Alacritty) with NotchDock for lightning-fast clipboard staging and scratchpad access." />
-    <meta name="keywords" content="ghostty terminal mac, iterm2 notchdock workflow, command line productivity macos, terminal hotkey scratchpad, notchdock terminal developer" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>Use macOS pbcopy and pbpaste safely in Terminal | NotchDock</title>
+    <meta name="title" content="Use macOS pbcopy and pbpaste safely in Terminal | NotchDock" />
+    <meta name="description" content="Copy non-sensitive terminal output with pbcopy and inspect the shared pasteboard with pbpaste. NotchDock does not document a global hotkey or terminal pipe." />
+    <meta name="keywords" content="macOS pbcopy pbpaste terminal workflow, copy command output Mac, NotchDock Quick Access" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/terminal-hotkeys-command-line-flow-with-notchdock.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/terminal-hotkeys-command-line-flow-with-notchdock.html" />
-    <meta property="og:title" content="Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes | NotchDock" />
-    <meta property="og:description" content="How command-line developers pair terminal emulators (Ghostty, iTerm2, Alacritty) with NotchDock for lightning-fast clipboard staging and scratchpad access." />
+    <meta property="og:title" content="Use macOS pbcopy and pbpaste safely in Terminal | NotchDock" />
+    <meta property="og:description" content="Copy non-sensitive terminal output with pbcopy and inspect the shared pasteboard with pbpaste. NotchDock does not document a global hotkey or terminal pipe." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/terminal-hotkeys-command-line-flow-with-notchdock.html" />
-    <meta property="twitter:title" content="Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes | NotchDock" />
-    <meta property="twitter:description" content="How command-line developers pair terminal emulators (Ghostty, iTerm2, Alacritty) with NotchDock for lightning-fast clipboard staging and scratchpad access." />
+    <meta property="twitter:title" content="Use macOS pbcopy and pbpaste safely in Terminal | NotchDock" />
+    <meta property="twitter:description" content="Copy non-sensitive terminal output with pbcopy and inspect the shared pasteboard with pbpaste. NotchDock does not document a global hotkey or terminal pipe." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/terminal-hotkeys-command-line-flow-with-notchdock.html#article",
-      "headline": "Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes",
-      "description": "How command-line developers pair terminal emulators (Ghostty, iTerm2, Alacritty) with NotchDock for lightning-fast clipboard staging and scratchpad access.",
+      "headline": "Use macOS pbcopy and pbpaste safely in Terminal",
+      "description": "Copy non-sensitive terminal output with pbcopy and inspect the shared pasteboard with pbpaste. NotchDock does not document a global hotkey or terminal pipe.",
       "url": "https://notchdock.app/blog/terminal-hotkeys-command-line-flow-with-notchdock.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes",
+          "name": "Use macOS pbcopy and pbpaste safely in Terminal",
           "item": "https://notchdock.app/blog/terminal-hotkeys-command-line-flow-with-notchdock.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +118,34 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes</span>
+          <span class="current">Use macOS pbcopy and pbpaste safely in Terminal</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-terminal"></i> Terminal Integration</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-terminal"></i> Terminal & Clipboard</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 6 min read</span>
         </div>
 
-        <h1 class="article-title">Terminal Hotkey Workflows: Pairing Ghostty and iTerm2 with Notch Quick Notes</h1>
-        <p class="article-lead speakable-answer">
-          Terminal-first developers rarely touch their mouse, but need a place to stash command outputs and docker flags. Here is how to integrate NotchDock into your CLI flow.
-        </p>
+        <h1 class="article-title">Use macOS pbcopy and pbpaste safely in Terminal</h1>
+        <p class="article-lead">The built-in pasteboard commands make it easy to move plain text between Terminal and another app. That system clipboard workflow is separate from NotchDock Quick Access; no NotchDock hotkey or shell pipe is documented.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How can command-line power users integrate NotchDock with their terminal?</h3>
-            <p>
-              Developers using <strong>Ghostty, iTerm2, or Alacritty</strong> can trigger NotchDock using a custom global hotkey (e.g. <code>Option + Space</code>). This drops the notch tray down without requiring a trackpad, letting you paste terminal logs into Quick Notes or copy clipboard history items directly into your active shell session.
-            </p>
-          </div>
-
-          
-        <h2>1. Keyboard-First Efficiency</h2>
-        <p>While hover gestures are great for trackpad users, CLI purists can operate NotchDock entirely via keyboard bindings for rapid clipboard navigation.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Set your preferred global hotkey in NotchDock Settings.</li><li><strong>Step 2:</strong> Open your terminal emulator.</li><li><strong>Step 3:</strong> Summon and dismiss the notch tray instantly with keystrokes.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Can I pipe terminal stdout into NotchDock?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Yes! You can use the standard macOS <code>pbcopy</code> command to push CLI output directly into NotchDock's clipboard history.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/developer-scratchpad-git-commits-regex-notch.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-terminal"></i> Developer Productivity</span>
-                  <h4 class="related-guide-title">Developer Scratchpad in the Notch: Staging Git Commits and Regex Without Context Loss</h4>
-                  <p class="related-guide-excerpt">How software engineers use NotchDock's hover-to-reveal scratchpad to draft Git commit messages, test regex strings, and format JSON snippets without switching apps.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/securing-clipboard-history-api-keys-tokens-mac.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-key"></i> Credential Security</span>
-                  <h4 class="related-guide-title">Securing Clipboard History: Handling API Keys, Passwords & Secrets on Mac</h4>
-                  <p class="related-guide-excerpt">How NotchDock protects developers by filtering API keys, JWT tokens, and 1Password/Bitwarden secrets from persistent clipboard history on macOS.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Copy a short, non-sensitive result</h2>
+<p>Pipe plain text into <code>pbcopy</code> to place it on the macOS general pasteboard:</p>
+<pre><code>printf 'Build note: ready for review
+' | pbcopy</code></pre>
+<p>Move to the target app and paste with <kbd>Command</kbd>+<kbd>V</kbd>. Apple documents the general pasteboard as a shared transfer service between apps, so do not treat it as private storage.</p>
+<h2>Inspect the current clipboard only when needed</h2>
+<p><code>pbpaste</code> writes the current pasteboard text to standard output:</p>
+<pre><code>pbpaste</code></pre>
+<p>Be aware that terminal output can be captured in scrollback, screen recordings, or logs. Avoid running this when the clipboard may contain a password, recovery code, API token, or private message.</p>
+<h2>How this relates to NotchDock</h2>
+<p>The reviewed app source includes a user-managed Quick Access snippet list stored through the Keychain helper. That list is distinct from the system pasteboard. The source does not document a customizable global hotkey, a <code>pbcopy</code>-to-widget pipe, or automatic import of terminal output. Add a snippet using the app’s available controls, and do not store production credentials there.</p>
+<p>For the shared pasteboard API, see Apple’s <a href="https://developer.apple.com/documentation/appkit/nspasteboard">NSPasteboard reference</a>. This page does not claim NotchDock controls Terminal or captures shell output.</p>
         </article>
       </div>
 
@@ -237,7 +178,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

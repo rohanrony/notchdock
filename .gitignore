@@ -35,3 +35,7 @@ dist/
 *.log
 
 .agent/*
+
+# Python helper bytecode
+__pycache__/
+*.pyc

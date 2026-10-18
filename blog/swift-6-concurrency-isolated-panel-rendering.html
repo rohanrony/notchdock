@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels | NotchDock</title>
-    <meta name="title" content="Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels | NotchDock" />
-    <meta name="description" content="Explore how NotchDock leverages Swift 6 strict concurrency, Sendable types, and MainActor isolation to render live sports and stock feeds without UI thread hitches." />
-    <meta name="keywords" content="swift 6 concurrency macos, mainactor nspanel rendering, sendable types appkit, swift async await live data, notchdock swift 6 architecture" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>Read Swift concurrency settings before claiming thread safety | NotchDock</title>
+    <meta name="title" content="Read Swift concurrency settings before claiming thread safety | NotchDock" />
+    <meta name="description" content="A source-grounded review checklist for Swift tasks, actor isolation, cancellation, and compiler mode. The current NotchDock project is set to Swift 5 language mode." />
+    <meta name="keywords" content="Swift concurrency review checklist, Swift Task cancellation, actor isolation, Swift language version" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/swift-6-concurrency-isolated-panel-rendering.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/swift-6-concurrency-isolated-panel-rendering.html" />
-    <meta property="og:title" content="Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels | NotchDock" />
-    <meta property="og:description" content="Explore how NotchDock leverages Swift 6 strict concurrency, Sendable types, and MainActor isolation to render live sports and stock feeds without UI thread hitches." />
+    <meta property="og:title" content="Read Swift concurrency settings before claiming thread safety | NotchDock" />
+    <meta property="og:description" content="A source-grounded review checklist for Swift tasks, actor isolation, cancellation, and compiler mode. The current NotchDock project is set to Swift 5 language mode." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/swift-6-concurrency-isolated-panel-rendering.html" />
-    <meta property="twitter:title" content="Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels | NotchDock" />
-    <meta property="twitter:description" content="Explore how NotchDock leverages Swift 6 strict concurrency, Sendable types, and MainActor isolation to render live sports and stock feeds without UI thread hitches." />
+    <meta property="twitter:title" content="Read Swift concurrency settings before claiming thread safety | NotchDock" />
+    <meta property="twitter:description" content="A source-grounded review checklist for Swift tasks, actor isolation, cancellation, and compiler mode. The current NotchDock project is set to Swift 5 language mode." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/swift-6-concurrency-isolated-panel-rendering.html#article",
-      "headline": "Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels",
-      "description": "Explore how NotchDock leverages Swift 6 strict concurrency, Sendable types, and MainActor isolation to render live sports and stock feeds without UI thread hitches.",
+      "headline": "Read Swift concurrency settings before claiming thread safety",
+      "description": "A source-grounded review checklist for Swift tasks, actor isolation, cancellation, and compiler mode. The current NotchDock project is set to Swift 5 language mode.",
       "url": "https://notchdock.app/blog/swift-6-concurrency-isolated-panel-rendering.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels",
+          "name": "Read Swift concurrency settings before claiming thread safety",
           "item": "https://notchdock.app/blog/swift-6-concurrency-isolated-panel-rendering.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +118,29 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels</span>
+          <span class="current">Read Swift concurrency settings before claiming thread safety</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-bolt"></i> Swift 6 Concurrency</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-bolt"></i> Swift Concurrency Review</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
         </div>
 
-        <h1 class="article-title">Swift 6 Concurrency & AppKit: Isolated Background Feeds in Floating NSPanels</h1>
-        <p class="article-lead speakable-answer">
-          Fetching live sports WebSockets and financial API payloads in the background while rendering 120Hz UI animations requires strict thread safety. Here is our Swift 6 architecture.
-        </p>
+        <h1 class="article-title">Read Swift concurrency settings before claiming thread safety</h1>
+        <p class="article-lead">Swift concurrency tools can help express isolation and asynchronous work, but their presence does not prove that an entire app has no data races or UI stalls. Start by checking the compiler mode and then follow each task’s data flow.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How does NotchDock use Swift 6 concurrency for live data feeds?</h3>
-            <p>
-              <strong>NotchDock</strong> is compiled with <strong>Swift 6 strict concurrency</strong> enabled. Network I/O and JSON parsing execute on background actor domains. Processed domain state is transferred to the <code>@MainActor</code> UI coordinator via thread-safe <code>Sendable</code> structs, preventing data races and guaranteeing zero UI hitching during 120Hz animations.
-            </p>
-          </div>
-
-          
-        <h2>1. Complete Elimination of Data Races</h2>
-        <p>Swift 6's compile-time data race safety ensures that background score and price updates never cause race conditions or memory corruption with the active rendering views.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Inspect the open NotchDock Swift 6 codebase.</li><li><strong>Step 2:</strong> Observe modern async/await and Actor design patterns.</li><li><strong>Step 3:</strong> Experience rock-solid application stability.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Does NotchDock run on macOS Sequoia?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Yes! Built with the latest Xcode and Swift 6 SDK for macOS Sequoia.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/macos-accessibility-api-cursor-hover-tracking.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-code"></i> macOS Internals</span>
-                  <h4 class="related-guide-title">macOS Accessibility APIs: How Cursor Hover Tracking Works in the Notch</h4>
-                  <p class="related-guide-excerpt">Technical deep dive into macOS Accessibility APIs, CGEventTap, and NSEvent tracking used to detect mouse cursor proximity to the MacBook camera notch.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/sandboxing-hardened-runtime-apple-notarization.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-lock"></i> Apple Security & Notarization</span>
-                  <h4 class="related-guide-title">Hardened Runtime & Apple Notarization: Security Behind the NotchDock DMG</h4>
-                  <p class="related-guide-excerpt">How NotchDock complies with Apple's Hardened Runtime and Notarization service to guarantee malware-free, signed, and Gatekeeper-approved DMG downloads.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Check the project’s language mode first</h2>
+<p>The reviewed Xcode project sets <code>SWIFT_VERSION = 5.0</code>. It contains asynchronous tasks, but this is not evidence that the project compiles in Swift 6 language mode or enables strict-concurrency checking for every target. Inspect the target’s Build Settings before describing its concurrency guarantees.</p>
+<h2>Trace one async operation end to end</h2>
+<ol><li>Find where the task starts and what owns its lifetime. An unstructured <code>Task</code> needs an explicit cancellation or replacement plan.</li><li>Follow values captured by the closure and the result returned after each <code>await</code>.</li><li>Identify which actor or executor owns UI state and where the result updates that state.</li><li>Check whether cancellation is tested before expensive or stale work continues.</li></ol>
+<p>Swift’s model uses actor isolation to control access to shared mutable state. Task cancellation is cooperative: calling <code>cancel()</code> signals cancellation, but the running operation must check and respond. See the Swift guide to <a href="https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html">concurrency</a> and Apple’s <a href="https://docs.swift.org/latest/documentation/swift/task/">Task documentation</a>.</p>
+<h2>What a clean build does and does not prove</h2>
+<p>Compiler diagnostics can catch some issues under the project’s selected settings. They do not prove that runtime work is canceled at the right time, that every state transition is on the intended actor, or that animations have a measured frame rate. Keep build settings, code review, runtime traces, and user-visible performance claims separate.</p>
         </article>
       </div>
 
@@ -237,7 +173,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

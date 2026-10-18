@@ -5861,3 +5861,16 @@ code {
 
 /* The old empty background pseudo-element extended 5% beyond the viewport. */
 body::after { content: none; }
+
+/* Keep technical guide examples readable within narrow article columns. */
+.article-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.article-content pre code { white-space: pre; }

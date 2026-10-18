@@ -17,3 +17,9 @@ Read the report with `npm run marketing:report` after providing `NETLIFY_SITE_ID
 Run `npm run test:marketing` and `npm run build`. Inspect homepage and both workflow pages on desktop/mobile, then a tagged local visit and CTA with a local collector. Netlify deployment must include functions, not only the static `dist` directory. After deployment, verify one excluded diagnostic visit through Netlify's authenticated Blobs read-back before claiming central reporting is live.
 
 The sports MP4 comes from the supplied sports GIF. The focus image/video is a clearly labelled still preview; it does not demonstrate an actual countdown. The full original walkthrough was not found as an MP4/MOV in the inspected asset directories, so more action cuts still need the master or a new native recording. Do not copy the old chapter list.
+
+## Reviewed blog maintenance
+
+Edit existing blog HTML directly. The legacy bulk generator is disabled because it can overwrite reviewed articles and restore unsupported claims. Run `python3 scripts/sync_blog_metadata.py` to inspect drift, then `python3 scripts/sync_blog_metadata.py --write` to update index cards, related-guide snippets, index structured data, sitemap dates and the two LLM documentation files from current HTML. This command does not generate or remove article bodies or URLs. Review content before synchronization; it cannot establish product truth or search performance.
+
+See [reporting handoff](reporting-handoff.md) for the authenticated report and Search Console export procedure.

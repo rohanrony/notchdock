@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""
-NotchDock SEO & GEO Pillar Blog Generator
-Compiles 77 high-authority, high-intent pillar blog posts across 7 core clusters,
-cleans up low-quality/redundant/cannibalizing posts, and updates blog/index.html,
-sitemap.xml, and public/llms.txt.
+"""Legacy NotchDock blog renderer. Bulk execution is disabled.
+
+Historical rendering helpers remain for reference. The entry point refuses
+article generation or deletion. Edit reviewed HTML directly and use
+scripts/sync_blog_metadata.py to synchronize discovery metadata.
 """
 
 import os
@@ -657,37 +657,11 @@ def update_llms_txt():
     print(f"Updated public/llms.txt with all {len(ALL_NEW_ARTICLES)} curated pillar guides.")
 
 def main():
-    print(f"Total curated pillar articles loaded: {len(ALL_NEW_ARTICLES)}")
-    assert len(ALL_NEW_ARTICLES) == 77, f"Expected 77 articles, got {len(ALL_NEW_ARTICLES)}"
+    raise SystemExit(
+        "Bulk article generation is disabled: it can overwrite reviewed HTML and restore unsupported claims. "
+        "Edit blog pages directly, then run python3 scripts/sync_blog_metadata.py --write."
+    )
 
-    # Check for duplicate slugs
-    slugs = [a["slug"] for a in ALL_NEW_ARTICLES]
-    assert len(slugs) == len(set(slugs)), "Duplicate slug detected in article dataset!"
-
-    # Clean up orphan articles
-    cleanup_orphan_articles()
-
-    # Render each article to blog/<slug>.html
-    for idx, art in enumerate(ALL_NEW_ARTICLES):
-        slug = art["slug"]
-        file_path = os.path.join(BLOG_DIR, f"{slug}.html")
-        html_content = render_article_html(art)
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(html_content)
-        if (idx + 1) % 20 == 0 or idx == len(ALL_NEW_ARTICLES) - 1:
-            print(f"Rendered {idx + 1}/{len(ALL_NEW_ARTICLES)} articles: {slug}.html")
-
-    # Update index, sitemap, llms.txt
-    update_blog_index()
-    update_sitemap()
-    update_llms_txt()
-
-    # Verification checks
-    html_files = [f for f in os.listdir(BLOG_DIR) if f.endswith(".html")]
-    print(f"Verification: Total HTML files in blog/: {len(html_files)} (Expected: 86)")
-    assert len(html_files) == 86, f"Expected 86 HTML files in blog/, found {len(html_files)}"
-
-    print("Successfully generated and synchronized all 77 curated SEO & GEO pillar blog articles!")
 
 if __name__ == "__main__":
     main()

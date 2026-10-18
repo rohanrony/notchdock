@@ -354,64 +354,25 @@ CLUSTER_7_ARTICLES = [
     {
         "slug": "monitor-local-llm-ollama-gpu-apple-silicon-notch",
         "cluster": "developer",
-        "badge_text": "Local AI & LLMs",
+        "badge_text": "Local AI Tools",
         "badge_icon": "fa-solid fa-microchip",
-        "title": "Monitoring Local LLM Inference and GPU Memory from Your MacBook Notch (Ollama & LM Studio)",
-        "meta_desc": "How to monitor Ollama and LM Studio token generation rates, GPU Neural Engine activity, and Apple Silicon unified memory directly from the MacBook camera notch.",
-        "keywords": "monitor ollama token speed mac, local llm macbook notch hud, apple silicon gpu memory llm, lm studio tokens per second mac, ollama status macos",
-        "read_time": "7 min read",
+        "title": "Monitor Ollama on Mac: CLI and API Metrics",
+        "meta_desc": "Use Ollama’s own CLI and API to inspect running models and generation metrics. NotchDock does not currently include an Ollama or LM Studio monitor.",
+        "keywords": "Ollama CLI Mac, Ollama API metrics, ollama ps running models, NotchDock Ollama support",
+        "read_time": "4 min read",
         "date": "2026-09-29",
-        "lead": "Running local open-weight models (Llama 3, DeepSeek, Mistral) on Apple Silicon has become standard for developers. But keeping a terminal window open just to watch token generation speeds and VRAM allocation breaks coding flow. Here is how to monitor local AI inference ambiently in your screen notch.",
-        "aeo_q": "How can I monitor Ollama or local LLM token generation rates on a Mac without opening a terminal?",
-        "aeo_a": "You can monitor local LLMs on macOS by streaming metrics from Ollama or LM Studio's local HTTP API endpoint (<code>localhost:11434</code>) into an ambient notch indicator. <strong>NotchDock</strong> can display token generation velocity (tokens/sec) and Unified Memory allocation inside the camera bezel while you write code in fullscreen.",
+        "lead": "NotchDock does not currently include Ollama, LM Studio, GPU, or token-speed monitoring. Here are the supported ways to inspect Ollama from its own tools.",
+        "aeo_q": "",
+        "aeo_a": "",
         "sections": [
-            {
-                "h2": "1. The Rise of On-Device AI Engineering and Memory Pressures",
-                "content": "<p>Running local quantized models using MLX or llama.cpp leverages Apple Silicon's unified memory architecture. A 4-bit 8B model occupies ~5.2 GB of VRAM, while a 70B model requires 40+ GB. When generating completions, token velocity slows down if thermal throttling occurs or context windows overflow into disk swap. Keeping tabs on token generation velocity (tok/s) lets you know immediately if your model is bottlenecked.</p>",
-                "table": {
-                    "headers": ["Monitoring Approach", "Screen Footprint", "Token Speed Visibility", "RAM Overhead", "Workflow Interruption"],
-                    "rows": [
-                        ["Terminal Running 'ollama ps / top'", "Full or Half Window", "Requires terminal switching", "30 MB (Terminal)", "High Context Switching"],
-                        ["Browser Web UI (OpenWebUI)", "Heavy Browser Tab", "Inside Chat UI only", "450 - 800 MB (Chrome)", "Moderate Tab Switching"],
-                        ["NotchDock Ambient AI HUD", "Zero Pixels (Camera Cutout)", "Always-on tokens/sec ticker", "&lt; 15 MB", "Zero (Peripheral Glance)"]
-                    ]
-                }
-            },
-            {
-                "h2": "2. Interfacing with Ollama's Local Daemon API",
-                "content": "<p>Ollama exposes an unauthenticated local REST API on <code>http://localhost:11434/api/tags</code> and <code>/api/ps</code>. NotchDock queries these local endpoints over a loopback socket with sub-millisecond latency, reading currently loaded model weights, quantization formats, and active inference states.</p>"
-            },
-            {
-                "h2": "3. Thermal Throttling and Metal Performance Indicators",
-                "content": "<p>When continuous token generation warms up MacBook Air or MacBook Pro chassis, Apple Silicon reduces GPU clock speeds. NotchDock's hardware monitoring module displays real-time GPU thermal headroom, showing when token speeds dip from 45 tok/s to 28 tok/s so you can adjust batch sizes accordingly.</p>"
-            }
+            {"h2": "Does NotchDock monitor Ollama or LM Studio?", "content": "<p>No. NotchDock does not currently provide an Ollama or LM Studio integration, an LLM telemetry setting, or a notch display for token speed, GPU use, VRAM, or thermal state.</p>"},
+            {"h2": "See which Ollama models are running", "content": "<p>In Terminal, run <code>ollama ps</code> to list currently running models. Run <code>ollama ls</code> to list models available locally, or <code>ollama run MODEL</code> to start a model. These commands are documented in the <a href=https://github.com/ollama/ollama/blob/main/docs/cli.mdx>Ollama CLI reference</a>.</p>"},
+            {"h2": "Inspect generation metrics", "content": "<p>For API calls, Ollama documents response fields such as prompt token count, generated token count, and timing durations. A non-streaming <code>/api/generate</code> response includes usage fields; for streaming, the metrics arrive in the final chunk. See Ollama’s <a href=https://github.com/ollama/ollama/blob/main/docs/api/usage.mdx>API usage documentation</a>.</p><p>These are Ollama’s model and request metrics. They do not by themselves establish whole-system GPU utilization or memory use. For broader process and system views, use macOS Activity Monitor and consult Apple’s <a href=https://support.apple.com/guide/activity-monitor/welcome/mac>Activity Monitor User Guide</a>.</p>"},
+            {"h2": "What NotchDock can do", "content": "<p>NotchDock has a sports tracker and other Mac notch utilities. See the <a href=/features/mac-sports-tracker.html>sports tracker details</a>. This page makes no claim that a local AI integration is available.</p>"}
         ],
-        "setup_steps": [
-            "Install Ollama (brew install ollama) and pull your model (ollama run llama3.2).",
-            "Launch NotchDock and enable 'Local AI & LLM Telemetry' in Developer Settings.",
-            "Verify the loopback address is set to localhost:11434.",
-            "Glance at your camera notch to see active model names and token generation speeds.",
-            "Hover over the notch to view VRAM allocation, context size, and thermal stats."
-        ],
-        "faqs": [
-            {
-                "q": "Does NotchDock send my LLM prompts or chat history to external servers?",
-                "a": "Never. NotchDock only queries local status metadata (model name, active memory, token rates) on localhost. No prompt tokens or model outputs are ever logged or transmitted."
-            },
-            {
-                "q": "Does NotchDock support LM Studio and LocalAI?",
-                "a": "Yes! Any local server exposing an OpenAI-compatible /v1/models or Ollama-compatible endpoint can be monitored."
-            },
-            {
-                "q": "Does querying the local API slow down model inference?",
-                "a": "No. The status check is a lightweight HTTP GET taking under 1 millisecond every 2 seconds, having zero impact on Metal GPU inference throughput."
-            }
-        ],
-        "related_slugs": [
-            "apple-silicon-unified-memory-appkit-efficiency",
-            "swift-6-concurrency-isolated-panel-rendering",
-            "securing-clipboard-history-api-keys-tokens-mac"
-        ]
+        "setup_steps": [],
+        "faqs": [],
+        "related_slugs": ["swift-6-concurrency-isolated-panel-rendering", "terminal-hotkeys-command-line-flow-with-notchdock"]
     }
 ]
 

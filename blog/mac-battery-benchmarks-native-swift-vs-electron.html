@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x | NotchDock</title>
-    <meta name="title" content="Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x | NotchDock" />
-    <meta name="description" content="Empirical battery benchmarks on Apple Silicon. Comparing CPU wakeups, energy impact, and memory footprints of native Swift 6 AppKit utilities vs Electron wrappers." />
-    <meta name="keywords" content="mac battery benchmarks, native swift vs electron macos, apple silicon energy efficiency, lightweight mac utility, notchdock battery impact" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>How to Measure Mac App Energy Use: A Repeatable Guide | NotchDock</title>
+    <meta name="title" content="How to Measure Mac App Energy Use: A Repeatable Guide | NotchDock" />
+    <meta name="description" content="A practical protocol for comparing Mac app energy use with consistent conditions, Activity Monitor observations, repeated runs, and documented limits." />
+    <meta name="keywords" content="measure Mac app energy use, Activity Monitor Energy Impact, Mac battery comparison protocol" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/mac-battery-benchmarks-native-swift-vs-electron.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/mac-battery-benchmarks-native-swift-vs-electron.html" />
-    <meta property="og:title" content="Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x | NotchDock" />
-    <meta property="og:description" content="Empirical battery benchmarks on Apple Silicon. Comparing CPU wakeups, energy impact, and memory footprints of native Swift 6 AppKit utilities vs Electron wrappers." />
+    <meta property="og:title" content="How to Measure Mac App Energy Use: A Repeatable Guide | NotchDock" />
+    <meta property="og:description" content="A practical protocol for comparing Mac app energy use with consistent conditions, Activity Monitor observations, repeated runs, and documented limits." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/mac-battery-benchmarks-native-swift-vs-electron.html" />
-    <meta property="twitter:title" content="Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x | NotchDock" />
-    <meta property="twitter:description" content="Empirical battery benchmarks on Apple Silicon. Comparing CPU wakeups, energy impact, and memory footprints of native Swift 6 AppKit utilities vs Electron wrappers." />
+    <meta property="twitter:title" content="How to Measure Mac App Energy Use: A Repeatable Guide | NotchDock" />
+    <meta property="twitter:description" content="A practical protocol for comparing Mac app energy use with consistent conditions, Activity Monitor observations, repeated runs, and documented limits." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/mac-battery-benchmarks-native-swift-vs-electron.html#article",
-      "headline": "Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x",
-      "description": "Empirical battery benchmarks on Apple Silicon. Comparing CPU wakeups, energy impact, and memory footprints of native Swift 6 AppKit utilities vs Electron wrappers.",
+      "headline": "How to Measure Mac App Energy Use: A Repeatable Guide",
+      "description": "A practical protocol for comparing Mac app energy use with consistent conditions, Activity Monitor observations, repeated runs, and documented limits.",
       "url": "https://notchdock.app/blog/mac-battery-benchmarks-native-swift-vs-electron.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x",
+          "name": "How to Measure Mac App Energy Use: A Repeatable Guide",
           "item": "https://notchdock.app/blog/mac-battery-benchmarks-native-swift-vs-electron.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,99 +118,38 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x</span>
+          <span class="current">How to Measure Mac App Energy Use: A Repeatable Guide</span>
         </div>
 
         <div class="article-meta-row">
           <span class="blog-category-badge"><i class="fa-solid fa-battery-full"></i> Battery & Energy</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
         </div>
 
-        <h1 class="article-title">Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x</h1>
-        <p class="article-lead speakable-answer">
-          Is your battery draining quickly even when you are just typing code? Heavy background utility apps are almost always to blame. Here are our empirical lab benchmarks.
-        </p>
+        <h1 class="article-title">How to Measure Mac App Energy Use: A Repeatable Guide</h1>
+        <p class="article-lead">This page provides a repeatable way to observe Mac app energy use. It includes no NotchDock battery benchmark or Swift-versus-Electron result because no reproducible measurements are available here.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How much battery does NotchDock consume compared to Electron utilities?</h3>
-            <p>
-              In standardized macOS energy profiling over 8 hours on an M3 MacBook Pro, <strong>NotchDock consumed 84% less energy</strong> than Electron-based utility competitors. NotchDock maintained an average <strong>CPU load of 0.28%</strong> and <strong>under 42MB of RAM</strong>, whereas Electron alternatives consumed 4.2% CPU and 480MB of RAM, causing noticeable battery drain.
-            </p>
-          </div>
-
-          
-        <h2>1. Standardized 8-Hour Benchmark Results</h2>
-        <p>Tested on an M3 Max MacBook Pro (16-inch, 36GB RAM, macOS 15.1):</p>
-        
-    <div style="margin: 24px 0; overflow-x: auto;">
-      <table style="width: 100%; border-collapse: collapse; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;">
-        <thead>
-          <tr style="background: rgba(255, 255, 255, 0.05); text-align: left;">
-            <th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Metric</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">NotchDock (Pure Swift 6 & AppKit)</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Typical Electron Utility App</th><th style="padding: 14px; color: var(--text-white); font-size: 0.95rem;">Difference</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">Average Idle CPU</td><td style="padding: 14px; color: var(--text-white);">0.28%</td><td style="padding: 14px; color: var(--text-muted);">3.80% - 5.40%</td><td style="padding: 14px; color: var(--text-muted);">14x lower CPU overhead</td></tr><tr style="border-bottom: 1px solid var(--border-color); background: rgba(74, 222, 128, 0.04);"><td style="padding: 14px; color: #4ade80; font-weight: 700;">Memory (Private Bytes)</td><td style="padding: 14px; color: var(--text-white);">38.4 MB</td><td style="padding: 14px; color: var(--text-muted);">482.0 MB</td><td style="padding: 14px; color: var(--text-muted);">12.5x smaller RAM footprint</td></tr><tr style="border-bottom: 1px solid var(--border-color); "><td style="padding: 14px; color: #4ade80; font-weight: 700;">Wakeups / Second</td><td style="padding: 14px; color: var(--text-white);">&lt; 1.2 wakes/sec</td><td style="padding: 14px; color: var(--text-muted);">24.6 wakes/sec</td><td style="padding: 14px; color: var(--text-muted);">20x fewer CPU core wakeups</td></tr><tr style="border-bottom: 1px solid var(--border-color); background: rgba(74, 222, 128, 0.04);"><td style="padding: 14px; color: #4ade80; font-weight: 700;">8-Hour Battery Impact</td><td style="padding: 14px; color: var(--text-white);">0.8% total drain</td><td style="padding: 14px; color: var(--text-muted);">9.6% total drain</td><td style="padding: 14px; color: var(--text-muted);">Saves ~9% battery daily</td></tr>
-        </tbody>
-      </table>
-    </div>
-    
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Open Activity Monitor -> Energy tab.</li><li><strong>Step 2:</strong> Observe NotchDock's near-zero 12-Hour Energy impact.</li><li><strong>Step 3:</strong> Work all day unplugged with confidence.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Why do Electron apps consume so much energy?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Electron bundles a full Chromium browser and Node.js runtime, executing complex JavaScript event loops even when idle.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/promotion-120hz-fluid-animations-macbook-notch.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-gauge"></i> ProMotion & Display</span>
-                  <h4 class="related-guide-title">ProMotion 120Hz Fluid Animations: Engineering Zero-Jitter Notch Expansion</h4>
-                  <p class="related-guide-excerpt">How NotchDock achieves locked 120 frames-per-second hover animations on MacBook Pro ProMotion displays using Core Animation and Spring Physics on macOS.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/apple-silicon-unified-memory-appkit-efficiency.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-memory"></i> Unified Memory</span>
-                  <h4 class="related-guide-title">Apple Silicon Unified Memory: Keeping Notch Utilities Under 45MB RAM</h4>
-                  <p class="related-guide-excerpt">Technical analysis of Apple Silicon's Unified Memory Architecture (UMA) and how Swift 6 value types keep NotchDock's memory footprint under 45MB.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>What Activity Monitor can tell you</h2>
+          <p>Activity Monitor’s Energy pane reports each app’s Energy Impact, a relative measure of current energy use, and on laptops a 12 hr Power average covering the last 12 hours or time since startup. These are useful observations, not a controlled battery-life comparison. See Apple’s <a href="https://support.apple.com/guide/activity-monitor/view-energy-consumption-actmntr43697/10.14/mac/15.0">guide to Activity Monitor energy columns</a>.</p>
+          <h2>Set up a fair comparison</h2>
+          <ol>
+            <li>Record the Mac model, chip, memory, macOS version, app names and versions, and whether each app is a release build.</li>
+            <li>Choose one workload that represents your use, such as idle with the same document open or a defined repeated task. Write down the exact steps and duration.</li>
+            <li>Start each run from a similar battery charge and temperature. Keep display brightness, network conditions, peripherals, Low Power Mode, and other open apps the same. Note unavoidable differences.</li>
+            <li>Run each app separately under the same conditions. Repeat each run several times and alternate the order to reduce order and warm-up effects.</li>
+            <li>Record starting and ending battery percentage, elapsed time, Activity Monitor Energy Impact observations, and any visible background work. Save timestamps or screenshots with the notes.</li>
+          </ol>
+          <h2>Report observations without overstating them</h2>
+          <p>Publish the raw runs and summarize the range or median only after collecting the data. Name the exact apps and versions tested; “Electron apps” and “native apps” are too broad to stand in for specific comparators. Battery percentage is coarse and affected by workload, display, radio activity, battery condition, and the rest of the system. Do not convert one short session into an all-day battery-life claim.</p>
+          <p>We have not run or documented a reproducible NotchDock-versus-comparator battery test for this page, so it makes no comparative result claim. NotchDock’s implementation language alone does not establish energy consumption.</p>
+          <h2>Record sheet</h2>
+          <p>For each run, capture: date and time; Mac model and macOS; app and build; workload; run order; start and end charge; duration; Activity Monitor columns observed; other conditions; and notes about interruptions. Keep the raw observations with any later summary.</p>
         </article>
       </div>
 
@@ -250,7 +182,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

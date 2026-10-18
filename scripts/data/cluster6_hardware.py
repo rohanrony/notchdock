@@ -162,44 +162,23 @@ CLUSTER_6_ARTICLES = [
         "cluster": "hardware",
         "badge_text": "Battery & Energy",
         "badge_icon": "fa-solid fa-battery-full",
-        "title": "Mac Battery Benchmarks: Why Native Swift 6 Beats Electron by 8x",
-        "meta_desc": "Empirical battery benchmarks on Apple Silicon. Comparing CPU wakeups, energy impact, and memory footprints of native Swift 6 AppKit utilities vs Electron wrappers.",
-        "keywords": "mac battery benchmarks, native swift vs electron macos, apple silicon energy efficiency, lightweight mac utility, notchdock battery impact",
-        "read_time": "7 min read",
+        "title": "How to Measure Mac App Energy Use: A Repeatable Guide",
+        "meta_desc": "A practical protocol for comparing Mac app energy use with consistent conditions, Activity Monitor observations, repeated runs, and documented limits.",
+        "keywords": "measure Mac app energy use, Activity Monitor Energy Impact, Mac battery comparison protocol",
+        "read_time": "5 min read",
         "date": "2026-09-28",
-        "lead": "Is your battery draining quickly even when you are just typing code? Heavy background utility apps are almost always to blame. Here are our empirical lab benchmarks.",
-        "aeo_q": "How much battery does NotchDock consume compared to Electron utilities?",
-        "aeo_a": "In standardized macOS energy profiling over 8 hours on an M3 MacBook Pro, <strong>NotchDock consumed 84% less energy</strong> than Electron-based utility competitors. NotchDock maintained an average <strong>CPU load of 0.28%</strong> and <strong>under 42MB of RAM</strong>, whereas Electron alternatives consumed 4.2% CPU and 480MB of RAM, causing noticeable battery drain.",
+        "lead": "This page provides a repeatable way to observe Mac app energy use. It includes no NotchDock battery benchmark or Swift-versus-Electron result because no reproducible measurements are available here.",
+        "aeo_q": "",
+        "aeo_a": "",
         "sections": [
-            {
-                "h2": "1. Standardized 8-Hour Benchmark Results",
-                "content": "<p>Tested on an M3 Max MacBook Pro (16-inch, 36GB RAM, macOS 15.1):</p>",
-                "table": {
-                    "headers": ["Metric", "NotchDock (Pure Swift 6 & AppKit)", "Typical Electron Utility App", "Difference"],
-                    "rows": [
-                        ["Average Idle CPU", "0.28%", "3.80% - 5.40%", "14x lower CPU overhead"],
-                        ["Memory (Private Bytes)", "38.4 MB", "482.0 MB", "12.5x smaller RAM footprint"],
-                        ["Wakeups / Second", "< 1.2 wakes/sec", "24.6 wakes/sec", "20x fewer CPU core wakeups"],
-                        ["8-Hour Battery Impact", "0.8% total drain", "9.6% total drain", "Saves ~9% battery daily"]
-                    ]
-                }
-            }
+            {"h2": "What Activity Monitor can tell you", "content": "<p>Activity Monitor’s Energy pane reports each app’s Energy Impact, a relative measure of current energy use, and on laptops a 12 hr Power average covering the last 12 hours or time since startup. These are useful observations, not a controlled battery-life comparison. See Apple’s <a href=https://support.apple.com/guide/activity-monitor/view-energy-consumption-actmntr43697/10.14/mac/15.0>guide to Activity Monitor energy columns</a>.</p>"},
+            {"h2": "Set up a fair comparison", "content": "<ol><li>Record the Mac model, chip, memory, macOS version, app names and versions, and whether each app is a release build.</li><li>Choose one workload that represents your use, such as idle with the same document open or a defined repeated task. Write down the exact steps and duration.</li><li>Start each run from a similar battery charge and temperature. Keep display brightness, network conditions, peripherals, Low Power Mode, and other open apps the same. Note unavoidable differences.</li><li>Run each app separately under the same conditions. Repeat each run several times and alternate the order to reduce order and warm-up effects.</li><li>Record starting and ending battery percentage, elapsed time, Activity Monitor Energy Impact observations, and any visible background work. Save timestamps or screenshots with the notes.</li></ol>"},
+            {"h2": "Report observations without overstating them", "content": "<p>Publish the raw runs and summarize the range or median only after collecting the data. Name the exact apps and versions tested; “Electron apps” and “native apps” are too broad to stand in for specific comparators. Battery percentage is coarse and affected by workload, display, radio activity, battery condition, and the rest of the system. Do not convert one short session into an all-day battery-life claim.</p><p>We have not run or documented a reproducible NotchDock-versus-comparator battery test for this page, so it makes no comparative result claim. NotchDock’s implementation language alone does not establish energy consumption.</p>"},
+            {"h2": "Record sheet", "content": "<p>For each run, capture: date and time; Mac model and macOS; app and build; workload; run order; start and end charge; duration; Activity Monitor columns observed; other conditions; and notes about interruptions. Keep the raw observations with any later summary.</p>"}
         ],
-        "setup_steps": [
-            "Open Activity Monitor -> Energy tab.",
-            "Observe NotchDock's near-zero 12-Hour Energy impact.",
-            "Work all day unplugged with confidence."
-        ],
-        "faqs": [
-            {
-                "q": "Why do Electron apps consume so much energy?",
-                "a": "Electron bundles a full Chromium browser and Node.js runtime, executing complex JavaScript event loops even when idle."
-            }
-        ],
-        "related_slugs": [
-            "promotion-120hz-fluid-animations-macbook-notch",
-            "apple-silicon-unified-memory-appkit-efficiency"
-        ]
+        "setup_steps": [],
+        "faqs": [],
+        "related_slugs": ["promotion-120hz-fluid-animations-macbook-notch", "apple-silicon-unified-memory-appkit-efficiency"]
     },
     {
         "slug": "promotion-120hz-fluid-animations-macbook-notch",

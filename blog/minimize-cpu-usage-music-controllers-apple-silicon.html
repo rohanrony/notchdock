@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players | NotchDock</title>
-    <meta name="title" content="Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players | NotchDock" />
-    <meta name="description" content="Explore why native Swift 6 and AppKit media controllers consume 90% less CPU and battery than Electron-based Spotify or Chrome players on Apple Silicon." />
+    <title>Measure media controller resource use on your Mac | NotchDock</title>
+    <meta name="title" content="Measure media controller resource use on your Mac | NotchDock" />
+    <meta name="description" content="This page does not publish a measured CPU, memory, or battery result for NotchDock or other media controllers." />
     <meta name="keywords" content="low cpu music controller mac, native appkit vs electron macos, apple silicon battery life music, lightweight media player macbook, notchdock efficiency" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/minimize-cpu-usage-music-controllers-apple-silicon.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/minimize-cpu-usage-music-controllers-apple-silicon.html" />
-    <meta property="og:title" content="Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players | NotchDock" />
-    <meta property="og:description" content="Explore why native Swift 6 and AppKit media controllers consume 90% less CPU and battery than Electron-based Spotify or Chrome players on Apple Silicon." />
+    <meta property="og:title" content="Measure media controller resource use on your Mac | NotchDock" />
+    <meta property="og:description" content="This page does not publish a measured CPU, memory, or battery result for NotchDock or other media controllers." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/minimize-cpu-usage-music-controllers-apple-silicon.html" />
-    <meta property="twitter:title" content="Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players | NotchDock" />
-    <meta property="twitter:description" content="Explore why native Swift 6 and AppKit media controllers consume 90% less CPU and battery than Electron-based Spotify or Chrome players on Apple Silicon." />
+    <meta property="twitter:title" content="Measure media controller resource use on your Mac | NotchDock" />
+    <meta property="twitter:description" content="This page does not publish a measured CPU, memory, or battery result for NotchDock or other media controllers." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/minimize-cpu-usage-music-controllers-apple-silicon.html#article",
-      "headline": "Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players",
-      "description": "Explore why native Swift 6 and AppKit media controllers consume 90% less CPU and battery than Electron-based Spotify or Chrome players on Apple Silicon.",
+      "headline": "Measure media controller resource use on your Mac",
+      "description": "This page does not publish a measured CPU, memory, or battery result for NotchDock or other media controllers.",
       "url": "https://notchdock.app/blog/minimize-cpu-usage-music-controllers-apple-silicon.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T00:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -80,14 +80,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players",
+          "name": "Measure media controller resource use on your Mac",
           "item": "https://notchdock.app/blog/minimize-cpu-usage-music-controllers-apple-silicon.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +125,28 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players</span>
+          <span class="current">Measure media controller resource use on your Mac</span>
         </div>
 
         <div class="article-meta-row">
           <span class="blog-category-badge"><i class="fa-solid fa-microchip"></i> Hardware Efficiency</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• 6 min read</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
+
         </div>
 
-        <h1 class="article-title">Native AppKit Audio Controllers: Why They Use 90% Less Battery Than Web Players</h1>
-        <p class="article-lead speakable-answer">
-          Modern web-based music clients regularly burn 5-10% CPU and hundreds of megabytes of RAM just to render album art. Here is how native AppKit engineering preserves all-day MacBook battery.
-        </p>
+        <h1 class="article-title">Measure media controller resource use on your Mac</h1>
+        <p class="article-lead speakable-answer">The earlier fixed resource figures and claim about which processor cores run the app were not supported by a reproducible measurement.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: Why are native AppKit media controllers so much more efficient on Apple Silicon?</h3>
-            <p>
-              Native AppKit and Swift 6 compile directly to ARM64 machine code, utilizing Apple's unified memory architecture and hardware-accelerated Core Animation compositor. Unlike Electron apps that bundle Chromium engines and Node.js runtimes, <strong>NotchDock</strong> operates under <strong>0.4% idle CPU and less than 45MB RAM</strong>, preserving battery life during mobile work sessions.
-            </p>
-          </div>
-
-          
-        <h2>1. The Hidden Cost of Chromium Audio Wrappers</h2>
-        <p>Running Chrome or Electron just for background music spins up multiple renderer processes, GPU helper daemons, and garbage collection passes that drain battery on airplanes and coffee shop sessions.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Inspect Activity Monitor to see your music player footprint.</li><li><strong>Step 2:</strong> Control playback using NotchDock's native Swift overlay.</li><li><strong>Step 3:</strong> Enjoy extended battery endurance.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Does NotchDock wake the high-performance CPU cores?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">No, NotchDock tasks execute strictly on Apple Silicon efficiency cores (E-cores).</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/spotify-vs-apple-music-vs-youtube-music-mac-notch.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-music"></i> Streaming Shootout</span>
-                  <h4 class="related-guide-title">Spotify vs Apple Music vs YouTube Music: Media Control in Mac Notch</h4>
-                  <p class="related-guide-excerpt">Comparison of Spotify, Apple Music, and YouTube Music integration inside the MacBook notch. Track scrubbing, album artwork, lyrics, and CPU efficiency on macOS.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/youtube-music-desktop-client-mac-kaset-setup.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-brands fa-youtube"></i> YouTube Music & Audio</span>
-                  <h4 class="related-guide-title">How to Set Up the Native YouTube Music Desktop Client (Kaset) on Mac</h4>
-                  <p class="related-guide-excerpt">Complete setup guide for Kaset, the open-source native YouTube Music desktop client for macOS. Connect NotchDock for notch seek scrubbing, album artwork, and Likes.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>Measure media controller resource use on your Mac</h2>
+          <p>Resource use changes with app version, playback source, system state, and workload. Compare current apps under the same conditions and record the observed readings.</p>
+          <p>NotchDock’s media controls are part of its current product; no quantitative efficiency result is claimed here.</p>
+          <p>For current product details, see <a href="/features/mac-media-controller.html">the NotchDock media feature guide</a>.</p>
+          <p>NotchDock is currently free during beta and requires macOS 14 or newer.</p>
+          <div class="article-cta-box"><h3>Explore NotchDock</h3><p>Review the current feature guide and product requirements before installing.</p><a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Download NotchDock</a></div>
         </article>
       </div>
 
@@ -237,7 +179,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>

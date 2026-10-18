@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays | NotchDock</title>
-    <meta name="title" content="Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays | NotchDock" />
-    <meta name="description" content="Architectural breakdown of how NotchDock manages macOS window levels, NSScreen bounds, and multi-monitor Mission Control Spaces without visual flickering." />
-    <meta name="keywords" content="macos multi monitor appkit, nsscreen spaces floating panel, mission control window layering mac, macbook multi monitor notch, notchdock engineering" />
-    <meta name="author" content="NotchDock Engineering Team" />
+    <title>Test NotchDock across macOS Spaces and full-screen apps | NotchDock</title>
+    <meta name="title" content="Test NotchDock across macOS Spaces and full-screen apps | NotchDock" />
+    <meta name="description" content="A practical test matrix for Spaces and full-screen behavior, grounded in NotchDock’s current NSPanel configuration without promising every setup." />
+    <meta name="keywords" content="macOS Spaces app panel, full screen auxiliary window, test notch app Spaces" />
+    <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/blog/multi-monitor-macos-spaces-notchdock-engineering.html" />
     <link rel="llms-txt" type="text/markdown" href="/llms.txt" />
@@ -18,33 +18,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://notchdock.app/blog/multi-monitor-macos-spaces-notchdock-engineering.html" />
-    <meta property="og:title" content="Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays | NotchDock" />
-    <meta property="og:description" content="Architectural breakdown of how NotchDock manages macOS window levels, NSScreen bounds, and multi-monitor Mission Control Spaces without visual flickering." />
+    <meta property="og:title" content="Test NotchDock across macOS Spaces and full-screen apps | NotchDock" />
+    <meta property="og:description" content="A practical test matrix for Spaces and full-screen behavior, grounded in NotchDock’s current NSPanel configuration without promising every setup." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/blog/multi-monitor-macos-spaces-notchdock-engineering.html" />
-    <meta property="twitter:title" content="Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays | NotchDock" />
-    <meta property="twitter:description" content="Architectural breakdown of how NotchDock manages macOS window levels, NSScreen bounds, and multi-monitor Mission Control Spaces without visual flickering." />
+    <meta property="twitter:title" content="Test NotchDock across macOS Spaces and full-screen apps | NotchDock" />
+    <meta property="twitter:description" content="A practical test matrix for Spaces and full-screen behavior, grounded in NotchDock’s current NSPanel configuration without promising every setup." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "TechArticle",
       "@id": "https://notchdock.app/blog/multi-monitor-macos-spaces-notchdock-engineering.html#article",
-      "headline": "Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays",
-      "description": "Architectural breakdown of how NotchDock manages macOS window levels, NSScreen bounds, and multi-monitor Mission Control Spaces without visual flickering.",
+      "headline": "Test NotchDock across macOS Spaces and full-screen apps",
+      "description": "A practical test matrix for Spaces and full-screen behavior, grounded in NotchDock’s current NSPanel configuration without promising every setup.",
       "url": "https://notchdock.app/blog/multi-monitor-macos-spaces-notchdock-engineering.html",
       "datePublished": "2026-09-28T12:00:00Z",
-      "dateModified": "2026-09-28T12:00:00Z",
+      "dateModified": "2026-10-18T12:00:00Z",
       "author": {
         "@type": "Organization",
-        "name": "NotchDock Engineering & Productivity Lab",
+        "name": "NotchDock",
         "url": "https://notchdock.app/"
       },
       "publisher": {
@@ -52,13 +52,6 @@
         "name": "NotchDock",
         "url": "https://notchdock.app/",
         "logo": "https://notchdock.app/assets/logo.jpg"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".speakable-answer",
-          ".aeo-answer-box p"
-        ]
       }
     },
     {
@@ -80,14 +73,14 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays",
+          "name": "Test NotchDock across macOS Spaces and full-screen apps",
           "item": "https://notchdock.app/blog/multi-monitor-macos-spaces-notchdock-engineering.html"
         }
       ]
     }
   ]
 }
-    </script>
+</script>
 
     <!-- FontAwesome & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -125,86 +118,29 @@
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
           <a href="/blog/">Blog</a>
           <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
-          <span class="current">Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays</span>
+          <span class="current">Test NotchDock across macOS Spaces and full-screen apps</span>
         </div>
 
         <div class="article-meta-row">
-          <span class="blog-category-badge"><i class="fa-solid fa-network-wired"></i> Multi-Monitor Architecture</span>
-          <span style="color: var(--text-muted); font-size: 0.88rem;">• Published 2026-09-28</span>
+          <span class="blog-category-badge"><i class="fa-solid fa-network-wired"></i> Spaces & Full Screen</span>
+          <span style="color: var(--text-muted); font-size: 0.88rem;">• Updated 2026-10-18</span>
           <span style="color: var(--text-muted); font-size: 0.88rem;">• 7 min read</span>
         </div>
 
-        <h1 class="article-title">Multi-Monitor Display Spaces: Engineering Floating Panels Across Mac Displays</h1>
-        <p class="article-lead speakable-answer">
-          Handling multiple displays and full-screen Mission Control Spaces in AppKit is one of the most notoriously complex challenges in macOS development. Here is how NotchDock solved it.
-        </p>
+        <h1 class="article-title">Test NotchDock across macOS Spaces and full-screen apps</h1>
+        <p class="article-lead">Spaces, full-screen apps, and per-display settings change where windows appear. Here is a focused way to check the NotchDock panel behavior on your own setup.</p>
       </header>
 
       <!-- Article Body Container -->
       <div class="article-body-container">
         <article class="article-content">
-
-          <!-- AEO Direct Answer Box -->
-          <div class="aeo-answer-box">
-            <h3><i class="fa-solid fa-bolt" style="color: var(--accent-green);"></i> Direct Answer: How does NotchDock maintain smooth performance across multiple Mac displays?</h3>
-            <p>
-              <strong>NotchDock</strong> uses an isolated <code>NSPanel</code> with <code>.canJoinAllSpaces</code> and <code>.stationary</code> window behavior collection flags. By listening to <code>NSApplication.didChangeScreenParametersNotification</code>, NotchDock recalibrates display frames instantly when monitors are plugged in, rotated, or arranged, ensuring zero visual tearing or dropped animation frames.
-            </p>
-          </div>
-
-          
-        <h2>1. Mastering the AppKit Window Level Hierarchy</h2>
-        <p>Standard applications sit at <code>kCGNormalWindowLevel</code>. NotchDock elevates its presentation to <code>kCGStatusWindowLevel</code>, floating cleanly above code editors while gracefully yielding to system menus and security dialogues.</p>
-        
-        
-
-          
-        <h2>Step-by-Step Setup Guide</h2>
-        <ol style="color: var(--text-muted); line-height: 1.8; margin-left: 20px;">
-          <li><strong>Step 1:</strong> Connect dual or triple monitors to your Mac.</li><li><strong>Step 2:</strong> Move your cursor to the top center of any display.</li><li><strong>Step 3:</strong> Enjoy seamless multi-monitor live activities.</li>
-        </ol>
-        
-
-          
-        <h2>Frequently Asked Questions</h2>
-        <div style="margin-top: 20px;">
-          
-            <h3 style="color: var(--text-white); font-size: 1.1rem; margin-top: 24px;">Does NotchDock support vertical (portrait) displays?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">Yes, rotated displays are fully detected and supported.</p>
-            
-        </div>
-        
-
-          <!-- Download CTA Box -->
-          <div class="article-cta-box">
-            <h3>Transform Your MacBook Notch Today</h3>
-            <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
-          </div>
-
-          
-            <div class="related-guides-section">
-              <h3><i class="fa-solid fa-book-open text-green"></i> Related Engineering & Productivity Guides</h3>
-              <div class="related-guides-grid">
-                
-                <a href="/blog/how-notchdock-renders-on-external-monitors-studio-display.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-desktop"></i> External Displays</span>
-                  <h4 class="related-guide-title">How NotchDock Renders on External Monitors and Apple Studio Display</h4>
-                  <p class="related-guide-excerpt">How NotchDock adapts when connected to Apple Studio Display, Pro Display XDR, or 4K monitors. Seamless floating Dynamic Island pill rendering on non-notched screens.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-                <a href="/blog/promotion-120hz-fluid-animations-macbook-notch.html" class="related-guide-card">
-                  <span class="related-guide-tag"><i class="fa-solid fa-gauge"></i> ProMotion & Display</span>
-                  <h4 class="related-guide-title">ProMotion 120Hz Fluid Animations: Engineering Zero-Jitter Notch Expansion</h4>
-                  <p class="related-guide-excerpt">How NotchDock achieves locked 120 frames-per-second hover animations on MacBook Pro ProMotion displays using Core Animation and Spring Physics on macOS.</p>
-                  <span class="related-guide-link">Read Guide <i class="fa-solid fa-arrow-right"></i></span>
-                </a>
-                
-              </div>
-            </div>
-            
-
+          <h2>What the source configures</h2>
+<p>The reviewed NotchDock source creates an <code>NSPanel</code> and assigns the collection behavior flags <code>canJoinAllSpaces</code>, <code>fullScreenAuxiliary</code>, and <code>ignoresCycle</code>. These flags document the intended window behavior in that source snapshot; they do not prove the result for every macOS release, monitor arrangement, or shipped build.</p>
+<h2>Check a normal Space and a full-screen Space</h2>
+<ol><li>Open NotchDock and note the current desktop and display.</li><li>Use Mission Control to create a second desktop. Switch between the two and note whether the panel appears in the expected place.</li><li>Open one app in full screen, then repeat the check. Record whether the panel appears, hides, or changes position.</li><li>Repeat with “Displays have separate Spaces” configured as you normally use it, and note the setting with the result.</li></ol>
+<p>Apple’s guides explain how to <a href="https://support.apple.com/en-euro/guide/mac-help/mh14112/27/mac/27">work in multiple Spaces</a> and <a href="https://support.apple.com/en-ie/guide/mac-help/mh35798/27/mac/27">view windows and Spaces in Mission Control</a>. Each display can show its own Spaces in Mission Control.</p>
+<h2>When the panel is missing or misplaced</h2>
+<p>Record macOS version, NotchDock build, display arrangement, whether the app is pinned, and the exact Space/full-screen transition. A screenshot of Mission Control plus the visible panel state helps distinguish a Space assignment issue from an app positioning issue. This article does not guarantee rotated-display support, zero flicker, or a particular window level.</p>
         </article>
       </div>
 
@@ -237,7 +173,7 @@
           <a href="/features/mac-pomodoro-notes.html">Pomodoro & Notes</a>
           <a href="/features/mac-sports-tracker.html">Live Sports Tracker</a>
           <a href="/features/mac-stock-portfolio.html">Stock Portfolio</a>
-          <a href="/features/mac-clipboard-manager.html">Clipboard History</a>
+          <a href="/features/mac-clipboard-manager.html">Text Snippets</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
