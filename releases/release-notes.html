@@ -172,6 +172,146 @@
             </div>
         </header>
 
+        <!-- Version 0.21.0 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.21.0</h2>
+                <span class="date">October 28, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>More useful Agent Control sessions</strong>: See provider thread names and clearer Working, Waiting, or Done status across supported coding agents.</li>
+                <li><strong>Richer questions and approvals</strong>: Review native approval choices and answer supported agent questions from the tray, with safer checks before sending a response.</li>
+                <li><strong>Agent usage snapshots</strong>: View available local quota information for Antigravity, Codex, and Claude, with account and context details kept distinct.</li>
+                <li><strong>Compact alert timing</strong>: Choose how long actionable alerts appear, and let other notch apps take priority when no response is needed.</li>
+                <li><strong>Deep Code observation</strong>: Optionally show local turn completion status without reading transcripts or controlling approvals.</li>
+            </ul>
+
+            <div class="section-title improved">Improvements</div>
+            <ul>
+                <li><strong>Clearer, calmer alerts</strong>: Compact view focuses on requests that need your attention, with a restrained badge and configurable timing.</li>
+                <li><strong>More accurate session updates</strong>: Better recognize completed, stale, and resumed sessions, and show provider thread names where available.</li>
+                <li><strong>Faster responses</strong>: Background usage and diagnostic checks are less likely to delay an answer being sent.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Reliable question tracking</strong>: Keep unanswered questions visible through unrelated agent activity and clear only the question that received a matching reply.</li>
+                <li><strong>Safer response targeting</strong>: Prevent stale or ambiguous approval and question responses from being sent to the wrong terminal session.</li>
+                <li><strong>Terminal session opening</strong>: Improve finding and focusing the intended terminal window, with clearer feedback when it cannot be verified.</li>
+                <li><strong>Session and alert accuracy</strong>: Correctly age remote activity, retire alerts for ended sessions, and avoid showing outdated work as active.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.20.2 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.20.2</h2>
+                <span class="date">October 26, 2026</span>
+            </div>
+
+            <div class="section-title improved">Improved</div>
+            <ul>
+                <li><strong>Official Coding Agent Brand Marks & CLI Mascots</strong>: Replaced approximate marks with official vector marks: xAI Grok circular slash mark, Claude Code's authentic terracotta pixel crab mascot (Clawd), Google Antigravity multicolour gradient "A", OpenAI Codex interlocking knot in crisp white, OpenCode rectangular terminal mark with counter block, and GitHub Copilot authentic white mascot robot head.</li>
+                <li><strong>Transparent Backgrounds & Neutral Surroundings</strong>: Preserved authentic brand mark colors while keeping surrounding surfaces transparent without tiles, boxes, or glowing backdrops, ensuring sharp legibility across compact view, session rows, requests, and Settings.</li>
+            </ul>
+        </div>
+
+        <!-- Version 0.20.1 -->
+        <div class="release-card">
+            <div class="release-header">
+                <h2 class="version">Version 0.20.1</h2>
+                <span class="date">October 26, 2026</span>
+            </div>
+
+            <div class="section-title added">Added</div>
+            <ul>
+                <li><strong>Authentic CLI Mascots & Grok CLI Integration</strong>: Added authentic vector paths for Claude's crab CLI mascot, Google Antigravity quantum orbit loops, and added the new Grok CLI connector (`.grok`) in `AgentConnectorType.swift` and `AgentBrandMarkView.swift`.</li>
+                <li><strong>Permissions & Diagnostics System</strong>: Implemented explicit macOS Accessibility permission prompts and wired session errors directly into `AgentDiagnostics.swift` and `SystemDiagnostic`.</li>
+                <li><strong>Subdued Monochrome Visual Language & Authentic Brand Marks</strong>: Reused neutral `ThemeTokens` for surfaces, controls, buttons, and progress indicators; rendered authentic transparent vector marks for Claude, Codex, Antigravity, Copilot, Cursor, etc. without surrounding tiles, boxes, borders, or glowing backdrops (`AgentBrandMarkView.swift`).</li>
+                <li><strong>Unified Attention Queue & Live XPC Snapshots</strong>: Implemented `AgentAttentionItem` and versioned `AgentSnapshotDTO` with client callback push notifications, 50ms filesystem event debouncing, monotonic revisions, and actionable request counting (excluding delivered/consumed items).</li>
+                <li><strong>Inline Question Expansion & Dynamic Tray Height</strong>: Support for Codex `request_user_input` and Claude `AskUserQuestion` with choices, descriptions, and free-text entry; inline expansion dynamically resizes the tray height and refreshes tracking areas.</li>
+                <li><strong>Single-Line Sessions & Relative Event Age</strong>: Displayed waiting sessions first, working next, finished last; rows fit on a single line (`[logo] project · brief activity 12s ↗`) with live 1-second relative timestamps (`12s`, `4m`, `2h`) reflecting elapsed time since the last agent activity.</li>
+                <li><strong>Customizable Brief Expansion Duration</strong>: Added `com.notchdock.agents.briefExpansionDurationSeconds` (1...10s, default 5s) with a native Stepper in Settings.</li>
+                <li><strong>Local Usage & Rate Limits</strong>: Integrated provider limit strip for Codex rollouts, Claude statusline, and Antigravity user status with cooldown, caching, and 15-minute staleness enforcement (`AgentUsageService.swift`).</li>
+                <li><strong>Icon-Only Tray & Settings Representation</strong>: Compact icon presentation in dock header and Settings sidebar with full accessible names and tooltips.</li>
+                <li><strong>Agent Control Widget (`com.notchdock.agents`)</strong>: Added a native Coding Agents supervision module to monitor agent sessions, respond to approval requests, answer questions, and review generated plans directly from the notch (`AgentControlWidget.swift`, `AgentControlExpandedView.swift`, `AgentControlCompactView.swift`, `AgentControlSettingsView.swift`, `AgentControlViewModel.swift`).</li>
+                <li><strong>Unified Agent Support & Permission Tiers</strong>: Integrated 17 coding agents with explicit capability and permission tiers:</li>
+                <li><strong>*Approve*</strong>: Claude Code, Codex CLI, GitHub Copilot CLI (native permission responses, question choices, and plan review).</li>
+                <li><strong>*Veto*</strong>: Cursor, Gemini CLI (deny/interrupt response channels).</li>
+                <li><strong>*Observe*</strong>: Qwen Code, OpenCode, Amp, Cline, goose, Aider, Google Antigravity, and Claude Cowork (real-time session activity and handoff).</li>
+                <li><strong>Bridge & Interaction Contracts</strong>: </li>
+                <li><strong>Built a</strong>: robust atomic filesystem IPC bridge (`~/.notchdock/agents/`) with requests (`requests.d`), answers (`answers.d`), receipts (`receipts.d`), and state snapshots (`state.d`).</li>
+                <li><strong>Added bundled</strong>: helper XPC service architecture (`com.notchdock.AgentBridgeService`) maintaining full main app sandbox isolation.</li>
+                <li><strong>Adapted AgentBar</strong>: bridge scripts into a private bundle (`notchdock/Resources/AgentBridges.bundle/`) with MIT attribution notices (`THIRD_PARTY_NOTICES.md`).</li>
+                <li><strong>Idempotent configuration</strong>: and hook installer (`AgentHookInstaller.swift`) with diff previewing, automatic backups, and competing hook detection.</li>
+                <li><strong>Interactive Attention & Response Flows</strong>: </li>
+                <li><strong>"Needs your</strong>: input" requests displayed first, showing bash commands, diffs, interactive question wizards, and markdown plans.</li>
+                <li><strong>Attention controls</strong>: Independent toggles for `Show pending count` in compact mode and `Briefly expand for new requests` (5.0s automatic expansion with hover-pause).</li>
+                <li><strong>Draft preservation</strong>: Preserves user feedback and radio selections across session updates until settled or dismissed.</li>
+                <li><strong>Verified Terminal Control</strong>: Optional verified terminal keystroke automation (`y`/`Enter`) for Terminal.app, iTerm2, WezTerm, and tmux with 4 strict safety gates (Accessibility trust, frontmost application matching, modifier key avoidance, and pane title verification).</li>
+                <li><strong>Cloud & SSH Connections</strong>: </li>
+                <li><strong>Opt-in poller</strong>: for Cursor Cloud, Devin, Codex Cloud, and SSH hosts.</li>
+                <li><strong>Secure Keychain</strong>: credential storage (`KeychainHelper.shared`) for API keys.</li>
+                <li><strong>Non-interactive SSH</strong>: polling with strict hostname sanitization (`^[a-zA-Z0-9_.-]+$`) and timeout protections.</li>
+                <li><strong>Unit Test Automation & Documentation</strong>: </li>
+                <li><strong>Comprehensive unit</strong>: test suite in `notchdockTests/AgentControlTests.swift` validating connectors, atomic answer exchanges, draft retention, terminal targeting gates, AppState priority rotation, and SSH sanitization.</li>
+                <li><strong>Added user</strong>: guide in `notchdock/docs/apps/agent-control-guide.md` and updated setup assistant and roadmap docs.</li>
+            </ul>
+
+            <div class="section-title fixed">Fixed</div>
+            <ul>
+                <li><strong>Direct Web URL Handoff</strong>: Prevented web/cloud session clicks from routing into terminal activation by opening HTTP/HTTPS URLs directly in the user's default browser via `NSWorkspace.shared.open` (`AgentControlViewModel.swift`).</li>
+                <li><strong>Terminal Window Spam & Background Launching</strong>: Prevented `/usr/bin/open -a Terminal <cwd>` from creating new terminal windows on every session focus by checking running processes first and activating existing terminal windows in-place (`AgentTerminalFocus.swift`). Added application liveness guards before running AppleScript automations to avoid launching closed terminal apps in the background.</li>
+                <li><strong>Accurate Real-Time Status Indicators</strong>: Eliminated lingering white active indicator lights on idle/completed sessions by checking transcript modification timestamps and validating complete planner responses (`content != nil && !hasToolCalls`) before marking sessions as `.tool` (`AgentWatcherService.swift`).</li>
+                <li><strong>Expanded Header Simplification</strong>: Removed stray terminal icon above the usage and quota strip in `AgentControlExpandedView.swift`, displaying clean contextual feedback banners only when actionable requests are pending or submitted.</li>
+                <li><strong>Hardware Notch Alignment & Compact Notifications</strong>: Redesigned `AgentControlCompactView.swift` with a 190pt notch center alignment guide (`.alignmentGuide(.notchCenter)`), rendering provider brand marks on the left and dynamic notification pills (`"Needs Approval"`, `"Question"`, `"N pending"`) on the right with direct tap-to-expand navigation.</li>
+                <li><strong>Authentic Developer Tool Brand Marks</strong>: Replaced stylized placeholders in `AgentBrandMarkView.swift` with official vector silhouettes: Anthropic terracotta (`#D97757`) starburst spark for Claude Code & Cowork, OpenAI emerald (`#10A37F`) whorl knot with inner hex ring for Codex, and Google Blue (`#4285F4`) ascending vector delta with orbit nodes for Antigravity.</li>
+                <li><strong>Agent Control Review Hardening (R1–R6)</strong>: </li>
+                <li><strong>R1 Codex Question Transport & Lifecycle</strong>: Prevented orphaned request files with dead hook PIDs in `claude/update.js` PreToolUse by recording question prompts and choices directly into `state.d` as truthful status/handoff metadata with an "Open Session" action.</li>
+                <li><strong>R2 Request Generation Binding & Anti-Race</strong>: Carried immutable request generation timestamps (`expectedTimestamp`) across view model, client, XPC, and helper layers; rejected stale submissions against updated generations across intervening helper refreshes, bound duplicate suppression to generation keys (`"\(fileName):\(hookPid):\(effGen)"`), and validated receipt acknowledgements against specific generations.</li>
+                <li><strong>R3 Native Plan Terminal Keystroke Approval</strong>: Aligned the helper's pending-work validation guard to accept both `.terminalKeystrokes` and `.plan` attention items, allowing Approve Plan (Return) to execute via verified terminal keystroke transport while enforcing strict target, accessibility, and active-plan validation gates.</li>
+                <li><strong>R4 Explicit Host Routing for CLI vs Desktop Sessions</strong>: Preserved `entrypoint` metadata across XPC to route CLI sessions (`entrypoint: "cli"`, `termProgram: "Apple_Terminal"`) to verified terminal focus and desktop sessions (`entrypoint: "antigravity-app"`) to native application activation without conflation.</li>
+                <li><strong>R5 Bounded Consumption Deadlines & Visible Recovery</strong>: Decoupled consumption verification from mere answer file presence by enforcing a bounded 10-second acknowledgement deadline, transitioning unacknowledged responses to an actionable `.unknown` ("Check session") recovery state with synchronized compact badge counts.</li>
+                <li><strong>R6 Usage Quota Freshness & Account Windows</strong>: Preserved authoritative source timestamps for Antigravity (`user_status.json`) and Claude (`statusline.json`) rather than poll times, flagged passed resets as stale, discarded 24h+ expired readings while preserving historical source times, and surfaced all account usage windows without false 100% fallbacks.</li>
+                <li><strong>Agent Control Bridge & Helper Packaging</strong>: </li>
+                <li><strong>Fixed universal</strong>: architecture compilation (`arm64` and `x86_64`) in `scripts/build_agent_bridge_service.sh` using `lipo -create`.</li>
+                <li><strong>Fixed helper</strong>: script resolution by bundling `AgentBridges.bundle` directly into the helper service's `Contents/Resources`.</li>
+                <li><strong>Fixed cross-process</strong>: settings state by synchronizing connection preferences and Keychain tokens across XPC (`syncConnectionSettings`) into an authoritative 0600 shared store.</li>
+                <li><strong>Routed terminal</strong>: plan approvals over XPC helper process boundary instead of sandboxed app.</li>
+                <li><strong>Vendor Configuration & Hook Installer</strong>: </li>
+                <li><strong>Fixed Codex</strong>: configuration by generating valid nested TOML tables (`[features.agentbar.hooks]`) with escaped command strings.</li>
+                <li><strong>Fixed Codex</strong>: trust detection so unrelated trusted hooks cannot mark NotchDock ready or disable the session-notify fallback.</li>
+                <li><strong>Fixed Antigravity</strong>: hook registration by wiring required event arguments (`antigravity.js <event>`) and reporting configuration errors.</li>
+                <li><strong>Fixed Qwen</strong>: configuration to install only observational hooks with `NOTCHDOCK_AGENT=qwen` identity stamping, removing unverified blocking permission hooks.</li>
+                <li><strong>Fixed GitHub</strong>: Copilot CLI configuration by stamping `NOTCHDOCK_AGENT=copilot` identity.</li>
+                <li><strong>Replaced recursive</strong>: Aider wrapper with lightweight non-recursive notification script (`notify.js`).</li>
+                <li><strong>Surfaced installation</strong>: and syntax errors directly in settings sheet instead of silent dismissal.</li>
+                <li><strong>Terminal Targeting & Keystroke Safety</strong>: </li>
+                <li><strong>Added pre-keystroke</strong>: tab/window/pane readback verification (`verifyActiveTarget`) across Terminal.app, iTerm2, WezTerm, and tmux.</li>
+                <li><strong>Added active</strong>: modifier key checks (⌘, ⌃, ⌥, ⇧) and frontmost process verification immediately before posting input.</li>
+                <li><strong>Request Delivery & Lifecycle Truthfulness</strong>: </li>
+                <li><strong>Resolved XPC registration crash (`NSInvalidArgumentException</strong>: This coder only encodes objects that adopt NSSecureCoding`) by explicitly establishing `AgentBridgeClientCallbackProtocol` interface on both client remote interface and server exported interface via `AgentBridgeXPCInterfaceFactory`.</li>
+                <li><strong>Fixed draft preservation across background polls and live snapshot revisions by unifying draft keys on composite `identity` (`"\(timestamp)</strong>: \(hookPid)"`) and carrying typed interaction context (`.bash`, `.diff`, `.write`, `.question`, `.plan`), agent PID, and rule suggestions across `AgentSnapshotDTO`.</li>
+                <li><strong>Reconciled response delivery states by composite key (`"\(req.fileName)</strong>: \(req.hookPid)"`) to reliably transition attention from `.queued` to `.delivered`, and rejected unverified acknowledgements where PID is missing or zero.</li>
+                <li><strong>Prevented approving</strong>: superseded requests by comparing generation timestamps and display labels, and gated terminal keystroke dispatches against pending authoritative attention items.</li>
+                <li><strong>Added Codex</strong>: `request_user_input` support in bundled hooks with structured questions, choices, descriptions, and requests written directly to `requests.d`.</li>
+                <li><strong>Preserved structured</strong>: Antigravity question options across transcript polling, maintained unresolved tool calls in `.tool`/working states instead of prematurely marking them `.done`, and computed dynamic attention card heights.</li>
+                <li><strong>Replaced non-functional</strong>: Allow/Deny controls on status-only and non-native sessions with appropriate handoff actions ("Open Session" / terminal keystroke controls).</li>
+                <li><strong>Enabled Codex</strong>: account windows to survive empty/null premium bucket events, accurately separated poll time from source event timestamps to detect stale data, and prevented showing misleading "100% left" for unmeasured quotas.</li>
+                <li><strong>Fixed Antigravity</strong>: desktop handoff routing to activate the native desktop application without falling through to terminal targeting with PID 0.</li>
+                <li><strong>Revalidated hook</strong>: PID liveness (`kill(pid, 0)`), generation timestamp matching, and request expiration (<=600s) before dispatching responses.</li>
+                <li><strong>Added explicit</strong>: receipt acknowledgement in Claude bridge script (`receipts.d/<id>`), distinguishing true consumption from timeout cleanup or file disappearance.</li>
+                <li><strong>Preserved active</strong>: request snapshots and draft responses during transient XPC disconnects.</li>
+                <li><strong>Handled flexible Codex Cloud response payloads (`{ tasks</strong>: [...] }`) and bracket-balanced JSON splitting for SSH streams.</li>
+                <li><strong>Setup Assistant & Panel Layout</strong>: </li>
+                <li><strong>Added Step</strong>: 3 (Coding Agents selection) to Setup Assistant (`OnboardingView.swift`).</li>
+                <li><strong>Gated request</strong>: 5-second expansion against widget enablement and urgent system timer/calendar states (`AppState.swift`).</li>
+                <li><strong>Fixed detail</strong>: card collapsing in compact panel views with flexible scroll sizing and non-collapsing text wrapping.</li>
+            </ul>
+        </div>
+
         <!-- Version 0.19.1 -->
         <div class="release-card">
             <div class="release-header">
