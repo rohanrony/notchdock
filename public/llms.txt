@@ -109,3 +109,10 @@ App permissions and macOS synchronization depend on the features enabled. Websit
 - [Use Kaset playback controls with NotchDock](https://notchdock.app/blog/youtube-music-controls-macbook-notch-kaset.html): Kaset is a supported player in NotchDock’s Music widget. The widget offers Kaset Like, but Kaset seeking is not supported; artwork can depend on a player URL and network access.
 - [Connect the separate Kaset player to NotchDock](https://notchdock.app/blog/youtube-music-desktop-client-mac-kaset-setup.html): Kaset is a separate macOS player that NotchDock can control through its Music widget. Check Kaset’s own release notes and requirements; Kaset seeking is not supported in NotchDock.
 - [NotchDock privacy boundaries: local data and external feeds](https://notchdock.app/blog/zero-telemetry-privacy-architecture-notchdock.html): Separate NotchDock’s local preferences and Keychain snippets from EventKit access, Apple Notes automation, external data feeds, and website measurement.
+
+## Agent Control
+- [Agent Control for Mac coding agents](https://notchdock.app/features/agent-control.html): Feature page covering all 19 connectors, explicit capability tiers, local and remote handoff, privacy, and macOS permissions. Only Claude Code, Codex CLI, and GitHub Copilot CLI provide native approve/deny; Cursor and Gemini CLI are veto-only; others are observational or provide handoff.
+- [Agent Control provider overview](https://notchdock.app/blog/agent-control-overview-all-providers.html): Provider-by-provider overview of the 19 connectors and what each capability tier means.
+- [Claude Code workflow](https://notchdock.app/blog/claude-code-agent-control-workflow.html): Native permission requests, question choices, plan feedback, and terminal handoff for Claude Code.
+- [Codex CLI vs Codex Cloud](https://notchdock.app/blog/codex-cli-vs-cloud-agent-control.html): Local terminal monitoring compared with remote cloud monitoring and web handoff.
+- [Local, cloud, and SSH monitoring privacy](https://notchdock.app/blog/local-cloud-ssh-agent-monitoring-privacy.html): Data sources, credentials, read-only SSH polling, and optional terminal permissions.

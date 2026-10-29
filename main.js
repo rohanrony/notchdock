@@ -1762,13 +1762,51 @@ function renderNotchBarWidget() {
   });
 }
 
+function renderAgentControlWidget() {
+  const container = document.getElementById('showcase-interactive-container');
+  if (!container) return;
+  container.innerHTML = `
+    <section class="nd-widget nd-ac-widget" aria-labelledby="nd-ac-title">
+      <header class="nd-ac-toolbar" aria-label="Agent Control areas">
+        <div class="nd-ac-toolbar-icons" aria-hidden="true"><span class="nd-ac-toolbar-icon"><i class="fa-regular fa-calendar-days"></i></span><span class="nd-ac-toolbar-icon is-active"><i class="fa-solid fa-terminal"></i></span><span class="nd-ac-toolbar-icon"><i class="fa-solid fa-list-check"></i></span><span class="nd-ac-toolbar-icon"><i class="fa-regular fa-note-sticky"></i></span><span class="nd-ac-toolbar-icon"><i class="fa-solid fa-chart-line"></i></span><span class="nd-ac-toolbar-icon"><i class="fa-solid fa-sliders"></i></span></div>
+        <span class="nd-ac-simulation-tag"><i class="fa-solid fa-flask" aria-hidden="true"></i> Interactive simulation</span>
+      </header>
+      <div class="nd-ac-meta-row"><span class="nd-ac-count">1 sample request</span><span class="nd-ac-usage"><i class="fa-solid fa-circle-nodes" aria-hidden="true"></i> Codex CLI · Weekly 75%</span></div>
+      <section class="nd-ac-question" aria-labelledby="nd-ac-title">
+        <div class="nd-ac-question-head"><div class="nd-ac-provider-icon" aria-hidden="true"><i class="fa-solid fa-circle-nodes"></i></div><div><h3 id="nd-ac-title">Codex CLI <span>· Sample question</span></h3><p>notchdock · local preview</p></div></div>
+        <div class="nd-ac-question-body"><span class="nd-ac-kicker">BUILD TARGET</span><h4>What should we plan to build?</h4>
+          <fieldset class="nd-ac-options"><legend class="sr-only">Choose a sample answer</legend>
+            <label class="nd-ac-option"><input type="radio" name="nd-ac-choice" value="NotchDock feature"><span class="nd-ac-radio" aria-hidden="true"></span><span class="nd-ac-option-copy"><strong>NotchDock feature</strong><small>Plan a feature or fix for the current project.</small></span></label>
+            <label class="nd-ac-option"><input type="radio" name="nd-ac-choice" value="New app or site"><span class="nd-ac-radio" aria-hidden="true"></span><span class="nd-ac-option-copy"><strong>New app or site</strong><small>Plan a separate product from scratch.</small></span></label>
+            <label class="nd-ac-option"><input type="radio" name="nd-ac-choice" value="Something else"><span class="nd-ac-radio" aria-hidden="true"></span><span class="nd-ac-option-copy"><strong>Something else</strong><small>Describe another build target.</small></span></label>
+          </fieldset>
+          <p class="nd-ac-feedback" role="status" aria-live="polite">Choose an option to preview a selection. No answer or approval is sent.</p>
+        </div>
+      </section>
+      <div class="nd-ac-session-heading"><span>SESSIONS</span><span class="nd-ac-session-total">2 shown in sample</span></div>
+      <div class="nd-ac-sessions" aria-label="Example session statuses"><div class="nd-ac-session"><i class="fa-solid fa-circle-nodes" aria-hidden="true"></i><strong>Plan a useful Mac workflow</strong><span class="nd-ac-session-state">Working</span><span class="nd-ac-time">now</span></div><div class="nd-ac-session"><i class="fa-solid fa-circle-nodes" aria-hidden="true"></i><strong>Explore Agent Control</strong><span class="nd-ac-session-state">Waiting</span><span class="nd-ac-time">now</span></div></div>
+      <p class="nd-ac-disclaimer">Simulation only. Selecting an option changes this preview; it does not contact an agent or send an approval.</p>
+    </section>`;
+
+  container.querySelectorAll('input[name="nd-ac-choice"]').forEach((input) => {
+    input.addEventListener('change', (event) => {
+      const feedback = container.querySelector('.nd-ac-feedback');
+      if (feedback) feedback.textContent = `Selected “${event.currentTarget.value}” for this preview. Nothing was sent to an agent.`;
+    });
+  });
+}
+
 function initShowcaseTabs() {
-  const tabs = document.querySelectorAll('.tab-btn');
+  const tabs = document.querySelectorAll('.module-button');
   const previewTitle = document.getElementById('preview-title');
   const macbookFrame = document.querySelector('.macbook-frame');
   const interactiveContainer = document.getElementById('showcase-interactive-container');
 
   const tabData = {
+    'agent-control': {
+      title: 'Agent Control · Interactive simulation',
+      render: renderAgentControlWidget
+    },
     sports: {
       title: 'Sports Live Updates',
       render: () => {
@@ -1817,84 +1855,84 @@ function initShowcaseTabs() {
     }
   };
 
+  const activateShowcaseTab = (tabId, activeButton, userInitiated = false) => {
+    if (!tabData[tabId] || !activeButton) return;
+    tabs.forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+    activeButton.classList.add('active');
+    activeButton.setAttribute('aria-pressed', 'true');
+
+    if (userInitiated) document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (macbookFrame) {
+      macbookFrame.style.transform = 'scale(0.985) translateY(2px)';
+      setTimeout(() => { macbookFrame.style.transform = 'scale(1) translateY(0)'; }, 150);
+    }
+    if (previewTitle) previewTitle.textContent = tabData[tabId].title;
+    if (typeof window.triggerNotchTab === 'function') {
+      if (tabId === 'sports' || tabId === 'match-stats') window.triggerNotchTab('sports');
+      else if (tabId === 'music') window.triggerNotchTab('music');
+      else if (tabId === 'stocks') window.triggerNotchTab('stocks');
+    }
+    if (!interactiveContainer) return;
+    interactiveContainer.style.opacity = '0';
+    interactiveContainer.style.transform = 'scale(0.99) translateY(2px)';
+    interactiveContainer.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+    setTimeout(() => {
+      if (tabId !== 'music' && showState.music.interval) {
+        clearInterval(showState.music.interval);
+        showState.music.interval = null;
+        showState.music.isPlaying = false;
+      }
+      if (tabId !== 'stocks' && showState.stocks.tickerInterval) {
+        clearInterval(showState.stocks.tickerInterval);
+        showState.stocks.tickerInterval = null;
+      }
+      if (tabId !== 'notchbar' && showState.notchbar.timerInterval) {
+        clearInterval(showState.notchbar.timerInterval);
+        showState.notchbar.timerInterval = null;
+        showState.notchbar.timerRunning = false;
+      }
+      if (tabId !== 'timer' && showState.timer && showState.timer.timerInterval) {
+        clearInterval(showState.timer.timerInterval);
+        showState.timer.timerInterval = null;
+        showState.timer.isRunning = false;
+      }
+      tabData[tabId].render();
+      interactiveContainer.style.opacity = '1';
+      interactiveContainer.style.transform = 'scale(1) translateY(0)';
+    }, 150);
+  };
+
   if (interactiveContainer) {
-    // Add event delegation for mockup header navigation
+    // Keep the existing app-header paths; secondary views highlight their parent module.
     interactiveContainer.addEventListener('click', (e) => {
       const tabNav = e.target.closest('[data-tab-nav]');
-      if (tabNav) {
-        const tabId = tabNav.getAttribute('data-tab-nav');
-        const tabBtn = document.getElementById('tab-' + tabId);
-        if (tabBtn) {
-          tabBtn.click();
-        }
-      }
+      if (!tabNav) return;
+      const tabId = tabNav.getAttribute('data-tab-nav');
+      const parentId = tabId === 'match-stats' ? 'sports' : tabId === 'notchbar' ? 'clipboard' : tabId;
+      const tabBtn = document.getElementById('tab-' + parentId);
+      if (!tabData[tabId] || !tabBtn) return;
+      if (tabId === parentId) tabBtn.click();
+      else activateShowcaseTab(tabId, tabBtn, e.isTrusted);
     });
 
-    renderSportsWidget();
+    const initialActiveTab = document.querySelector('.module-button.active');
+    const initialTabId = initialActiveTab?.getAttribute('data-tab');
+    if (initialTabId && tabData[initialTabId]) {
+      if (previewTitle) previewTitle.textContent = tabData[initialTabId].title;
+      tabData[initialTabId].render();
+    } else {
+      renderSportsWidget();
+    }
   }
 
   tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', (event) => {
       const tabId = tab.getAttribute('data-tab');
       if (!tabId || !tabData[tabId]) return;
-
-      tabs.forEach(btn => btn.classList.remove('active'));
-      tab.classList.add('active');
-
-      if (macbookFrame) {
-        macbookFrame.style.transform = 'scale(0.985) translateY(2px)';
-        setTimeout(() => {
-          macbookFrame.style.transform = 'scale(1) translateY(0)';
-        }, 150);
-      }
-
-      if (previewTitle) {
-        previewTitle.textContent = tabData[tabId].title;
-      }
-
-      // Sync with top notch interactive widget
-      if (typeof window.triggerNotchTab === 'function') {
-        if (tabId === 'sports' || tabId === 'match-stats') {
-          window.triggerNotchTab('sports');
-        } else if (tabId === 'music') {
-          window.triggerNotchTab('music');
-        } else if (tabId === 'stocks') {
-          window.triggerNotchTab('stocks');
-        }
-      }
-
-      if (interactiveContainer) {
-        interactiveContainer.style.opacity = '0';
-        interactiveContainer.style.transform = 'scale(0.99) translateY(2px)';
-        interactiveContainer.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
-        
-        setTimeout(() => {
-          if (tabId !== 'music' && showState.music.interval) {
-            clearInterval(showState.music.interval);
-            showState.music.interval = null;
-            showState.music.isPlaying = false;
-          }
-          if (tabId !== 'stocks' && showState.stocks.tickerInterval) {
-            clearInterval(showState.stocks.tickerInterval);
-            showState.stocks.tickerInterval = null;
-          }
-          if (tabId !== 'notchbar' && showState.notchbar.timerInterval) {
-            clearInterval(showState.notchbar.timerInterval);
-            showState.notchbar.timerInterval = null;
-            showState.notchbar.timerRunning = false;
-          }
-          if (tabId !== 'timer' && showState.timer && showState.timer.timerInterval) {
-            clearInterval(showState.timer.timerInterval);
-            showState.timer.timerInterval = null;
-            showState.timer.isRunning = false;
-          }
-
-          tabData[tabId].render();
-          
-          interactiveContainer.style.opacity = '1';
-          interactiveContainer.style.transform = 'scale(1) translateY(0)';
-        }, 150);
-      }
+      activateShowcaseTab(tabId, tab, event.isTrusted);
     });
   });
 }
@@ -2273,6 +2311,16 @@ function initUnifiedAutoRotation() {
 
   let currentTabIndex = 0;
   let isHovered = false;
+  let userHasSelectedShowcase = false;
+
+  const moduleRail = document.querySelector('.module-rail');
+  const showcase = document.getElementById('showcase');
+  const noteExplicitInteraction = (event) => {
+    if (event.isTrusted && event.target.closest('button, input, label, [data-tab-nav]')) userHasSelectedShowcase = true;
+  };
+  moduleRail?.addEventListener('click', noteExplicitInteraction);
+  showcase?.addEventListener('click', noteExplicitInteraction);
+  showcase?.addEventListener('keydown', noteExplicitInteraction);
 
   const notch = document.getElementById('page-notch');
   if (notch) {
@@ -2281,8 +2329,9 @@ function initUnifiedAutoRotation() {
   }
 
   setInterval(() => {
-    // Pause auto-rotation if the user is interacting with the notch
-    if (isHovered) return;
+    // Pause auto-rotation if the user is interacting with the notch or has selected Agent Control.
+    if (isHovered || userHasSelectedShowcase) return;
+    if (document.querySelector('.module-button.active')?.getAttribute('data-tab') === 'agent-control') return;
 
     currentTabIndex = (currentTabIndex + 1) % tabs.length;
     const tabId = tabs[currentTabIndex];

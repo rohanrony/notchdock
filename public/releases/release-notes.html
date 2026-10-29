@@ -320,7 +320,7 @@
                 <li><strong>Replaced non-functional</strong>: Allow/Deny controls on status-only and non-native sessions with appropriate handoff actions ("Open Session" / terminal keystroke controls).</li>
                 <li><strong>Enabled Codex</strong>: account windows to survive empty/null premium bucket events, accurately separated poll time from source event timestamps to detect stale data, and prevented showing misleading "100% left" for unmeasured quotas.</li>
                 <li><strong>Fixed Antigravity</strong>: desktop handoff routing to activate the native desktop application without falling through to terminal targeting with PID 0.</li>
-                <li><strong>Revalidated hook</strong>: PID liveness (`kill(pid, 0)`), generation timestamp matching, and request expiration (<=600s) before dispatching responses.</li>
+                <li><strong>Revalidated hook</strong>: PID liveness (`kill(pid, 0)`), generation timestamp matching, and request expiration (&lt;=600s) before dispatching responses.</li>
                 <li><strong>Added explicit</strong>: receipt acknowledgement in Claude bridge script (`receipts.d/<id>`), distinguishing true consumption from timeout cleanup or file disappearance.</li>
                 <li><strong>Preserved active</strong>: request snapshots and draft responses during transient XPC disconnects.</li>
                 <li><strong>Handled flexible Codex Cloud response payloads (`{ tasks</strong>: [...] }`) and bracket-balanced JSON splitting for SSH streams.</li>

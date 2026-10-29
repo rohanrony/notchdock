@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>NotchDock — Useful moments around your MacBook notch</title>
-    <meta name="title" content="NotchDock — Useful moments around your MacBook notch" />
-    <meta name="description" content="Sports scores, a focus timer and quick actions around your MacBook notch. Free during beta. Requires macOS 14 or newer." />
-    <meta name="keywords" content="macbook notch app, mac sports scores, notch focus timer, mac text snippets, mac music controls" />
+    <title>NotchDock — A little more useful, right around your Mac</title>
+    <meta name="title" content="NotchDock — A little more useful, right around your Mac" />
+    <meta name="description" content="A native Mac companion for agent sessions, calendar, tasks, focus, music, notes, stocks, sports and quick actions. Requires macOS 14 or newer." />
+    <meta name="keywords" content="Mac menu bar app, Mac agent control, calendar, tasks, focus timer, music controls, quick notes" />
     <meta name="author" content="NotchDock" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://notchdock.app/" />
@@ -21,15 +21,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://notchdock.app/" />
-    <meta property="og:title" content="NotchDock — Useful moments around your MacBook notch" />
-    <meta property="og:description" content="Sports scores, a focus timer and quick actions around your MacBook notch. Free during beta. Requires macOS 14 or newer." />
+    <meta property="og:title" content="NotchDock — A little more useful, right around your Mac" />
+    <meta property="og:description" content="A native Mac companion for agent sessions, calendar, tasks, focus, music, notes, stocks, sports and quick actions. Requires macOS 14 or newer." />
     <meta property="og:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://notchdock.app/" />
-    <meta property="twitter:title" content="NotchDock — Useful moments around your MacBook notch" />
-    <meta property="twitter:description" content="Sports scores, a focus timer and quick actions around your MacBook notch. Free during beta. Requires macOS 14 or newer." />
+    <meta property="twitter:title" content="NotchDock — A little more useful, right around your Mac" />
+    <meta property="twitter:description" content="A native Mac companion for agent sessions, calendar, tasks, focus, music, notes, stocks, sports and quick actions. Requires macOS 14 or newer." />
     <meta property="twitter:image" content="https://notchdock.app/assets/logo.jpg" />
 
     <!-- Structured Data (JSON-LD) for Search Engines & LLMs -->
@@ -52,8 +52,8 @@
         "availability": "https://schema.org/InStock"
       },
       "downloadUrl": "https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg",
-      "description": "A native Mac utility with sports scores, a focus timer and quick actions around the MacBook notch.",
-      "softwareVersion": "0.19.1",
+      "description": "A native Mac companion that brings agent sessions and everyday tools into easy reach around the MacBook notch.",
+      "softwareVersion": "0.22.0",
       "releaseNotes": "https://github.com/rohanrony/notchdock/releases",
       "requirements": "macOS Sonoma 14.0 or newer",
       "featureList": [
@@ -61,7 +61,8 @@
         "Focus timer",
         "Calendar and meeting access",
         "Quick notes, snippets and tasks",
-        "Media controls"
+        "Media controls",
+        "Agent Control for coding agents with provider-specific approval, veto, observation, and handoff capabilities"
       ]
     },
     {
@@ -69,7 +70,7 @@
       "@id": "https://notchdock.app/#website",
       "name": "NotchDock",
       "url": "https://notchdock.app/",
-      "description": "Sports scores, a focus timer and quick actions around your MacBook notch. Free during beta. Requires macOS 14 or newer.",
+      "description": "A native Mac companion for agent sessions, calendar, tasks, focus, music, notes, stocks, sports and quick actions. Requires macOS 14 or newer.",
       "publisher": {
         "@type": "Organization",
         "@id": "https://notchdock.app/#organization"
@@ -79,8 +80,8 @@
       "@type": "WebPage",
       "@id": "https://notchdock.app/#webpage",
       "url": "https://notchdock.app/",
-      "name": "NotchDock — Useful moments around your MacBook notch",
-      "description": "Sports scores, a focus timer and quick actions around your MacBook notch. Free during beta. Requires macOS 14 or newer.",
+      "name": "NotchDock — A little more useful, right around your Mac",
+      "description": "A native Mac companion for agent sessions, calendar, tasks, focus, music, notes, stocks, sports and quick actions. Requires macOS 14 or newer.",
       "isPartOf": {
         "@id": "https://notchdock.app/#website"
       },
@@ -230,16 +231,10 @@
           <img src="/assets/logo.jpg" alt="NotchDock Logo" class="nav-logo" id="nav-logo-img" />
           <span class="nav-brand"><span class="brand-dark">Notch</span><span class="brand-olive">Dock</span></span>
         </a>
-        <nav class="nav-menu">
+        <nav class="nav-menu" aria-label="Main navigation">
           <a href="#features" class="nav-item">Features</a>
-          <a href="#walkthrough" class="nav-item">Video</a>
-          <a href="/why-notchdock.html" class="nav-item">Why NotchDock</a>
-          <a href="/compare/mac-notch-apps.html" class="nav-item">Compare</a>
+          <a href="/features/agent-control.html" class="nav-item">Agent Control</a>
           <a href="/blog/" class="nav-item">Blog</a>
-          <a href="#showcase" class="nav-item">Showcase</a>
-          <a href="#faq" class="nav-item">FAQ</a>
-          <a href="#support" class="nav-item tip-nav-link" title="Support NotchDock Development"><i class="fa-solid fa-mug-hot text-heart"></i> Tip Jar</a>
-          <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
           <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn" data-download-source="navbar">Download</a>
         </nav>
       </div>
@@ -252,12 +247,12 @@
       <section class="hero-section">
         <div class="hero-container">
           <div class="hero-text">
-            <div class="badge"><i class="fa-solid fa-bolt text-green"></i> Native Mac utility • macOS 14+</div>
-            <h1>Keep the score in sight.<br><span class="text-accent">Stay in your flow.</span></h1>
-            <p class="hero-desc speakable-answer">NotchDock brings match scores, a focus timer and useful quick actions to your MacBook notch. Glance up, then get back to what you were doing.</p>
+            <div class="badge"><i class="fa-brands fa-apple"></i> A native Mac companion · macOS 14+</div>
+            <h1>Your Mac’s everyday tools, right around the notch.</h1>
+            <p class="hero-desc speakable-answer">A calm, glanceable home for coding-agent sessions and the everyday tools you reach for: your calendar, tasks, timer, music, notes and more.</p>
             <div class="hero-actions">
               <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-download-source="hero-cta"><i class="fa-solid fa-download"></i> Download Free Beta (DMG)</a>
-              <a href="#walkthrough" class="btn btn-outline btn-lg"><i class="fa-solid fa-circle-play text-green" style="margin-right: 6px;"></i> Watch the walkthrough</a>
+              <a href="#walkthrough" class="btn btn-outline btn-lg"><i class="fa-solid fa-circle-play" style="margin-right: 6px;"></i> See how it works</a>
             </div>
             <div class="hero-meta">
               <span><i class="fa-brands fa-apple"></i> macOS Sonoma 14 or newer</span>
@@ -268,15 +263,27 @@
             </div>
           </div>
           
-          <figure class="campaign-demo">
-            <video autoplay loop muted playsinline controls preload="metadata" poster="/assets/campaign/sports-glance.jpg" aria-label="Recorded NotchDock sports demonstration">
-              <source src="/assets/campaign/sports-glance.mp4" type="video/mp4">
-            </video>
-            <figcaption>Recorded demo. Scores shown are historical.</figcaption>
+          <figure class="campaign-demo hero-product-shot">
+            <img src="/assets/media/agent-control-question-preview.png" alt="NotchDock Agent Control showing a Codex sample question with selectable choices, session statuses and usage" fetchpriority="high">
+            <figcaption>Agent Control keeps supported coding sessions within easy reach.</figcaption>
           </figure>
         </div>
-        <div class="workflow-links"><a href="/features/mac-sports-tracker.html">Explore sports</a><a href="/features/mac-pomodoro-notes.html">Explore the focus timer</a><button type="button" data-copy-mac-link>Copy link for your Mac</button><span role="status" data-copy-status></span></div>
+        <div class="module-rail" role="group" aria-label="Choose a NotchDock preview">
+          <button type="button" class="module-button active" data-tab="agent-control" id="tab-agent-control" aria-pressed="true" aria-controls="showcase-interactive-container"><i class="fa-solid fa-terminal" aria-hidden="true"></i><span>Agent Control</span></button>
+          <button type="button" class="module-button" data-tab="calendar" id="tab-calendar" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-regular fa-calendar" aria-hidden="true"></i><span>Calendar</span></button>
+          <button type="button" class="module-button" data-tab="todo" id="tab-todo" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-solid fa-list-check" aria-hidden="true"></i><span>ToDo</span></button>
+          <button type="button" class="module-button" data-tab="timer" id="tab-timer" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-regular fa-clock" aria-hidden="true"></i><span>Timer</span></button>
+          <button type="button" class="module-button" data-tab="music" id="tab-music" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-solid fa-music" aria-hidden="true"></i><span>Music</span></button>
+          <button type="button" class="module-button" data-tab="clipboard" id="tab-clipboard" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span>Quick Access</span></button>
+          <button type="button" class="module-button" data-tab="sports" id="tab-sports" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-solid fa-volleyball" aria-hidden="true"></i><span>Sports</span></button>
+          <button type="button" class="module-button" data-tab="stocks" id="tab-stocks" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span>Stocks</span></button>
+          <button type="button" class="module-button" data-tab="notepad" id="tab-notepad" aria-pressed="false" aria-controls="showcase-interactive-container"><i class="fa-regular fa-note-sticky" aria-hidden="true"></i><span>Quick Notes</span></button>
+        </div>
+        <div class="workflow-links"><button type="button" data-copy-mac-link>Copy link for your Mac</button><span role="status" data-copy-status></span></div>
       </section>
+
+
+      <section class="agent-feature" id="agent-control"><div class="agent-feature-copy"><span class="section-tag">Made for coding with agents</span><h2>Agent Control, with the details in view.</h2><p>Monitor supported local, desktop, cloud and SSH sessions from your Mac. Provider capabilities are labeled clearly, so you know which actions are available.</p><a class="btn btn-secondary" href="/features/agent-control.html">Explore Agent Control <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div><div class="agent-capabilities" aria-label="Agent Control capability examples"><article><i class="fa-solid fa-circle-check" aria-hidden="true"></i><div><h3>Native requests</h3><p>Approve or deny requests where supported by the provider.</p></div></article><article><i class="fa-regular fa-eye" aria-hidden="true"></i><div><h3>Session visibility</h3><p>See working, done and idle states across supported sessions.</p></div></article><article><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><div><h3>Remote handoff</h3><p>Open the web or SSH session when the connector supports it.</p></div></article></div></section>
 
       <!-- Showcase Section -->
       <section class="showcase-section" id="showcase">
@@ -287,79 +294,6 @@
         </div>
 
         <div class="showcase-container">
-          <div class="showcase-tabs">
-            <button class="tab-btn active" data-tab="sports" id="tab-sports">
-              <i class="fa-solid fa-circle-nodes tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Sports Live Updates</h3>
-                <p>Track real-time scores & stats</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="match-stats" id="tab-match-stats">
-              <i class="fa-solid fa-chart-pie tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Match Stats</h3>
-                <p>View detailed game statistics</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="calendar" id="tab-calendar">
-              <i class="fa-solid fa-calendar-days tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Calendar & Events</h3>
-                <p>View agenda and upcoming calls</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="clipboard" id="tab-clipboard">
-              <i class="fa-solid fa-clipboard-list tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Quick Access Snippets</h3>
-                <p>Save and copy reusable text</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="todo" id="tab-todo">
-              <i class="fa-solid fa-list-check tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>To-Do List</h3>
-                <p>Manage list and drag-to-reorder</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="notepad" id="tab-notepad">
-              <i class="fa-regular fa-note-sticky tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Quick Notepad</h3>
-                <p>Jot down ideas & save snippets</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="timer" id="tab-timer">
-              <i class="fa-solid fa-stopwatch tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Focus & Pomodoro Timer</h3>
-                <p>Interval sprints & break cycles</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="music" id="tab-music">
-              <i class="fa-solid fa-music tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Media Controller</h3>
-                <p>Apple Music, Spotify & YouTube Music</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="stocks" id="tab-stocks">
-              <i class="fa-solid fa-chart-line tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Stocks Tracker</h3>
-                <p>Track real-time stocks & indices</p>
-              </div>
-            </button>
-            <button class="tab-btn" data-tab="notchbar" id="tab-notchbar">
-              <i class="fa-solid fa-window-maximize tab-icon"></i>
-              <div class="tab-btn-text">
-                <h3>Live Status Bar</h3>
-                <p>Always-on indicators on the notch</p>
-              </div>
-            </button>
-          </div>
-
           <div class="macbook-mockup-wrapper">
             <div class="showcase-preview-card">
             <div class="mac-notch-bezel">
@@ -491,12 +425,12 @@
               </div>
               <div class="mini-sparkline-wrap">
                 <svg viewBox="0 0 100 24" class="mini-sparkline-svg">
-                  <path d="M 0,20 Q 20,16 35,18 T 60,8 T 80,12 T 100,4" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" />
+                  <path d="M 0,20 Q 20,16 35,18 T 60,8 T 80,12 T 100,4" fill="none" stroke="#c2c4c8" stroke-width="2" stroke-linecap="round" />
                   <path d="M 0,20 Q 20,16 35,18 T 60,8 T 80,12 T 100,4 L 100,24 L 0,24 Z" fill="url(#sparkline-grad)" opacity="0.25" />
                   <defs>
                     <linearGradient id="sparkline-grad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#4ade80" />
-                      <stop offset="100%" stop-color="#4ade80" stop-opacity="0" />
+                      <stop offset="0%" stop-color="#c2c4c8" />
+                      <stop offset="100%" stop-color="#c2c4c8" stop-opacity="0" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -657,7 +591,7 @@
       </section>
 
       <!-- Comparison Summary Section (Apple/Linear Grade Luxury Matrix) -->
-      <section class="why-different-section" id="compare-summary"><div class="section-header"><span class="section-tag">Find your workflow</span><h2>Start with one useful moment</h2><p class="section-subtitle">Try sports scores or the focus timer, then explore the other widgets when you need them.</p><p><a class="btn btn-outline" href="/features/mac-sports-tracker.html">Sports scores</a> <a class="btn btn-outline" href="/features/mac-pomodoro-notes.html">Focus timer</a></p><p><a href="/compare/mac-notch-apps.html">Choosing a notch app</a></p></div></section>
+      <section class="why-different-section" id="compare-summary"><div class="section-header"><span class="section-tag">Find your workflow</span><h2>Start with one useful moment</h2><p class="section-subtitle">Start with a workflow that matters to you. Agent sessions, calendar, tasks and quick tools share the same native Mac surface.</p><p><a class="btn btn-outline" href="#agent-control">Agent Control</a> <a class="btn btn-outline" href="#features">Explore the modules</a></p><p><a href="/compare/mac-notch-apps.html">Choosing a notch app</a></p></div></section>
 
       <!-- FAQ Section (AEO & LLM Search Optimized) -->
       <section class="faq-section" id="faq">
@@ -674,7 +608,7 @@
                 <i class="fa-solid fa-chevron-down faq-chevron"></i>
               </summary>
               <div class="faq-answer">
-                <p>NotchDock is a Mac utility with widget controls and updates around the display notch. Use it for a supported sports match, a stock watchlist, a timer or a quick action. Hover near the notch to open the expanded panel.</p>
+                <p>NotchDock is a native Mac companion that keeps coding-agent sessions and everyday tools close at hand around the display notch. Explore Agent Control, Calendar, ToDo, Timer, Music, Quick Access, Sports, Stocks and Quick Notes.</p>
               </div>
             </details>
 
@@ -834,8 +768,8 @@
     <section class="cta-section" id="download">
       <div class="cta-card">
         <div class="cta-bg-gradient"></div>
-        <h2>Ready to transform your screen?</h2>
-        <p>Download NotchDock today and turn your MacBook notch into your intelligent live status dock.</p>
+        <h2>A little more room for what matters.</h2>
+        <p>Bring Agent Control and your everyday Mac workflows into easy reach.</p>
         <div class="cta-buttons">
           <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" class="btn btn-white btn-lg" id="btn-dmg-download" data-download-source="bottom-cta"><i class="fa-solid fa-download"></i> Download for macOS (DMG)</a>
           <a href="#support" class="btn btn-outline-white btn-lg"><i class="fa-solid fa-mug-hot"></i> Tip the Dev</a>
