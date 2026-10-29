@@ -28,7 +28,7 @@ brew install --cask notchdock
 
 ## Agent Control
 
-Agent Control brings status from 19 supported local, cloud, and SSH coding-agent connectors into NotchDock. Its permission capabilities vary by provider: Claude Code, Codex CLI, and GitHub Copilot CLI expose native approve/deny; Cursor and Gemini CLI are veto-only; the other integrations provide observation or session handoff. Claude Code additionally supports question choices and plan review/feedback. Google Antigravity supports verified terminal control and question choices while remaining observational.
+Agent Control brings status from 19 supported local, cloud, and SSH coding-agent connectors into NotchDock. Its permission capabilities vary by provider: Claude Code, Codex CLI, and GitHub Copilot CLI expose native approve/deny; Cursor and Gemini CLI are veto-only; integrations other than OpenCode and Google Antigravity provide observation or session handoff. Claude Code additionally supports question choices and plan review/feedback. OpenCode V2 supports answering supported questions and forms through its local loopback API, sending HTTP Basic credentials when the service manifest supplies a nonempty password; unsupported or malformed requests remain session handoffs. Google Antigravity supports verified terminal control and question choices. Grok remains observational through Claude-compatible hooks.
 
 The monitored connector set is Claude Code, Codex CLI, GitHub Copilot CLI, Cursor, Gemini CLI, Qwen Code, OpenCode, Amp, Cline, goose, Aider, Google Antigravity, Claude Cowork, Cursor Cloud, Devin, Codex Cloud, SSH Host, Grok CLI, and DeepSeek Deep Code. Remote and cloud integrations can offer web or SSH handoff. They do not all support approval or control.
 
