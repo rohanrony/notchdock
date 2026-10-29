@@ -8,6 +8,8 @@ NotchDock is a modular productivity overlay for macOS designed to transform the 
   <img width="1280" height="720" alt="Recording at 2026-05-03 15 52 07-Edited" src="https://github.com/user-attachments/assets/e8f6dde9-9de8-49ca-848b-c10028591064" />
 </a>
 
+<img width="1228" height="1240" alt="agent-control-question-preview (1)" src="https://github.com/user-attachments/assets/c16742f1-7d35-40b9-9c58-109dd777757d" />
+
 <a href="https://github.com/user-attachments/assets/352bd85a-5fcc-414a-8364-1286573b8997" target="_blank" rel="noopener noreferrer">
   <img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/385cb90d-a7c8-4047-85c1-5baebd2cb302" />
 </a>
