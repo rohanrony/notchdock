@@ -2262,7 +2262,7 @@ function initPremiumInteractions() {
           downloadBtn.style.color = '';
           
           // Redirect to github releases
-          window.location.href = 'https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg';
+          window.location.href = 'https://github.com/rohanrony/notchdock/releases/latest/download/NotchDock.dmg';
         }, 1200);
       }, 1000);
     });

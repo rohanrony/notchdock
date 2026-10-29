@@ -358,7 +358,7 @@ def render_article_html(article):
           <a href="/#showcase" class="nav-item">Showcase</a>
           <a href="/#faq" class="nav-item">FAQ</a>
           <a href="https://github.com/rohanrony/notchdock" target="_blank" rel="noopener" class="nav-item" title="View GitHub Repository"><i class="fa-brands fa-github" style="font-size: 1.15rem; vertical-align: middle;"></i></a>
-          <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
+          <a href="https://github.com/rohanrony/notchdock/releases/latest/download/NotchDock.dmg" target="_blank" rel="noopener" class="btn btn-secondary nav-btn">Download</a>
         </nav>
       </div>
     </header>
@@ -410,7 +410,7 @@ def render_article_html(article):
           <div class="article-cta-box">
             <h3>Transform Your MacBook Notch Today</h3>
             <p>Download NotchDock for free and replace noisy notifications with intelligent, ambient live activities inside your screen notch.</p>
-            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/notchdock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
+            <a href="https://github.com/rohanrony/notchdock/releases/latest/download/NotchDock.dmg" target="_blank" rel="noopener" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Download NotchDock for Mac (Free DMG)</a>
           </div>
 
           {related_html}
